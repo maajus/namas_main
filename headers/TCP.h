@@ -42,8 +42,8 @@ private:
   
 private slots:
     void readTcpData();
-    void connectTcp();
-    signals:
+
+signals:
     void dataReceived(QByteArray);
     void connection_failed(QAbstractSocket::SocketError);
 };

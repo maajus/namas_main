@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -17,21 +29,21 @@
    <widget class="QPushButton" name="leave_button">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>100</y>
+      <x>10</x>
+      <y>10</y>
       <width>121</width>
-      <height>481</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
      <string>Leave</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="build_label">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>560</y>
+      <y>570</y>
       <width>301</width>
       <height>31</height>
      </rect>
@@ -64,55 +76,181 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="info_widget" name="kitchen_info" native="true">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
-      <width>260</width>
-      <height>160</height>
+      <y>93</y>
+      <width>1011</width>
+      <height>481</height>
      </rect>
     </property>
-   </widget>
-   <widget class="info_widget" name="livingroom_info" native="true">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>100</y>
-      <width>260</width>
-      <height>160</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="info_widget" name="bedroom1_info" native="true">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>310</y>
-      <width>260</width>
-      <height>160</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="info_widget" name="bedroom2_info" native="true">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>310</y>
-      <width>260</width>
-      <height>160</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="info_widget" name="wc_info" native="true">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>100</y>
-      <width>260</width>
-      <height>160</height>
-     </rect>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QListWidget" name="side_menu">
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="spacing">
+        <number>5</number>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/home1.png</normaloff>:/icons/home1.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/settings.png</normaloff>:/icons/settings.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/play.png</normaloff>:/icons/play.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/home-security.png</normaloff>:/icons/home-security.png</iconset>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stack_widget">
+       <property name="currentIndex">
+        <number>3</number>
+       </property>
+       <widget class="QWidget" name="page_3">
+        <widget class="info_widget" name="bedroom1_info" native="true">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>220</y>
+           <width>260</width>
+           <height>160</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="info_widget" name="wc_info" native="true">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>10</y>
+           <width>260</width>
+           <height>160</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="info_widget" name="livingroom_info" native="true">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>10</y>
+           <width>260</width>
+           <height>160</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="info_widget" name="kitchen_info" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>260</width>
+           <height>160</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="info_widget" name="bedroom2_info" native="true">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>220</y>
+           <width>260</width>
+           <height>160</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_5">
+        <widget class="QLabel" name="label_2">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>50</y>
+           <width>151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page">
+        <widget class="QLabel" name="label_3">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>60</y>
+           <width>171</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Music</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_2">
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>30</y>
+           <width>221</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Security</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_4"/>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
@@ -124,6 +262,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../resources/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -18,9 +18,7 @@
 #include <QMouseEvent>
 #include "ui_info_widget.h"
 #include "TCP.h"
-#include "Room_win.h"
-
-
+#include "definitions.h"
 
 class info_widget : public QWidget {
     Q_OBJECT
@@ -31,23 +29,24 @@ public:
     info_widget(QWidget *parent = 0);
     virtual ~info_widget();
     void set_id(ROOM_ID);
-    void update_info();
+    void set_name(QString);
+    void set_temp(QString);
+    void set_humi(QString);
+    void set_lights(Lights);
     
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *event);
     
-private slots:
-    void tcp_data(QByteArray);
-    void connection_failed(QAbstractSocket::SocketError);
-    void cmd2EPS(QByteArray data);
-    
+   
 private:
-    QThread *tcp_thread;
+
     Ui::info_widget widget;
+    QThread *tcp_thread;
     TCP *tcp;
     ROOM_ID id;
-    Room_win *room_win;
     
+signals:
+    void clicked();
 };
 
 #endif /* _INFO_WIDGET_H */

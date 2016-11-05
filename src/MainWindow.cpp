@@ -15,6 +15,7 @@
 #include "info_widget.h"
 #include <QDateTime>
 #include <QFile>
+#include <QObject>
 
 MainWindow::MainWindow() {
     widget.setupUi(this);
@@ -22,6 +23,7 @@ MainWindow::MainWindow() {
    
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
+    connect(widget.side_menu,SIGNAL(currentRowChanged(int)),widget.stack_widget,SLOT(setCurrentIndex(int)));
     
     status_timer.start(500);
     info_timer.start(5000);
@@ -32,12 +34,15 @@ MainWindow::MainWindow() {
     widget.livingroom_info->set_id(ROOM_ID::LIVING_ROOM);
     widget.wc_info->set_id(ROOM_ID::WC);
     
+    bathroom = new Bath_Room_win(widget.wc_info);
+    connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
     //Load and apply stylesheet
-    QFile stylesheet("/formStyle.css");
+    QFile stylesheet("formStyle.css");
     stylesheet.open(QFile::ReadOnly);
     QString setSheet = QLatin1String(stylesheet.readAll());
     qApp->setStyleSheet(setSheet);
-    
+    widget.side_menu->setIconSize(QSize(64, 64));
+    widget.side_menu->setCurrentRow(0);
     this->update_status();
 
     
@@ -48,15 +53,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_leave_button_clicked(){
     
-    if(test){
-        widget.label->setText("Leaving already?");
-        test = false;
-    }
-    else{    
-        widget.label->setText("Come back?");
-        test = true;
-    }
-    
+  exit(0); 
 }
 
 
@@ -69,6 +66,6 @@ void MainWindow::update_status(){
 
 void MainWindow::update_info(){
     
-    widget.kitchen_info->update_info();
+    bathroom->update_info();
     this->repaint();
 }

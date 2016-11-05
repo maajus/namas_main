@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,10 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
 #include "headers/info_widget.h"
 
@@ -27,27 +30,41 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *leave_button;
-    QLabel *label;
+    QLabel *build_label;
     QLabel *time_label;
-    info_widget *kitchen_info;
-    info_widget *livingroom_info;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QListWidget *side_menu;
+    QStackedWidget *stack_widget;
+    QWidget *page_3;
     info_widget *bedroom1_info;
-    info_widget *bedroom2_info;
     info_widget *wc_info;
+    info_widget *livingroom_info;
+    info_widget *kitchen_info;
+    info_widget *bedroom2_info;
+    QWidget *page_5;
+    QLabel *label_2;
+    QWidget *page;
+    QLabel *label_3;
+    QWidget *page_2;
+    QLabel *label_4;
+    QWidget *page_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1024, 600);
+        MainWindow->setMinimumSize(QSize(1024, 600));
+        MainWindow->setMaximumSize(QSize(1024, 600));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         leave_button = new QPushButton(centralwidget);
         leave_button->setObjectName(QStringLiteral("leave_button"));
-        leave_button->setGeometry(QRect(890, 100, 121, 481));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 560, 301, 31));
+        leave_button->setGeometry(QRect(10, 10, 121, 71));
+        build_label = new QLabel(centralwidget);
+        build_label->setObjectName(QStringLiteral("build_label"));
+        build_label->setGeometry(QRect(10, 570, 301, 31));
         time_label = new QLabel(centralwidget);
         time_label->setObjectName(QStringLiteral("time_label"));
         time_label->setGeometry(QRect(790, 10, 221, 71));
@@ -58,24 +75,91 @@ public:
         font.setWeight(75);
         time_label->setFont(font);
         time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        kitchen_info = new info_widget(centralwidget);
-        kitchen_info->setObjectName(QStringLiteral("kitchen_info"));
-        kitchen_info->setGeometry(QRect(10, 100, 260, 160));
-        livingroom_info = new info_widget(centralwidget);
-        livingroom_info->setObjectName(QStringLiteral("livingroom_info"));
-        livingroom_info->setGeometry(QRect(300, 100, 260, 160));
-        bedroom1_info = new info_widget(centralwidget);
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(10, 93, 1011, 481));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        side_menu = new QListWidget(widget);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons/home1.png"), QSize(), QIcon::Normal, QIcon::Off);
+        QFont font1;
+        font1.setPointSize(16);
+        QListWidgetItem *__qlistwidgetitem = new QListWidgetItem(side_menu);
+        __qlistwidgetitem->setFont(font1);
+        __qlistwidgetitem->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        QListWidgetItem *__qlistwidgetitem1 = new QListWidgetItem(side_menu);
+        __qlistwidgetitem1->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        QListWidgetItem *__qlistwidgetitem2 = new QListWidgetItem(side_menu);
+        __qlistwidgetitem2->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/home-security.png"), QSize(), QIcon::Normal, QIcon::Off);
+        QListWidgetItem *__qlistwidgetitem3 = new QListWidgetItem(side_menu);
+        __qlistwidgetitem3->setIcon(icon3);
+        side_menu->setObjectName(QStringLiteral("side_menu"));
+        side_menu->setMaximumSize(QSize(120, 16777215));
+        QFont font2;
+        font2.setPointSize(12);
+        side_menu->setFont(font2);
+        side_menu->setSpacing(5);
+
+        horizontalLayout->addWidget(side_menu);
+
+        stack_widget = new QStackedWidget(widget);
+        stack_widget->setObjectName(QStringLiteral("stack_widget"));
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        bedroom1_info = new info_widget(page_3);
         bedroom1_info->setObjectName(QStringLiteral("bedroom1_info"));
-        bedroom1_info->setGeometry(QRect(300, 310, 260, 160));
-        bedroom2_info = new info_widget(centralwidget);
-        bedroom2_info->setObjectName(QStringLiteral("bedroom2_info"));
-        bedroom2_info->setGeometry(QRect(590, 310, 260, 160));
-        wc_info = new info_widget(centralwidget);
+        bedroom1_info->setGeometry(QRect(290, 220, 260, 160));
+        wc_info = new info_widget(page_3);
         wc_info->setObjectName(QStringLiteral("wc_info"));
-        wc_info->setGeometry(QRect(590, 100, 260, 160));
+        wc_info->setGeometry(QRect(580, 10, 260, 160));
+        livingroom_info = new info_widget(page_3);
+        livingroom_info->setObjectName(QStringLiteral("livingroom_info"));
+        livingroom_info->setGeometry(QRect(290, 10, 260, 160));
+        kitchen_info = new info_widget(page_3);
+        kitchen_info->setObjectName(QStringLiteral("kitchen_info"));
+        kitchen_info->setGeometry(QRect(0, 10, 260, 160));
+        bedroom2_info = new info_widget(page_3);
+        bedroom2_info->setObjectName(QStringLiteral("bedroom2_info"));
+        bedroom2_info->setGeometry(QRect(580, 220, 260, 160));
+        stack_widget->addWidget(page_3);
+        page_5 = new QWidget();
+        page_5->setObjectName(QStringLiteral("page_5"));
+        label_2 = new QLabel(page_5);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(60, 50, 151, 51));
+        stack_widget->addWidget(page_5);
+        page = new QWidget();
+        page->setObjectName(QStringLiteral("page"));
+        label_3 = new QLabel(page);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(50, 60, 171, 51));
+        stack_widget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QStringLiteral("page_2"));
+        label_4 = new QLabel(page_2);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(40, 30, 221, 71));
+        stack_widget->addWidget(page_2);
+        page_4 = new QWidget();
+        page_4->setObjectName(QStringLiteral("page_4"));
+        stack_widget->addWidget(page_4);
+
+        horizontalLayout->addWidget(stack_widget);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
+
+        stack_widget->setCurrentIndex(3);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -84,8 +168,16 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         leave_button->setText(QApplication::translate("MainWindow", "Leave", 0));
-        label->setText(QApplication::translate("MainWindow", "N/A", 0));
+        build_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
+
+        const bool __sortingEnabled = side_menu->isSortingEnabled();
+        side_menu->setSortingEnabled(false);
+        side_menu->setSortingEnabled(__sortingEnabled);
+
+        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Music", 0));
+        label_4->setText(QApplication::translate("MainWindow", "Security", 0));
     } // retranslateUi
 
 };

@@ -15,14 +15,14 @@
 #include <QDebug>
 #include <QObject>
 #include <QSignalMapper>
-#include "Room_win.h"
+#include "Bath_Room_win.h"
 
 QString room_ip[5] = {
-    "192.168.1.66",
+    "192.168.1.67",
     "192.168.1.165",
     "192.168.1.166",
     "192.168.1.167",
-    "192.168.1.168"
+    "192.168.1.67"
 };
 
 TCP::TCP(int id):room_id(id) {
@@ -37,21 +37,6 @@ TCP::~TCP() {
 }
 
 
-
-
-void TCP::connectTcp()
-{
-
-//    socket = new QTcpSocket( this ); // <-- needs to be a member variable: QTcpSocket * _pSocket;
-//    connect(socket, SIGNAL(readyRead()),this, SLOT(readTcpData()));
-//
-//    socket->connectToHost("192.168.1.66"/*room_ip[room_id]*/,5555);
-//    //qDebug()<<"Connecting";
-//    if( socket->waitForConnected(4000)) {
-//        //qDebug()<<"Sending data";
-//        socket->write( data );
-//    }
-}
 
 void TCP::connect2room(){
     

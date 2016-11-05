@@ -17,7 +17,7 @@
 #include <QTimer>
 #include "ui_MainWindow.h"
 #include "TCP.h"
-
+#include "Bath_Room_win.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -29,7 +29,7 @@ private:
     TCP *server;
     QTimer status_timer;
     QTimer info_timer;
-    bool test;
+    Bath_Room_win *bathroom;
     
 private slots:
     void on_leave_button_clicked();
