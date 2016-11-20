@@ -32,7 +32,7 @@
       <x>10</x>
       <y>10</y>
       <width>121</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -63,10 +63,10 @@
     </property>
     <property name="font">
      <font>
-      <family>DejaVu Sans</family>
-      <pointsize>28</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>digitalk</family>
+      <pointsize>48</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -76,11 +76,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>93</y>
+      <y>90</y>
       <width>1011</width>
       <height>481</height>
      </rect>
@@ -122,15 +122,6 @@
         </property>
         <property name="icon">
          <iconset resource="../resources/res.qrc">
-          <normaloff>:/icons/settings.png</normaloff>:/icons/settings.png</iconset>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/res.qrc">
           <normaloff>:/icons/play.png</normaloff>:/icons/play.png</iconset>
         </property>
        </item>
@@ -141,6 +132,24 @@
         <property name="icon">
          <iconset resource="../resources/res.qrc">
           <normaloff>:/icons/home-security.png</normaloff>:/icons/home-security.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/camera.png</normaloff>:/icons/camera.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/res.qrc">
+          <normaloff>:/icons/settings.png</normaloff>:/icons/settings.png</iconset>
         </property>
        </item>
       </widget>
@@ -202,21 +211,6 @@
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="page_5">
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>50</y>
-           <width>151</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Settings</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QWidget" name="page">
         <widget class="QLabel" name="label_3">
          <property name="geometry">
@@ -247,7 +241,59 @@
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="page_4"/>
+       <widget class="QWidget" name="page_4">
+        <widget class="QVideoWidget" name="video_widget" native="true">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>585</width>
+           <height>480</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>750</x>
+           <y>10</y>
+           <width>120</width>
+           <height>80</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>REC</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="take_photo_button">
+         <property name="geometry">
+          <rect>
+           <x>750</x>
+           <y>110</y>
+           <width>120</width>
+           <height>80</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Photo</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_5">
+        <widget class="QLabel" name="label_2">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>50</y>
+           <width>151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Settings</string>
+         </property>
+        </widget>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -259,6 +305,12 @@
    <class>info_widget</class>
    <extends>QWidget</extends>
    <header>headers/info_widget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QVideoWidget</class>
+   <extends>QWidget</extends>
+   <header>QVideoWidget</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

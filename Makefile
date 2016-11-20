@@ -10,12 +10,12 @@ MAKEFILE      = Makefile
 
 ####### Compiler, tools and options
 
-CC            = gcc
-CXX           = g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+CC            = @echo compiling $< && gcc
+CXX           = @echo compiling $< && g++
+DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -Isrc -Iheaders -Iui -I../Qt5.7.0/5.7/gcc_64/include -I../Qt5.7.0/5.7/gcc_64/include/QtWidgets -I../Qt5.7.0/5.7/gcc_64/include/QtGui -I../Qt5.7.0/5.7/gcc_64/include/QtNetwork -I../Qt5.7.0/5.7/gcc_64/include/QtCore -Imoc -Iui -I../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I. -Isrc -Iheaders -Iui -I../Qt5.7.0/5.7/gcc_64/include -I../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I../Qt5.7.0/5.7/gcc_64/include/QtWidgets -I../Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I../Qt5.7.0/5.7/gcc_64/include/QtGui -I../Qt5.7.0/5.7/gcc_64/include/QtNetwork -I../Qt5.7.0/5.7/gcc_64/include/QtCore -Imoc -Iui -I../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/justas/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -34,9 +34,9 @@ TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = namas_main1.0.0
 DISTDIR = /home/justas/namas_main/obj/namas_main1.0.0
-LINK          = g++
-LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/justas/Qt5.7.0/5.7/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/justas/Qt5.7.0/5.7/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LINK          = @echo linking $@ && g++
+LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/justas/Qt5.7.0/5.7/gcc_64/lib -Wl,-rpath-link,/home/justas/Qt5.7.0/5.7/gcc_64/lib
+LIBS          = $(SUBLIBS) -L/home/justas/Qt5.7.0/5.7/gcc_64/lib -lQt5MultimediaWidgets -L/usr/lib64 -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -52,21 +52,25 @@ SOURCES       = src/info_widget.cpp \
 		src/main.cpp \
 		src/MainWindow.cpp \
 		src/Bath_Room_win.cpp \
-		src/TCP.cpp rcc/qrc_res.cpp \
+		src/TCP.cpp \
+		src/Camera.cpp rcc/qrc_res.cpp \
 		moc/moc_info_widget.cpp \
 		moc/moc_MainWindow.cpp \
 		moc/moc_Bath_Room_win.cpp \
-		moc/moc_TCP.cpp
+		moc/moc_TCP.cpp \
+		moc/moc_Camera.cpp
 OBJECTS       = obj/info_widget.o \
 		obj/main.o \
 		obj/MainWindow.o \
 		obj/Bath_Room_win.o \
 		obj/TCP.o \
+		obj/Camera.o \
 		obj/qrc_res.o \
 		obj/moc_info_widget.o \
 		obj/moc_MainWindow.o \
 		obj/moc_Bath_Room_win.o \
-		obj/moc_TCP.o
+		obj/moc_TCP.o \
+		obj/moc_Camera.o
 DIST          = ../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/common/unix.conf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -108,6 +112,8 @@ DIST          = ../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
@@ -153,6 +159,8 @@ DIST          = ../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
@@ -211,19 +219,22 @@ DIST          = ../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/exceptions.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/yacc.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/lex.prf \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/features/silent.prf \
 		namas_main.pro headers/build_number.h \
 		headers/info_widget.h \
 		headers/MainWindow.h \
 		headers/Pinctrl.h \
 		headers/Bath_Room_win.h \
 		headers/TCP.h \
+		headers/Camera.h \
 		ui/ui_info_widget.h \
 		ui/ui_MainWindow.h \
 		ui/ui_Bath_Room_win.h src/info_widget.cpp \
 		src/main.cpp \
 		src/MainWindow.cpp \
 		src/Bath_Room_win.cpp \
-		src/TCP.cpp
+		src/TCP.cpp \
+		src/Camera.cpp
 QMAKE_TARGET  = namas_main
 DESTDIR       = build/
 TARGET        = build/namas_main
@@ -277,6 +288,8 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
@@ -322,6 +335,8 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
@@ -380,9 +395,12 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/exceptions.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/yacc.prf \
 		../Qt5.7.0/5.7/gcc_64/mkspecs/features/lex.prf \
+		../Qt5.7.0/5.7/gcc_64/mkspecs/features/silent.prf \
 		namas_main.pro \
 		resources/res.qrc \
+		../Qt5.7.0/5.7/gcc_64/lib/libQt5MultimediaWidgets.prl \
 		../Qt5.7.0/5.7/gcc_64/lib/libQt5Widgets.prl \
+		../Qt5.7.0/5.7/gcc_64/lib/libQt5Multimedia.prl \
 		../Qt5.7.0/5.7/gcc_64/lib/libQt5Gui.prl \
 		../Qt5.7.0/5.7/gcc_64/lib/libQt5Network.prl \
 		../Qt5.7.0/5.7/gcc_64/lib/libQt5Core.prl
@@ -428,6 +446,8 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri:
+../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri:
+../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri:
@@ -473,6 +493,8 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
+../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
+../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri:
@@ -531,9 +553,12 @@ Makefile: namas_main.pro ../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../Q
 ../Qt5.7.0/5.7/gcc_64/mkspecs/features/exceptions.prf:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/features/yacc.prf:
 ../Qt5.7.0/5.7/gcc_64/mkspecs/features/lex.prf:
+../Qt5.7.0/5.7/gcc_64/mkspecs/features/silent.prf:
 namas_main.pro:
 resources/res.qrc:
+../Qt5.7.0/5.7/gcc_64/lib/libQt5MultimediaWidgets.prl:
 ../Qt5.7.0/5.7/gcc_64/lib/libQt5Widgets.prl:
+../Qt5.7.0/5.7/gcc_64/lib/libQt5Multimedia.prl:
 ../Qt5.7.0/5.7/gcc_64/lib/libQt5Gui.prl:
 ../Qt5.7.0/5.7/gcc_64/lib/libQt5Network.prl:
 ../Qt5.7.0/5.7/gcc_64/lib/libQt5Core.prl:
@@ -552,8 +577,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents headers/build_number.h headers/info_widget.h headers/MainWindow.h headers/Pinctrl.h headers/Bath_Room_win.h headers/TCP.h ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/info_widget.cpp src/main.cpp src/MainWindow.cpp src/Bath_Room_win.cpp src/TCP.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents headers/build_number.h headers/info_widget.h headers/MainWindow.h headers/Pinctrl.h headers/Bath_Room_win.h headers/TCP.h headers/Camera.h ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/info_widget.cpp src/main.cpp src/MainWindow.cpp src/Bath_Room_win.cpp src/TCP.cpp src/Camera.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/info_widget.ui ui/MainWindow.ui ui/Bath_Room_win.ui $(DISTDIR)/
 
 
@@ -583,17 +608,18 @@ compiler_rcc_clean:
 	-$(DEL_FILE) rcc/qrc_res.cpp
 rcc/qrc_res.cpp: resources/res.qrc \
 		../Qt5.7.0/5.7/gcc_64/bin/rcc \
+		resources/camera.png \
 		resources/home-security.png \
 		resources/play.png \
 		resources/bulb_on.png \
 		resources/bulb_off.png \
 		resources/home1.png \
 		resources/settings.png
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/rcc -name res resources/res.qrc -o rcc/qrc_res.cpp
+	@echo rcc resources/res.qrc && /home/justas/Qt5.7.0/5.7/gcc_64/bin/rcc -name res resources/res.qrc -o rcc/qrc_res.cpp
 
-compiler_moc_header_make_all: moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_TCP.cpp
+compiler_moc_header_make_all: moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_TCP.cpp
+	-$(DEL_FILE) moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp
 moc/moc_info_widget.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
@@ -739,9 +765,10 @@ moc/moc_info_widget.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/info_widget.h -o moc/moc_info_widget.cpp
+	@echo moc headers/info_widget.h && /home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/info_widget.h -o moc/moc_info_widget.cpp
 
 moc/moc_MainWindow.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimer \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtimer.h \
@@ -893,6 +920,13 @@ moc/moc_MainWindow.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimer \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/QVideoWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qvideowidget.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qtmultimediawidgetdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediabindableinterface.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmultimedia.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
@@ -908,13 +942,15 @@ moc/moc_MainWindow.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimer \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		headers/Bath_Room_win.h \
 		ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
 		headers/MainWindow.h \
 		../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/MainWindow.h -o moc/moc_MainWindow.cpp
+	@echo moc headers/MainWindow.h && /home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/MainWindow.h -o moc/moc_MainWindow.cpp
 
 moc/moc_Bath_Room_win.cpp: ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
@@ -1052,17 +1088,18 @@ moc/moc_Bath_Room_win.cpp: ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		headers/definitions.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
 		ui/ui_info_widget.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
 		headers/TCP.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/QTcpSocket \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qtcpsocket.h \
@@ -1073,9 +1110,10 @@ moc/moc_Bath_Room_win.cpp: ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		headers/Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/Bath_Room_win.h -o moc/moc_Bath_Room_win.cpp
+	@echo moc headers/Bath_Room_win.h && /home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/Bath_Room_win.h -o moc/moc_Bath_Room_win.cpp
 
 moc/moc_TCP.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtNetwork/QTcpSocket \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qtcpsocket.h \
@@ -1150,7 +1188,59 @@ moc/moc_TCP.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtNetwork/QTcpSocket \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/TCP.h \
 		../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/TCP.h -o moc/moc_TCP.cpp
+	@echo moc headers/TCP.h && /home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/TCP.h -o moc/moc_TCP.cpp
+
+moc/moc_Camera.cpp: ../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		headers/Camera.h \
+		../Qt5.7.0/5.7/gcc_64/bin/moc
+	@echo moc headers/Camera.h && /home/justas/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/justas/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/justas/namas_main -I/home/justas/namas_main -I/home/justas/namas_main/src -I/home/justas/namas_main/headers -I/home/justas/namas_main/ui -I/home/justas/Qt5.7.0/5.7/gcc_64/include -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/justas/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include headers/Camera.h -o moc/moc_Camera.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1159,11 +1249,12 @@ compiler_uic_clean:
 	-$(DEL_FILE) ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h
 ui/ui_info_widget.h: ui/info_widget.ui \
 		../Qt5.7.0/5.7/gcc_64/bin/uic
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/info_widget.ui -o ui/ui_info_widget.h
+	@echo uic ui/info_widget.ui && /home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/info_widget.ui -o ui/ui_info_widget.h
 
 ui/ui_MainWindow.h: ui/MainWindow.ui \
 		../Qt5.7.0/5.7/gcc_64/bin/uic \
 		headers/info_widget.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/QVideoWidget \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
@@ -1308,12 +1399,13 @@ ui/ui_MainWindow.h: ui/MainWindow.ui \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
-		headers/definitions.h
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/MainWindow.ui -o ui/ui_MainWindow.h
+		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString
+	@echo uic ui/MainWindow.ui && /home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/MainWindow.ui -o ui/ui_MainWindow.h
 
 ui/ui_Bath_Room_win.h: ui/Bath_Room_win.ui \
 		../Qt5.7.0/5.7/gcc_64/bin/uic
-	/home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/Bath_Room_win.ui -o ui/ui_Bath_Room_win.h
+	@echo uic ui/Bath_Room_win.ui && /home/justas/Qt5.7.0/5.7/gcc_64/bin/uic ui/Bath_Room_win.ui -o ui/ui_Bath_Room_win.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1471,10 +1563,13 @@ obj/info_widget.o: src/info_widget.cpp headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QPainter \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainter.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/info_widget.o src/info_widget.cpp
 
 obj/main.o: src/main.cpp ../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
@@ -1628,6 +1723,13 @@ obj/main.o: src/main.cpp ../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/QVideoWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qvideowidget.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qtmultimediawidgetdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediabindableinterface.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmultimedia.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
@@ -1643,10 +1745,12 @@ obj/main.o: src/main.cpp ../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		headers/Bath_Room_win.h \
 		ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o src/main.cpp
 
 obj/MainWindow.o: src/MainWindow.cpp headers/MainWindow.h \
@@ -1800,6 +1904,13 @@ obj/MainWindow.o: src/MainWindow.cpp headers/MainWindow.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/QVideoWidget \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qvideowidget.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimediaWidgets/qtmultimediawidgetdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediabindableinterface.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmultimedia.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
@@ -1815,13 +1926,36 @@ obj/MainWindow.o: src/MainWindow.cpp headers/MainWindow.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		headers/definitions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		headers/Bath_Room_win.h \
 		ui/ui_Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/QCamera \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcamera.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediacontrol.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaservice.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraexposure.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcamerafocus.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraimageprocessing.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraviewfindersettings.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qvideoframe.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qabstractvideobuffer.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QSharedDataPointer \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QUrl \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qaudio.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qnetworkconfiguration.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/MainWindow.o src/MainWindow.cpp
 
 obj/Bath_Room_win.o: src/Bath_Room_win.cpp headers/Bath_Room_win.h \
@@ -1961,17 +2095,18 @@ obj/Bath_Room_win.o: src/Bath_Room_win.cpp headers/Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		headers/definitions.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
 		ui/ui_info_widget.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
 		headers/TCP.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/QTcpSocket \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qtcpsocket.h \
@@ -1981,7 +2116,8 @@ obj/Bath_Room_win.o: src/Bath_Room_win.cpp headers/Bath_Room_win.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtNetwork/qhostaddress.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
 		../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Bath_Room_win.o src/Bath_Room_win.cpp
 
 obj/TCP.o: src/TCP.cpp headers/TCP.h \
@@ -2135,17 +2271,118 @@ obj/TCP.o: src/TCP.cpp headers/TCP.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QVBoxLayout \
 		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		headers/definitions.h \
 		headers/info_widget.h \
 		../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
 		ui/ui_info_widget.h \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
-		../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/TCP.o src/TCP.cpp
+
+obj/Camera.o: src/Camera.cpp headers/Camera.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/QCameraInfo \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcamerainfo.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcamera.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediacontrol.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaservice.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraexposure.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetaobject.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcamerafocus.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraimageprocessing.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qcameraviewfindersettings.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qvideoframe.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		../Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qabstractvideobuffer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Camera.o src/Camera.cpp
 
 obj/qrc_res.o: rcc/qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/qrc_res.o rcc/qrc_res.cpp
@@ -2161,6 +2398,9 @@ obj/moc_Bath_Room_win.o: moc/moc_Bath_Room_win.cpp
 
 obj/moc_TCP.o: moc/moc_TCP.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_TCP.o moc/moc_TCP.cpp
+
+obj/moc_Camera.o: moc/moc_Camera.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_Camera.o moc/moc_Camera.cpp
 
 ####### Install
 

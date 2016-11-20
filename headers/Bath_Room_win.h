@@ -28,18 +28,20 @@ public:
     virtual ~Bath_Room_win();
     void set_id(ROOM_ID ID);
     void update_info();
-    void update_lights_state();
+    void update_room_info();
+    void send_tcp_cmd(QString);
     
 private:
     Ui::Bath_Room_win widget;
     ROOM_ID room_id;
     info_widget *info_w;
     TCP *tcp;
-    Lights lights;
+    Room_status status;
+    int connection_status;
 
 private slots:
     void tcp_data(QByteArray);
-    void connection_failed(QAbstractSocket::SocketError);
+    void set_connection_status(int);
     void on_lights0_button_clicked();
     void on_lights1_button_clicked();
     void on_lights2_button_clicked();

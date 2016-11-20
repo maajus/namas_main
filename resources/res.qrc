@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>camera.png</file>
     <file>bulb_on.png</file>
     <file>bulb_off.png</file>
     <file>home-security.png</file>

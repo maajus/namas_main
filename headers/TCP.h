@@ -20,6 +20,15 @@
 #include <QThread>
 #include <QList>
 
+enum Status{
+    DISCONNECTED,
+    CONNECTED,
+    CONNECTING,
+    FAILED,
+
+};
+    
+
 class TCP : public QObject
 {
     Q_OBJECT
@@ -37,6 +46,7 @@ private:
    //QByteArray data;
    int room_id;
   QTcpSocket* socket;
+  int retry_count;
 
   
   
@@ -46,6 +56,7 @@ private slots:
 signals:
     void dataReceived(QByteArray);
     void connection_failed(QAbstractSocket::SocketError);
+    void connected(int);
 };
 
 #endif /* TCP_H */

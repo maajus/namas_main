@@ -20,10 +20,13 @@
 MainWindow::MainWindow() {
     widget.setupUi(this);
     
-   
+cam = new Camera;
+    if(cam->available()){
+        cam->set_widget(widget.video_widget);
+    }
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
-    connect(widget.side_menu,SIGNAL(currentRowChanged(int)),widget.stack_widget,SLOT(setCurrentIndex(int)));
+    connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
     
     status_timer.start(500);
     info_timer.start(5000);
@@ -45,10 +48,17 @@ MainWindow::MainWindow() {
     widget.side_menu->setCurrentRow(0);
     this->update_status();
 
+
     
 }
 
 MainWindow::~MainWindow() {
+}
+
+void MainWindow::on_take_photo_button_clicked(){
+
+    cam->take_photo();
+
 }
 
 void MainWindow::on_leave_button_clicked(){
@@ -68,4 +78,15 @@ void MainWindow::update_info(){
     
     bathroom->update_info();
     this->repaint();
+}
+
+void MainWindow::menu_selected(int menu){
+
+    widget.stack_widget->setCurrentIndex(menu);
+    if(menu == Menus::CAMERA){
+        if(cam->available())  cam->start();
+    }
+    else
+        if(cam->available()) cam->stop();
+
 }

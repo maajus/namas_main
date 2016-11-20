@@ -19,6 +19,14 @@
 #include "ui_info_widget.h"
 #include "TCP.h"
 #include "definitions.h"
+#include <QString>
+
+struct Room_status {
+    int L[4]; //lights state
+    QString temp;
+    QString humi;
+};
+
 
 class info_widget : public QWidget {
     Q_OBJECT
@@ -29,10 +37,7 @@ public:
     info_widget(QWidget *parent = 0);
     virtual ~info_widget();
     void set_id(ROOM_ID);
-    void set_name(QString);
-    void set_temp(QString);
-    void set_humi(QString);
-    void set_lights(Lights);
+   void set_room_status(Room_status);
     
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *event);

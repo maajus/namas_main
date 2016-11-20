@@ -18,6 +18,17 @@
 #include "ui_MainWindow.h"
 #include "TCP.h"
 #include "Bath_Room_win.h"
+#include "Camera.h"
+
+enum Menus{
+
+    HOME,
+    AUDIO,
+    SECURITY,
+    CAMERA,
+    SETTINGS,
+
+};
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -30,11 +41,14 @@ private:
     QTimer status_timer;
     QTimer info_timer;
     Bath_Room_win *bathroom;
+    Camera *cam;
     
 private slots:
     void on_leave_button_clicked();
+    void on_take_photo_button_clicked();
     void update_status();
     void update_info();
+    void menu_selected(int);
 };
 
 #endif /* _MAINWINDOW_H */

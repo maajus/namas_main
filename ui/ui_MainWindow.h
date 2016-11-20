@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
+#include "QVideoWidget"
 #include "headers/info_widget.h"
 
 QT_BEGIN_NAMESPACE
@@ -32,7 +33,7 @@ public:
     QPushButton *leave_button;
     QLabel *build_label;
     QLabel *time_label;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QListWidget *side_menu;
     QStackedWidget *stack_widget;
@@ -42,13 +43,16 @@ public:
     info_widget *livingroom_info;
     info_widget *kitchen_info;
     info_widget *bedroom2_info;
-    QWidget *page_5;
-    QLabel *label_2;
     QWidget *page;
     QLabel *label_3;
     QWidget *page_2;
     QLabel *label_4;
     QWidget *page_4;
+    QVideoWidget *video_widget;
+    QPushButton *pushButton;
+    QPushButton *take_photo_button;
+    QWidget *page_5;
+    QLabel *label_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -61,7 +65,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         leave_button = new QPushButton(centralwidget);
         leave_button->setObjectName(QStringLiteral("leave_button"));
-        leave_button->setGeometry(QRect(10, 10, 121, 71));
+        leave_button->setGeometry(QRect(10, 10, 121, 51));
         build_label = new QLabel(centralwidget);
         build_label->setObjectName(QStringLiteral("build_label"));
         build_label->setGeometry(QRect(10, 570, 301, 31));
@@ -69,19 +73,19 @@ public:
         time_label->setObjectName(QStringLiteral("time_label"));
         time_label->setGeometry(QRect(790, 10, 221, 71));
         QFont font;
-        font.setFamily(QStringLiteral("DejaVu Sans"));
-        font.setPointSize(28);
-        font.setBold(true);
-        font.setWeight(75);
+        font.setFamily(QStringLiteral("digitalk"));
+        font.setPointSize(48);
+        font.setBold(false);
+        font.setWeight(50);
         time_label->setFont(font);
         time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 93, 1011, 481));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 90, 1011, 481));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        side_menu = new QListWidget(widget);
+        side_menu = new QListWidget(layoutWidget);
         QIcon icon;
         icon.addFile(QStringLiteral(":/icons/home1.png"), QSize(), QIcon::Normal, QIcon::Off);
         QFont font1;
@@ -90,17 +94,21 @@ public:
         __qlistwidgetitem->setFont(font1);
         __qlistwidgetitem->setIcon(icon);
         QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/icons/play.png"), QSize(), QIcon::Normal, QIcon::Off);
         QListWidgetItem *__qlistwidgetitem1 = new QListWidgetItem(side_menu);
         __qlistwidgetitem1->setIcon(icon1);
         QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/icons/home-security.png"), QSize(), QIcon::Normal, QIcon::Off);
         QListWidgetItem *__qlistwidgetitem2 = new QListWidgetItem(side_menu);
         __qlistwidgetitem2->setIcon(icon2);
         QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons/home-security.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QStringLiteral(":/icons/camera.png"), QSize(), QIcon::Normal, QIcon::Off);
         QListWidgetItem *__qlistwidgetitem3 = new QListWidgetItem(side_menu);
         __qlistwidgetitem3->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons/settings.png"), QSize(), QIcon::Normal, QIcon::Off);
+        QListWidgetItem *__qlistwidgetitem4 = new QListWidgetItem(side_menu);
+        __qlistwidgetitem4->setIcon(icon4);
         side_menu->setObjectName(QStringLiteral("side_menu"));
         side_menu->setMaximumSize(QSize(120, 16777215));
         QFont font2;
@@ -110,7 +118,7 @@ public:
 
         horizontalLayout->addWidget(side_menu);
 
-        stack_widget = new QStackedWidget(widget);
+        stack_widget = new QStackedWidget(layoutWidget);
         stack_widget->setObjectName(QStringLiteral("stack_widget"));
         page_3 = new QWidget();
         page_3->setObjectName(QStringLiteral("page_3"));
@@ -130,12 +138,6 @@ public:
         bedroom2_info->setObjectName(QStringLiteral("bedroom2_info"));
         bedroom2_info->setGeometry(QRect(580, 220, 260, 160));
         stack_widget->addWidget(page_3);
-        page_5 = new QWidget();
-        page_5->setObjectName(QStringLiteral("page_5"));
-        label_2 = new QLabel(page_5);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(60, 50, 151, 51));
-        stack_widget->addWidget(page_5);
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         label_3 = new QLabel(page);
@@ -150,7 +152,22 @@ public:
         stack_widget->addWidget(page_2);
         page_4 = new QWidget();
         page_4->setObjectName(QStringLiteral("page_4"));
+        video_widget = new QVideoWidget(page_4);
+        video_widget->setObjectName(QStringLiteral("video_widget"));
+        video_widget->setGeometry(QRect(10, 0, 585, 480));
+        pushButton = new QPushButton(page_4);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(750, 10, 120, 80));
+        take_photo_button = new QPushButton(page_4);
+        take_photo_button->setObjectName(QStringLiteral("take_photo_button"));
+        take_photo_button->setGeometry(QRect(750, 110, 120, 80));
         stack_widget->addWidget(page_4);
+        page_5 = new QWidget();
+        page_5->setObjectName(QStringLiteral("page_5"));
+        label_2 = new QLabel(page_5);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(60, 50, 151, 51));
+        stack_widget->addWidget(page_5);
 
         horizontalLayout->addWidget(stack_widget);
 
@@ -175,9 +192,11 @@ public:
         side_menu->setSortingEnabled(false);
         side_menu->setSortingEnabled(__sortingEnabled);
 
-        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
         label_3->setText(QApplication::translate("MainWindow", "Music", 0));
         label_4->setText(QApplication::translate("MainWindow", "Security", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "REC", 0));
+        take_photo_button->setText(QApplication::translate("MainWindow", "Photo", 0));
+        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
 
 };

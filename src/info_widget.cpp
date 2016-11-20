@@ -14,6 +14,7 @@
 #include "info_widget.h"
 #include <QPainter>
 #include <QThread>
+#include <QGraphicsDropShadowEffect>
 
 info_widget::info_widget(QWidget *parent) :
 QWidget(parent)
@@ -30,13 +31,17 @@ info_widget::~info_widget() {
 
 void info_widget::set_id(ROOM_ID Id){
     
-    
+   QGraphicsDropShadowEffect *bodyShadow = new QGraphicsDropShadowEffect;
+   bodyShadow->setBlurRadius(9.0);
+   bodyShadow->setColor(QColor(0, 0, 0, 160));
+   bodyShadow->setOffset(7.0);
+  this->setGraphicsEffect(bodyShadow);
         
     id = Id;
     switch(id){
         case ROOM_ID::BEDROOM_1:
             widget.name_label->setText("Miegamasis");
-            this->setStyleSheet("background-color: blue");
+            this->setStyleSheet("background-color: blue; border: 1px solid gray");
             break;
         case ROOM_ID::KITCHEN:
             widget.name_label->setText("Virtuvė");
@@ -58,16 +63,10 @@ void info_widget::set_id(ROOM_ID Id){
 }
 
 
-void info_widget::set_temp(QString temp){
-    widget.temp_label->setText(temp);
-}
+void info_widget::set_room_status(Room_status status){
 
-void info_widget::set_humi(QString humi){
-    widget.humidity_label->setText(humi);
-}
-
-void info_widget::set_lights(Lights L){
-
+    widget.temp_label->setText(status.temp);
+    widget.humidity_label->setText(status.humi);
 }
 
 void info_widget::paintEvent(QPaintEvent *)
