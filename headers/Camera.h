@@ -7,7 +7,7 @@
 #include <QMediaPlayer>
 #include <QVideoWidget>
 #include <QCameraImageCapture>
-
+#include <QTimer>
 
 class Camera : public QObject {
     Q_OBJECT
@@ -19,16 +19,20 @@ class Camera : public QObject {
         void stop();
         void set_widget(QVideoWidget*);
         void take_photo();
+        void capture_photo();
 
     private:
 
         QCamera* camera;
         QCameraImageCapture *imageCapture;
+        QVideoWidget *viewFinder;
         bool isCapturingImage;
+        QTimer shot_timer;
 
     private slots:
 
         void imageSaved(int, const QString&);
+        void take_photo_auto();
 };
 
 

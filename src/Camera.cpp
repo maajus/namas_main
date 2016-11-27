@@ -1,5 +1,10 @@
 #include "Camera.h"
+#include "Config.h"
 #include <QCameraInfo>
+#include <QPainter>
+#include <QScreen>
+#include <QGuiApplication>
+#include <QDateTime>
 
 Camera::Camera(){
 
@@ -9,17 +14,18 @@ Camera::Camera(){
     connect(imageCapture, SIGNAL(imageSaved(int,QString)), this, SLOT(imageSaved(int,QString)));
 
     
+    camera->setCaptureMode(QCamera::CaptureStillImage);
 
 
-    QCamera::CaptureModes captureMode = QCamera::CaptureStillImage;// : QCamera::CaptureVideo;
-    QImageEncoderSettings imageSettings;
-    imageSettings.setCodec("image/png");
-    imageSettings.setResolution(352, 288);
-    imageSettings.setQuality(QMultimedia::VeryHighQuality);
+    //QImageEncoderSettings imageSettings;
+    //imageSettings.setCodec("image/png");
+    //imageSettings.setResolution(352, 288);
+    //imageSettings.setQuality(QMultimedia::VeryHighQuality);
 
-    imageCapture->setEncodingSettings(imageSettings);
+    //imageCapture->setEncodingSettings(imageSettings);
     imageCapture->setCaptureDestination(QCameraImageCapture::CaptureToFile);
-    camera->setCaptureMode(captureMode);
+    shot_timer.setSingleShot(true);
+    connect(&shot_timer, SIGNAL(timeout()), this, SLOT(take_photo_auto()));
 
 };
 
@@ -46,17 +52,40 @@ void Camera::stop(){
 
 void Camera::set_widget(QVideoWidget *widget){
 
+    viewFinder = widget;
     camera->setViewfinder(widget);
 }
 
 void Camera::take_photo(){
 
-        camera->start();
-    camera->searchAndLock();
+    //camera->start();
+    //QCamera::State state=camera->state();
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QImage img = screen->grabWindow(viewFinder->winId(), 0, 0, -1, -1).toImage();
+    img.save(QDateTime::currentDateTime().toString(DATE_TIME_FORMAT)+".jpg");
+    //if(state != QCamera::ActiveState)
+        //camera->stop();
+
+        //camera->start();
+    //camera->searchAndLock(QCamera::LockExposure);
+    //imageCapture->capture();
+    //camera->unlock();
+}
+void Camera::capture_photo(){
+
+    camera->start();
+    shot_timer.start(2000);
+
+}
+
+void Camera::take_photo_auto(){
+
     imageCapture->capture();
-    camera->unlock();
-
-
+    
+    //QScreen *screen = QGuiApplication::primaryScreen();
+    //QImage img = screen->grabWindow(viewFinder->winId(), 0, 0, -1, -1).toImage();
+    //img.save(QDateTime::currentDateTime().toString(DATE_TIME_FORMAT)+".jpg");
+ 
 }
 
 
@@ -67,4 +96,5 @@ void Camera::imageSaved(int id, const QString &fileName)
 
     qDebug()<<"Filename : "<<fileName;
     isCapturingImage = false;
+    camera->stop();
 }

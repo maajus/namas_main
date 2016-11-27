@@ -46,6 +46,7 @@ private:
 private slots:
     void on_leave_button_clicked();
     void on_take_photo_button_clicked();
+    void on_rec_button_clicked();
     void update_status();
     void update_info();
     void menu_selected(int);

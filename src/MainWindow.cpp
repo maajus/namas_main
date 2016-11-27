@@ -40,7 +40,7 @@ cam = new Camera;
     bathroom = new Bath_Room_win(widget.wc_info);
     connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
     //Load and apply stylesheet
-    QFile stylesheet("formStyle.css");
+    QFile stylesheet(qApp->applicationDirPath()+"formStyle.css");
     stylesheet.open(QFile::ReadOnly);
     QString setSheet = QLatin1String(stylesheet.readAll());
     qApp->setStyleSheet(setSheet);
@@ -48,8 +48,6 @@ cam = new Camera;
     widget.side_menu->setCurrentRow(0);
     this->update_status();
 
-
-    
 }
 
 MainWindow::~MainWindow() {
@@ -58,6 +56,12 @@ MainWindow::~MainWindow() {
 void MainWindow::on_take_photo_button_clicked(){
 
     cam->take_photo();
+
+}
+
+void MainWindow::on_rec_button_clicked(){
+
+    cam->capture_photo();
 
 }
 

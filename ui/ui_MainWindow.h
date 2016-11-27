@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -48,9 +49,10 @@ public:
     QWidget *page_2;
     QLabel *label_4;
     QWidget *page_4;
-    QVideoWidget *video_widget;
-    QPushButton *pushButton;
+    QPushButton *rec_button;
     QPushButton *take_photo_button;
+    QFrame *frame;
+    QVideoWidget *video_widget;
     QWidget *page_5;
     QLabel *label_2;
 
@@ -71,7 +73,7 @@ public:
         build_label->setGeometry(QRect(10, 570, 301, 31));
         time_label = new QLabel(centralwidget);
         time_label->setObjectName(QStringLiteral("time_label"));
-        time_label->setGeometry(QRect(790, 10, 221, 71));
+        time_label->setGeometry(QRect(710, 10, 301, 71));
         QFont font;
         font.setFamily(QStringLiteral("digitalk"));
         font.setPointSize(48);
@@ -152,15 +154,22 @@ public:
         stack_widget->addWidget(page_2);
         page_4 = new QWidget();
         page_4->setObjectName(QStringLiteral("page_4"));
-        video_widget = new QVideoWidget(page_4);
-        video_widget->setObjectName(QStringLiteral("video_widget"));
-        video_widget->setGeometry(QRect(10, 0, 585, 480));
-        pushButton = new QPushButton(page_4);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(750, 10, 120, 80));
+        rec_button = new QPushButton(page_4);
+        rec_button->setObjectName(QStringLiteral("rec_button"));
+        rec_button->setGeometry(QRect(750, 10, 120, 80));
         take_photo_button = new QPushButton(page_4);
         take_photo_button->setObjectName(QStringLiteral("take_photo_button"));
         take_photo_button->setGeometry(QRect(750, 110, 120, 80));
+        frame = new QFrame(page_4);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(20, 0, 585, 480));
+        frame->setStyleSheet(QStringLiteral("border-width:5px"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        video_widget = new QVideoWidget(frame);
+        video_widget->setObjectName(QStringLiteral("video_widget"));
+        video_widget->setGeometry(QRect(0, 0, 585, 480));
+        video_widget->setStyleSheet(QStringLiteral(""));
         stack_widget->addWidget(page_4);
         page_5 = new QWidget();
         page_5->setObjectName(QStringLiteral("page_5"));
@@ -194,7 +203,7 @@ public:
 
         label_3->setText(QApplication::translate("MainWindow", "Music", 0));
         label_4->setText(QApplication::translate("MainWindow", "Security", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "REC", 0));
+        rec_button->setText(QApplication::translate("MainWindow", "REC", 0));
         take_photo_button->setText(QApplication::translate("MainWindow", "Photo", 0));
         label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
