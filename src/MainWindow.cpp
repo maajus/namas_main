@@ -20,10 +20,7 @@
 MainWindow::MainWindow() {
     widget.setupUi(this);
     
-cam = new Camera;
-    if(cam->available()){
-        cam->set_widget(widget.video_widget);
-    }
+    
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
@@ -31,16 +28,21 @@ cam = new Camera;
     status_timer.start(500);
     info_timer.start(5000);
     
-    widget.bedroom1_info->set_id(ROOM_ID::BEDROOM_1);
-    widget.bedroom2_info->set_id(ROOM_ID::BEDROOM_2);
-    widget.kitchen_info->set_id(ROOM_ID::KITCHEN);
-    widget.livingroom_info->set_id(ROOM_ID::LIVING_ROOM);
-    widget.wc_info->set_id(ROOM_ID::WC);
+    widget.bedroom1_info->set_name("Miegamasis");
+    widget.bedroom2_info->set_name("Darbo Kambarys");
+    widget.kitchen_info->set_name("Virtuvė");
+    widget.livingroom_info->set_name("Salionas");
+    widget.wc_info->set_name("Vonia");
     
     bathroom = new Bath_Room_win(widget.wc_info);
     connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
+
+
+
+
+
     //Load and apply stylesheet
-    QFile stylesheet(qApp->applicationDirPath()+"formStyle.css");
+    QFile stylesheet(qApp->applicationDirPath()+"/formStyle.css");
     stylesheet.open(QFile::ReadOnly);
     QString setSheet = QLatin1String(stylesheet.readAll());
     qApp->setStyleSheet(setSheet);
@@ -48,6 +50,12 @@ cam = new Camera;
     widget.side_menu->setCurrentRow(0);
     this->update_status();
 
+
+    cam = new Camera;
+    if(cam->available()){
+        cam->set_widget(widget.video_widget);
+        cam->start();
+    }
 }
 
 MainWindow::~MainWindow() {
@@ -87,10 +95,10 @@ void MainWindow::update_info(){
 void MainWindow::menu_selected(int menu){
 
     widget.stack_widget->setCurrentIndex(menu);
-    if(menu == Menus::CAMERA){
-        if(cam->available())  cam->start();
-    }
-    else
-        if(cam->available()) cam->stop();
+    //if(menu == Menus::CAMERA){
+        //if(cam->available())  cam->start();
+    //}
+    //else
+        //if(cam->available()) cam->stop();
 
 }

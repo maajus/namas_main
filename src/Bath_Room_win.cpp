@@ -17,9 +17,13 @@
 Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {
     widget.setupUi(this);
     //this->setAttribute(Qt::WA_DeleteOnClose);
-    tcp = new TCP(WC);
-    connect(tcp, SIGNAL(dataReceived(QByteArray)), SLOT(tcp_data(QByteArray)));
-    connect(tcp, SIGNAL(connected(int)), SLOT(set_connection_status(int)));
+    room  = new Room(ROOM_ID::BATHROOM);
+    room->connect2module();
+    //tcp_thread = new QThread();
+    //tcp->connect_thread(tcp_thread);
+    //tcp->moveToThread(tcp_thread);
+    //tcp_thread->start();
+    connect(room, SIGNAL(room_status_received(Room_status)), this, SLOT(room_status_received(Room_status)));
     connection_status = Status::DISCONNECTED;
 
     widget.lights0_button->setStyleSheet("background-color: #282828; border-width: 0px");
@@ -41,11 +45,7 @@ void Bath_Room_win::on_back_button_clicked(){
 
 }
 
-void Bath_Room_win::set_id(ROOM_ID ID){
 
-    room_id = ID;
-
-}
 
 void Bath_Room_win::on_lights0_button_clicked(){
 
@@ -70,33 +70,21 @@ void Bath_Room_win::update_info(){
 void Bath_Room_win::send_tcp_cmd(QString cmd){
 
     if(connection_status != Status::FAILED)
-        tcp->sendData(cmd.toLocal8Bit());
+        room->sendData(cmd.toLocal8Bit());
 
 }
 
-void Bath_Room_win::tcp_data(QByteArray data){
+void Bath_Room_win::room_status_received(Room_status room_status){
 
-    switch(data.at(0)){
-        case 'A':
-        {
-                QStringList info = QString(data.mid(1,data.length())).split("_");
-                if(info.size()<=1) return;
-                status.temp = (info[0] + " C");
-                status.humi = (info[1] + "%");
-                status.L[0] = info[2].toInt();
-                status.L[1] = info[3].toInt();
-                status.L[2] = info[4].toInt();
-                status.L[3] = info[5].toInt();
-                info_w->set_room_status(status);
-                this->update_room_info();
-                break;
-        }
-        case 'L':
-            status.L[data.at(1)-48] = data.at(2)-48; 
-            this->update_room_info();
-           break;
-    }
+
+    status = room_status;
+    info_w->set_room_status(status);
+    this->update_room_info();
+
+
+
 }
+
 
 void Bath_Room_win::update_room_info(){
 
@@ -123,3 +111,8 @@ void Bath_Room_win::set_connection_status(int status){
 }
 
 
+Room* Bath_Room_win::get_room(){
+
+    return room;
+
+}

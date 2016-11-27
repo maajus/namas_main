@@ -34,17 +34,19 @@ class TCP : public QObject
     Q_OBJECT
     
 public:
-    TCP(int id);
+    TCP();
     virtual ~TCP();
     
-    void connect2room();
     void sendData(QByteArray data);
-    void set_id(int id);
+    void set_ip(QString);
+    //void connect_thread(QThread*);
+    void connect2room();
+
     
 private:
     
    //QByteArray data;
-   int room_id;
+    QString ip;
   QTcpSocket* socket;
   int retry_count;
 

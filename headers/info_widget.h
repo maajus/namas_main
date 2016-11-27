@@ -36,8 +36,9 @@ public:
     
     info_widget(QWidget *parent = 0);
     virtual ~info_widget();
-    void set_id(ROOM_ID);
    void set_room_status(Room_status);
+   void set_color(QString);
+   void set_name(QString);
     
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *event);
@@ -49,6 +50,7 @@ private:
     QThread *tcp_thread;
     TCP *tcp;
     ROOM_ID id;
+    QString bg_color;
     
 signals:
     void clicked();
