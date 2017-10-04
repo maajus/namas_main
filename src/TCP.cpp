@@ -56,11 +56,14 @@ void TCP::readTcpData()
 
 void TCP::sendData(QByteArray data){
 
-    if(socket->state()==QTcpSocket::ConnectedState)
+    if(socket->state()==QTcpSocket::ConnectedState){
         socket->write( data );
+        socket->waitForReadyRead();
+    }
+
     else{
         if(retry_count<=3){
-            qDebug()<<"[TCP] Try to reconnect";
+            qDebug()<<"[TCP] Try to reconnect ip: "<<ip;
             this->connect2room();
             retry_count++;
         }

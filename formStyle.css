@@ -79,7 +79,7 @@ QComboBox::drop-down
 /* Define a new custom arrow icon for the combo box */
 QComboBox::down-arrow {
 
-    image: url(:/pics/arrow-down.png);
+    image: url(:/icons/arrow-down.png);
     width: 24px;
     height: 32px;
     padding-left:-10px;
@@ -178,7 +178,7 @@ QSlider::groove:horizontal {
 
 QSlider::handle:horizontal {
 
-    image: url(:/pics/slider-handle.png);
+    image: url(:/icons/slider-handle.png);
     width: 48px;
 
     margin: -16px -16px;
@@ -220,19 +220,19 @@ QRadioButton::indicator{
 }
 
 QRadioButton::indicator::unchecked {
-    image: url(:/pics/empty-radiobutton.png);
+    image: url(:/icons/empty-radiobutton.png);
 }
 
 QRadioButton::indicator::checked {
-    image: url(:/pics/selected-radiobutton.png);
+    image: url(:/icons/selected-radiobutton.png);
 }
 
 QRadioButton::indicator:unchecked:disabled {
-    image: url(:/pics/empty-radiobutton_disabled.png);
+    image: url(:/icons/empty-radiobutton_disabled.png);
 }
 
 QRadioButton::indicator:checked:disabled {
-    image: url(:/pics/selected-radiobutton_disabled.png);
+    image: url(:/icons/selected-radiobutton_disabled.png);
 }
 
 QMessageBox{
@@ -266,20 +266,20 @@ QCheckBox::indicator{
 QCheckBox:enabled{ color: white; } QCheckBox:!enabled{ color: gray; }
 
 QCheckBox::indicator:unchecked {
-    image: url(:/pics/checkbox.png);
+    image: url(:/icons/checkbox.png);
 }
 
 QCheckBox::indicator:checked {
-    image: url(:/pics/checkmark.png);
+    image: url(:/icons/checkmark.png);
 }
 
 QCheckBox::indicator:checked:disabled
 {
-    image: url(:/pics/checkmark_disabled.png);
+    image: url(:/icons/checkmark_disabled.png);
 }
 QCheckBox::indicator:unchecked:disabled
 {
-    image: url(:/pics/checkbox_disabled.png);
+    image: url(:/icons/checkbox_disabled.png);
 }
 
 
@@ -328,7 +328,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 
 QScrollBar::up-arrow:vertical{
 
-    /*image: url(:/pics/white_arrow_up.png);*/
+    /*image: url(:/icons/white_arrow_up.png);*/
     height: 20px;
     background-color: transparent;
     border-color: #A5A5A5;
@@ -338,7 +338,7 @@ QScrollBar::up-arrow:vertical{
 
 QScrollBar::down-arrow:vertical
 {
-    /*image: url(:/pics/white_arrow_down.png);*/
+    /*image: url(:/icons/white_arrow_down.png);*/
     height: 20px;
     background-color: transparent;
     border-color: #A5A5A5;

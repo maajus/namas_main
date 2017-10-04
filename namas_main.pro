@@ -6,28 +6,63 @@ QT = core gui widgets network multimedia  multimediawidgets
 CONFIG += silent
 TEMPLATE = app
 TARGET = build/namas_main
-INCLUDEPATH += . src/ headers/ ui/
+INCLUDEPATH += . src/ include/ ui/ 
+
+contains( CONFIG, PC ) {
+    message( "Configuring for PC build..." )
+    INCLUDEPATH += /usr/local/include
+    DEFINES += PC
+}else{
+    message( "Configuring for RPI build..." )
+    INCLUDEPATH += /home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include
+    QMAKE_POST_LINK += ./cp.sh
+    
+}
 
 # Input
-HEADERS += headers/build_number.h \
-           headers/info_widget.h \
-           headers/MainWindow.h \
-           headers/Pinctrl.h \
-           headers/Bath_Room_win.h \
-           headers/TCP.h \
-           headers/Camera.h \
+HEADERS += include/build_number.h \
+           include/info_widget.h \
+           include/MainWindow.h \
+           include/Pinctrl.h \
+           include/Bath_Room_win.h \
+           include/Bed_Room_win.h \
+           include/Work_Room_win.h \
+           include/Corridor_win.h \
+           include/TCP.h \
+           include/Camera.h \
+           include/Room.h \
+           include/Alarm.h \
+           include/GPIO.h \
            ui/ui_info_widget.h \
            ui/ui_MainWindow.h \
            ui/ui_Bath_Room_win.h
-FORMS += ui/info_widget.ui ui/MainWindow.ui ui/Bath_Room_win.ui
+FORMS += ui/info_widget.ui \
+            ui/MainWindow.ui \
+            ui/Bath_Room_win.ui \
+            ui/Bed_Room_win.ui \
+            ui/Corridor_win.ui \
+            ui/Work_Room_win.ui
+
 SOURCES += src/info_widget.cpp \
            src/main.cpp \
            src/MainWindow.cpp \
            src/Bath_Room_win.cpp \
+           src/Bed_Room_win.cpp \
+           src/Work_Room_win.cpp \
+           src/Corridor_win.cpp \
            src/TCP.cpp \
+           src/Room.cpp \
+           src/Alarm.cpp \
+           src/GPIO.cpp \
            src/Camera.cpp
 
 RESOURCES += resources/res.qrc
+
+# So wiringPi include files can be found during compile
+INCLUDEPATH    += ./lib
+
+# To link the wiringPi library when making the executable
+LIBS += -L./lib -lwiringPi
 
 UI_DIR=ui
 MOC_DIR=moc

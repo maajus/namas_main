@@ -16,8 +16,13 @@
 #include <QDateTime>
 #include <QFile>
 #include <QObject>
+#include <QFontDatabase>
 
 MainWindow::MainWindow() {
+
+    gpio = new GPIO();
+
+/*
     widget.setupUi(this);
     
     
@@ -25,21 +30,38 @@ MainWindow::MainWindow() {
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
     
-    status_timer.start(500);
-    info_timer.start(5000);
+    status_timer.start(1500);
+    info_timer.start(2000);
     
-    widget.bedroom1_info->set_name("Miegamasis");
-    widget.bedroom2_info->set_name("Darbo Kambarys");
-    widget.kitchen_info->set_name("Virtuvė");
+    widget.bedroom_info->set_name("Miegamasis");
+    widget.workroom_info->set_name("Darbo Kambarys");
+    widget.corridor_info->set_name("Koridorius");
     widget.livingroom_info->set_name("Salionas");
     widget.wc_info->set_name("Vonia");
     
     bathroom = new Bath_Room_win(widget.wc_info);
     connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
 
+    bedroom = new Bed_Room_win(widget.bedroom_info);
+    connect(widget.bedroom_info,SIGNAL(clicked()), bedroom, SLOT(show()));
+
+    workroom = new Work_Room_win(widget.workroom_info);
+    connect(widget.workroom_info,SIGNAL(clicked()), workroom, SLOT(show()));
+
+    corridor = new Corridor_win(widget.corridor_info);
+    connect(widget.corridor_info,SIGNAL(clicked()), corridor, SLOT(show()));
 
 
 
+
+    QFontDatabase::addApplicationFont(":/fonts/digital.ttf");
+    QFont font = QFont("Digital-7", 42, 1);
+    widget.time_label->setFont(font);
+    widget.date_label->setFont(font);
+    widget.date_label->setStyleSheet("color:#4c4c4c");
+
+    //QFontDatabase db;
+    //qDebug()<<db.families();
 
     //Load and apply stylesheet
     QFile stylesheet(qApp->applicationDirPath()+"/formStyle.css");
@@ -56,6 +78,7 @@ MainWindow::MainWindow() {
         cam->set_widget(widget.video_widget);
         cam->start();
     }
+    */
 }
 
 MainWindow::~MainWindow() {
@@ -82,13 +105,17 @@ void MainWindow::on_leave_button_clicked(){
 
 void MainWindow::update_status(){
     
-    widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm:ss"));
+    widget.date_label->setText(QDateTime::currentDateTime().toString("yyyy.MM.dd"));
+    widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm"));
     
 }
 
 void MainWindow::update_info(){
     
     bathroom->update_info();
+    workroom->update_info();
+    corridor->update_info();
+    bedroom->update_info();
     this->repaint();
 }
 

@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="icons">
+    <file>fan_on.png</file>
+    <file>mirror_on.png</file>
+    <file>mirror.png</file>
+    <file>fan.png</file>
+    <file>checkmark.png</file>
+    <file>checkbox.png</file>
     <file>temp.png</file>
     <file>humidity.png</file>
     <file>camera.png</file>
@@ -9,5 +15,8 @@
     <file>play.png</file>
     <file>settings.png</file>
     <file>home1.png</file>
+  </qresource>
+  <qresource prefix="fonts">
+    <file>digital.ttf</file>
   </qresource>
 </RCC>

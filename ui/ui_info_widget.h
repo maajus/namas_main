@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
@@ -25,12 +24,10 @@ class Ui_info_widget
 public:
     QLabel *name_label;
     QLabel *label_3;
-    QWidget *widget;
-    QGridLayout *gridLayout;
-    QLabel *label;
     QLabel *temp_label;
-    QLabel *label_2;
     QLabel *humidity_label;
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QWidget *info_widget)
     {
@@ -49,51 +46,35 @@ public:
         name_label->setStyleSheet(QStringLiteral("color: #282828;"));
         label_3 = new QLabel(info_widget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(200, 90, 51, 51));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/icons/bulb_off.png")));
+        label_3->setGeometry(QRect(210, 90, 41, 51));
         label_3->setScaledContents(true);
-        widget = new QWidget(info_widget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 60, 171, 81));
-        gridLayout = new QGridLayout(widget);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setVerticalSpacing(5);
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setMaximumSize(QSize(37, 51));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/icons/temp.png")));
-        label->setScaledContents(true);
-        label->setMargin(0);
-
-        gridLayout->addWidget(label, 0, 0, 1, 1);
-
-        temp_label = new QLabel(widget);
+        temp_label = new QLabel(info_widget);
         temp_label->setObjectName(QStringLiteral("temp_label"));
+        temp_label->setGeometry(QRect(55, 68, 121, 33));
         QFont font1;
         font1.setFamily(QStringLiteral("DejaVu Sans"));
         font1.setPointSize(16);
         font1.setBold(true);
         font1.setWeight(75);
         temp_label->setFont(font1);
-
-        gridLayout->addWidget(temp_label, 0, 1, 1, 1);
-
-        label_2 = new QLabel(widget);
+        humidity_label = new QLabel(info_widget);
+        humidity_label->setObjectName(QStringLiteral("humidity_label"));
+        humidity_label->setGeometry(QRect(55, 112, 111, 33));
+        humidity_label->setFont(font1);
+        label = new QLabel(info_widget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(11, 68, 37, 37));
+        label->setMaximumSize(QSize(37, 40));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/icons/temp.png")));
+        label->setScaledContents(true);
+        label->setMargin(0);
+        label_2 = new QLabel(info_widget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setMaximumSize(QSize(37, 51));
+        label_2->setGeometry(QRect(11, 110, 37, 37));
+        label_2->setMaximumSize(QSize(37, 40));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/icons/humidity.png")));
         label_2->setScaledContents(true);
         label_2->setMargin(3);
-
-        gridLayout->addWidget(label_2, 1, 0, 1, 1);
-
-        humidity_label = new QLabel(widget);
-        humidity_label->setObjectName(QStringLiteral("humidity_label"));
-        humidity_label->setFont(font1);
-
-        gridLayout->addWidget(humidity_label, 1, 1, 1, 1);
-
 
         retranslateUi(info_widget);
 
@@ -105,10 +86,10 @@ public:
         info_widget->setWindowTitle(QApplication::translate("info_widget", "info_widget", 0));
         name_label->setText(QApplication::translate("info_widget", "N/A", 0));
         label_3->setText(QString());
-        label->setText(QString());
         temp_label->setText(QApplication::translate("info_widget", "N/A", 0));
-        label_2->setText(QString());
         humidity_label->setText(QApplication::translate("info_widget", "N/A", 0));
+        label->setText(QString());
+        label_2->setText(QString());
     } // retranslateUi
 
 };
