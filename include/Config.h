@@ -5,6 +5,8 @@
 
 //GPIO
 #define GPIO_PIR 2
-#define GPIO_SIREN 0
+#define GPIO_SIREN 1
+#define GPIO_REED 7
+
 
 #endif

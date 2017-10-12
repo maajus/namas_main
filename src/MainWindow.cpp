@@ -17,11 +17,13 @@
 #include <QFile>
 #include <QObject>
 #include <QFontDatabase>
+#include "Logger.h"
 
 MainWindow::MainWindow() {
 
+    qDebug()<<"init ok";
     gpio = new GPIO();
-
+    connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
 /*
     widget.setupUi(this);
     
@@ -127,5 +129,12 @@ void MainWindow::menu_selected(int menu){
     //}
     //else
         //if(cam->available()) cam->stop();
+
+}
+
+
+void MainWindow::gpio_interrupt(int intnr){
+
+    Logger::log(LOG_TRIGGERS, "Door opened");
 
 }

@@ -33,6 +33,7 @@ HEADERS += include/build_number.h \
            include/Room.h \
            include/Alarm.h \
            include/GPIO.h \
+           include/Logger.h \
            ui/ui_info_widget.h \
            ui/ui_MainWindow.h \
            ui/ui_Bath_Room_win.h
@@ -54,6 +55,7 @@ SOURCES += src/info_widget.cpp \
            src/Room.cpp \
            src/Alarm.cpp \
            src/GPIO.cpp \
+           src/Logger.cpp \
            src/Camera.cpp
 
 RESOURCES += resources/res.qrc

@@ -5,26 +5,34 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 ALLCONFS	nbproject/Makefile-impl.mk	/^ALLCONFS=Debug Release $/;"	m
-AR	Makefile	/^AR            = ar cqs$/;"	m
+AR	Makefile	/^AR            = $(OE_QMAKE_AR) cqs$/;"	m
 AR	nbproject/qt-Debug.mk	/^AR            = $(OE_QMAKE_AR) cqs$/;"	m
 AS	nbproject/Makefile-Debug.mk	/^AS=as$/;"	m
 AS	nbproject/Makefile-Release.mk	/^AS=as$/;"	m
 ASFLAGS	nbproject/Makefile-Debug.mk	/^ASFLAGS=$/;"	m
 ASFLAGS	nbproject/Makefile-Release.mk	/^ASFLAGS=$/;"	m
 AUDIO	include/MainWindow.h	/^    AUDIO,$/;"	e	enum:Menus
-BATHROOM	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
-BEDROOM	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+Alarm	include/Alarm.h	/^class Alarm$/;"	c
+Alarm	src/Alarm.cpp	/^Alarm::Alarm(){$/;"	f	class:Alarm
+BATHROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+BEDROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+BED_ROOM_WIN_H	include/Bed_Room_win.h	15;"	d
 BUILD	include/build_number.h	1;"	d
 BUILD_SUBPROJECTS	nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS=${BUILD_SUBPROJECTS_${SUBPROJECTS}}$/;"	m
 BUILD_SUBPROJECTS_	nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS_=.build-subprojects$/;"	m
 BUILD_SUBPROJECTS_NO	nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS_NO=$/;"	m
 BUTTON_PIN	src/Pinctrl.cpp	18;"	d	file:
 Bath_Room_win	include/Bath_Room_win.h	/^class Bath_Room_win : public QDialog {$/;"	c
+Bath_Room_win	include/Living_Room_win.h	/^class Bath_Room_win : public QDialog {$/;"	c
 Bath_Room_win	src/Bath_Room_win.cpp	/^Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Bath_Room_win
+Bath_Room_win	src/Living_Room_win.cpp	/^Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Bath_Room_win
 Bath_Room_win	ui/ui_Bath_Room_win.h	/^    class Bath_Room_win: public Ui_Bath_Room_win {};$/;"	c	namespace:Ui
+Bed_Room_win	include/Bed_Room_win.h	/^class Bed_Room_win : public QDialog {$/;"	c
+Bed_Room_win	src/Bed_Room_win.cpp	/^Bed_Room_win::Bed_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Bed_Room_win
+Bed_Room_win	ui/ui_Bed_Room_win.h	/^    class Bed_Room_win: public Ui_Bed_Room_win {};$/;"	c	namespace:Ui
 CAMERA	include/MainWindow.h	/^    CAMERA,$/;"	e	enum:Menus
 CAMERA_H	include/Camera.h	2;"	d
-CC	Makefile	/^CC            = @echo compiling $< && gcc$/;"	m
+CC	Makefile	/^CC            = @echo compiling $< && $(OE_QMAKE_CC)$/;"	m
 CC	nbproject/Makefile-Debug.mk	/^CC=arm-poky-linux-gnueabi-gcc$/;"	m
 CC	nbproject/Makefile-Release.mk	/^CC=gcc$/;"	m
 CC	nbproject/qt-Debug.mk	/^CC            = arm-poky-linux-gnueabi-gcc$/;"	m
@@ -34,7 +42,7 @@ CCC	nbproject/Makefile-Debug.mk	/^CCC=arm-poky-linux-gnueabi-g++$/;"	m
 CCC	nbproject/Makefile-Release.mk	/^CCC=g++$/;"	m
 CCFLAGS	nbproject/Makefile-Debug.mk	/^CCFLAGS=$/;"	m
 CCFLAGS	nbproject/Makefile-Release.mk	/^CCFLAGS=$/;"	m
-CFLAGS	Makefile	/^CFLAGS        = -pipe -O2 -march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
+CFLAGS	Makefile	/^CFLAGS        = -pipe $(OE_QMAKE_CFLAGS) -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
 CFLAGS	nbproject/Makefile-Debug.mk	/^CFLAGS=$/;"	m
 CFLAGS	nbproject/Makefile-Release.mk	/^CFLAGS=$/;"	m
 CFLAGS	nbproject/qt-Debug.mk	/^CFLAGS        = -march=armv6 -mfloat-abi=hard -mtune=arm1176jzf-s -mfpu=vfp -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
@@ -82,18 +90,22 @@ COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m
 COPY_DIR	nbproject/qt-Debug.mk	/^COPY_DIR      = cp -f -R$/;"	m
 COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
 COPY_FILE	nbproject/qt-Debug.mk	/^COPY_FILE     = cp -f$/;"	m
+CORRIDOR	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
 CP	nbproject/Makefile-Debug.mk	/^CP=cp$/;"	m
 CP	nbproject/Makefile-Release.mk	/^CP=cp$/;"	m
-CXX	Makefile	/^CXX           = @echo compiling $< && g++$/;"	m
+CXX	Makefile	/^CXX           = @echo compiling $< && $(OE_QMAKE_CXX)$/;"	m
 CXX	nbproject/Makefile-Debug.mk	/^CXX=arm-poky-linux-gnueabi-g++$/;"	m
 CXX	nbproject/Makefile-Release.mk	/^CXX=g++$/;"	m
 CXX	nbproject/qt-Debug.mk	/^CXX           = arm-poky-linux-gnueabi-g++$/;"	m
-CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe -O2 -march=i686 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe $(OE_QMAKE_CXXFLAGS) -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
 CXXFLAGS	nbproject/Makefile-Debug.mk	/^CXXFLAGS=$/;"	m
 CXXFLAGS	nbproject/Makefile-Release.mk	/^CXXFLAGS=$/;"	m
 CXXFLAGS	nbproject/qt-Debug.mk	/^CXXFLAGS      = -march=armv6 -mfloat-abi=hard -mtune=arm1176jzf-s -mfpu=vfp -g -std=gnu++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)$/;"	m
 Camera	include/Camera.h	/^class Camera : public QObject {$/;"	c
 Camera	src/Camera.cpp	/^Camera::Camera(){$/;"	f	class:Camera
+Corridor_win	include/Corridor_win.h	/^class Corridor_win : public QDialog {$/;"	c
+Corridor_win	src/Corridor_win.cpp	/^Corridor_win::Corridor_win(info_widget * w):info_w(w)  {$/;"	f	class:Corridor_win
+Corridor_win	ui/ui_Corridor_win.h	/^    class Corridor_win: public Ui_Corridor_win {};$/;"	c	namespace:Ui
 DATE_TIME_FORMAT	include/Config.h	4;"	d
 DEFAULTCONF	nbproject/Makefile-impl.mk	/^DEFAULTCONF=Debug$/;"	m
 DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB$/;"	m
@@ -106,7 +118,7 @@ DEL_FILE	nbproject/qt-Debug.mk	/^DEL_FILE      = rm -f$/;"	m
 DESTDIR	Makefile	/^DESTDIR       = build\/$/;"	m
 DESTDIR	nbproject/qt-Debug.mk	/^DESTDIR       = .\/$/;"	m
 DISCONNECTED	include/TCP.h	/^    DISCONNECTED,$/;"	e	enum:Status
-DIST	Makefile	/^DIST          = \/usr\/lib\/qt\/mkspecs\/features\/spec_pre.prf \\$/;"	m
+DIST	Makefile	/^DIST          = ..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/features\/spec_pre.prf \\$/;"	m
 DIST	nbproject/qt-Debug.mk	/^DIST          = \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/features\/spec_pre.prf \\$/;"	m
 DISTDIR	Makefile	/^DISTDIR = \/home\/justas\/work\/namas\/namas_main\/obj\/namas_main1.0.0$/;"	m
 DISTDIR	nbproject/qt-Debug.mk	/^DISTDIR = \/home\/justas\/work\/namas\/namas_main\/build\/Debug\/rpi-Linux\/namas1.0.0$/;"	m
@@ -119,44 +131,72 @@ FC	nbproject/Makefile-Release.mk	/^FC=gfortran$/;"	m
 FFLAGS	nbproject/Makefile-Debug.mk	/^FFLAGS=$/;"	m
 FFLAGS	nbproject/Makefile-Release.mk	/^FFLAGS=$/;"	m
 FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename ):$/;"	f
+GPFCLR0	include/mmapGpio.h	/^	static const unsigned int GPFCLR0 = 10;$/;"	m	class:mmapGpio
+GPFCLR0	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFCLR0;$/;"	m	class:mmapGpio	file:
+GPFLEV0	include/mmapGpio.h	/^	static const unsigned int GPFLEV0 = 13;$/;"	m	class:mmapGpio
+GPFLEV0	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFLEV0;$/;"	m	class:mmapGpio	file:
+GPFSEL0	include/mmapGpio.h	/^	static const unsigned int GPFSEL0 = 0;$/;"	m	class:mmapGpio
+GPFSEL0	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFSEL0;$/;"	m	class:mmapGpio	file:
+GPFSEL1	include/mmapGpio.h	/^	static const unsigned int GPFSEL1 = 1;$/;"	m	class:mmapGpio
+GPFSEL1	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFSEL1;$/;"	m	class:mmapGpio	file:
+GPFSEL2	include/mmapGpio.h	/^	static const unsigned int GPFSEL2 = 2;$/;"	m	class:mmapGpio
+GPFSEL2	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFSEL2;$/;"	m	class:mmapGpio	file:
+GPFSEL3	include/mmapGpio.h	/^	static const unsigned int GPFSEL3 = 3;$/;"	m	class:mmapGpio
+GPFSEL3	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFSEL3;$/;"	m	class:mmapGpio	file:
+GPFSET0	include/mmapGpio.h	/^	static const unsigned int GPFSET0 = 7;$/;"	m	class:mmapGpio
+GPFSET0	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPFSET0;$/;"	m	class:mmapGpio	file:
+GPIO	include/GPIO.h	/^class GPIO : public QObject {$/;"	c
+GPIO	src/GPIO.cpp	/^GPIO::GPIO(){$/;"	f	class:GPIO
+GPIO_BASE	include/mmapGpio.h	/^	static const unsigned int GPIO_BASE = 0x20200000;\/\/ gpio registers base address PI1$/;"	m	class:mmapGpio
+GPIO_BASE	include/mmapGpio.h	/^	static const unsigned int GPIO_BASE = 0x3f200000;\/\/ gpio registers base address PI2$/;"	m	class:mmapGpio
+GPIO_BASE	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPIO_BASE;$/;"	m	class:mmapGpio	file:
+GPIO_LEN	include/mmapGpio.h	/^	static const unsigned int GPIO_LEN =   0xB4;\/\/ need only map B4 registers$/;"	m	class:mmapGpio
+GPIO_LEN	src/mmapGpio.cpp	/^const unsigned int mmapGpio::GPIO_LEN;$/;"	m	class:mmapGpio	file:
+GPIO_PIR	include/Config.h	7;"	d
+GPIO_REED	include/Config.h	9;"	d
+GPIO_SIREN	include/Config.h	8;"	d
 GREP	nbproject/Makefile-Debug.mk	/^GREP=grep$/;"	m
 GREP	nbproject/Makefile-Release.mk	/^GREP=grep$/;"	m
+HIGH	include/mmapGpio.h	/^	static const unsigned int HIGH = 1;$/;"	m	class:mmapGpio
+HIGH	src/mmapGpio.cpp	/^const unsigned int mmapGpio::HIGH;$/;"	m	class:mmapGpio	file:
 HOME	include/MainWindow.h	/^    HOME,$/;"	e	enum:Menus
-INCPATH	Makefile	/^INCPATH       = -I. -I. -Isrc -Iinclude -Iui -isystem \/usr\/include\/qt -isystem \/usr\/include\/qt\/QtMultimediaWidgets -isystem \/usr\/include\/qt\/QtWidgets -isystem \/usr\/include\/qt\/QtMultimedia -isystem \/usr\/include\/qt\/QtGui -isystem \/usr\/include\/qt\/QtNetwork -isystem \/usr\/include\/qt\/QtCore -Imoc -isystem \/usr\/include\/libdrm -Iui -I\/usr\/lib\/qt\/mkspecs\/linux-g++$/;"	m
+INCPATH	Makefile	/^INCPATH       = -I. -I. -Isrc -Iinclude -Iui -I..\/..\/..\/sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include -Ilib -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5 -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimediaWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimedia -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtGui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtNetwork -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtCore -Imoc -Iui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/linux-oe-g++$/;"	m
 INCPATH	nbproject/qt-Debug.mk	/^INCPATH       = -Inbproject -I. -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/c++\/4.9.2 -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/c++\/4.9.2\/arm-poky-linux-gnueabi -Iheaders -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5 -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtWidgets -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtGui -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtNetwork -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtCore -Imoc -Iui -I\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/linux-oe-g++$/;"	m
+INPUT	include/mmapGpio.h	/^    static const unsigned int INPUT = 0;$/;"	m	class:mmapGpio
+INPUT	src/mmapGpio.cpp	/^const unsigned int mmapGpio::INPUT;$/;"	m	class:mmapGpio	file:
 INSTALL_DIR	Makefile	/^INSTALL_DIR   = cp -f -R$/;"	m
 INSTALL_DIR	nbproject/qt-Debug.mk	/^INSTALL_DIR   = cp -f -R$/;"	m
 INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
 INSTALL_FILE	nbproject/qt-Debug.mk	/^INSTALL_FILE  = install -m 644 -p$/;"	m
 INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
 INSTALL_PROGRAM	nbproject/qt-Debug.mk	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
-KITCHEN	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+INTERRUPT	include/GPIO.h	/^enum INTERRUPT {$/;"	g
+INT_DOOR_CLOSE	include/GPIO.h	/^    INT_DOOR_CLOSE,$/;"	e	enum:INTERRUPT
+INT_DOOR_OPEN	include/GPIO.h	/^    INT_DOOR_OPEN,$/;"	e	enum:INTERRUPT
+INT_PIR_ON	include/GPIO.h	/^    INT_PIR_ON,$/;"	e	enum:INTERRUPT
+IntHelper	include/GPIO.h	/^        IntHelper(){}$/;"	f	class:IntHelper
+IntHelper	include/GPIO.h	/^class IntHelper : public QObject {$/;"	c
+Interrupt_PIR	src/GPIO.cpp	/^void Interrupt_PIR(void) {$/;"	f
+Interrupt_REED	src/GPIO.cpp	/^void Interrupt_REED(void) {$/;"	f
 L	include/info_widget.h	/^    int L[4]; \/\/lights state$/;"	m	struct:Room_status
-L0_checkBox	ui/ui_Bath_Room_win.h	/^    QCheckBox *L0_checkBox;$/;"	m	class:Ui_Bath_Room_win
-L0_checkBox	ui/ui_Work_Room_win.h	/^    QCheckBox *L0_checkBox;$/;"	m	class:Ui_Work_Room_win
-L1_checkBox	ui/ui_Bath_Room_win.h	/^    QCheckBox *L1_checkBox;$/;"	m	class:Ui_Bath_Room_win
-L1_checkBox	ui/ui_Work_Room_win.h	/^    QCheckBox *L1_checkBox;$/;"	m	class:Ui_Work_Room_win
-L2_checkBox	ui/ui_Bath_Room_win.h	/^    QCheckBox *L2_checkBox;$/;"	m	class:Ui_Bath_Room_win
-L2_checkBox	ui/ui_Work_Room_win.h	/^    QCheckBox *L2_checkBox;$/;"	m	class:Ui_Work_Room_win
-L3_checkBox	ui/ui_Bath_Room_win.h	/^    QCheckBox *L3_checkBox;$/;"	m	class:Ui_Bath_Room_win
-L3_checkBox	ui/ui_Work_Room_win.h	/^    QCheckBox *L3_checkBox;$/;"	m	class:Ui_Work_Room_win
-LA_checkBox	ui/ui_Bath_Room_win.h	/^    QCheckBox *LA_checkBox;$/;"	m	class:Ui_Bath_Room_win
-LA_checkBox	ui/ui_Work_Room_win.h	/^    QCheckBox *LA_checkBox;$/;"	m	class:Ui_Work_Room_win
 LDLIBSOPTIONS	nbproject/Makefile-Debug.mk	/^LDLIBSOPTIONS=-Wl,-rpath,'\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib' -lwiringPi$/;"	m
 LDLIBSOPTIONS	nbproject/Makefile-Release.mk	/^LDLIBSOPTIONS=$/;"	m
-LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1 -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -Wl,-rpath-link,\/usr\/lib$/;"	m
+LFLAGS	Makefile	/^LFLAGS        = $(OE_QMAKE_LDFLAGS) -Wl,-O1 -Wl,-rpath-link,\/home\/justas\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib$/;"	m
 LFLAGS	nbproject/qt-Debug.mk	/^LFLAGS        = -march=armv6 -mfloat-abi=hard -mtune=arm1176jzf-s -mfpu=vfp --sysroot=\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi$/;"	m
-LIBS	Makefile	/^LIBS          = $(SUBLIBS) -lQt5MultimediaWidgets -lpulse-mainloop-glib -lpulse -lglib-2.0 -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread $/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L.\/lib -lwiringPi -L\/home\/justas\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib -lQt5MultimediaWidgets -L\/home\/justas\/rpi\/build\/tmp\/sysroots\/raspberrypi\/usr\/lib -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Network -lQt5Core -lGLESv2 -lpthread $/;"	m
 LIBS	nbproject/qt-Debug.mk	/^LIBS          = $(SUBLIBS) -lwiringPi -Wl,-rpath,\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGLESv2 -lpthread $/;"	m
-LINK	Makefile	/^LINK          = @echo linking $@ && g++$/;"	m
+LINK	Makefile	/^LINK          = @echo linking $@ && $(OE_QMAKE_LINK)$/;"	m
 LINK	nbproject/qt-Debug.mk	/^LINK          = arm-poky-linux-gnueabi-g++$/;"	m
-LIVING_ROOM	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+LIVING_ROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+LOW	include/mmapGpio.h	/^    static const unsigned int LOW = 0;$/;"	m	class:mmapGpio
+LOW	src/mmapGpio.cpp	/^const unsigned int mmapGpio::LOW;$/;"	m	class:mmapGpio	file:
 MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
 MAKEFILE	nbproject/qt-Debug.mk	/^MAKEFILE      = qttmp-Debug.mk$/;"	m
 MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
 MKDIR	nbproject/Makefile-Debug.mk	/^MKDIR=mkdir$/;"	m
 MKDIR	nbproject/Makefile-Release.mk	/^MKDIR=mkdir$/;"	m
 MKDIR	nbproject/qt-Debug.mk	/^MKDIR         = mkdir -p$/;"	m
+MMAPGPIO_H	include/mmapGpio.h	2;"	d
 MOVE	Makefile	/^MOVE          = mv -f$/;"	m
 MOVE	nbproject/qt-Debug.mk	/^MOVE          = mv -f$/;"	m
 MainWindow	include/MainWindow.h	/^class MainWindow : public QMainWindow {$/;"	c
@@ -174,49 +214,58 @@ OBJECTS	Makefile	/^OBJECTS       = obj\/info_widget.o \\$/;"	m
 OBJECTS	nbproject/qt-Debug.mk	/^OBJECTS       = build\/Debug\/rpi-Linux\/MainWindow.o \\$/;"	m
 OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = obj\/$/;"	m
 OBJECTS_DIR	nbproject/qt-Debug.mk	/^OBJECTS_DIR   = build\/Debug\/rpi-Linux\/$/;"	m
+OUTPUT	include/mmapGpio.h	/^	static const unsigned int OUTPUT = 1;$/;"	m	class:mmapGpio
+OUTPUT	src/mmapGpio.cpp	/^const unsigned int mmapGpio::OUTPUT;$/;"	m	class:mmapGpio	file:
 PINCTRL_H	include/Pinctrl.h	15;"	d
 PROJECTNAME	nbproject/Makefile-impl.mk	/^PROJECTNAME=namas_main$/;"	m
 Pinctrl	include/Pinctrl.h	/^class Pinctrl {$/;"	c
 Pinctrl	src/Pinctrl.cpp	/^Pinctrl::Pinctrl() {$/;"	f	class:Pinctrl
 PrepareClangFlags	.ycm_extra_conf.py	/^from clang_helpers import PrepareClangFlags$/;"	i
-QINSTALL	Makefile	/^QINSTALL      = \/usr\/bin\/qmake -install qinstall$/;"	m
-QINSTALL_PROGRAM	Makefile	/^QINSTALL_PROGRAM = \/usr\/bin\/qmake -install qinstall -exe$/;"	m
-QMAKE	Makefile	/^QMAKE         = \/usr\/bin\/qmake$/;"	m
+QMAKE	Makefile	/^QMAKE         = \/home\/justas\/pi_sdk\/sysroots\/x86_64-pokysdk-linux\/usr\/bin\/qt5\/qmake$/;"	m
 QMAKE	nbproject/Makefile-Debug.mk	/^QMAKE=qmake$/;"	m
 QMAKE	nbproject/Makefile-Release.mk	/^QMAKE=qmake$/;"	m
 QMAKE	nbproject/qt-Debug.mk	/^QMAKE         = \/mnt\/data\/work\/namas-sdk\/sysroots\/x86_64-pokysdk-linux\/usr\/bin\/qt5\/qmake$/;"	m
 QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = namas_main$/;"	m
 QMAKE_TARGET	nbproject/qt-Debug.mk	/^QMAKE_TARGET  = namas$/;"	m
-QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	53;"	d	file:
-QT_MOC_LITERAL	moc/moc_Camera.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_Camera.cpp	42;"	d	file:
-QT_MOC_LITERAL	moc/moc_MainWindow.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_MainWindow.cpp	49;"	d	file:
-QT_MOC_LITERAL	moc/moc_Room.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_Room.cpp	46;"	d	file:
+QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	50;"	d	file:
+QT_MOC_LITERAL	moc/moc_Bed_Room_win.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Bed_Room_win.cpp	50;"	d	file:
+QT_MOC_LITERAL	moc/moc_Camera.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Camera.cpp	40;"	d	file:
+QT_MOC_LITERAL	moc/moc_Corridor_win.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Corridor_win.cpp	50;"	d	file:
+QT_MOC_LITERAL	moc/moc_GPIO.cpp	131;"	d	file:
+QT_MOC_LITERAL	moc/moc_GPIO.cpp	145;"	d	file:
+QT_MOC_LITERAL	moc/moc_GPIO.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_GPIO.cpp	39;"	d	file:
+QT_MOC_LITERAL	moc/moc_MainWindow.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_MainWindow.cpp	47;"	d	file:
+QT_MOC_LITERAL	moc/moc_Room.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Room.cpp	44;"	d	file:
 QT_MOC_LITERAL	moc/moc_Room_win.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_Room_win.cpp	43;"	d	file:
-QT_MOC_LITERAL	moc/moc_TCP.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_TCP.cpp	47;"	d	file:
-QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	53;"	d	file:
-QT_MOC_LITERAL	moc/moc_info_widget.cpp	27;"	d	file:
-QT_MOC_LITERAL	moc/moc_info_widget.cpp	41;"	d	file:
+QT_MOC_LITERAL	moc/moc_TCP.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_TCP.cpp	45;"	d	file:
+QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	46;"	d	file:
+QT_MOC_LITERAL	moc/moc_info_widget.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_info_widget.cpp	39;"	d	file:
 QT_NAMESPACE	rcc/qrc_res.cpp	/^namespace QT_NAMESPACE {$/;"	n	file:
-QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	7578;"	d	file:
-QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	7582;"	d	file:
-QT_RCC_MANGLE_NAMESPACE0	rcc/qrc_res.cpp	7575;"	d	file:
-QT_RCC_MANGLE_NAMESPACE1	rcc/qrc_res.cpp	7576;"	d	file:
-QT_RCC_MANGLE_NAMESPACE2	rcc/qrc_res.cpp	7577;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	7574;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	7581;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	19693;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	19697;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	rcc/qrc_res.cpp	19690;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	rcc/qrc_res.cpp	19691;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	rcc/qrc_res.cpp	19692;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	19689;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	19696;"	d	file:
 RANLIB	Makefile	/^RANLIB        = $/;"	m
 RANLIB	nbproject/Makefile-Debug.mk	/^RANLIB=ranlib$/;"	m
 RANLIB	nbproject/Makefile-Release.mk	/^RANLIB=ranlib$/;"	m
 RANLIB	nbproject/qt-Debug.mk	/^RANLIB        = $/;"	m
+RASPBERRYPI2	include/mmapGpio.h	14;"	d
 ROOM_H	include/Room.h	2;"	d
-ROOM_ID	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	g
+ROOM_ID	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	g
 Room	include/Room.h	/^class Room : public QObject$/;"	c
 Room	src/Room.cpp	/^Room::Room(ROOM_ID id): room_id(id) {$/;"	f	class:Room
 Room_status	include/info_widget.h	/^struct Room_status {$/;"	s
@@ -226,7 +275,7 @@ SED	nbproject/qt-Debug.mk	/^SED           = sed$/;"	m
 SETTINGS	include/MainWindow.h	/^    SETTINGS,$/;"	e	enum:Menus
 SOURCES	Makefile	/^SOURCES       = src\/info_widget.cpp \\$/;"	m
 SOURCES	nbproject/qt-Debug.mk	/^SOURCES       = src\/MainWindow.cpp \\$/;"	m
-STRIP	Makefile	/^STRIP         = strip$/;"	m
+STRIP	Makefile	/^STRIP         = $(OE_QMAKE_STRIP)$/;"	m
 STRIP	nbproject/qt-Debug.mk	/^STRIP         = $(OE_QMAKE_STRIP)$/;"	m
 SUBPROJECTS	nbproject/Makefile-impl.mk	/^SUBPROJECTS=${SUB_${SUB}}$/;"	m
 SUB_no	nbproject/Makefile-impl.mk	/^SUB_no=NO$/;"	m
@@ -241,415 +290,49 @@ TCP	include/TCP.h	/^class TCP : public QObject$/;"	c
 TCP	src/TCP.cpp	/^TCP::TCP() {$/;"	f	class:TCP
 TCP_H	include/TCP.h	15;"	d
 UI_BATH_ROOM_WIN_H	ui/ui_Bath_Room_win.h	10;"	d
+UI_BED_ROOM_WIN_H	ui/ui_Bed_Room_win.h	10;"	d
+UI_CORRIDOR_WIN_H	ui/ui_Corridor_win.h	10;"	d
 UI_INFO_WIDGET_H	ui/ui_info_widget.h	10;"	d
 UI_MAINWINDOW_H	ui/ui_MainWindow.h	10;"	d
 UI_WORK_ROOM_WIN_H	ui/ui_Work_Room_win.h	10;"	d
 Ui	ui/ui_Bath_Room_win.h	/^namespace Ui {$/;"	n
+Ui	ui/ui_Bed_Room_win.h	/^namespace Ui {$/;"	n
+Ui	ui/ui_Corridor_win.h	/^namespace Ui {$/;"	n
 Ui	ui/ui_MainWindow.h	/^namespace Ui {$/;"	n
 Ui	ui/ui_Work_Room_win.h	/^namespace Ui {$/;"	n
 Ui	ui/ui_info_widget.h	/^namespace Ui {$/;"	n
 Ui_Bath_Room_win	ui/ui_Bath_Room_win.h	/^class Ui_Bath_Room_win$/;"	c
+Ui_Bed_Room_win	ui/ui_Bed_Room_win.h	/^class Ui_Bed_Room_win$/;"	c
+Ui_Corridor_win	ui/ui_Corridor_win.h	/^class Ui_Corridor_win$/;"	c
 Ui_MainWindow	ui/ui_MainWindow.h	/^class Ui_MainWindow$/;"	c
 Ui_Work_Room_win	ui/ui_Work_Room_win.h	/^class Ui_Work_Room_win$/;"	c
 Ui_info_widget	ui/ui_info_widget.h	/^class Ui_info_widget$/;"	c
-WORKROOM	include/definitions.h	/^enum ROOM_ID{KITCHEN,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+WORKROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
 WORK_ROOM_WIN_H	include/Work_Room_win.h	15;"	d
 Work_Room_win	include/Work_Room_win.h	/^class Work_Room_win : public QDialog {$/;"	c
 Work_Room_win	src/Work_Room_win.cpp	/^Work_Room_win::Work_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Work_Room_win
 Work_Room_win	ui/ui_Work_Room_win.h	/^    class Work_Room_win: public Ui_Work_Room_win {};$/;"	c	namespace:Ui
-_GNU_SOURCE	moc/moc_predefs.h	375;"	d
+_ALARM_H	include/Alarm.h	3;"	d
+_CORRIDOR_WIN_H	include/Corridor_win.h	15;"	d
+_GPIO_H	include/GPIO.h	2;"	d
 _INFO_WIDGET_H	include/info_widget.h	15;"	d
 _MAINWINDOW_H	include/MainWindow.h	15;"	d
 _ROOM_WIN_H	include/Bath_Room_win.h	15;"	d
-_STDC_PREDEF_H	moc/moc_predefs.h	183;"	d
-__ATOMIC_ACQUIRE	moc/moc_predefs.h	7;"	d
-__ATOMIC_ACQ_REL	moc/moc_predefs.h	377;"	d
-__ATOMIC_CONSUME	moc/moc_predefs.h	343;"	d
-__ATOMIC_HLE_ACQUIRE	moc/moc_predefs.h	143;"	d
-__ATOMIC_HLE_RELEASE	moc/moc_predefs.h	140;"	d
-__ATOMIC_RELAXED	moc/moc_predefs.h	300;"	d
-__ATOMIC_RELEASE	moc/moc_predefs.h	378;"	d
-__ATOMIC_SEQ_CST	moc/moc_predefs.h	356;"	d
-__BIGGEST_ALIGNMENT__	moc/moc_predefs.h	114;"	d
-__BYTE_ORDER__	moc/moc_predefs.h	324;"	d
-__CHAR16_TYPE__	moc/moc_predefs.h	239;"	d
-__CHAR32_TYPE__	moc/moc_predefs.h	330;"	d
-__CHAR_BIT__	moc/moc_predefs.h	15;"	d
-__DBL_DECIMAL_DIG__	moc/moc_predefs.h	313;"	d
-__DBL_DENORM_MIN__	moc/moc_predefs.h	26;"	d
-__DBL_DIG__	moc/moc_predefs.h	74;"	d
-__DBL_EPSILON__	moc/moc_predefs.h	301;"	d
-__DBL_HAS_DENORM__	moc/moc_predefs.h	174;"	d
-__DBL_HAS_INFINITY__	moc/moc_predefs.h	122;"	d
-__DBL_HAS_QUIET_NAN__	moc/moc_predefs.h	263;"	d
-__DBL_MANT_DIG__	moc/moc_predefs.h	286;"	d
-__DBL_MAX_10_EXP__	moc/moc_predefs.h	349;"	d
-__DBL_MAX_EXP__	moc/moc_predefs.h	136;"	d
-__DBL_MAX__	moc/moc_predefs.h	119;"	d
-__DBL_MIN_10_EXP__	moc/moc_predefs.h	39;"	d
-__DBL_MIN_EXP__	moc/moc_predefs.h	2;"	d
-__DBL_MIN__	moc/moc_predefs.h	165;"	d
-__DEC128_EPSILON__	moc/moc_predefs.h	139;"	d
-__DEC128_MANT_DIG__	moc/moc_predefs.h	361;"	d
-__DEC128_MAX_EXP__	moc/moc_predefs.h	341;"	d
-__DEC128_MAX__	moc/moc_predefs.h	131;"	d
-__DEC128_MIN_EXP__	moc/moc_predefs.h	196;"	d
-__DEC128_MIN__	moc/moc_predefs.h	171;"	d
-__DEC128_SUBNORMAL_MIN__	moc/moc_predefs.h	233;"	d
-__DEC32_EPSILON__	moc/moc_predefs.h	58;"	d
-__DEC32_MANT_DIG__	moc/moc_predefs.h	347;"	d
-__DEC32_MAX_EXP__	moc/moc_predefs.h	253;"	d
-__DEC32_MAX__	moc/moc_predefs.h	89;"	d
-__DEC32_MIN_EXP__	moc/moc_predefs.h	124;"	d
-__DEC32_MIN__	moc/moc_predefs.h	133;"	d
-__DEC32_SUBNORMAL_MIN__	moc/moc_predefs.h	223;"	d
-__DEC64_EPSILON__	moc/moc_predefs.h	194;"	d
-__DEC64_MANT_DIG__	moc/moc_predefs.h	244;"	d
-__DEC64_MAX_EXP__	moc/moc_predefs.h	46;"	d
-__DEC64_MAX__	moc/moc_predefs.h	237;"	d
-__DEC64_MIN_EXP__	moc/moc_predefs.h	275;"	d
-__DEC64_MIN__	moc/moc_predefs.h	290;"	d
-__DEC64_SUBNORMAL_MIN__	moc/moc_predefs.h	360;"	d
-__DECIMAL_BID_FORMAT__	moc/moc_predefs.h	168;"	d
-__DECIMAL_DIG__	moc/moc_predefs.h	99;"	d
-__DEC_EVAL_METHOD__	moc/moc_predefs.h	316;"	d
-__DEPRECATED	moc/moc_predefs.h	134;"	d
-__ELF__	moc/moc_predefs.h	211;"	d
-__EXCEPTIONS	moc/moc_predefs.h	261;"	d
-__FINITE_MATH_ONLY__	moc/moc_predefs.h	40;"	d
-__FLOAT_WORD_ORDER__	moc/moc_predefs.h	188;"	d
-__FLT128_DECIMAL_DIG__	moc/moc_predefs.h	366;"	d
-__FLT128_DENORM_MIN__	moc/moc_predefs.h	55;"	d
-__FLT128_DIG__	moc/moc_predefs.h	191;"	d
-__FLT128_EPSILON__	moc/moc_predefs.h	363;"	d
-__FLT128_HAS_DENORM__	moc/moc_predefs.h	190;"	d
-__FLT128_HAS_INFINITY__	moc/moc_predefs.h	158;"	d
-__FLT128_HAS_QUIET_NAN__	moc/moc_predefs.h	307;"	d
-__FLT128_MANT_DIG__	moc/moc_predefs.h	71;"	d
-__FLT128_MAX_10_EXP__	moc/moc_predefs.h	8;"	d
-__FLT128_MAX_EXP__	moc/moc_predefs.h	186;"	d
-__FLT128_MAX__	moc/moc_predefs.h	255;"	d
-__FLT128_MIN_10_EXP__	moc/moc_predefs.h	68;"	d
-__FLT128_MIN_EXP__	moc/moc_predefs.h	65;"	d
-__FLT128_MIN__	moc/moc_predefs.h	302;"	d
-__FLT32X_DECIMAL_DIG__	moc/moc_predefs.h	30;"	d
-__FLT32X_DENORM_MIN__	moc/moc_predefs.h	348;"	d
-__FLT32X_DIG__	moc/moc_predefs.h	354;"	d
-__FLT32X_EPSILON__	moc/moc_predefs.h	167;"	d
-__FLT32X_HAS_DENORM__	moc/moc_predefs.h	126;"	d
-__FLT32X_HAS_INFINITY__	moc/moc_predefs.h	91;"	d
-__FLT32X_HAS_QUIET_NAN__	moc/moc_predefs.h	342;"	d
-__FLT32X_MANT_DIG__	moc/moc_predefs.h	221;"	d
-__FLT32X_MAX_10_EXP__	moc/moc_predefs.h	298;"	d
-__FLT32X_MAX_EXP__	moc/moc_predefs.h	3;"	d
-__FLT32X_MAX__	moc/moc_predefs.h	317;"	d
-__FLT32X_MIN_10_EXP__	moc/moc_predefs.h	358;"	d
-__FLT32X_MIN_EXP__	moc/moc_predefs.h	222;"	d
-__FLT32X_MIN__	moc/moc_predefs.h	368;"	d
-__FLT32_DECIMAL_DIG__	moc/moc_predefs.h	277;"	d
-__FLT32_DENORM_MIN__	moc/moc_predefs.h	247;"	d
-__FLT32_DIG__	moc/moc_predefs.h	84;"	d
-__FLT32_EPSILON__	moc/moc_predefs.h	312;"	d
-__FLT32_HAS_DENORM__	moc/moc_predefs.h	43;"	d
-__FLT32_HAS_INFINITY__	moc/moc_predefs.h	118;"	d
-__FLT32_HAS_QUIET_NAN__	moc/moc_predefs.h	144;"	d
-__FLT32_MANT_DIG__	moc/moc_predefs.h	187;"	d
-__FLT32_MAX_10_EXP__	moc/moc_predefs.h	198;"	d
-__FLT32_MAX_EXP__	moc/moc_predefs.h	154;"	d
-__FLT32_MAX__	moc/moc_predefs.h	138;"	d
-__FLT32_MIN_10_EXP__	moc/moc_predefs.h	260;"	d
-__FLT32_MIN_EXP__	moc/moc_predefs.h	18;"	d
-__FLT32_MIN__	moc/moc_predefs.h	175;"	d
-__FLT64X_DECIMAL_DIG__	moc/moc_predefs.h	170;"	d
-__FLT64X_DENORM_MIN__	moc/moc_predefs.h	90;"	d
-__FLT64X_DIG__	moc/moc_predefs.h	208;"	d
-__FLT64X_EPSILON__	moc/moc_predefs.h	81;"	d
-__FLT64X_HAS_DENORM__	moc/moc_predefs.h	232;"	d
-__FLT64X_HAS_INFINITY__	moc/moc_predefs.h	201;"	d
-__FLT64X_HAS_QUIET_NAN__	moc/moc_predefs.h	162;"	d
-__FLT64X_MANT_DIG__	moc/moc_predefs.h	76;"	d
-__FLT64X_MAX_10_EXP__	moc/moc_predefs.h	52;"	d
-__FLT64X_MAX_EXP__	moc/moc_predefs.h	281;"	d
-__FLT64X_MAX__	moc/moc_predefs.h	265;"	d
-__FLT64X_MIN_10_EXP__	moc/moc_predefs.h	105;"	d
-__FLT64X_MIN_EXP__	moc/moc_predefs.h	150;"	d
-__FLT64X_MIN__	moc/moc_predefs.h	309;"	d
-__FLT64_DECIMAL_DIG__	moc/moc_predefs.h	34;"	d
-__FLT64_DENORM_MIN__	moc/moc_predefs.h	164;"	d
-__FLT64_DIG__	moc/moc_predefs.h	226;"	d
-__FLT64_EPSILON__	moc/moc_predefs.h	100;"	d
-__FLT64_HAS_DENORM__	moc/moc_predefs.h	311;"	d
-__FLT64_HAS_INFINITY__	moc/moc_predefs.h	264;"	d
-__FLT64_HAS_QUIET_NAN__	moc/moc_predefs.h	259;"	d
-__FLT64_MANT_DIG__	moc/moc_predefs.h	107;"	d
-__FLT64_MAX_10_EXP__	moc/moc_predefs.h	116;"	d
-__FLT64_MAX_EXP__	moc/moc_predefs.h	304;"	d
-__FLT64_MAX__	moc/moc_predefs.h	295;"	d
-__FLT64_MIN_10_EXP__	moc/moc_predefs.h	169;"	d
-__FLT64_MIN_EXP__	moc/moc_predefs.h	103;"	d
-__FLT64_MIN__	moc/moc_predefs.h	337;"	d
-__FLT_DECIMAL_DIG__	moc/moc_predefs.h	370;"	d
-__FLT_DENORM_MIN__	moc/moc_predefs.h	325;"	d
-__FLT_DIG__	moc/moc_predefs.h	280;"	d
-__FLT_EPSILON__	moc/moc_predefs.h	85;"	d
-__FLT_EVAL_METHOD_TS_18661_3__	moc/moc_predefs.h	59;"	d
-__FLT_EVAL_METHOD__	moc/moc_predefs.h	31;"	d
-__FLT_HAS_DENORM__	moc/moc_predefs.h	112;"	d
-__FLT_HAS_INFINITY__	moc/moc_predefs.h	234;"	d
-__FLT_HAS_QUIET_NAN__	moc/moc_predefs.h	229;"	d
-__FLT_MANT_DIG__	moc/moc_predefs.h	178;"	d
-__FLT_MAX_10_EXP__	moc/moc_predefs.h	230;"	d
-__FLT_MAX_EXP__	moc/moc_predefs.h	285;"	d
-__FLT_MAX__	moc/moc_predefs.h	331;"	d
-__FLT_MIN_10_EXP__	moc/moc_predefs.h	336;"	d
-__FLT_MIN_EXP__	moc/moc_predefs.h	159;"	d
-__FLT_MIN__	moc/moc_predefs.h	9;"	d
-__FLT_RADIX__	moc/moc_predefs.h	213;"	d
-__GCC_ASM_FLAG_OUTPUTS__	moc/moc_predefs.h	212;"	d
-__GCC_ATOMIC_BOOL_LOCK_FREE	moc/moc_predefs.h	54;"	d
-__GCC_ATOMIC_CHAR16_T_LOCK_FREE	moc/moc_predefs.h	79;"	d
-__GCC_ATOMIC_CHAR32_T_LOCK_FREE	moc/moc_predefs.h	35;"	d
-__GCC_ATOMIC_CHAR_LOCK_FREE	moc/moc_predefs.h	28;"	d
-__GCC_ATOMIC_INT_LOCK_FREE	moc/moc_predefs.h	185;"	d
-__GCC_ATOMIC_LLONG_LOCK_FREE	moc/moc_predefs.h	367;"	d
-__GCC_ATOMIC_LONG_LOCK_FREE	moc/moc_predefs.h	248;"	d
-__GCC_ATOMIC_POINTER_LOCK_FREE	moc/moc_predefs.h	75;"	d
-__GCC_ATOMIC_SHORT_LOCK_FREE	moc/moc_predefs.h	372;"	d
-__GCC_ATOMIC_TEST_AND_SET_TRUEVAL	moc/moc_predefs.h	279;"	d
-__GCC_ATOMIC_WCHAR_T_LOCK_FREE	moc/moc_predefs.h	218;"	d
-__GCC_HAVE_DWARF2_CFI_ASM	moc/moc_predefs.h	156;"	d
-__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1	moc/moc_predefs.h	23;"	d
-__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2	moc/moc_predefs.h	24;"	d
-__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4	moc/moc_predefs.h	25;"	d
-__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8	moc/moc_predefs.h	27;"	d
-__GCC_IEC_559	moc/moc_predefs.h	29;"	d
-__GCC_IEC_559_COMPLEX	moc/moc_predefs.h	10;"	d
-__GNUC_MINOR__	moc/moc_predefs.h	344;"	d
-__GNUC_PATCHLEVEL__	moc/moc_predefs.h	42;"	d
-__GNUC_STDC_INLINE__	moc/moc_predefs.h	310;"	d
-__GNUC__	moc/moc_predefs.h	108;"	d
-__GNUG__	moc/moc_predefs.h	145;"	d
-__GXX_ABI_VERSION	moc/moc_predefs.h	157;"	d
-__GXX_EXPERIMENTAL_CXX0X__	moc/moc_predefs.h	63;"	d
-__GXX_RTTI	moc/moc_predefs.h	109;"	d
-__GXX_WEAK__	moc/moc_predefs.h	86;"	d
-__INT16_C	moc/moc_predefs.h	351;"	d
-__INT16_MAX__	moc/moc_predefs.h	203;"	d
-__INT16_TYPE__	moc/moc_predefs.h	251;"	d
-__INT32_C	moc/moc_predefs.h	193;"	d
-__INT32_MAX__	moc/moc_predefs.h	92;"	d
-__INT32_TYPE__	moc/moc_predefs.h	333;"	d
-__INT64_C	moc/moc_predefs.h	73;"	d
-__INT64_MAX__	moc/moc_predefs.h	123;"	d
-__INT64_TYPE__	moc/moc_predefs.h	284;"	d
-__INT8_C	moc/moc_predefs.h	47;"	d
-__INT8_MAX__	moc/moc_predefs.h	326;"	d
-__INT8_TYPE__	moc/moc_predefs.h	209;"	d
-__INTMAX_C	moc/moc_predefs.h	14;"	d
-__INTMAX_MAX__	moc/moc_predefs.h	322;"	d
-__INTMAX_TYPE__	moc/moc_predefs.h	339;"	d
-__INTMAX_WIDTH__	moc/moc_predefs.h	102;"	d
-__INTPTR_MAX__	moc/moc_predefs.h	256;"	d
-__INTPTR_TYPE__	moc/moc_predefs.h	268;"	d
-__INTPTR_WIDTH__	moc/moc_predefs.h	125;"	d
-__INT_FAST16_MAX__	moc/moc_predefs.h	225;"	d
-__INT_FAST16_TYPE__	moc/moc_predefs.h	127;"	d
-__INT_FAST16_WIDTH__	moc/moc_predefs.h	345;"	d
-__INT_FAST32_MAX__	moc/moc_predefs.h	121;"	d
-__INT_FAST32_TYPE__	moc/moc_predefs.h	199;"	d
-__INT_FAST32_WIDTH__	moc/moc_predefs.h	238;"	d
-__INT_FAST64_MAX__	moc/moc_predefs.h	278;"	d
-__INT_FAST64_TYPE__	moc/moc_predefs.h	163;"	d
-__INT_FAST64_WIDTH__	moc/moc_predefs.h	274;"	d
-__INT_FAST8_MAX__	moc/moc_predefs.h	254;"	d
-__INT_FAST8_TYPE__	moc/moc_predefs.h	308;"	d
-__INT_FAST8_WIDTH__	moc/moc_predefs.h	315;"	d
-__INT_LEAST16_MAX__	moc/moc_predefs.h	243;"	d
-__INT_LEAST16_TYPE__	moc/moc_predefs.h	214;"	d
-__INT_LEAST16_WIDTH__	moc/moc_predefs.h	69;"	d
-__INT_LEAST32_MAX__	moc/moc_predefs.h	132;"	d
-__INT_LEAST32_TYPE__	moc/moc_predefs.h	305;"	d
-__INT_LEAST32_WIDTH__	moc/moc_predefs.h	338;"	d
-__INT_LEAST64_MAX__	moc/moc_predefs.h	289;"	d
-__INT_LEAST64_TYPE__	moc/moc_predefs.h	250;"	d
-__INT_LEAST64_WIDTH__	moc/moc_predefs.h	373;"	d
-__INT_LEAST8_MAX__	moc/moc_predefs.h	297;"	d
-__INT_LEAST8_TYPE__	moc/moc_predefs.h	252;"	d
-__INT_LEAST8_WIDTH__	moc/moc_predefs.h	48;"	d
-__INT_MAX__	moc/moc_predefs.h	283;"	d
-__INT_WIDTH__	moc/moc_predefs.h	93;"	d
-__LDBL_DECIMAL_DIG__	moc/moc_predefs.h	179;"	d
-__LDBL_DENORM_MIN__	moc/moc_predefs.h	350;"	d
-__LDBL_DIG__	moc/moc_predefs.h	369;"	d
-__LDBL_EPSILON__	moc/moc_predefs.h	215;"	d
-__LDBL_HAS_DENORM__	moc/moc_predefs.h	128;"	d
-__LDBL_HAS_INFINITY__	moc/moc_predefs.h	83;"	d
-__LDBL_HAS_QUIET_NAN__	moc/moc_predefs.h	106;"	d
-__LDBL_MANT_DIG__	moc/moc_predefs.h	262;"	d
-__LDBL_MAX_10_EXP__	moc/moc_predefs.h	299;"	d
-__LDBL_MAX_EXP__	moc/moc_predefs.h	64;"	d
-__LDBL_MAX__	moc/moc_predefs.h	51;"	d
-__LDBL_MIN_10_EXP__	moc/moc_predefs.h	362;"	d
-__LDBL_MIN_EXP__	moc/moc_predefs.h	294;"	d
-__LDBL_MIN__	moc/moc_predefs.h	88;"	d
-__LONG_LONG_MAX__	moc/moc_predefs.h	146;"	d
-__LONG_LONG_WIDTH__	moc/moc_predefs.h	152;"	d
-__LONG_MAX__	moc/moc_predefs.h	231;"	d
-__LONG_WIDTH__	moc/moc_predefs.h	327;"	d
-__OPTIMIZE__	moc/moc_predefs.h	60;"	d
-__ORDER_BIG_ENDIAN__	moc/moc_predefs.h	318;"	d
-__ORDER_LITTLE_ENDIAN__	moc/moc_predefs.h	20;"	d
-__ORDER_PDP_ENDIAN__	moc/moc_predefs.h	195;"	d
-__PIC__	moc/moc_predefs.h	328;"	d
-__PIE__	moc/moc_predefs.h	166;"	d
-__PRAGMA_REDEFINE_EXTNAME	moc/moc_predefs.h	240;"	d
-__PTRDIFF_MAX__	moc/moc_predefs.h	141;"	d
-__PTRDIFF_TYPE__	moc/moc_predefs.h	355;"	d
-__PTRDIFF_WIDTH__	moc/moc_predefs.h	98;"	d
-__REGISTER_PREFIX__	moc/moc_predefs.h	172;"	d
-__SCHAR_MAX__	moc/moc_predefs.h	70;"	d
-__SCHAR_WIDTH__	moc/moc_predefs.h	192;"	d
-__SEG_FS	moc/moc_predefs.h	242;"	d
-__SEG_GS	moc/moc_predefs.h	246;"	d
-__SHRT_MAX__	moc/moc_predefs.h	50;"	d
-__SHRT_WIDTH__	moc/moc_predefs.h	87;"	d
-__SIG_ATOMIC_MAX__	moc/moc_predefs.h	217;"	d
-__SIG_ATOMIC_MIN__	moc/moc_predefs.h	266;"	d
-__SIG_ATOMIC_TYPE__	moc/moc_predefs.h	38;"	d
-__SIG_ATOMIC_WIDTH__	moc/moc_predefs.h	249;"	d
-__SIZEOF_DOUBLE__	moc/moc_predefs.h	334;"	d
-__SIZEOF_FLOAT128__	moc/moc_predefs.h	288;"	d
-__SIZEOF_FLOAT80__	moc/moc_predefs.h	13;"	d
-__SIZEOF_FLOAT__	moc/moc_predefs.h	271;"	d
-__SIZEOF_INT__	moc/moc_predefs.h	77;"	d
-__SIZEOF_LONG_DOUBLE__	moc/moc_predefs.h	113;"	d
-__SIZEOF_LONG_LONG__	moc/moc_predefs.h	364;"	d
-__SIZEOF_LONG__	moc/moc_predefs.h	94;"	d
-__SIZEOF_POINTER__	moc/moc_predefs.h	78;"	d
-__SIZEOF_PTRDIFF_T__	moc/moc_predefs.h	220;"	d
-__SIZEOF_SHORT__	moc/moc_predefs.h	293;"	d
-__SIZEOF_SIZE_T__	moc/moc_predefs.h	147;"	d
-__SIZEOF_WCHAR_T__	moc/moc_predefs.h	306;"	d
-__SIZEOF_WINT_T__	moc/moc_predefs.h	151;"	d
-__SIZE_MAX__	moc/moc_predefs.h	21;"	d
-__SIZE_TYPE__	moc/moc_predefs.h	206;"	d
-__SIZE_WIDTH__	moc/moc_predefs.h	241;"	d
-__SSP_STRONG__	moc/moc_predefs.h	1;"	d
-__STDC_HOSTED__	moc/moc_predefs.h	82;"	d
-__STDC_IEC_559_COMPLEX__	moc/moc_predefs.h	189;"	d
-__STDC_IEC_559__	moc/moc_predefs.h	95;"	d
-__STDC_ISO_10646__	moc/moc_predefs.h	96;"	d
-__STDC_NO_THREADS__	moc/moc_predefs.h	142;"	d
-__STDC_UTF_16__	moc/moc_predefs.h	115;"	d
-__STDC_UTF_32__	moc/moc_predefs.h	314;"	d
-__STDC__	moc/moc_predefs.h	353;"	d
-__UINT16_C	moc/moc_predefs.h	97;"	d
-__UINT16_MAX__	moc/moc_predefs.h	173;"	d
-__UINT16_TYPE__	moc/moc_predefs.h	269;"	d
-__UINT32_C	moc/moc_predefs.h	321;"	d
-__UINT32_MAX__	moc/moc_predefs.h	62;"	d
-__UINT32_TYPE__	moc/moc_predefs.h	357;"	d
-__UINT64_C	moc/moc_predefs.h	181;"	d
-__UINT64_MAX__	moc/moc_predefs.h	207;"	d
-__UINT64_TYPE__	moc/moc_predefs.h	320;"	d
-__UINT8_C	moc/moc_predefs.h	303;"	d
-__UINT8_MAX__	moc/moc_predefs.h	16;"	d
-__UINT8_TYPE__	moc/moc_predefs.h	176;"	d
-__UINTMAX_C	moc/moc_predefs.h	216;"	d
-__UINTMAX_MAX__	moc/moc_predefs.h	346;"	d
-__UINTMAX_TYPE__	moc/moc_predefs.h	56;"	d
-__UINTPTR_MAX__	moc/moc_predefs.h	273;"	d
-__UINTPTR_TYPE__	moc/moc_predefs.h	359;"	d
-__UINT_FAST16_MAX__	moc/moc_predefs.h	371;"	d
-__UINT_FAST16_TYPE__	moc/moc_predefs.h	236;"	d
-__UINT_FAST32_MAX__	moc/moc_predefs.h	227;"	d
-__UINT_FAST32_TYPE__	moc/moc_predefs.h	329;"	d
-__UINT_FAST64_MAX__	moc/moc_predefs.h	37;"	d
-__UINT_FAST64_TYPE__	moc/moc_predefs.h	282;"	d
-__UINT_FAST8_MAX__	moc/moc_predefs.h	44;"	d
-__UINT_FAST8_TYPE__	moc/moc_predefs.h	374;"	d
-__UINT_LEAST16_MAX__	moc/moc_predefs.h	6;"	d
-__UINT_LEAST16_TYPE__	moc/moc_predefs.h	200;"	d
-__UINT_LEAST32_MAX__	moc/moc_predefs.h	245;"	d
-__UINT_LEAST32_TYPE__	moc/moc_predefs.h	292;"	d
-__UINT_LEAST64_MAX__	moc/moc_predefs.h	49;"	d
-__UINT_LEAST64_TYPE__	moc/moc_predefs.h	228;"	d
-__UINT_LEAST8_MAX__	moc/moc_predefs.h	53;"	d
-__UINT_LEAST8_TYPE__	moc/moc_predefs.h	12;"	d
-__USER_LABEL_PREFIX__	moc/moc_predefs.h	80;"	d
-__VERSION__	moc/moc_predefs.h	180;"	d
-__WCHAR_MAX__	moc/moc_predefs.h	22;"	d
-__WCHAR_MIN__	moc/moc_predefs.h	72;"	d
-__WCHAR_TYPE__	moc/moc_predefs.h	270;"	d
-__WCHAR_WIDTH__	moc/moc_predefs.h	137;"	d
-__WINT_MAX__	moc/moc_predefs.h	17;"	d
-__WINT_MIN__	moc/moc_predefs.h	66;"	d
-__WINT_TYPE__	moc/moc_predefs.h	291;"	d
-__WINT_WIDTH__	moc/moc_predefs.h	296;"	d
-__code_model_32__	moc/moc_predefs.h	197;"	d
-__cplusplus	moc/moc_predefs.h	129;"	d
-__cpp_aggregate_nsdmi	moc/moc_predefs.h	11;"	d
-__cpp_alias_templates	moc/moc_predefs.h	323;"	d
-__cpp_attributes	moc/moc_predefs.h	4;"	d
-__cpp_binary_literals	moc/moc_predefs.h	33;"	d
-__cpp_constexpr	moc/moc_predefs.h	332;"	d
-__cpp_decltype	moc/moc_predefs.h	276;"	d
-__cpp_decltype_auto	moc/moc_predefs.h	184;"	d
-__cpp_delegating_constructors	moc/moc_predefs.h	111;"	d
-__cpp_digit_separators	moc/moc_predefs.h	210;"	d
-__cpp_exceptions	moc/moc_predefs.h	335;"	d
-__cpp_generic_lambdas	moc/moc_predefs.h	352;"	d
-__cpp_hex_float	moc/moc_predefs.h	155;"	d
-__cpp_inheriting_constructors	moc/moc_predefs.h	287;"	d
-__cpp_init_captures	moc/moc_predefs.h	376;"	d
-__cpp_initializer_lists	moc/moc_predefs.h	153;"	d
-__cpp_lambdas	moc/moc_predefs.h	161;"	d
-__cpp_nsdmi	moc/moc_predefs.h	149;"	d
-__cpp_range_based_for	moc/moc_predefs.h	258;"	d
-__cpp_raw_strings	moc/moc_predefs.h	120;"	d
-__cpp_ref_qualifiers	moc/moc_predefs.h	130;"	d
-__cpp_return_type_deduction	moc/moc_predefs.h	267;"	d
-__cpp_rtti	moc/moc_predefs.h	205;"	d
-__cpp_runtime_arrays	moc/moc_predefs.h	319;"	d
-__cpp_rvalue_reference	moc/moc_predefs.h	148;"	d
-__cpp_rvalue_references	moc/moc_predefs.h	135;"	d
-__cpp_sized_deallocation	moc/moc_predefs.h	219;"	d
-__cpp_static_assert	moc/moc_predefs.h	19;"	d
-__cpp_unicode_characters	moc/moc_predefs.h	182;"	d
-__cpp_unicode_literals	moc/moc_predefs.h	235;"	d
-__cpp_user_defined_literals	moc/moc_predefs.h	365;"	d
-__cpp_variable_templates	moc/moc_predefs.h	41;"	d
-__cpp_variadic_templates	moc/moc_predefs.h	36;"	d
-__gnu_linux__	moc/moc_predefs.h	101;"	d
-__has_include	moc/moc_predefs.h	45;"	d
-__has_include_next	moc/moc_predefs.h	104;"	d
-__i386	moc/moc_predefs.h	177;"	d
-__i386__	moc/moc_predefs.h	204;"	d
-__i686	moc/moc_predefs.h	117;"	d
-__i686__	moc/moc_predefs.h	160;"	d
-__linux	moc/moc_predefs.h	57;"	d
-__linux__	moc/moc_predefs.h	67;"	d
-__pentiumpro	moc/moc_predefs.h	224;"	d
-__pentiumpro__	moc/moc_predefs.h	5;"	d
-__pic__	moc/moc_predefs.h	272;"	d
-__pie__	moc/moc_predefs.h	110;"	d
-__unix	moc/moc_predefs.h	61;"	d
-__unix__	moc/moc_predefs.h	32;"	d
+_ROOM_WIN_H	include/Living_Room_win.h	15;"	d
+armed	include/Alarm.h	/^        bool armed;$/;"	m	class:Alarm
 available	src/Camera.cpp	/^bool Camera::available()$/;"	f	class:Camera
 back_button	ui/ui_Bath_Room_win.h	/^    QPushButton *back_button;$/;"	m	class:Ui_Bath_Room_win
+back_button	ui/ui_Bed_Room_win.h	/^    QPushButton *back_button;$/;"	m	class:Ui_Bed_Room_win
+back_button	ui/ui_Corridor_win.h	/^    QPushButton *back_button;$/;"	m	class:Ui_Corridor_win
 back_button	ui/ui_Work_Room_win.h	/^    QPushButton *back_button;$/;"	m	class:Ui_Work_Room_win
 bathroom	include/MainWindow.h	/^    Bath_Room_win *bathroom;$/;"	m	class:MainWindow
-bedroom1_info	ui/ui_MainWindow.h	/^    info_widget *bedroom1_info;$/;"	m	class:Ui_MainWindow
+bedroom	include/MainWindow.h	/^    Bed_Room_win *bedroom;$/;"	m	class:MainWindow
+bedroom_info	ui/ui_MainWindow.h	/^    info_widget *bedroom_info;$/;"	m	class:Ui_MainWindow
 bg_color	include/info_widget.h	/^    QString bg_color;$/;"	m	class:info_widget
-build_label	ui/ui_MainWindow.h	/^    QLabel *build_label;$/;"	m	class:Ui_MainWindow
-butt_layout	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *butt_layout;$/;"	m	class:Ui_Bath_Room_win
-butt_layout	ui/ui_Work_Room_win.h	/^    QHBoxLayout *butt_layout;$/;"	m	class:Ui_Work_Room_win
 cam	include/MainWindow.h	/^    Camera *cam;$/;"	m	class:MainWindow
 camera	include/Camera.h	/^        QCamera* camera;$/;"	m	class:Camera
 capture_photo	src/Camera.cpp	/^void Camera::capture_photo(){$/;"	f	class:Camera
 centralwidget	ui/ui_MainWindow.h	/^    QWidget *centralwidget;$/;"	m	class:Ui_MainWindow
-checkBox_stateChanged	src/Bath_Room_win.cpp	/^void Bath_Room_win::checkBox_stateChanged(int){$/;"	f	class:Bath_Room_win
-checkBox_stateChanged	src/Work_Room_win.cpp	/^void Work_Room_win::checkBox_stateChanged(int){$/;"	f	class:Work_Room_win
 checkReturnCode	nbproject/Package-Debug.bash	/^function checkReturnCode$/;"	f
 checkReturnCode	nbproject/Package-Release.bash	/^function checkReturnCode$/;"	f
 clicked	moc/moc_info_widget.cpp	/^void info_widget::clicked()$/;"	f	class:info_widget
@@ -660,102 +343,160 @@ connect2room	src/TCP.cpp	/^void TCP::connect2room(){$/;"	f	class:TCP
 connected	moc/moc_TCP.cpp	/^void TCP::connected(int _t1)$/;"	f	class:TCP
 connection_failed	moc/moc_TCP.cpp	/^void TCP::connection_failed(QAbstractSocket::SocketError _t1)$/;"	f	class:TCP
 connection_status	include/Bath_Room_win.h	/^    int connection_status;$/;"	m	class:Bath_Room_win
+connection_status	include/Bed_Room_win.h	/^    int connection_status;$/;"	m	class:Bed_Room_win
+connection_status	include/Corridor_win.h	/^    int connection_status;$/;"	m	class:Corridor_win
+connection_status	include/Living_Room_win.h	/^    int connection_status;$/;"	m	class:Bath_Room_win
 connection_status	include/Room.h	/^    int connection_status;$/;"	m	class:Room
 connection_status	include/Work_Room_win.h	/^    int connection_status;$/;"	m	class:Work_Room_win
 copyFileToTmpDir	nbproject/Package-Debug.bash	/^function copyFileToTmpDir$/;"	f
 copyFileToTmpDir	nbproject/Package-Release.bash	/^function copyFileToTmpDir$/;"	f
-data	moc/moc_Bath_Room_win.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+corridor	include/MainWindow.h	/^    Corridor_win *corridor;$/;"	m	class:MainWindow
+corridor_info	ui/ui_MainWindow.h	/^    info_widget *corridor_info;$/;"	m	class:Ui_MainWindow
+data	moc/moc_Bath_Room_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+data	moc/moc_Bed_Room_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Bed_Room_win_t	file:
 data	moc/moc_Camera.cpp	/^    QByteArrayData data[4];$/;"	m	struct:qt_meta_stringdata_Camera_t	file:
+data	moc/moc_Corridor_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Corridor_win_t	file:
+data	moc/moc_GPIO.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_GPIO_t	file:
+data	moc/moc_GPIO.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_IntHelper_t	file:
 data	moc/moc_MainWindow.cpp	/^    QByteArrayData data[8];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
 data	moc/moc_Room.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
 data	moc/moc_Room_win.cpp	/^    QByteArrayData data[6];$/;"	m	struct:qt_meta_stringdata_Room_win_t	file:
 data	moc/moc_TCP.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_TCP_t	file:
-data	moc/moc_Work_Room_win.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
+data	moc/moc_Work_Room_win.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
 data	moc/moc_info_widget.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_info_widget_t	file:
 dataReceived	moc/moc_TCP.cpp	/^void TCP::dataReceived(QByteArray _t1)$/;"	f	class:TCP
 database	.ycm_extra_conf.py	/^  database = None$/;"	v
 database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+date_label	ui/ui_MainWindow.h	/^    QLabel *date_label;$/;"	m	class:Ui_MainWindow
 dummy	rcc/qrc_res.cpp	/^   } dummy;$/;"	m	namespace:__anon1	typeref:struct:__anon1::initializer	file:
 flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 frame	ui/ui_MainWindow.h	/^    QFrame *frame;$/;"	m	class:Ui_MainWindow
 get_room	src/Bath_Room_win.cpp	/^Room* Bath_Room_win::get_room(){$/;"	f	class:Bath_Room_win
+get_room	src/Bed_Room_win.cpp	/^Room* Bed_Room_win::get_room(){$/;"	f	class:Bed_Room_win
+get_room	src/Corridor_win.cpp	/^Room* Corridor_win::get_room(){$/;"	f	class:Corridor_win
+get_room	src/Living_Room_win.cpp	/^Room* Bath_Room_win::get_room(){$/;"	f	class:Bath_Room_win
 get_room	src/Work_Room_win.cpp	/^Room* Work_Room_win::get_room(){$/;"	f	class:Work_Room_win
+gpio	include/MainWindow.h	/^    GPIO *gpio;$/;"	m	class:MainWindow
+gpio	include/mmapGpio.h	/^	volatile unsigned int *gpio; $/;"	m	class:mmapGpio
 gridLayout	ui/ui_MainWindow.h	/^    QGridLayout *gridLayout;$/;"	m	class:Ui_MainWindow
-gridLayout	ui/ui_info_widget.h	/^    QGridLayout *gridLayout;$/;"	m	class:Ui_info_widget
+helper	src/GPIO.cpp	/^IntHelper *helper;$/;"	v
+horizontalLayout	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Bath_Room_win
+horizontalLayout	ui/ui_Bed_Room_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Bed_Room_win
+horizontalLayout	ui/ui_Corridor_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Corridor_win
 horizontalLayout	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_MainWindow
 horizontalLayout_2	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Bath_Room_win
+horizontalLayout_2	ui/ui_Bed_Room_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Bed_Room_win
+horizontalLayout_2	ui/ui_Corridor_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Corridor_win
 horizontalLayout_2	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_MainWindow
 horizontalLayout_2	ui/ui_Work_Room_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Work_Room_win
 horizontalLayout_3	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Bath_Room_win
+horizontalLayout_3	ui/ui_Bed_Room_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Bed_Room_win
+horizontalLayout_3	ui/ui_Corridor_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Corridor_win
+horizontalLayout_3	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_MainWindow
 horizontalLayout_3	ui/ui_Work_Room_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Work_Room_win
 humi	include/info_widget.h	/^    QString humi;$/;"	m	struct:Room_status
 humi_icon_label	ui/ui_Bath_Room_win.h	/^    QLabel *humi_icon_label;$/;"	m	class:Ui_Bath_Room_win
+humi_icon_label	ui/ui_Bed_Room_win.h	/^    QLabel *humi_icon_label;$/;"	m	class:Ui_Bed_Room_win
+humi_icon_label	ui/ui_Corridor_win.h	/^    QLabel *humi_icon_label;$/;"	m	class:Ui_Corridor_win
 humi_icon_label	ui/ui_Work_Room_win.h	/^    QLabel *humi_icon_label;$/;"	m	class:Ui_Work_Room_win
 humi_label	ui/ui_Bath_Room_win.h	/^    QLabel *humi_label;$/;"	m	class:Ui_Bath_Room_win
+humi_label	ui/ui_Bed_Room_win.h	/^    QLabel *humi_label;$/;"	m	class:Ui_Bed_Room_win
+humi_label	ui/ui_Corridor_win.h	/^    QLabel *humi_label;$/;"	m	class:Ui_Corridor_win
 humi_label	ui/ui_Work_Room_win.h	/^    QLabel *humi_label;$/;"	m	class:Ui_Work_Room_win
 humidity_label	ui/ui_info_widget.h	/^    QLabel *humidity_label;$/;"	m	class:Ui_info_widget
-i386	moc/moc_predefs.h	340;"	d
 id	include/info_widget.h	/^    ROOM_ID id;$/;"	m	class:info_widget
 imageCapture	include/Camera.h	/^        QCameraImageCapture *imageCapture;$/;"	m	class:Camera
 imageSaved	src/Camera.cpp	/^void Camera::imageSaved(int id, const QString &fileName)$/;"	f	class:Camera
 info_timer	include/MainWindow.h	/^    QTimer info_timer;$/;"	m	class:MainWindow
 info_w	include/Bath_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Bath_Room_win
+info_w	include/Bed_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Bed_Room_win
+info_w	include/Corridor_win.h	/^    info_widget *info_w;$/;"	m	class:Corridor_win
+info_w	include/Living_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Bath_Room_win
 info_w	include/Work_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Work_Room_win
 info_widget	include/info_widget.h	/^class info_widget : public QWidget {$/;"	c
 info_widget	src/info_widget.cpp	/^info_widget::info_widget(QWidget *parent) :$/;"	f	class:info_widget
 info_widget	ui/ui_info_widget.h	/^    class info_widget: public Ui_info_widget {};$/;"	c	namespace:Ui
+init_pins	src/GPIO.cpp	/^void GPIO::init_pins(){$/;"	f	class:GPIO
 init_pins	src/Pinctrl.cpp	/^void Pinctrl::init_pins(){$/;"	f	class:Pinctrl
 initializer	rcc/qrc_res.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_res)(); }$/;"	f	struct:__anon1::initializer
 initializer	rcc/qrc_res.cpp	/^   struct initializer {$/;"	s	namespace:__anon1	file:
+interrupt	moc/moc_GPIO.cpp	/^void IntHelper::interrupt(int _t1)$/;"	f	class:IntHelper
+interrupt	src/GPIO.cpp	/^void GPIO::interrupt(int intnr){$/;"	f	class:GPIO
 ip	include/Room.h	/^    QString ip;$/;"	m	class:Room
 ip	include/TCP.h	/^    QString ip;$/;"	m	class:TCP
 isCapturingImage	include/Camera.h	/^        bool isCapturingImage;$/;"	m	class:Camera
-kitchen_info	ui/ui_MainWindow.h	/^    info_widget *kitchen_info;$/;"	m	class:Ui_MainWindow
 label	ui/ui_info_widget.h	/^    QLabel *label;$/;"	m	class:Ui_info_widget
 label_2	ui/ui_MainWindow.h	/^    QLabel *label_2;$/;"	m	class:Ui_MainWindow
 label_2	ui/ui_info_widget.h	/^    QLabel *label_2;$/;"	m	class:Ui_info_widget
 label_3	ui/ui_info_widget.h	/^    QLabel *label_3;$/;"	m	class:Ui_info_widget
 layoutWidget	ui/ui_Bath_Room_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Bath_Room_win
+layoutWidget	ui/ui_Bed_Room_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Bed_Room_win
+layoutWidget	ui/ui_Corridor_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Corridor_win
 layoutWidget	ui/ui_MainWindow.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_MainWindow
 layoutWidget	ui/ui_Work_Room_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Work_Room_win
+layoutWidget1	ui/ui_Bath_Room_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_Bath_Room_win
+layoutWidget1	ui/ui_Bed_Room_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_Bed_Room_win
+layoutWidget1	ui/ui_Corridor_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_Corridor_win
 layoutWidget1	ui/ui_MainWindow.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_MainWindow
+layoutWidget1	ui/ui_Work_Room_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_Work_Room_win
+layoutWidget2	ui/ui_Corridor_win.h	/^    QWidget *layoutWidget2;$/;"	m	class:Ui_Corridor_win
 layoutWidget2	ui/ui_MainWindow.h	/^    QWidget *layoutWidget2;$/;"	m	class:Ui_MainWindow
 layoutWidget3	ui/ui_MainWindow.h	/^    QWidget *layoutWidget3;$/;"	m	class:Ui_MainWindow
 leave_button	ui/ui_MainWindow.h	/^    QPushButton *leave_button;$/;"	m	class:Ui_MainWindow
 lights0_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Bath_Room_win
+lights0_button	ui/ui_Bed_Room_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Bed_Room_win
+lights0_button	ui/ui_Corridor_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Corridor_win
 lights0_button	ui/ui_Work_Room_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Work_Room_win
 lights1_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights1_button;$/;"	m	class:Ui_Bath_Room_win
-lights1_button	ui/ui_Work_Room_win.h	/^    QPushButton *lights1_button;$/;"	m	class:Ui_Work_Room_win
+lights1_button	ui/ui_Bed_Room_win.h	/^    QPushButton *lights1_button;$/;"	m	class:Ui_Bed_Room_win
+lights1_button	ui/ui_Corridor_win.h	/^    QPushButton *lights1_button;$/;"	m	class:Ui_Corridor_win
 lights2_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Bath_Room_win
-lights2_button	ui/ui_Work_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Work_Room_win
+lights2_button	ui/ui_Bed_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Bed_Room_win
+lights2_button	ui/ui_Corridor_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Corridor_win
 lineEdit	ui/ui_MainWindow.h	/^    QLineEdit *lineEdit;$/;"	m	class:Ui_MainWindow
-linux	moc/moc_predefs.h	257;"	d
 listWidget	ui/ui_MainWindow.h	/^    QListWidget *listWidget;$/;"	m	class:Ui_MainWindow
 livingroom_info	ui/ui_MainWindow.h	/^    info_widget *livingroom_info;$/;"	m	class:Ui_MainWindow
 main	src/main.cpp	/^int main(int argc, char *argv[]) {$/;"	f
 makeDirectory	nbproject/Package-Debug.bash	/^function makeDirectory$/;"	f
 makeDirectory	nbproject/Package-Release.bash	/^function makeDirectory$/;"	f
+mapRegAddr	src/mmapGpio.cpp	/^volatile unsigned *mmapGpio::mapRegAddr(unsigned long baseAddr){$/;"	f	class:mmapGpio
 menu_selected	src/MainWindow.cpp	/^void MainWindow::menu_selected(int menu){$/;"	f	class:MainWindow
 metaObject	moc/moc_Bath_Room_win.cpp	/^const QMetaObject *Bath_Room_win::metaObject() const$/;"	f	class:Bath_Room_win
+metaObject	moc/moc_Bed_Room_win.cpp	/^const QMetaObject *Bed_Room_win::metaObject() const$/;"	f	class:Bed_Room_win
 metaObject	moc/moc_Camera.cpp	/^const QMetaObject *Camera::metaObject() const$/;"	f	class:Camera
+metaObject	moc/moc_Corridor_win.cpp	/^const QMetaObject *Corridor_win::metaObject() const$/;"	f	class:Corridor_win
+metaObject	moc/moc_GPIO.cpp	/^const QMetaObject *GPIO::metaObject() const$/;"	f	class:GPIO
+metaObject	moc/moc_GPIO.cpp	/^const QMetaObject *IntHelper::metaObject() const$/;"	f	class:IntHelper
 metaObject	moc/moc_MainWindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow
 metaObject	moc/moc_Room.cpp	/^const QMetaObject *Room::metaObject() const$/;"	f	class:Room
 metaObject	moc/moc_Room_win.cpp	/^const QMetaObject *Room_win::metaObject() const$/;"	f	class:Room_win
 metaObject	moc/moc_TCP.cpp	/^const QMetaObject *TCP::metaObject() const$/;"	f	class:TCP
 metaObject	moc/moc_Work_Room_win.cpp	/^const QMetaObject *Work_Room_win::metaObject() const$/;"	f	class:Work_Room_win
 metaObject	moc/moc_info_widget.cpp	/^const QMetaObject *info_widget::metaObject() const$/;"	f	class:info_widget
+mmapGpio	include/mmapGpio.h	/^class mmapGpio{$/;"	c
+mmapGpio	src/mmapGpio.cpp	/^mmapGpio::mmapGpio(){$/;"	f	class:mmapGpio
 mousePressEvent	src/info_widget.cpp	/^void info_widget::mousePressEvent(QMouseEvent *event)$/;"	f	class:info_widget
 myInterrupt	src/Pinctrl.cpp	/^void myInterrupt(void) {$/;"	f
 name_label	ui/ui_info_widget.h	/^    QLabel *name_label;$/;"	m	class:Ui_info_widget
 on_back_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_back_button_clicked(){$/;"	f	class:Bath_Room_win
+on_back_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_back_button_clicked(){$/;"	f	class:Bed_Room_win
+on_back_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_back_button_clicked(){$/;"	f	class:Corridor_win
+on_back_button_clicked	src/Living_Room_win.cpp	/^void Bath_Room_win::on_back_button_clicked(){$/;"	f	class:Bath_Room_win
 on_back_button_clicked	src/Work_Room_win.cpp	/^void Work_Room_win::on_back_button_clicked(){$/;"	f	class:Work_Room_win
 on_leave_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_leave_button_clicked(){$/;"	f	class:MainWindow
 on_lights0_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_lights0_button_clicked(){$/;"	f	class:Bath_Room_win
+on_lights0_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_lights0_button_clicked(){$/;"	f	class:Bed_Room_win
+on_lights0_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_lights0_button_clicked(){$/;"	f	class:Corridor_win
+on_lights0_button_clicked	src/Living_Room_win.cpp	/^void Bath_Room_win::on_lights0_button_clicked(){$/;"	f	class:Bath_Room_win
 on_lights0_button_clicked	src/Work_Room_win.cpp	/^void Work_Room_win::on_lights0_button_clicked(){$/;"	f	class:Work_Room_win
 on_lights1_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_lights1_button_clicked(){$/;"	f	class:Bath_Room_win
-on_lights1_button_clicked	src/Work_Room_win.cpp	/^void Work_Room_win::on_lights1_button_clicked(){$/;"	f	class:Work_Room_win
+on_lights1_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_lights1_button_clicked(){$/;"	f	class:Bed_Room_win
+on_lights1_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_lights1_button_clicked(){$/;"	f	class:Corridor_win
+on_lights1_button_clicked	src/Living_Room_win.cpp	/^void Bath_Room_win::on_lights1_button_clicked(){$/;"	f	class:Bath_Room_win
 on_lights2_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_lights2_button_clicked(){$/;"	f	class:Bath_Room_win
-on_lights2_button_clicked	src/Work_Room_win.cpp	/^void Work_Room_win::on_lights2_button_clicked(){$/;"	f	class:Work_Room_win
+on_lights2_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_lights2_button_clicked(){$/;"	f	class:Bed_Room_win
+on_lights2_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_lights2_button_clicked(){$/;"	f	class:Corridor_win
+on_lights2_button_clicked	src/Living_Room_win.cpp	/^void Bath_Room_win::on_lights2_button_clicked(){$/;"	f	class:Bath_Room_win
 on_rec_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_rec_button_clicked(){$/;"	f	class:MainWindow
 on_take_photo_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_take_photo_button_clicked(){$/;"	f	class:MainWindow
 os	.ycm_extra_conf.py	/^import os$/;"	i
@@ -788,7 +529,11 @@ pushButton_9	ui/ui_MainWindow.h	/^    QPushButton *pushButton_9;$/;"	m	class:Ui_
 qCleanupResources_res	rcc/qrc_res.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_res)()$/;"	f
 qInitResources_res	rcc/qrc_res.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_res)()$/;"	f
 qt_meta_data_Bath_Room_win	moc/moc_Bath_Room_win.cpp	/^static const uint qt_meta_data_Bath_Room_win[] = {$/;"	v	file:
+qt_meta_data_Bed_Room_win	moc/moc_Bed_Room_win.cpp	/^static const uint qt_meta_data_Bed_Room_win[] = {$/;"	v	file:
 qt_meta_data_Camera	moc/moc_Camera.cpp	/^static const uint qt_meta_data_Camera[] = {$/;"	v	file:
+qt_meta_data_Corridor_win	moc/moc_Corridor_win.cpp	/^static const uint qt_meta_data_Corridor_win[] = {$/;"	v	file:
+qt_meta_data_GPIO	moc/moc_GPIO.cpp	/^static const uint qt_meta_data_GPIO[] = {$/;"	v	file:
+qt_meta_data_IntHelper	moc/moc_GPIO.cpp	/^static const uint qt_meta_data_IntHelper[] = {$/;"	v	file:
 qt_meta_data_MainWindow	moc/moc_MainWindow.cpp	/^static const uint qt_meta_data_MainWindow[] = {$/;"	v	file:
 qt_meta_data_Room	moc/moc_Room.cpp	/^static const uint qt_meta_data_Room[] = {$/;"	v	file:
 qt_meta_data_Room_win	moc/moc_Room_win.cpp	/^static const uint qt_meta_data_Room_win[] = {$/;"	v	file:
@@ -797,8 +542,16 @@ qt_meta_data_Work_Room_win	moc/moc_Work_Room_win.cpp	/^static const uint qt_meta
 qt_meta_data_info_widget	moc/moc_info_widget.cpp	/^static const uint qt_meta_data_info_widget[] = {$/;"	v	file:
 qt_meta_stringdata_Bath_Room_win	moc/moc_Bath_Room_win.cpp	/^static const qt_meta_stringdata_Bath_Room_win_t qt_meta_stringdata_Bath_Room_win = {$/;"	v	file:
 qt_meta_stringdata_Bath_Room_win_t	moc/moc_Bath_Room_win.cpp	/^struct qt_meta_stringdata_Bath_Room_win_t {$/;"	s	file:
+qt_meta_stringdata_Bed_Room_win	moc/moc_Bed_Room_win.cpp	/^static const qt_meta_stringdata_Bed_Room_win_t qt_meta_stringdata_Bed_Room_win = {$/;"	v	file:
+qt_meta_stringdata_Bed_Room_win_t	moc/moc_Bed_Room_win.cpp	/^struct qt_meta_stringdata_Bed_Room_win_t {$/;"	s	file:
 qt_meta_stringdata_Camera	moc/moc_Camera.cpp	/^static const qt_meta_stringdata_Camera_t qt_meta_stringdata_Camera = {$/;"	v	file:
 qt_meta_stringdata_Camera_t	moc/moc_Camera.cpp	/^struct qt_meta_stringdata_Camera_t {$/;"	s	file:
+qt_meta_stringdata_Corridor_win	moc/moc_Corridor_win.cpp	/^static const qt_meta_stringdata_Corridor_win_t qt_meta_stringdata_Corridor_win = {$/;"	v	file:
+qt_meta_stringdata_Corridor_win_t	moc/moc_Corridor_win.cpp	/^struct qt_meta_stringdata_Corridor_win_t {$/;"	s	file:
+qt_meta_stringdata_GPIO	moc/moc_GPIO.cpp	/^static const qt_meta_stringdata_GPIO_t qt_meta_stringdata_GPIO = {$/;"	v	file:
+qt_meta_stringdata_GPIO_t	moc/moc_GPIO.cpp	/^struct qt_meta_stringdata_GPIO_t {$/;"	s	file:
+qt_meta_stringdata_IntHelper	moc/moc_GPIO.cpp	/^static const qt_meta_stringdata_IntHelper_t qt_meta_stringdata_IntHelper = {$/;"	v	file:
+qt_meta_stringdata_IntHelper_t	moc/moc_GPIO.cpp	/^struct qt_meta_stringdata_IntHelper_t {$/;"	s	file:
 qt_meta_stringdata_MainWindow	moc/moc_MainWindow.cpp	/^static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {$/;"	v	file:
 qt_meta_stringdata_MainWindow_t	moc/moc_MainWindow.cpp	/^struct qt_meta_stringdata_MainWindow_t {$/;"	s	file:
 qt_meta_stringdata_Room	moc/moc_Room.cpp	/^static const qt_meta_stringdata_Room_t qt_meta_stringdata_Room = {$/;"	v	file:
@@ -812,7 +565,11 @@ qt_meta_stringdata_Work_Room_win_t	moc/moc_Work_Room_win.cpp	/^struct qt_meta_st
 qt_meta_stringdata_info_widget	moc/moc_info_widget.cpp	/^static const qt_meta_stringdata_info_widget_t qt_meta_stringdata_info_widget = {$/;"	v	file:
 qt_meta_stringdata_info_widget_t	moc/moc_info_widget.cpp	/^struct qt_meta_stringdata_info_widget_t {$/;"	s	file:
 qt_metacall	moc/moc_Bath_Room_win.cpp	/^int Bath_Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Bath_Room_win
+qt_metacall	moc/moc_Bed_Room_win.cpp	/^int Bed_Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Bed_Room_win
 qt_metacall	moc/moc_Camera.cpp	/^int Camera::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Camera
+qt_metacall	moc/moc_Corridor_win.cpp	/^int Corridor_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Corridor_win
+qt_metacall	moc/moc_GPIO.cpp	/^int GPIO::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GPIO
+qt_metacall	moc/moc_GPIO.cpp	/^int IntHelper::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:IntHelper
 qt_metacall	moc/moc_MainWindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow
 qt_metacall	moc/moc_Room.cpp	/^int Room::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Room
 qt_metacall	moc/moc_Room_win.cpp	/^int Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Room_win
@@ -820,7 +577,11 @@ qt_metacall	moc/moc_TCP.cpp	/^int TCP::qt_metacall(QMetaObject::Call _c, int _id
 qt_metacall	moc/moc_Work_Room_win.cpp	/^int Work_Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Work_Room_win
 qt_metacall	moc/moc_info_widget.cpp	/^int info_widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:info_widget
 qt_metacast	moc/moc_Bath_Room_win.cpp	/^void *Bath_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Bath_Room_win
+qt_metacast	moc/moc_Bed_Room_win.cpp	/^void *Bed_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Bed_Room_win
 qt_metacast	moc/moc_Camera.cpp	/^void *Camera::qt_metacast(const char *_clname)$/;"	f	class:Camera
+qt_metacast	moc/moc_Corridor_win.cpp	/^void *Corridor_win::qt_metacast(const char *_clname)$/;"	f	class:Corridor_win
+qt_metacast	moc/moc_GPIO.cpp	/^void *GPIO::qt_metacast(const char *_clname)$/;"	f	class:GPIO
+qt_metacast	moc/moc_GPIO.cpp	/^void *IntHelper::qt_metacast(const char *_clname)$/;"	f	class:IntHelper
 qt_metacast	moc/moc_MainWindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow
 qt_metacast	moc/moc_Room.cpp	/^void *Room::qt_metacast(const char *_clname)$/;"	f	class:Room
 qt_metacast	moc/moc_Room_win.cpp	/^void *Room_win::qt_metacast(const char *_clname)$/;"	f	class:Room_win
@@ -831,34 +592,58 @@ qt_resource_data	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_data[]
 qt_resource_name	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_name[] = {$/;"	v	file:
 qt_resource_struct	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_struct[] = {$/;"	v	file:
 qt_static_metacall	moc/moc_Bath_Room_win.cpp	/^void Bath_Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Bath_Room_win
+qt_static_metacall	moc/moc_Bed_Room_win.cpp	/^void Bed_Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Bed_Room_win
 qt_static_metacall	moc/moc_Camera.cpp	/^void Camera::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Camera
+qt_static_metacall	moc/moc_Corridor_win.cpp	/^void Corridor_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Corridor_win
+qt_static_metacall	moc/moc_GPIO.cpp	/^void GPIO::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GPIO
+qt_static_metacall	moc/moc_GPIO.cpp	/^void IntHelper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:IntHelper
 qt_static_metacall	moc/moc_MainWindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow
 qt_static_metacall	moc/moc_Room.cpp	/^void Room::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Room
 qt_static_metacall	moc/moc_Room_win.cpp	/^void Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Room_win
 qt_static_metacall	moc/moc_TCP.cpp	/^void TCP::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:TCP
 qt_static_metacall	moc/moc_Work_Room_win.cpp	/^void Work_Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Work_Room_win
 qt_static_metacall	moc/moc_info_widget.cpp	/^void info_widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:info_widget
+readGPIOReg	src/mmapGpio.cpp	/^void mmapGpio::readGPIOReg(unsigned int reg, unsigned int &val){$/;"	f	class:mmapGpio
+readPin	src/mmapGpio.cpp	/^unsigned int mmapGpio::readPin(unsigned int pinnum){$/;"	f	class:mmapGpio
 readTcpData	src/TCP.cpp	/^void TCP::readTcpData()$/;"	f	class:TCP
 read_ip	src/Room.cpp	/^QString Room::read_ip(){$/;"	f	class:Room
 rec_button	ui/ui_MainWindow.h	/^    QPushButton *rec_button;$/;"	m	class:Ui_MainWindow
 retranslateUi	ui/ui_Bath_Room_win.h	/^    void retranslateUi(QDialog *Bath_Room_win)$/;"	f	class:Ui_Bath_Room_win
+retranslateUi	ui/ui_Bed_Room_win.h	/^    void retranslateUi(QDialog *Bed_Room_win)$/;"	f	class:Ui_Bed_Room_win
+retranslateUi	ui/ui_Corridor_win.h	/^    void retranslateUi(QDialog *Corridor_win)$/;"	f	class:Ui_Corridor_win
 retranslateUi	ui/ui_MainWindow.h	/^    void retranslateUi(QMainWindow *MainWindow)$/;"	f	class:Ui_MainWindow
 retranslateUi	ui/ui_Work_Room_win.h	/^    void retranslateUi(QDialog *Work_Room_win)$/;"	f	class:Ui_Work_Room_win
 retranslateUi	ui/ui_info_widget.h	/^    void retranslateUi(QWidget *info_widget)$/;"	f	class:Ui_info_widget
 retry_count	include/TCP.h	/^  int retry_count;$/;"	m	class:TCP
 room	include/Bath_Room_win.h	/^    Room *room;$/;"	m	class:Bath_Room_win
+room	include/Bed_Room_win.h	/^    Room *room;$/;"	m	class:Bed_Room_win
+room	include/Corridor_win.h	/^    Room *room;$/;"	m	class:Corridor_win
+room	include/Living_Room_win.h	/^    Room *room;$/;"	m	class:Bath_Room_win
 room	include/Work_Room_win.h	/^    Room *room;$/;"	m	class:Work_Room_win
+room_buttons_frame	ui/ui_Bath_Room_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Bath_Room_win
+room_buttons_frame	ui/ui_Bed_Room_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Bed_Room_win
+room_buttons_frame	ui/ui_Corridor_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Corridor_win
 room_id	include/Room.h	/^   ROOM_ID room_id;$/;"	m	class:Room
 room_status_received	moc/moc_Room.cpp	/^void Room::room_status_received(Room_status _t1)$/;"	f	class:Room
 room_status_received	src/Bath_Room_win.cpp	/^void Bath_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Bath_Room_win
+room_status_received	src/Bed_Room_win.cpp	/^void Bed_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Bed_Room_win
+room_status_received	src/Corridor_win.cpp	/^void Corridor_win::room_status_received(Room_status room_status){$/;"	f	class:Corridor_win
+room_status_received	src/Living_Room_win.cpp	/^void Bath_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Bath_Room_win
 room_status_received	src/Work_Room_win.cpp	/^void Work_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Work_Room_win
 sendData	src/Room.cpp	/^void Room::sendData(QByteArray data){$/;"	f	class:Room
 sendData	src/TCP.cpp	/^void TCP::sendData(QByteArray data){$/;"	f	class:TCP
 send_tcp_cmd	src/Bath_Room_win.cpp	/^void Bath_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Bath_Room_win
+send_tcp_cmd	src/Bed_Room_win.cpp	/^void Bed_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Bed_Room_win
+send_tcp_cmd	src/Corridor_win.cpp	/^void Corridor_win::send_tcp_cmd(QString cmd){$/;"	f	class:Corridor_win
+send_tcp_cmd	src/Living_Room_win.cpp	/^void Bath_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Bath_Room_win
 send_tcp_cmd	src/Work_Room_win.cpp	/^void Work_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Work_Room_win
 server	include/MainWindow.h	/^    TCP *server;$/;"	m	class:MainWindow
+setPinDir	src/mmapGpio.cpp	/^void mmapGpio::setPinDir(unsigned int pinnum, const unsigned int &dir){$/;"	f	class:mmapGpio
 set_color	src/info_widget.cpp	/^void info_widget::set_color(QString color){$/;"	f	class:info_widget
 set_connection_status	src/Bath_Room_win.cpp	/^void Bath_Room_win::set_connection_status(int status){$/;"	f	class:Bath_Room_win
+set_connection_status	src/Bed_Room_win.cpp	/^void Bed_Room_win::set_connection_status(int status){$/;"	f	class:Bed_Room_win
+set_connection_status	src/Corridor_win.cpp	/^void Corridor_win::set_connection_status(int status){$/;"	f	class:Corridor_win
+set_connection_status	src/Living_Room_win.cpp	/^void Bath_Room_win::set_connection_status(int status){$/;"	f	class:Bath_Room_win
 set_connection_status	src/Room.cpp	/^void Room::set_connection_status(int status){$/;"	f	class:Room
 set_connection_status	src/Work_Room_win.cpp	/^void Work_Room_win::set_connection_status(int status){$/;"	f	class:Work_Room_win
 set_ip	src/TCP.cpp	/^void TCP::set_ip(QString ipaddr){$/;"	f	class:TCP
@@ -866,17 +651,24 @@ set_name	src/info_widget.cpp	/^void info_widget::set_name(QString name){$/;"	f	c
 set_room_status	src/info_widget.cpp	/^void info_widget::set_room_status(Room_status status){$/;"	f	class:info_widget
 set_widget	src/Camera.cpp	/^void Camera::set_widget(QVideoWidget *widget){$/;"	f	class:Camera
 setupUi	ui/ui_Bath_Room_win.h	/^    void setupUi(QDialog *Bath_Room_win)$/;"	f	class:Ui_Bath_Room_win
+setupUi	ui/ui_Bed_Room_win.h	/^    void setupUi(QDialog *Bed_Room_win)$/;"	f	class:Ui_Bed_Room_win
+setupUi	ui/ui_Corridor_win.h	/^    void setupUi(QDialog *Corridor_win)$/;"	f	class:Ui_Corridor_win
 setupUi	ui/ui_MainWindow.h	/^    void setupUi(QMainWindow *MainWindow)$/;"	f	class:Ui_MainWindow
 setupUi	ui/ui_Work_Room_win.h	/^    void setupUi(QDialog *Work_Room_win)$/;"	f	class:Ui_Work_Room_win
 setupUi	ui/ui_info_widget.h	/^    void setupUi(QWidget *info_widget)$/;"	f	class:Ui_info_widget
 sh	nbproject/Makefile-variables.mk	/^ROOT:sh = test -f nbproject\/private\/Makefile-variables.mk || \\$/;"	m
 shot_timer	include/Camera.h	/^        QTimer shot_timer;$/;"	m	class:Camera
 side_menu	ui/ui_MainWindow.h	/^    QListWidget *side_menu;$/;"	m	class:Ui_MainWindow
+siren_beep	src/GPIO.cpp	/^void GPIO::siren_beep(){$/;"	f	class:GPIO
 socket	include/TCP.h	/^  QTcpSocket* socket;$/;"	m	class:TCP
 stack_widget	ui/ui_MainWindow.h	/^    QStackedWidget *stack_widget;$/;"	m	class:Ui_MainWindow
 start	src/Camera.cpp	/^void Camera::start(){$/;"	f	class:Camera
 staticMetaObject	moc/moc_Bath_Room_win.cpp	/^const QMetaObject Bath_Room_win::staticMetaObject = {$/;"	m	class:Bath_Room_win	file:
+staticMetaObject	moc/moc_Bed_Room_win.cpp	/^const QMetaObject Bed_Room_win::staticMetaObject = {$/;"	m	class:Bed_Room_win	file:
 staticMetaObject	moc/moc_Camera.cpp	/^const QMetaObject Camera::staticMetaObject = {$/;"	m	class:Camera	file:
+staticMetaObject	moc/moc_Corridor_win.cpp	/^const QMetaObject Corridor_win::staticMetaObject = {$/;"	m	class:Corridor_win	file:
+staticMetaObject	moc/moc_GPIO.cpp	/^const QMetaObject GPIO::staticMetaObject = {$/;"	m	class:GPIO	file:
+staticMetaObject	moc/moc_GPIO.cpp	/^const QMetaObject IntHelper::staticMetaObject = {$/;"	m	class:IntHelper	file:
 staticMetaObject	moc/moc_MainWindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
 staticMetaObject	moc/moc_Room.cpp	/^const QMetaObject Room::staticMetaObject = {$/;"	m	class:Room	file:
 staticMetaObject	moc/moc_Room_win.cpp	/^const QMetaObject Room_win::staticMetaObject = {$/;"	m	class:Room_win	file:
@@ -884,17 +676,24 @@ staticMetaObject	moc/moc_TCP.cpp	/^const QMetaObject TCP::staticMetaObject = {$/
 staticMetaObject	moc/moc_Work_Room_win.cpp	/^const QMetaObject Work_Room_win::staticMetaObject = {$/;"	m	class:Work_Room_win	file:
 staticMetaObject	moc/moc_info_widget.cpp	/^const QMetaObject info_widget::staticMetaObject = {$/;"	m	class:info_widget	file:
 status	include/Bath_Room_win.h	/^    Room_status status;$/;"	m	class:Bath_Room_win
+status	include/Bed_Room_win.h	/^    Room_status status;$/;"	m	class:Bed_Room_win
+status	include/Corridor_win.h	/^    Room_status status;$/;"	m	class:Corridor_win
+status	include/Living_Room_win.h	/^    Room_status status;$/;"	m	class:Bath_Room_win
 status	include/Room.h	/^     Room_status status;$/;"	m	class:Room
 status	include/Work_Room_win.h	/^    Room_status status;$/;"	m	class:Work_Room_win
 status_timer	include/MainWindow.h	/^    QTimer status_timer;$/;"	m	class:MainWindow
 stop	src/Camera.cpp	/^void Camera::stop(){$/;"	f	class:Camera
-stringdata0	moc/moc_Bath_Room_win.cpp	/^    char stringdata0[193];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+stringdata0	moc/moc_Bath_Room_win.cpp	/^    char stringdata0[171];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+stringdata0	moc/moc_Bed_Room_win.cpp	/^    char stringdata0[170];$/;"	m	struct:qt_meta_stringdata_Bed_Room_win_t	file:
 stringdata0	moc/moc_Camera.cpp	/^    char stringdata0[35];$/;"	m	struct:qt_meta_stringdata_Camera_t	file:
+stringdata0	moc/moc_Corridor_win.cpp	/^    char stringdata0[170];$/;"	m	struct:qt_meta_stringdata_Corridor_win_t	file:
+stringdata0	moc/moc_GPIO.cpp	/^    char stringdata0[16];$/;"	m	struct:qt_meta_stringdata_GPIO_t	file:
+stringdata0	moc/moc_GPIO.cpp	/^    char stringdata0[21];$/;"	m	struct:qt_meta_stringdata_IntHelper_t	file:
 stringdata0	moc/moc_MainWindow.cpp	/^    char stringdata0[127];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
 stringdata0	moc/moc_Room.cpp	/^    char stringdata0[75];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
 stringdata0	moc/moc_Room_win.cpp	/^    char stringdata0[72];$/;"	m	struct:qt_meta_stringdata_Room_win_t	file:
 stringdata0	moc/moc_TCP.cpp	/^    char stringdata0[87];$/;"	m	struct:qt_meta_stringdata_TCP_t	file:
-stringdata0	moc/moc_Work_Room_win.cpp	/^    char stringdata0[193];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
+stringdata0	moc/moc_Work_Room_win.cpp	/^    char stringdata0[119];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
 stringdata0	moc/moc_info_widget.cpp	/^    char stringdata0[21];$/;"	m	struct:qt_meta_stringdata_info_widget_t	file:
 switch_all_lights	src/Room.cpp	/^void Room::switch_all_lights(bool enable){$/;"	f	class:Room
 take_photo	src/Camera.cpp	/^void Camera::take_photo(){$/;"	f	class:Camera
@@ -904,48 +703,65 @@ tcp	include/Room.h	/^    TCP *tcp;$/;"	m	class:Room
 tcp	include/info_widget.h	/^    TCP *tcp;$/;"	m	class:info_widget
 tcp_data	src/Room.cpp	/^void Room::tcp_data(QByteArray data){$/;"	f	class:Room
 tcp_thread	include/Bath_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Bath_Room_win
+tcp_thread	include/Bed_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Bed_Room_win
+tcp_thread	include/Corridor_win.h	/^    QThread *tcp_thread;$/;"	m	class:Corridor_win
+tcp_thread	include/Living_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Bath_Room_win
 tcp_thread	include/Work_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Work_Room_win
 tcp_thread	include/info_widget.h	/^    QThread *tcp_thread;$/;"	m	class:info_widget
 temp	include/info_widget.h	/^    QString temp;$/;"	m	struct:Room_status
 temp_icon_label	ui/ui_Bath_Room_win.h	/^    QLabel *temp_icon_label;$/;"	m	class:Ui_Bath_Room_win
+temp_icon_label	ui/ui_Bed_Room_win.h	/^    QLabel *temp_icon_label;$/;"	m	class:Ui_Bed_Room_win
+temp_icon_label	ui/ui_Corridor_win.h	/^    QLabel *temp_icon_label;$/;"	m	class:Ui_Corridor_win
 temp_icon_label	ui/ui_Work_Room_win.h	/^    QLabel *temp_icon_label;$/;"	m	class:Ui_Work_Room_win
 temp_label	ui/ui_Bath_Room_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Bath_Room_win
+temp_label	ui/ui_Bed_Room_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Bed_Room_win
+temp_label	ui/ui_Corridor_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Corridor_win
 temp_label	ui/ui_Work_Room_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Work_Room_win
 temp_label	ui/ui_info_widget.h	/^    QLabel *temp_label;$/;"	m	class:Ui_info_widget
 time_label	ui/ui_MainWindow.h	/^    QLabel *time_label;$/;"	m	class:Ui_MainWindow
 toggle_all_lights	src/Room.cpp	/^void Room::toggle_all_lights(){$/;"	f	class:Room
-unix	moc/moc_predefs.h	202;"	d
 update_info	src/Bath_Room_win.cpp	/^void Bath_Room_win::update_info(){$/;"	f	class:Bath_Room_win
+update_info	src/Bed_Room_win.cpp	/^void Bed_Room_win::update_info(){$/;"	f	class:Bed_Room_win
+update_info	src/Corridor_win.cpp	/^void Corridor_win::update_info(){$/;"	f	class:Corridor_win
+update_info	src/Living_Room_win.cpp	/^void Bath_Room_win::update_info(){$/;"	f	class:Bath_Room_win
 update_info	src/MainWindow.cpp	/^void MainWindow::update_info(){$/;"	f	class:MainWindow
 update_info	src/Work_Room_win.cpp	/^void Work_Room_win::update_info(){$/;"	f	class:Work_Room_win
 update_room_info	src/Bath_Room_win.cpp	/^void Bath_Room_win::update_room_info(){$/;"	f	class:Bath_Room_win
+update_room_info	src/Bed_Room_win.cpp	/^void Bed_Room_win::update_room_info(){$/;"	f	class:Bed_Room_win
+update_room_info	src/Corridor_win.cpp	/^void Corridor_win::update_room_info(){$/;"	f	class:Corridor_win
+update_room_info	src/Living_Room_win.cpp	/^void Bath_Room_win::update_room_info(){$/;"	f	class:Bath_Room_win
 update_room_info	src/Work_Room_win.cpp	/^void Work_Room_win::update_room_info(){$/;"	f	class:Work_Room_win
 update_status	src/MainWindow.cpp	/^void MainWindow::update_status(){$/;"	f	class:MainWindow
-verticalLayout	ui/ui_Bath_Room_win.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_Bath_Room_win
 verticalLayout	ui/ui_MainWindow.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_MainWindow
-verticalLayout	ui/ui_Work_Room_win.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_Work_Room_win
 video_widget	ui/ui_MainWindow.h	/^    QVideoWidget *video_widget;$/;"	m	class:Ui_MainWindow
 viewFinder	include/Camera.h	/^        QVideoWidget *viewFinder;$/;"	m	class:Camera
 wc_info	ui/ui_MainWindow.h	/^    info_widget *wc_info;$/;"	m	class:Ui_MainWindow
 widget	include/Bath_Room_win.h	/^    Ui::Bath_Room_win widget;$/;"	m	class:Bath_Room_win
+widget	include/Bed_Room_win.h	/^    Ui::Bed_Room_win widget;$/;"	m	class:Bed_Room_win
+widget	include/Corridor_win.h	/^    Ui::Corridor_win widget;$/;"	m	class:Corridor_win
+widget	include/Living_Room_win.h	/^    Ui::Bath_Room_win widget;$/;"	m	class:Bath_Room_win
 widget	include/MainWindow.h	/^    Ui::MainWindow widget;$/;"	m	class:MainWindow
 widget	include/Work_Room_win.h	/^    Ui::Work_Room_win widget;$/;"	m	class:Work_Room_win
 widget	include/info_widget.h	/^    Ui::info_widget widget;$/;"	m	class:info_widget
 widget	ui/ui_Bath_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Bath_Room_win
-widget	ui/ui_Work_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Work_Room_win
-widget	ui/ui_info_widget.h	/^    QWidget *widget;$/;"	m	class:Ui_info_widget
-widget1	ui/ui_Bath_Room_win.h	/^    QWidget *widget1;$/;"	m	class:Ui_Bath_Room_win
-widget1	ui/ui_Work_Room_win.h	/^    QWidget *widget1;$/;"	m	class:Ui_Work_Room_win
-widget2	ui/ui_Bath_Room_win.h	/^    QWidget *widget2;$/;"	m	class:Ui_Bath_Room_win
-widget2	ui/ui_Work_Room_win.h	/^    QWidget *widget2;$/;"	m	class:Ui_Work_Room_win
+widget	ui/ui_Bed_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Bed_Room_win
+widget	ui/ui_MainWindow.h	/^    QWidget *widget;$/;"	m	class:Ui_MainWindow
 workroom	include/MainWindow.h	/^    Work_Room_win *workroom;$/;"	m	class:MainWindow
 workroom_info	ui/ui_MainWindow.h	/^    info_widget *workroom_info;$/;"	m	class:Ui_MainWindow
+writeGPIOReg	src/mmapGpio.cpp	/^void mmapGpio::writeGPIOReg(unsigned int reg, unsigned int val){$/;"	f	class:mmapGpio
+writePinHigh	include/mmapGpio.h	/^	void inline writePinHigh(unsigned int pinnum){*(this->gpio + GPFSET0) = (1 << pinnum);}$/;"	f	class:mmapGpio
+writePinLow	include/mmapGpio.h	/^	void inline writePinLow(unsigned int pinnum){*(this->gpio + GPFCLR0) = (1 << pinnum);}$/;"	f	class:mmapGpio
+writePinState	src/mmapGpio.cpp	/^void mmapGpio::writePinState(unsigned int pinnum, const unsigned int &pinstate){$/;"	f	class:mmapGpio
 write_pin	src/Pinctrl.cpp	/^void Pinctrl::write_pin(int pin, int state){$/;"	f	class:Pinctrl
 ycm_core	.ycm_extra_conf.py	/^import ycm_core$/;"	i
 ~Bath_Room_win	src/Bath_Room_win.cpp	/^Bath_Room_win::~Bath_Room_win() {$/;"	f	class:Bath_Room_win
+~Bath_Room_win	src/Living_Room_win.cpp	/^Bath_Room_win::~Bath_Room_win() {$/;"	f	class:Bath_Room_win
+~Bed_Room_win	src/Bed_Room_win.cpp	/^Bed_Room_win::~Bed_Room_win() {$/;"	f	class:Bed_Room_win
+~Corridor_win	src/Corridor_win.cpp	/^Corridor_win::~Corridor_win() {$/;"	f	class:Corridor_win
 ~MainWindow	src/MainWindow.cpp	/^MainWindow::~MainWindow() {$/;"	f	class:MainWindow
 ~Pinctrl	src/Pinctrl.cpp	/^Pinctrl::~Pinctrl() {$/;"	f	class:Pinctrl
 ~TCP	src/TCP.cpp	/^TCP::~TCP() {$/;"	f	class:TCP
 ~Work_Room_win	src/Work_Room_win.cpp	/^Work_Room_win::~Work_Room_win() {$/;"	f	class:Work_Room_win
 ~info_widget	src/info_widget.cpp	/^info_widget::~info_widget() {$/;"	f	class:info_widget
 ~initializer	rcc/qrc_res.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_res)(); }$/;"	f	struct:__anon1::initializer
+~mmapGpio	src/mmapGpio.cpp	/^mmapGpio::~mmapGpio(){$/;"	f	class:mmapGpio

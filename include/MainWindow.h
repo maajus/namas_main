@@ -61,6 +61,7 @@ private slots:
     void update_status();
     void update_info();
     void menu_selected(int);
+    void gpio_interrupt(int);
 };
 
 #endif /* _MAINWINDOW_H */
