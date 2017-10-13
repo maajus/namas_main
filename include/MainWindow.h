@@ -51,7 +51,9 @@ private:
     Bed_Room_win *bedroom;
     Work_Room_win *workroom;
     Corridor_win *corridor;
+#ifndef PC
     GPIO *gpio;
+#endif
     Camera *cam;
     
 private slots:

@@ -8,16 +8,7 @@ TEMPLATE = app
 TARGET = build/namas_main
 INCLUDEPATH += . src/ include/ ui/ 
 
-contains( CONFIG, PC ) {
-    message( "Configuring for PC build..." )
-    INCLUDEPATH += /usr/local/include
-    DEFINES += PC
-}else{
-    message( "Configuring for RPI build..." )
-    INCLUDEPATH += /home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include
-    QMAKE_POST_LINK += ./cp.sh
-    
-}
+
 
 # Input
 HEADERS += include/build_number.h \
@@ -63,11 +54,29 @@ RESOURCES += resources/res.qrc
 # So wiringPi include files can be found during compile
 INCLUDEPATH    += ./lib
 
-# To link the wiringPi library when making the executable
-LIBS += -L./lib -lwiringPi
 
 UI_DIR=ui
 MOC_DIR=moc
 OBJECTS_DIR=obj
 RCC_DIR=rcc
 UI_HEADERS_DIR=ui
+
+
+
+
+contains( CONFIG, PC ) {
+    message( "Configuring for PC build..." )
+    INCLUDEPATH += /usr/local/include
+    DEFINES += PC
+    SOURCES -= src/GPIO.cpp
+    HEADERS -= include/GPIO.h
+
+
+}else{
+    message( "Configuring for RPI build..." )
+    INCLUDEPATH += /home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include
+    QMAKE_POST_LINK += ./cp.sh
+    # To link the wiringPi library when making the executable
+    LIBS += -L./lib -lwiringPi
+    
+}

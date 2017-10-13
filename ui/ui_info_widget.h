@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'info_widget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.9.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -23,7 +23,7 @@ class Ui_info_widget
 {
 public:
     QLabel *name_label;
-    QLabel *label_3;
+    QLabel *status_label;
     QLabel *temp_label;
     QLabel *humidity_label;
     QLabel *label;
@@ -44,10 +44,10 @@ public:
         font.setWeight(75);
         name_label->setFont(font);
         name_label->setStyleSheet(QStringLiteral("color: #282828;"));
-        label_3 = new QLabel(info_widget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(210, 90, 41, 51));
-        label_3->setScaledContents(true);
+        status_label = new QLabel(info_widget);
+        status_label->setObjectName(QStringLiteral("status_label"));
+        status_label->setGeometry(QRect(20, 38, 171, 21));
+        status_label->setScaledContents(true);
         temp_label = new QLabel(info_widget);
         temp_label->setObjectName(QStringLiteral("temp_label"));
         temp_label->setGeometry(QRect(55, 68, 121, 33));
@@ -83,11 +83,11 @@ public:
 
     void retranslateUi(QWidget *info_widget)
     {
-        info_widget->setWindowTitle(QApplication::translate("info_widget", "info_widget", 0));
-        name_label->setText(QApplication::translate("info_widget", "N/A", 0));
-        label_3->setText(QString());
-        temp_label->setText(QApplication::translate("info_widget", "N/A", 0));
-        humidity_label->setText(QApplication::translate("info_widget", "N/A", 0));
+        info_widget->setWindowTitle(QApplication::translate("info_widget", "info_widget", Q_NULLPTR));
+        name_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
+        status_label->setText(QString());
+        temp_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
+        humidity_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
     } // retranslateUi

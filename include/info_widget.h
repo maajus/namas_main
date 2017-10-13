@@ -25,6 +25,7 @@ struct Room_status {
     int L[4]; //lights state
     QString temp;
     QString humi;
+    int connected;
 };
 
 

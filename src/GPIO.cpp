@@ -1,9 +1,9 @@
 #include "GPIO.h"
-#include <wiringPi.h>
-#include <pcf8574.h>
 #include <QDebug>
 #include <QThread>
 #include <Config.h>
+#include <wiringPi.h>
+#include <pcf8574.h>
 
 IntHelper *helper;
 
@@ -88,9 +88,5 @@ void GPIO::init_pins(){
 }
 
 void GPIO::siren_beep(){
-
-    pwmWrite(GPIO_SIREN, 12);
-    delay(40);
-    pwmWrite(GPIO_SIREN, 0);
 
 }

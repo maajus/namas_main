@@ -19,7 +19,6 @@ void Room::connect2module(){
     tcp->connect2room();
 
 
-
 }
 
 QString Room::read_ip(){
@@ -47,6 +46,7 @@ QString Room::read_ip(){
 
 void Room::sendData(QByteArray data){
 
+    if(connection_status != Status::FAILED)
     tcp->sendData(data);
 
 }
@@ -65,6 +65,7 @@ void Room::tcp_data(QByteArray data){
                 status.L[1] = info[3].toInt();
                 status.L[2] = info[4].toInt();
                 status.L[3] = info[5].toInt();
+                status.connected = connection_status;
 
                 emit room_status_received(status);
                 break;
@@ -76,11 +77,11 @@ void Room::tcp_data(QByteArray data){
     }
 }
 
-void Room::set_connection_status(int status){
+void Room::set_connection_status(int Status){
 
-    connection_status = status;
-    if(status==Status::FAILED)
-        qDebug()<<"Connection failed";
+    connection_status = Status;
+    status.connected = connection_status;
+    emit room_status_received(status);
 
 }
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.9.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -400,39 +400,39 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        leave_button->setText(QApplication::translate("MainWindow", "Leave", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        leave_button->setText(QApplication::translate("MainWindow", "Leave", Q_NULLPTR));
 
         const bool __sortingEnabled = side_menu->isSortingEnabled();
         side_menu->setSortingEnabled(false);
         side_menu->setSortingEnabled(__sortingEnabled);
 
-        pushButton->setText(QApplication::translate("MainWindow", "Play", 0));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Stop", 0));
-        pushButton_3->setText(QApplication::translate("MainWindow", "<", 0));
-        pushButton_4->setText(QApplication::translate("MainWindow", ">", 0));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Radio", 0));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Mp3", 0));
-        pushButton_7->setText(QApplication::translate("MainWindow", "Youtube", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Play", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Stop", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("MainWindow", "<", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("MainWindow", ">", Q_NULLPTR));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Radio", Q_NULLPTR));
+        pushButton_6->setText(QApplication::translate("MainWindow", "Mp3", Q_NULLPTR));
+        pushButton_7->setText(QApplication::translate("MainWindow", "Youtube", Q_NULLPTR));
         lineEdit->setInputMask(QString());
-        pushButton_39->setText(QApplication::translate("MainWindow", "Arm system", 0));
-        pushButton_8->setText(QApplication::translate("MainWindow", "1", 0));
-        pushButton_9->setText(QApplication::translate("MainWindow", "2", 0));
-        pushButton_10->setText(QApplication::translate("MainWindow", "3", 0));
-        pushButton_12->setText(QApplication::translate("MainWindow", "4", 0));
-        pushButton_13->setText(QApplication::translate("MainWindow", "5", 0));
-        pushButton_11->setText(QApplication::translate("MainWindow", "6", 0));
-        pushButton_15->setText(QApplication::translate("MainWindow", "7", 0));
-        pushButton_16->setText(QApplication::translate("MainWindow", "8", 0));
-        pushButton_14->setText(QApplication::translate("MainWindow", "9", 0));
-        pushButton_18->setText(QApplication::translate("MainWindow", "#", 0));
-        pushButton_19->setText(QApplication::translate("MainWindow", "0", 0));
-        pushButton_17->setText(QApplication::translate("MainWindow", "Del", 0));
-        rec_button->setText(QApplication::translate("MainWindow", "REC", 0));
-        take_photo_button->setText(QApplication::translate("MainWindow", "Photo", 0));
-        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
-        date_label->setText(QApplication::translate("MainWindow", "N/A", 0));
-        time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
+        pushButton_39->setText(QApplication::translate("MainWindow", "Arm system", Q_NULLPTR));
+        pushButton_8->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
+        pushButton_9->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
+        pushButton_10->setText(QApplication::translate("MainWindow", "3", Q_NULLPTR));
+        pushButton_12->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
+        pushButton_13->setText(QApplication::translate("MainWindow", "5", Q_NULLPTR));
+        pushButton_11->setText(QApplication::translate("MainWindow", "6", Q_NULLPTR));
+        pushButton_15->setText(QApplication::translate("MainWindow", "7", Q_NULLPTR));
+        pushButton_16->setText(QApplication::translate("MainWindow", "8", Q_NULLPTR));
+        pushButton_14->setText(QApplication::translate("MainWindow", "9", Q_NULLPTR));
+        pushButton_18->setText(QApplication::translate("MainWindow", "#", Q_NULLPTR));
+        pushButton_19->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
+        pushButton_17->setText(QApplication::translate("MainWindow", "Del", Q_NULLPTR));
+        rec_button->setText(QApplication::translate("MainWindow", "REC", Q_NULLPTR));
+        take_photo_button->setText(QApplication::translate("MainWindow", "Photo", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Settings", Q_NULLPTR));
+        date_label->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
+        time_label->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
     } // retranslateUi
 
 };

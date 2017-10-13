@@ -21,10 +21,11 @@
 
 MainWindow::MainWindow() {
 
-    qDebug()<<"init ok";
+#ifndef PC
     gpio = new GPIO();
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
-/*
+#endif
+
     widget.setupUi(this);
     
     
@@ -75,12 +76,13 @@ MainWindow::MainWindow() {
     this->update_status();
 
 
-    cam = new Camera;
-    if(cam->available()){
-        cam->set_widget(widget.video_widget);
-        cam->start();
-    }
-    */
+    //cam = new Camera;
+    //if(cam->available()){
+        //cam->set_widget(widget.video_widget);
+        //cam->start();
+    //}
+
+
 }
 
 MainWindow::~MainWindow() {

@@ -37,13 +37,13 @@
     <string>N/A</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="status_label">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>90</y>
-     <width>41</width>
-     <height>51</height>
+     <x>20</x>
+     <y>38</y>
+     <width>171</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">

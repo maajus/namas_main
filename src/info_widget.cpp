@@ -28,7 +28,7 @@ info_widget::info_widget(QWidget *parent) :
     bodyShadow->setOffset(7.0);
     this->setGraphicsEffect(bodyShadow);
     this->setStyleSheet("background-color: #435F70");
-
+    widget.status_label->setStyleSheet("color:#4c4c4c");
 
 }
 
@@ -38,8 +38,16 @@ info_widget::~info_widget() {
 
 void info_widget::set_room_status(Room_status status){
 
-    widget.temp_label->setText(status.temp);
-    widget.humidity_label->setText(status.humi);
+    if(status.connected == Status::CONNECTED){
+        widget.temp_label->setText(status.temp);
+        widget.humidity_label->setText(status.humi);
+        widget.status_label->setText("connected");
+    }
+    if(status.connected == Status::CONNECTING)
+        widget.status_label->setText("connecting");
+    if(status.connected == Status::FAILED)
+        widget.status_label->setText("connection failed");
+
 }
 
 void info_widget::paintEvent(QPaintEvent *)
