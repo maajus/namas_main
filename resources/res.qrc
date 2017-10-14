@@ -10,6 +10,8 @@
     <file>humidity.png</file>
     <file>camera.png</file>
     <file>bulb_on.png</file>
+    <file>locked.png</file>
+    <file>unlocked.png</file>
     <file>bulb_off.png</file>
     <file>home-security.png</file>
     <file>play.png</file>

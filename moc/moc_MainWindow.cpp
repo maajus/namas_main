@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[9];
-    char stringdata0[142];
+    QByteArrayData data[11];
+    char stringdata0[178];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,16 +36,19 @@ QT_MOC_LITERAL(1, 11, 23), // "on_leave_button_clicked"
 QT_MOC_LITERAL(2, 35, 0), // ""
 QT_MOC_LITERAL(3, 36, 28), // "on_take_photo_button_clicked"
 QT_MOC_LITERAL(4, 65, 21), // "on_rec_button_clicked"
-QT_MOC_LITERAL(5, 87, 13), // "update_status"
-QT_MOC_LITERAL(6, 101, 11), // "update_info"
-QT_MOC_LITERAL(7, 113, 13), // "menu_selected"
-QT_MOC_LITERAL(8, 127, 14) // "gpio_interrupt"
+QT_MOC_LITERAL(5, 87, 23), // "on_alarm_button_clicked"
+QT_MOC_LITERAL(6, 111, 13), // "update_status"
+QT_MOC_LITERAL(7, 125, 11), // "update_info"
+QT_MOC_LITERAL(8, 137, 13), // "menu_selected"
+QT_MOC_LITERAL(9, 151, 14), // "gpio_interrupt"
+QT_MOC_LITERAL(10, 166, 11) // "key_clicked"
 
     },
     "MainWindow\0on_leave_button_clicked\0\0"
     "on_take_photo_button_clicked\0"
-    "on_rec_button_clicked\0update_status\0"
-    "update_info\0menu_selected\0gpio_interrupt"
+    "on_rec_button_clicked\0on_alarm_button_clicked\0"
+    "update_status\0update_info\0menu_selected\0"
+    "gpio_interrupt\0key_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,7 +58,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,13 +66,15 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x08 /* Private */,
-       3,    0,   50,    2, 0x08 /* Private */,
-       4,    0,   51,    2, 0x08 /* Private */,
-       5,    0,   52,    2, 0x08 /* Private */,
-       6,    0,   53,    2, 0x08 /* Private */,
-       7,    1,   54,    2, 0x08 /* Private */,
-       8,    1,   57,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x08 /* Private */,
+       3,    0,   60,    2, 0x08 /* Private */,
+       4,    0,   61,    2, 0x08 /* Private */,
+       5,    0,   62,    2, 0x08 /* Private */,
+       6,    0,   63,    2, 0x08 /* Private */,
+       7,    0,   64,    2, 0x08 /* Private */,
+       8,    1,   65,    2, 0x08 /* Private */,
+       9,    1,   68,    2, 0x08 /* Private */,
+      10,    0,   71,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -77,8 +82,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -92,10 +99,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_leave_button_clicked(); break;
         case 1: _t->on_take_photo_button_clicked(); break;
         case 2: _t->on_rec_button_clicked(); break;
-        case 3: _t->update_status(); break;
-        case 4: _t->update_info(); break;
-        case 5: _t->menu_selected((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->gpio_interrupt((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->on_alarm_button_clicked(); break;
+        case 4: _t->update_status(); break;
+        case 5: _t->update_info(); break;
+        case 6: _t->menu_selected((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->gpio_interrupt((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->key_clicked(); break;
         default: ;
         }
     }
@@ -126,13 +135,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

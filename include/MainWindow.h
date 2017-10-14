@@ -60,10 +60,12 @@ private slots:
     void on_leave_button_clicked();
     void on_take_photo_button_clicked();
     void on_rec_button_clicked();
+    void on_alarm_button_clicked();
     void update_status();
     void update_info();
     void menu_selected(int);
     void gpio_interrupt(int);
+    void key_clicked();
 };
 
 #endif /* _MAINWINDOW_H */

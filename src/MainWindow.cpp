@@ -28,7 +28,6 @@ MainWindow::MainWindow() {
 
     widget.setupUi(this);
     
-    
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
@@ -55,6 +54,9 @@ MainWindow::MainWindow() {
     connect(widget.corridor_info,SIGNAL(clicked()), corridor, SLOT(show()));
 
 
+    widget.arm_alarm_label->setText("Arm alarm");
+    widget.alarm_button->setIconSize(QSize(120,120));
+    widget.alarm_button->setIcon(QIcon(":/icons/locked.png"));
 
 
     QFontDatabase::addApplicationFont(":/fonts/digital.ttf");
@@ -75,6 +77,16 @@ MainWindow::MainWindow() {
     widget.side_menu->setCurrentRow(0);
     this->update_status();
 
+    connect(widget.key_1, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_2, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_3, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_4, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_5, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_6, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_7, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_8, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_9, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.del_key, &QPushButton::clicked, this, &MainWindow::key_clicked);
 
     //cam = new Camera;
     //if(cam->available()){
@@ -137,6 +149,37 @@ void MainWindow::menu_selected(int menu){
 
 void MainWindow::gpio_interrupt(int intnr){
 
-    Logger::log(LOG_TRIGGERS, "Door opened");
+    switch(intnr){
+        case INT_DOOR_OPEN:
+            Logger::log(LOG_TRIGGERS, "Door opened");
+            break;
+
+    }
+}
+
+void MainWindow::key_clicked(){
+
+    QString obname = QObject::sender()->objectName();
+    QString text = widget.alarm_code_lineedit->text();
+
+    if(obname.mid(0,3) == "key"){
+
+        text.append(obname.mid(4));
+    }
+
+    if(obname == "del_key"){
+
+        text.chop(1);
+
+    }
+
+    if(text.size() <= 5)
+        widget.alarm_code_lineedit->setText(text);
+
+}
+
+void MainWindow::on_alarm_button_clicked(){
+
+    widget.alarm_code_lineedit->setText("");
 
 }
