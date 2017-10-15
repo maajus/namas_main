@@ -25,6 +25,7 @@
 #include "Work_Room_win.h"
 #include "Camera.h"
 #include "GPIO.h"
+#include "Alarm.h"
 
 enum Menus{
 
@@ -55,6 +56,7 @@ private:
     GPIO *gpio;
 #endif
     Camera *cam;
+    Alarm *alarm;
     
 private slots:
     void on_leave_button_clicked();

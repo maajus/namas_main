@@ -8,5 +8,7 @@
 #define CORRIDOR_LOGFILE "./corridor.log"
 #define WORKROOM_LOGFILE "./workroom.log"
 #define WC_LOGFILE "./wc.log"
+#define USERS_FILE "./user.json"
+
 
 #endif
