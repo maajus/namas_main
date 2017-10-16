@@ -86,6 +86,7 @@ MainWindow::MainWindow() {
     connect(widget.key_7, &QPushButton::clicked, this, &MainWindow::key_clicked);
     connect(widget.key_8, &QPushButton::clicked, this, &MainWindow::key_clicked);
     connect(widget.key_9, &QPushButton::clicked, this, &MainWindow::key_clicked);
+    connect(widget.key_0, &QPushButton::clicked, this, &MainWindow::key_clicked);
     connect(widget.del_key, &QPushButton::clicked, this, &MainWindow::key_clicked);
 
     //cam = new Camera;
@@ -96,7 +97,17 @@ MainWindow::MainWindow() {
 
 
     alarm = new Alarm();
-    alarm->readKeys();
+    QList<User> users;
+
+
+
+    widget.keypad_widget->setEnabled(false);
+
+
+
+    //alarm->readUsers(&users);
+    //alarm->writeKeys();
+    //qDebug()<<alarm->check_key("99999");
 
 }
 
@@ -165,10 +176,6 @@ void MainWindow::key_clicked(){
     QString obname = QObject::sender()->objectName();
     QString text = widget.alarm_code_lineedit->text();
 
-    if(obname.mid(0,3) == "key"){
-
-        text.append(obname.mid(4));
-    }
 
     if(obname == "del_key"){
 
@@ -176,12 +183,53 @@ void MainWindow::key_clicked(){
 
     }
 
-    if(text.size() <= 5)
+    if(text.size() >= 5) return;
+
+    if(obname.mid(0,3) == "key"){
+
+        text.append(obname.mid(4));
+    }
+
         widget.alarm_code_lineedit->setText(text);
+
+    if(alarm->isArmed()){
+        if(text.size() == 5)
+            widget.alarm_button->setEnabled(true);
+        else
+            widget.alarm_button->setEnabled(false);
+    }
 
 }
 
 void MainWindow::on_alarm_button_clicked(){
+
+
+    if(alarm->isArmed()){
+        QString key = widget.alarm_code_lineedit->text();
+        widget.keypad_widget->setEnabled(true);
+        QString user = alarm->disarm_system(key);
+        if(!user.isEmpty()){//code ok
+
+            qDebug()<<"[MainWindow] Alarm disabled by: "<<user;
+            widget.keypad_widget->setEnabled(false);
+            widget.alarm_button->setEnabled(true);
+
+        }
+        else{//wrong code
+        
+            qDebug()<<"[MainWindow] Wrong alarm code entered: "<<key;
+            widget.alarm_code_lineedit->setText("");
+        widget.alarm_button->setEnabled(false);
+
+        }
+    }
+    else{
+        
+       qDebug()<<"[MainWindow] Alarm is armed";
+        alarm->arm_system();
+        widget.keypad_widget->setEnabled(true);
+        widget.alarm_button->setEnabled(false);
+    }
 
     widget.alarm_code_lineedit->setText("");
 

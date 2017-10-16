@@ -10,6 +10,8 @@
 
 Alarm::Alarm(){
 
+    armed = false;
+
 }
 
 int Alarm::arm_system(){
@@ -19,25 +21,32 @@ int Alarm::arm_system(){
 
 }
 
-int Alarm::disarm_system(QString code){
+QString Alarm::disarm_system(QString code){
 
-    if(!armed) return 1;
-
-    if(this->check_key(code)){
+    if(!armed) return "";
+    QString user = this->check_key(code);
+    if(!user.isEmpty()){
         armed = false;
-        return true;
+        return user;
     }
     else {
-        return false;
+         return "";
     }
 
 
 }
 
-bool Alarm::check_key(QString code){
+QString Alarm::check_key(QString code){
 
-    Q_UNUSED(code);
-    return false;
+    QList<User> users;
+    this->readUsers(&users);
+
+    for(int i = 0; i < users.size(); i++){
+        if(users.at(i).key == code)
+            return users.at(i).name;
+    }
+
+    return "";
 }
 
 bool Alarm::isArmed(){
@@ -46,18 +55,34 @@ bool Alarm::isArmed(){
 
 }
 
-QStringList Alarm::readKeys(){
+int Alarm::readUsers(QList<User> *users){
 
     QFile jsonFile("./user.json");
-    if(!jsonFile.open(QIODevice::ReadOnly | QIODevice::Text)){
+    if(!jsonFile.open(QIODevice::ReadOnly)){
         qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
+        return 1;
     }
 
-    qDebug()<<jsonFile.readAll();
-    QJsonDocument doc = QJsonDocument::fromBinaryData(jsonFile.readAll());
+    QString val = jsonFile.readAll();
+    QJsonDocument doc = QJsonDocument().fromJson(val.toUtf8());
+    if(doc.isNull()){
+        qDebug()<<"[Alarm] Failed to read users json";
+        return 1;
+    }
+    QJsonArray array = doc.array();
 
-    qDebug()<<doc.toJson(QJsonDocument::Compact);
+    for(int i = 0; i < array.size(); i++)
+    {
+
+        User user;
+        user.name = array.at(i).toObject()["name"].toString();
+        user.key = array.at(i).toObject()["key"].toString();
+        users->append(user);
+
+    }
+
     jsonFile.close();
+    return 0;
 
 }
 
@@ -67,7 +92,7 @@ int Alarm::writeKeys(){
     QList<User> users{{"Justas", "00000"}, {"Sima", "12345"}};
     users.push_back({"antanas","99999"});
 
-    QJsonObject Users;
+    //QJsonObject Users;
     QJsonArray users_array;
     for(int i = 0; i < users.size(); i++){
 
@@ -75,20 +100,17 @@ int Alarm::writeKeys(){
 
     }
 
-    Users.insert("Users",users_array);
+    //Users.insert("Users",users_array);
 
-    QJsonDocument doc(Users);
+    QJsonDocument doc(users_array);
 
     QFile jsonFile("./user.json");
-    if(!jsonFile.open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+    if(!jsonFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
         qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
     jsonFile.write(doc.toJson());
     jsonFile.close();
 
-
-qDebug()<<doc.toJson(QJsonDocument::Compact);
-
-return 0;
+    return 0;
 
 }
 

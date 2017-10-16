@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.2
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -59,10 +59,12 @@ public:
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
     QWidget *page_2;
-    QLineEdit *alarm_code_lineedit;
     QPushButton *alarm_button;
+    QLabel *arm_alarm_label;
+    QWidget *keypad_widget;
+    QLineEdit *alarm_code_lineedit;
     QWidget *layoutWidget3;
-    QGridLayout *gridLayout;
+    QGridLayout *keypad_layout;
     QPushButton *key_1;
     QPushButton *key_2;
     QPushButton *key_3;
@@ -75,7 +77,6 @@ public:
     QPushButton *hash_key;
     QPushButton *key_0;
     QPushButton *del_key;
-    QLabel *arm_alarm_label;
     QWidget *page_4;
     QPushButton *rec_button;
     QPushButton *take_photo_button;
@@ -232,116 +233,119 @@ public:
         stack_widget->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        alarm_code_lineedit = new QLineEdit(page_2);
-        alarm_code_lineedit->setObjectName(QStringLiteral("alarm_code_lineedit"));
-        alarm_code_lineedit->setGeometry(QRect(90, 10, 361, 61));
-        QFont font2;
-        font2.setFamily(QStringLiteral("DejaVu Sans"));
-        font2.setPointSize(20);
-        font2.setBold(true);
-        font2.setWeight(75);
-        alarm_code_lineedit->setFont(font2);
         alarm_button = new QPushButton(page_2);
         alarm_button->setObjectName(QStringLiteral("alarm_button"));
-        alarm_button->setGeometry(QRect(580, 130, 231, 211));
-        layoutWidget3 = new QWidget(page_2);
+        alarm_button->setGeometry(QRect(600, 130, 231, 211));
+        arm_alarm_label = new QLabel(page_2);
+        arm_alarm_label->setObjectName(QStringLiteral("arm_alarm_label"));
+        arm_alarm_label->setGeometry(QRect(600, 345, 231, 31));
+        QFont font2;
+        font2.setPointSize(14);
+        arm_alarm_label->setFont(font2);
+        arm_alarm_label->setAlignment(Qt::AlignCenter);
+        keypad_widget = new QWidget(page_2);
+        keypad_widget->setObjectName(QStringLiteral("keypad_widget"));
+        keypad_widget->setGeometry(QRect(30, 10, 541, 471));
+        alarm_code_lineedit = new QLineEdit(keypad_widget);
+        alarm_code_lineedit->setObjectName(QStringLiteral("alarm_code_lineedit"));
+        alarm_code_lineedit->setGeometry(QRect(40, 0, 481, 61));
+        QFont font3;
+        font3.setFamily(QStringLiteral("DejaVu Sans"));
+        font3.setPointSize(20);
+        font3.setBold(true);
+        font3.setWeight(75);
+        alarm_code_lineedit->setFont(font3);
+        layoutWidget3 = new QWidget(keypad_widget);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(101, 77, 351, 381));
-        gridLayout = new QGridLayout(layoutWidget3);
-        gridLayout->setSpacing(10);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        layoutWidget3->setGeometry(QRect(51, 67, 471, 391));
+        keypad_layout = new QGridLayout(layoutWidget3);
+        keypad_layout->setSpacing(10);
+        keypad_layout->setObjectName(QStringLiteral("keypad_layout"));
+        keypad_layout->setContentsMargins(0, 0, 0, 0);
         key_1 = new QPushButton(layoutWidget3);
         key_1->setObjectName(QStringLiteral("key_1"));
         sizePolicy.setHeightForWidth(key_1->sizePolicy().hasHeightForWidth());
         key_1->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_1, 0, 0, 1, 1);
+        keypad_layout->addWidget(key_1, 0, 0, 1, 1);
 
         key_2 = new QPushButton(layoutWidget3);
         key_2->setObjectName(QStringLiteral("key_2"));
         sizePolicy.setHeightForWidth(key_2->sizePolicy().hasHeightForWidth());
         key_2->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_2, 0, 1, 1, 1);
+        keypad_layout->addWidget(key_2, 0, 1, 1, 1);
 
         key_3 = new QPushButton(layoutWidget3);
         key_3->setObjectName(QStringLiteral("key_3"));
         sizePolicy.setHeightForWidth(key_3->sizePolicy().hasHeightForWidth());
         key_3->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_3, 0, 2, 1, 1);
+        keypad_layout->addWidget(key_3, 0, 2, 1, 1);
 
         key_4 = new QPushButton(layoutWidget3);
         key_4->setObjectName(QStringLiteral("key_4"));
         sizePolicy.setHeightForWidth(key_4->sizePolicy().hasHeightForWidth());
         key_4->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_4, 1, 0, 1, 1);
+        keypad_layout->addWidget(key_4, 1, 0, 1, 1);
 
         key_5 = new QPushButton(layoutWidget3);
         key_5->setObjectName(QStringLiteral("key_5"));
         sizePolicy.setHeightForWidth(key_5->sizePolicy().hasHeightForWidth());
         key_5->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_5, 1, 1, 1, 1);
+        keypad_layout->addWidget(key_5, 1, 1, 1, 1);
 
         key_6 = new QPushButton(layoutWidget3);
         key_6->setObjectName(QStringLiteral("key_6"));
         sizePolicy.setHeightForWidth(key_6->sizePolicy().hasHeightForWidth());
         key_6->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_6, 1, 2, 1, 1);
+        keypad_layout->addWidget(key_6, 1, 2, 1, 1);
 
         key_7 = new QPushButton(layoutWidget3);
         key_7->setObjectName(QStringLiteral("key_7"));
         sizePolicy.setHeightForWidth(key_7->sizePolicy().hasHeightForWidth());
         key_7->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_7, 2, 0, 1, 1);
+        keypad_layout->addWidget(key_7, 2, 0, 1, 1);
 
         key_8 = new QPushButton(layoutWidget3);
         key_8->setObjectName(QStringLiteral("key_8"));
         sizePolicy.setHeightForWidth(key_8->sizePolicy().hasHeightForWidth());
         key_8->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_8, 2, 1, 1, 1);
+        keypad_layout->addWidget(key_8, 2, 1, 1, 1);
 
         key_9 = new QPushButton(layoutWidget3);
         key_9->setObjectName(QStringLiteral("key_9"));
         sizePolicy.setHeightForWidth(key_9->sizePolicy().hasHeightForWidth());
         key_9->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_9, 2, 2, 1, 1);
+        keypad_layout->addWidget(key_9, 2, 2, 1, 1);
 
         hash_key = new QPushButton(layoutWidget3);
         hash_key->setObjectName(QStringLiteral("hash_key"));
         sizePolicy.setHeightForWidth(hash_key->sizePolicy().hasHeightForWidth());
         hash_key->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(hash_key, 3, 0, 1, 1);
+        keypad_layout->addWidget(hash_key, 3, 0, 1, 1);
 
         key_0 = new QPushButton(layoutWidget3);
         key_0->setObjectName(QStringLiteral("key_0"));
         sizePolicy.setHeightForWidth(key_0->sizePolicy().hasHeightForWidth());
         key_0->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(key_0, 3, 1, 1, 1);
+        keypad_layout->addWidget(key_0, 3, 1, 1, 1);
 
         del_key = new QPushButton(layoutWidget3);
         del_key->setObjectName(QStringLiteral("del_key"));
         sizePolicy.setHeightForWidth(del_key->sizePolicy().hasHeightForWidth());
         del_key->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(del_key, 3, 2, 1, 1);
+        keypad_layout->addWidget(del_key, 3, 2, 1, 1);
 
-        arm_alarm_label = new QLabel(page_2);
-        arm_alarm_label->setObjectName(QStringLiteral("arm_alarm_label"));
-        arm_alarm_label->setGeometry(QRect(580, 345, 231, 31));
-        QFont font3;
-        font3.setPointSize(14);
-        arm_alarm_label->setFont(font3);
-        arm_alarm_label->setAlignment(Qt::AlignCenter);
         stack_widget->addWidget(page_2);
         page_4 = new QWidget();
         page_4->setObjectName(QStringLiteral("page_4"));
@@ -373,7 +377,7 @@ public:
 
         layoutWidget4 = new QWidget(centralwidget);
         layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(638, 0, 341, 81));
+        layoutWidget4->setGeometry(QRect(608, 0, 371, 96));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -422,8 +426,9 @@ public:
         pushButton_5->setText(QApplication::translate("MainWindow", "Radio", Q_NULLPTR));
         pushButton_6->setText(QApplication::translate("MainWindow", "Mp3", Q_NULLPTR));
         pushButton_7->setText(QApplication::translate("MainWindow", "Youtube", Q_NULLPTR));
-        alarm_code_lineedit->setInputMask(QApplication::translate("MainWindow", "99999", Q_NULLPTR));
         alarm_button->setText(QString());
+        arm_alarm_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        alarm_code_lineedit->setInputMask(QApplication::translate("MainWindow", "99999", Q_NULLPTR));
         key_1->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         key_2->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
         key_3->setText(QApplication::translate("MainWindow", "3", Q_NULLPTR));
@@ -436,7 +441,6 @@ public:
         hash_key->setText(QApplication::translate("MainWindow", "#", Q_NULLPTR));
         key_0->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         del_key->setText(QApplication::translate("MainWindow", "Del", Q_NULLPTR));
-        arm_alarm_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
         rec_button->setText(QApplication::translate("MainWindow", "REC", Q_NULLPTR));
         take_photo_button->setText(QApplication::translate("MainWindow", "Photo", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Settings", Q_NULLPTR));

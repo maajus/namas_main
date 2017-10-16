@@ -24,10 +24,10 @@ class Alarm
     public:
         Alarm();
         int arm_system();
-        int disarm_system(QString code);
+        QString disarm_system(QString code);
         bool isArmed();
-        bool check_key(QString);
-        QStringList readKeys();
+        QString check_key(QString);
+        int readUsers(QList<User> *users);
         int writeKeys();
 
 
