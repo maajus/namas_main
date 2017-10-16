@@ -96,7 +96,7 @@ MainWindow::MainWindow() {
 
 
     alarm = new Alarm();
-    alarm->writeKeys();
+    alarm->readKeys();
 
 }
 

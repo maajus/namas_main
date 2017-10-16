@@ -3,12 +3,18 @@
 #define  _ALARM_H
 
 #include <QString>
+#include <QJsonValue>
+#include <QJsonObject>
 
 class User {
 
     public:
         QString name;
         QString key;
+
+        QJsonObject toJson() const {
+          return {{"name", name}, {"key", key}};
+        }
 
 };
 
