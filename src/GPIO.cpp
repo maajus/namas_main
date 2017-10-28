@@ -1,14 +1,15 @@
 #include "GPIO.h"
+#include <wiringPi.h>
+#include <pcf8574.h>
 #include <QDebug>
 #include <QThread>
 #include <Config.h>
-#include <wiringPi.h>
-#include <pcf8574.h>
 
 IntHelper *helper;
 
 void Interrupt_REED(void) {
 
+    delay(10);
     if(digitalRead(GPIO_REED)){
         emit helper->interrupt(INTERRUPT::INT_DOOR_OPEN);
     }
@@ -29,9 +30,7 @@ GPIO::GPIO(){
 
 #ifndef PC
 
- 
     this->init_pins();
-
     helper = new IntHelper();
     QObject::connect(helper, SIGNAL(interrupt(int)),this,SLOT(interrupt(int)));
 
@@ -42,12 +41,8 @@ GPIO::GPIO(){
 
 void GPIO::interrupt(int intnr){
 
-    qDebug()<<"Int : "<<intnr;
+    //qDebug()<<"Int : "<<intnr;
     emit gpio_interrupt(intnr);
-    
-
-    //if(intnr == INTERRUPT::INT_DOOR_OPEN)
-        //this->siren_beep();
 
 }
 
@@ -59,9 +54,8 @@ void GPIO::init_pins(){
         qDebug()<<"Failed to init GPIO driver";
     }
 
-    //pinMode(GPIO_PIR, INPUT);
-    //pinMode(GPIO_SIREN, PWM_OUTPUT);
-    //pwmSetMode (PWM_MODE_MS);
+    pinMode(GPIO_SIREN, PWM_OUTPUT);
+    pwmSetMode (PWM_MODE_MS);
     //pwmWrite(GPIO_SIREN, 0);
     //pwmSetClock(32);
 
@@ -71,7 +65,7 @@ void GPIO::init_pins(){
     pullUpDnControl(GPIO_REED,PUD_UP);
 
     //pull down on pir pin (active high);
-    //pullUpDnControl(GPIO_PIR,PUD_DOWN);
+    pullUpDnControl(GPIO_PIR,PUD_DOWN);
 
     //register reed door switch irq
     if ( wiringPiISR (GPIO_REED, INT_EDGE_BOTH, &Interrupt_REED) < 0 ) {
@@ -84,9 +78,12 @@ void GPIO::init_pins(){
     }
 
 
-
 }
 
 void GPIO::siren_beep(){
+
+    pwmWrite(GPIO_SIREN, 12);
+    delay(40);
+    pwmWrite(GPIO_SIREN, 0);
 
 }

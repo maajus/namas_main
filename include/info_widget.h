@@ -22,7 +22,7 @@
 #include <QString>
 
 struct Room_status {
-    int L[4]; //lights state
+    int L[8]; //lights state
     QString temp;
     QString humi;
     int connected;

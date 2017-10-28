@@ -27,20 +27,20 @@ MainWindow::MainWindow() {
 #endif
 
     widget.setupUi(this);
-    
+
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
-    
+
     status_timer.start(1500);
     info_timer.start(2000);
-    
+
     widget.bedroom_info->set_name("Miegamasis");
     widget.workroom_info->set_name("Darbo Kambarys");
     widget.corridor_info->set_name("Koridorius");
     widget.livingroom_info->set_name("Salionas");
     widget.wc_info->set_name("Vonia");
-    
+
     bathroom = new Bath_Room_win(widget.wc_info);
     connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
 
@@ -52,6 +52,10 @@ MainWindow::MainWindow() {
 
     corridor = new Corridor_win(widget.corridor_info);
     connect(widget.corridor_info,SIGNAL(clicked()), corridor, SLOT(show()));
+
+    livingroom = new Living_Room_win(widget.livingroom_info);
+    connect(widget.livingroom_info,SIGNAL(clicked()), livingroom, SLOT(show()));
+
 
 
     widget.arm_alarm_label->setText("Arm alarm");
@@ -91,8 +95,8 @@ MainWindow::MainWindow() {
 
     //cam = new Camera;
     //if(cam->available()){
-        //cam->set_widget(widget.video_widget);
-        //cam->start();
+    //cam->set_widget(widget.video_widget);
+    //cam->start();
     //}
 
 
@@ -127,25 +131,26 @@ void MainWindow::on_rec_button_clicked(){
 }
 
 void MainWindow::on_leave_button_clicked(){
-    
-  exit(0); 
+
+    exit(0);
 }
 
 
 
 void MainWindow::update_status(){
-    
+
     widget.date_label->setText(QDateTime::currentDateTime().toString("yyyy.MM.dd"));
     widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm"));
-    
+
 }
 
 void MainWindow::update_info(){
-    
+
     bathroom->update_info();
     workroom->update_info();
     corridor->update_info();
     bedroom->update_info();
+    livingroom->update_info();
     this->repaint();
 }
 
@@ -153,10 +158,10 @@ void MainWindow::menu_selected(int menu){
 
     widget.stack_widget->setCurrentIndex(menu);
     //if(menu == Menus::CAMERA){
-        //if(cam->available())  cam->start();
+    //if(cam->available())  cam->start();
     //}
     //else
-        //if(cam->available()) cam->stop();
+    //if(cam->available()) cam->stop();
 
 }
 
@@ -190,7 +195,7 @@ void MainWindow::key_clicked(){
         text.append(obname.mid(4));
     }
 
-        widget.alarm_code_lineedit->setText(text);
+    widget.alarm_code_lineedit->setText(text);
 
     if(alarm->isArmed()){
         if(text.size() == 5)
@@ -216,16 +221,16 @@ void MainWindow::on_alarm_button_clicked(){
 
         }
         else{//wrong code
-        
+
             qDebug()<<"[MainWindow] Wrong alarm code entered: "<<key;
             widget.alarm_code_lineedit->setText("");
-        widget.alarm_button->setEnabled(false);
+            widget.alarm_button->setEnabled(false);
 
         }
     }
     else{
-        
-       qDebug()<<"[MainWindow] Alarm is armed";
+
+        qDebug()<<"[MainWindow] Alarm is armed";
         alarm->arm_system();
         widget.keypad_widget->setEnabled(true);
         widget.alarm_button->setEnabled(false);

@@ -58,7 +58,8 @@ void TCP::sendData(QByteArray data){
 
     if(socket->state()==QTcpSocket::ConnectedState){
         socket->write( data );
-        socket->waitForReadyRead();
+        //socket->waitForReadyRead();
+        socket->waitForBytesWritten();
     }
 
     else{

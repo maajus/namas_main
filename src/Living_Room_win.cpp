@@ -5,19 +5,19 @@
  */
 
 /*
- * File:   Bath_Room_win.cpp
+ * File:   Living_Room_win.cpp
  * Author: justas
  *
  * Created on September 28, 2016, 7:53 PM
  */
 
-#include "Bath_Room_win.h"
+#include "Living_Room_win.h"
 
 
-Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {
+Living_Room_win::Living_Room_win(info_widget * w):info_w(w)  {
     widget.setupUi(this);
     //this->setAttribute(Qt::WA_DeleteOnClose);
-    room  = new Room(ROOM_ID::BATHROOM);
+    room  = new Room(ROOM_ID::LIVING_ROOM);
     room->connect2module();
     //tcp_thread = new QThread();
     //tcp->connect_thread(tcp_thread);
@@ -30,17 +30,19 @@ Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {
     widget.lights0_button->setStyleSheet("background-color: #282828; border-width: 0px");
     widget.lights1_button->setStyleSheet("background-color: #282828; border-width: 0px");
     widget.lights2_button->setStyleSheet("background-color: #282828; border-width: 0px");
+    widget.lights3_button->setStyleSheet("background-color: #282828; border-width: 0px");
 
     widget.lights0_button->setIconSize(QSize(128,128));
     widget.lights1_button->setIconSize(QSize(128,128));
-    widget.lights2_button->setIconSize(QSize(310,310));
+    widget.lights2_button->setIconSize(QSize(128,128));
+    widget.lights3_button->setIconSize(QSize(128,128));
 
 }
 
-Bath_Room_win::~Bath_Room_win() {
+Living_Room_win::~Living_Room_win() {
 }
 
-void Bath_Room_win::on_back_button_clicked(){
+void Living_Room_win::on_back_button_clicked(){
 
     this->close();
 
@@ -48,40 +50,50 @@ void Bath_Room_win::on_back_button_clicked(){
 
 
 
-void Bath_Room_win::on_lights0_button_clicked(){
+void Living_Room_win::on_lights0_button_clicked(){
 
-    this->send_tcp_cmd("L1");
+    this->send_tcp_cmd("L0");
     status.L[0] = !status.L[0];
     this->update_room_info();
 
 }
-void Bath_Room_win::on_lights1_button_clicked(){
+void Living_Room_win::on_lights1_button_clicked(){
+
+    this->send_tcp_cmd("L1");
+    status.L[1] = !status.L[1];
+    this->update_room_info();
+
+}
+void Living_Room_win::on_lights2_button_clicked(){
 
     this->send_tcp_cmd("L2");
     status.L[2] = !status.L[2];
     this->update_room_info();
 
 }
-void Bath_Room_win::on_lights2_button_clicked(){
 
-    this->send_tcp_cmd("L0");
-    status.L[1] = !status.L[1];
+
+void Living_Room_win::on_lights3_button_clicked(){
+
+    this->send_tcp_cmd("L3");
+    status.L[3] = !status.L[3];
     this->update_room_info();
 
 }
-void Bath_Room_win::update_info(){
 
-    this->send_tcp_cmd("A");
+void Living_Room_win::update_info(){
+
+    this->send_tcp_cmd("A\n");
 }
 
-void Bath_Room_win::send_tcp_cmd(QString cmd){
+void Living_Room_win::send_tcp_cmd(QString cmd){
 
     if(connection_status != Status::FAILED)
         room->sendData(cmd.toLocal8Bit());
 
 }
 
-void Bath_Room_win::room_status_received(Room_status room_status){
+void Living_Room_win::room_status_received(Room_status room_status){
 
 
     status = room_status;
@@ -89,27 +101,30 @@ void Bath_Room_win::room_status_received(Room_status room_status){
     this->update_room_info();
 
 
-
 }
 
 
-void Bath_Room_win::update_room_info(){
+void Living_Room_win::update_room_info(){
 
         if(status.L[0]) widget.lights0_button->setIcon(QIcon(":/icons/bulb_on.png"));
     else widget.lights0_button->setIcon(QIcon(":/icons/bulb_off.png"));
 
-    if(status.L[2]) widget.lights1_button->setIcon(QIcon(":/icons/fan_on.png"));
-    else widget.lights1_button->setIcon(QIcon(":/icons/fan.png"));
+    if(status.L[1]) widget.lights1_button->setIcon(QIcon(":/icons/bulb_on.png"));
+    else widget.lights1_button->setIcon(QIcon(":/icons/bulb_off.png"));
 
-    if(status.L[1]) widget.lights2_button->setIcon(QIcon(":/icons/mirror_on.png"));
-    else widget.lights2_button->setIcon(QIcon(":/icons/mirror.png"));
+    if(status.L[2]) widget.lights2_button->setIcon(QIcon(":/icons/bulb_on.png"));
+    else widget.lights2_button->setIcon(QIcon(":/icons/bulb_off.png"));
+
+    if(status.L[3]) widget.lights3_button->setIcon(QIcon(":/icons/bulb_on.png"));
+    else widget.lights3_button->setIcon(QIcon(":/icons/bulb_off.png"));
+
 
     widget.temp_label->setText(status.temp);
     widget.humi_label->setText(status.humi);
     
 }
 
-void Bath_Room_win::set_connection_status(int status){
+void Living_Room_win::set_connection_status(int status){
 
     connection_status = status;
     if(status==Status::FAILED)
@@ -118,13 +133,13 @@ void Bath_Room_win::set_connection_status(int status){
 }
 
 
-Room* Bath_Room_win::get_room(){
+Room* Living_Room_win::get_room(){
 
     return room;
 
 }
 
-//void Bath_Room_win::checkBox_stateChanged(int){
+//void Living_Room_win::checkBox_stateChanged(int){
 
     //QCheckBox *box = (QCheckBox*) sender();
     //qDebug()<<box->objectName();

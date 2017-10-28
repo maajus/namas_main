@@ -55,6 +55,7 @@ SOURCES       = src/info_widget.cpp \
 		src/MainWindow.cpp \
 		src/Bath_Room_win.cpp \
 		src/Bed_Room_win.cpp \
+		src/Living_Room_win.cpp \
 		src/Work_Room_win.cpp \
 		src/Corridor_win.cpp \
 		src/TCP.cpp \
@@ -66,6 +67,7 @@ SOURCES       = src/info_widget.cpp \
 		moc/moc_MainWindow.cpp \
 		moc/moc_Bath_Room_win.cpp \
 		moc/moc_Bed_Room_win.cpp \
+		moc/moc_Living_Room_win.cpp \
 		moc/moc_Work_Room_win.cpp \
 		moc/moc_Corridor_win.cpp \
 		moc/moc_TCP.cpp \
@@ -76,6 +78,7 @@ OBJECTS       = obj/info_widget.o \
 		obj/MainWindow.o \
 		obj/Bath_Room_win.o \
 		obj/Bed_Room_win.o \
+		obj/Living_Room_win.o \
 		obj/Work_Room_win.o \
 		obj/Corridor_win.o \
 		obj/TCP.o \
@@ -88,6 +91,7 @@ OBJECTS       = obj/info_widget.o \
 		obj/moc_MainWindow.o \
 		obj/moc_Bath_Room_win.o \
 		obj/moc_Bed_Room_win.o \
+		obj/moc_Living_Room_win.o \
 		obj/moc_Work_Room_win.o \
 		obj/moc_Corridor_win.o \
 		obj/moc_TCP.o \
@@ -222,20 +226,19 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		include/Pinctrl.h \
 		include/Bath_Room_win.h \
 		include/Bed_Room_win.h \
+		include/Living_Room_win.h \
 		include/Work_Room_win.h \
 		include/Corridor_win.h \
 		include/TCP.h \
 		include/Camera.h \
 		include/Room.h \
 		include/Alarm.h \
-		include/Logger.h \
-		ui/ui_info_widget.h \
-		ui/ui_MainWindow.h \
-		ui/ui_Bath_Room_win.h src/info_widget.cpp \
+		include/Logger.h src/info_widget.cpp \
 		src/main.cpp \
 		src/MainWindow.cpp \
 		src/Bath_Room_win.cpp \
 		src/Bed_Room_win.cpp \
+		src/Living_Room_win.cpp \
 		src/Work_Room_win.cpp \
 		src/Corridor_win.cpp \
 		src/TCP.cpp \
@@ -251,7 +254,7 @@ TARGET        = build/namas_main
 first: all
 ####### Build rules
 
-$(TARGET): ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h $(OBJECTS)  
+$(TARGET): ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Living_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h $(OBJECTS)  
 	@test -d build/ || mkdir -p build/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -534,9 +537,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/res.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/build_number.h include/info_widget.h include/MainWindow.h include/Pinctrl.h include/Bath_Room_win.h include/Bed_Room_win.h include/Work_Room_win.h include/Corridor_win.h include/TCP.h include/Camera.h include/Room.h include/Alarm.h include/Logger.h ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/info_widget.cpp src/main.cpp src/MainWindow.cpp src/Bath_Room_win.cpp src/Bed_Room_win.cpp src/Work_Room_win.cpp src/Corridor_win.cpp src/TCP.cpp src/Room.cpp src/Alarm.cpp src/Logger.cpp src/Camera.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui/info_widget.ui ui/MainWindow.ui ui/Bath_Room_win.ui ui/Bed_Room_win.ui ui/Corridor_win.ui ui/Work_Room_win.ui $(DISTDIR)/
+	$(COPY_FILE) --parents include/build_number.h include/info_widget.h include/MainWindow.h include/Pinctrl.h include/Bath_Room_win.h include/Bed_Room_win.h include/Living_Room_win.h include/Work_Room_win.h include/Corridor_win.h include/TCP.h include/Camera.h include/Room.h include/Alarm.h include/Logger.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/info_widget.cpp src/main.cpp src/MainWindow.cpp src/Bath_Room_win.cpp src/Bed_Room_win.cpp src/Living_Room_win.cpp src/Work_Room_win.cpp src/Corridor_win.cpp src/TCP.cpp src/Room.cpp src/Alarm.cpp src/Logger.cpp src/Camera.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ui/info_widget.ui ui/MainWindow.ui ui/Bath_Room_win.ui ui/Bed_Room_win.ui ui/Living_Room_win.ui ui/Corridor_win.ui ui/Work_Room_win.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -592,9 +595,9 @@ moc/moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	@echo generating moc/moc_predefs.h
 	@g++ -pipe -O2 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -Wall -W -dM -E -o moc/moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_Bed_Room_win.cpp moc/moc_Work_Room_win.cpp moc/moc_Corridor_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp moc/moc_Room.cpp
+compiler_moc_header_make_all: moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_Bed_Room_win.cpp moc/moc_Living_Room_win.cpp moc/moc_Work_Room_win.cpp moc/moc_Corridor_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp moc/moc_Room.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_Bed_Room_win.cpp moc/moc_Work_Room_win.cpp moc/moc_Corridor_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp moc/moc_Room.cpp
+	-$(DEL_FILE) moc/moc_info_widget.cpp moc/moc_MainWindow.cpp moc/moc_Bath_Room_win.cpp moc/moc_Bed_Room_win.cpp moc/moc_Living_Room_win.cpp moc/moc_Work_Room_win.cpp moc/moc_Corridor_win.cpp moc/moc_TCP.cpp moc/moc_Camera.cpp moc/moc_Room.cpp
 moc/moc_info_widget.cpp: ui/ui_info_widget.h \
 		include/TCP.h \
 		include/definitions.h \
@@ -648,6 +651,17 @@ moc/moc_Bed_Room_win.cpp: ui/ui_Bed_Room_win.h \
 		/usr/bin/moc
 	@echo moc include/Bed_Room_win.h && /usr/bin/moc $(DEFINES) --include moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main/src -I/home/justas/work/namas/namas_main/include -I/home/justas/work/namas/namas_main/ui -I/home/justas/work/namas/namas_main/lib -I/usr/local/include -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/i686-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/i686-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/i686-pc-linux-gnu/7.1.1/include-fixed -I/usr/include include/Bed_Room_win.h -o moc/moc_Bed_Room_win.cpp
 
+moc/moc_Living_Room_win.cpp: ui/ui_Bath_Room_win.h \
+		include/definitions.h \
+		include/info_widget.h \
+		ui/ui_info_widget.h \
+		include/TCP.h \
+		include/Room.h \
+		include/Living_Room_win.h \
+		moc/moc_predefs.h \
+		/usr/bin/moc
+	@echo moc include/Living_Room_win.h && /usr/bin/moc $(DEFINES) --include moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main/src -I/home/justas/work/namas/namas_main/include -I/home/justas/work/namas/namas_main/ui -I/home/justas/work/namas/namas_main/lib -I/usr/local/include -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/i686-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/i686-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/i686-pc-linux-gnu/7.1.1/include-fixed -I/usr/include include/Living_Room_win.h -o moc/moc_Living_Room_win.cpp
+
 moc/moc_Work_Room_win.cpp: ui/ui_Work_Room_win.h \
 		include/definitions.h \
 		include/info_widget.h \
@@ -691,9 +705,9 @@ moc/moc_Room.cpp: include/TCP.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h
+compiler_uic_make_all: ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Living_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h
+	-$(DEL_FILE) ui/ui_info_widget.h ui/ui_MainWindow.h ui/ui_Bath_Room_win.h ui/ui_Bed_Room_win.h ui/ui_Living_Room_win.h ui/ui_Corridor_win.h ui/ui_Work_Room_win.h
 ui/ui_info_widget.h: ui/info_widget.ui \
 		/usr/bin/uic
 	@echo uic ui/info_widget.ui && /usr/bin/uic ui/info_widget.ui -o ui/ui_info_widget.h
@@ -714,6 +728,10 @@ ui/ui_Bath_Room_win.h: ui/Bath_Room_win.ui \
 ui/ui_Bed_Room_win.h: ui/Bed_Room_win.ui \
 		/usr/bin/uic
 	@echo uic ui/Bed_Room_win.ui && /usr/bin/uic ui/Bed_Room_win.ui -o ui/ui_Bed_Room_win.h
+
+ui/ui_Living_Room_win.h: ui/Living_Room_win.ui \
+		/usr/bin/uic
+	@echo uic ui/Living_Room_win.ui && /usr/bin/uic ui/Living_Room_win.ui -o ui/ui_Living_Room_win.h
 
 ui/ui_Corridor_win.h: ui/Corridor_win.ui \
 		/usr/bin/uic
@@ -800,6 +818,15 @@ obj/Bed_Room_win.o: src/Bed_Room_win.cpp include/Bed_Room_win.h \
 		include/Room.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Bed_Room_win.o src/Bed_Room_win.cpp
 
+obj/Living_Room_win.o: src/Living_Room_win.cpp include/Living_Room_win.h \
+		ui/ui_Bath_Room_win.h \
+		include/definitions.h \
+		include/info_widget.h \
+		ui/ui_info_widget.h \
+		include/TCP.h \
+		include/Room.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Living_Room_win.o src/Living_Room_win.cpp
+
 obj/Work_Room_win.o: src/Work_Room_win.cpp include/Work_Room_win.h \
 		ui/ui_Work_Room_win.h \
 		include/definitions.h \
@@ -860,6 +887,9 @@ obj/moc_Bath_Room_win.o: moc/moc_Bath_Room_win.cpp
 
 obj/moc_Bed_Room_win.o: moc/moc_Bed_Room_win.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_Bed_Room_win.o moc/moc_Bed_Room_win.cpp
+
+obj/moc_Living_Room_win.o: moc/moc_Living_Room_win.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_Living_Room_win.o moc/moc_Living_Room_win.cpp
 
 obj/moc_Work_Room_win.o: moc/moc_Work_Room_win.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_Work_Room_win.o moc/moc_Work_Room_win.cpp

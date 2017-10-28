@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'Bed_Room_win.ui'
+** Form generated from reading UI file 'Living_Room_win.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_BED_ROOM_WIN_H
-#define UI_BED_ROOM_WIN_H
+#ifndef UI_LIVING_ROOM_WIN_H
+#define UI_LIVING_ROOM_WIN_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Bed_Room_win
+class Ui_Living_Room_win
 {
 public:
     QPushButton *back_button;
@@ -36,21 +36,24 @@ public:
     QLabel *humi_icon_label;
     QLabel *humi_label;
     QFrame *room_buttons_frame;
-    QWidget *widget;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QPushButton *lights0_button;
-    QPushButton *lights2_button;
     QPushButton *lights1_button;
+    QWidget *layoutWidget_2;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *lights2_button;
+    QPushButton *lights3_button;
 
-    void setupUi(QDialog *Bed_Room_win)
+    void setupUi(QDialog *Living_Room_win)
     {
-        if (Bed_Room_win->objectName().isEmpty())
-            Bed_Room_win->setObjectName(QStringLiteral("Bed_Room_win"));
-        Bed_Room_win->resize(1024, 600);
-        back_button = new QPushButton(Bed_Room_win);
+        if (Living_Room_win->objectName().isEmpty())
+            Living_Room_win->setObjectName(QStringLiteral("Living_Room_win"));
+        Living_Room_win->resize(1024, 600);
+        back_button = new QPushButton(Living_Room_win);
         back_button->setObjectName(QStringLiteral("back_button"));
         back_button->setGeometry(QRect(859, 10, 151, 101));
-        layoutWidget = new QWidget(Bed_Room_win);
+        layoutWidget = new QWidget(Living_Room_win);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(20, 30, 351, 141));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
@@ -73,7 +76,7 @@ public:
 
         horizontalLayout_2->addWidget(temp_label);
 
-        layoutWidget1 = new QWidget(Bed_Room_win);
+        layoutWidget1 = new QWidget(Living_Room_win);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(20, 170, 351, 121));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
@@ -94,18 +97,18 @@ public:
 
         horizontalLayout_3->addWidget(humi_label);
 
-        room_buttons_frame = new QFrame(Bed_Room_win);
+        room_buttons_frame = new QFrame(Living_Room_win);
         room_buttons_frame->setObjectName(QStringLiteral("room_buttons_frame"));
-        room_buttons_frame->setGeometry(QRect(430, 90, 391, 161));
+        room_buttons_frame->setGeometry(QRect(430, 50, 351, 351));
         room_buttons_frame->setFrameShape(QFrame::StyledPanel);
         room_buttons_frame->setFrameShadow(QFrame::Raised);
-        widget = new QWidget(room_buttons_frame);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(21, 20, 351, 121));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget2 = new QWidget(room_buttons_frame);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(20, 20, 311, 141));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lights0_button = new QPushButton(widget);
+        lights0_button = new QPushButton(layoutWidget2);
         lights0_button->setObjectName(QStringLiteral("lights0_button"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -116,15 +119,7 @@ public:
 
         horizontalLayout->addWidget(lights0_button);
 
-        lights2_button = new QPushButton(widget);
-        lights2_button->setObjectName(QStringLiteral("lights2_button"));
-        sizePolicy.setHeightForWidth(lights2_button->sizePolicy().hasHeightForWidth());
-        lights2_button->setSizePolicy(sizePolicy);
-        lights2_button->setIconSize(QSize(64, 64));
-
-        horizontalLayout->addWidget(lights2_button);
-
-        lights1_button = new QPushButton(widget);
+        lights1_button = new QPushButton(layoutWidget2);
         lights1_button->setObjectName(QStringLiteral("lights1_button"));
         sizePolicy.setHeightForWidth(lights1_button->sizePolicy().hasHeightForWidth());
         lights1_button->setSizePolicy(sizePolicy);
@@ -132,31 +127,54 @@ public:
 
         horizontalLayout->addWidget(lights1_button);
 
+        layoutWidget_2 = new QWidget(room_buttons_frame);
+        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(20, 180, 311, 141));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget_2);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        lights2_button = new QPushButton(layoutWidget_2);
+        lights2_button->setObjectName(QStringLiteral("lights2_button"));
+        sizePolicy.setHeightForWidth(lights2_button->sizePolicy().hasHeightForWidth());
+        lights2_button->setSizePolicy(sizePolicy);
+        lights2_button->setIconSize(QSize(64, 64));
 
-        retranslateUi(Bed_Room_win);
+        horizontalLayout_4->addWidget(lights2_button);
 
-        QMetaObject::connectSlotsByName(Bed_Room_win);
+        lights3_button = new QPushButton(layoutWidget_2);
+        lights3_button->setObjectName(QStringLiteral("lights3_button"));
+        sizePolicy.setHeightForWidth(lights3_button->sizePolicy().hasHeightForWidth());
+        lights3_button->setSizePolicy(sizePolicy);
+        lights3_button->setIconSize(QSize(64, 64));
+
+        horizontalLayout_4->addWidget(lights3_button);
+
+
+        retranslateUi(Living_Room_win);
+
+        QMetaObject::connectSlotsByName(Living_Room_win);
     } // setupUi
 
-    void retranslateUi(QDialog *Bed_Room_win)
+    void retranslateUi(QDialog *Living_Room_win)
     {
-        Bed_Room_win->setWindowTitle(QApplication::translate("Bed_Room_win", "Bed_Room_win", Q_NULLPTR));
-        back_button->setText(QApplication::translate("Bed_Room_win", "Back", Q_NULLPTR));
+        Living_Room_win->setWindowTitle(QApplication::translate("Living_Room_win", "Living_Room_win", Q_NULLPTR));
+        back_button->setText(QApplication::translate("Living_Room_win", "Back", Q_NULLPTR));
         temp_icon_label->setText(QString());
-        temp_label->setText(QApplication::translate("Bed_Room_win", "N/A", Q_NULLPTR));
+        temp_label->setText(QApplication::translate("Living_Room_win", "N/A", Q_NULLPTR));
         humi_icon_label->setText(QString());
-        humi_label->setText(QApplication::translate("Bed_Room_win", "N/A", Q_NULLPTR));
+        humi_label->setText(QApplication::translate("Living_Room_win", "N/A", Q_NULLPTR));
         lights0_button->setText(QString());
-        lights2_button->setText(QString());
         lights1_button->setText(QString());
+        lights2_button->setText(QString());
+        lights3_button->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Bed_Room_win: public Ui_Bed_Room_win {};
+    class Living_Room_win: public Ui_Living_Room_win {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_BED_ROOM_WIN_H
+#endif // UI_LIVING_ROOM_WIN_H

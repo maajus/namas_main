@@ -17,6 +17,7 @@ HEADERS += include/build_number.h \
            include/Pinctrl.h \
            include/Bath_Room_win.h \
            include/Bed_Room_win.h \
+           include/Living_Room_win.h \
            include/Work_Room_win.h \
            include/Corridor_win.h \
            include/TCP.h \
@@ -25,13 +26,12 @@ HEADERS += include/build_number.h \
            include/Alarm.h \
            include/GPIO.h \
            include/Logger.h \
-           ui/ui_info_widget.h \
-           ui/ui_MainWindow.h \
-           ui/ui_Bath_Room_win.h
+
 FORMS += ui/info_widget.ui \
             ui/MainWindow.ui \
             ui/Bath_Room_win.ui \
             ui/Bed_Room_win.ui \
+            ui/Living_Room_win.ui \
             ui/Corridor_win.ui \
             ui/Work_Room_win.ui
 
@@ -40,6 +40,7 @@ SOURCES += src/info_widget.cpp \
            src/MainWindow.cpp \
            src/Bath_Room_win.cpp \
            src/Bed_Room_win.cpp \
+           src/Living_Room_win.cpp \
            src/Work_Room_win.cpp \
            src/Corridor_win.cpp \
            src/TCP.cpp \

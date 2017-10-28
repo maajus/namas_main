@@ -460,6 +460,9 @@ QProgressBar[full="true"]::chunk
     border-radius:             6px;
 }
 
+QFrame#room_buttons_frame{
+    background-color:#4c4c4c;
+}
 
 
 

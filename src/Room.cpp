@@ -1,5 +1,6 @@
 
 #include "Room.h"
+#include "Config.h"
 
 
 Room::Room(ROOM_ID id): room_id(id) {
@@ -25,19 +26,19 @@ QString Room::read_ip(){
 
     switch (room_id){
     case BATHROOM:
-        return "vonia";
+        return IP_VONIA;
         break;
     case CORRIDOR:
-        return "koridorius";
+        return IP_KORIDORIUS;
         break;
     case BEDROOM:
-        return "miegamasis";
+        return IP_MIEGAMASIS;
         break;
     case WORKROOM:
-        return "vaikuKambarys";
+        return IP_VAIKUKAMBARYS;
         break;
     case LIVING_ROOM:
-        return "svetaine";
+        return IP_SVETAINE;
         break;
     }
     return "";
@@ -54,6 +55,8 @@ void Room::sendData(QByteArray data){
 
 void Room::tcp_data(QByteArray data){
 
+    //if(room_id==LIVING_ROOM) 
+        //qDebug()<<QString(data);
     switch(data.at(0)){
         case 'A':
         {
@@ -70,6 +73,27 @@ void Room::tcp_data(QByteArray data){
                 emit room_status_received(status);
                 break;
         }
+        case 'S':
+        {
+                QStringList info = QString(data.mid(1,data.length())).split("_");
+                if(info.size()<=1) return;
+                status.temp = (info[0] + "°C"); 
+                status.humi = (info[1] + "%");
+                status.L[0] = info[2].toInt()&0x01;
+                status.L[1] = (info[2].toInt()>>1)&0x01;
+                status.L[2] = (info[2].toInt()>>2)&0x01;
+                status.L[3] = (info[2].toInt()>>3)&0x01;
+                status.L[4] = (info[2].toInt()>>4)&0x01;
+                status.L[5] = (info[2].toInt()>>5)&0x01;
+                status.L[6] = (info[2].toInt()>>6)&0x01;
+                status.L[7] = (info[2].toInt()>>7)&0x01;
+                status.connected = connection_status;
+
+                emit room_status_received(status);
+                break;
+        }
+
+
         case 'L':
             //status.L[data.at(1)-48] = data.at(2)-48; 
             //emit room_status_received(status);

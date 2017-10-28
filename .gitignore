@@ -1,0 +1,7 @@
+build/namas_main
+build/
+obj/
+moc/
+rcc
+*.jpg
+*.o

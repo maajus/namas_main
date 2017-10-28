@@ -49,6 +49,7 @@ private:
     QTimer status_timer;
     QTimer info_timer;
     Bath_Room_win *bathroom;
+    Living_Room_win *livingroom;
     Bed_Room_win *bedroom;
     Work_Room_win *workroom;
     Corridor_win *corridor;
