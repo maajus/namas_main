@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -22,6 +22,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -34,7 +35,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *leave_button;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QListWidget *side_menu;
@@ -86,6 +86,7 @@ public:
     QLabel *label_2;
     QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer;
     QLabel *date_label;
     QLabel *time_label;
 
@@ -98,9 +99,6 @@ public:
         MainWindow->setMaximumSize(QSize(1024, 600));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        leave_button = new QPushButton(centralwidget);
-        leave_button->setObjectName(QStringLiteral("leave_button"));
-        leave_button->setGeometry(QRect(10, 10, 121, 51));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(10, 90, 991, 481));
@@ -377,12 +375,21 @@ public:
 
         layoutWidget4 = new QWidget(centralwidget);
         layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(538, 0, 441, 96));
+        layoutWidget4->setGeometry(QRect(538, 0, 441, 98));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
+
         date_label = new QLabel(layoutWidget4);
         date_label->setObjectName(QStringLiteral("date_label"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(date_label->sizePolicy().hasHeightForWidth());
+        date_label->setSizePolicy(sizePolicy1);
         QFont font4;
         font4.setFamily(QStringLiteral("digitalk"));
         font4.setPointSize(48);
@@ -395,6 +402,8 @@ public:
 
         time_label = new QLabel(layoutWidget4);
         time_label->setObjectName(QStringLiteral("time_label"));
+        sizePolicy1.setHeightForWidth(time_label->sizePolicy().hasHeightForWidth());
+        time_label->setSizePolicy(sizePolicy1);
         time_label->setFont(font4);
         time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
@@ -404,7 +413,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stack_widget->setCurrentIndex(2);
+        stack_widget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -412,40 +421,39 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        leave_button->setText(QApplication::translate("MainWindow", "Leave", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
 
         const bool __sortingEnabled = side_menu->isSortingEnabled();
         side_menu->setSortingEnabled(false);
         side_menu->setSortingEnabled(__sortingEnabled);
 
-        pushButton->setText(QApplication::translate("MainWindow", "Play", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Stop", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("MainWindow", "<", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("MainWindow", ">", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Radio", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Mp3", Q_NULLPTR));
-        pushButton_7->setText(QApplication::translate("MainWindow", "Youtube", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "Play", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Stop", 0));
+        pushButton_3->setText(QApplication::translate("MainWindow", "<", 0));
+        pushButton_4->setText(QApplication::translate("MainWindow", ">", 0));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Radio", 0));
+        pushButton_6->setText(QApplication::translate("MainWindow", "Mp3", 0));
+        pushButton_7->setText(QApplication::translate("MainWindow", "Youtube", 0));
         alarm_button->setText(QString());
-        arm_alarm_label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        alarm_code_lineedit->setInputMask(QApplication::translate("MainWindow", "99999", Q_NULLPTR));
-        key_1->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
-        key_2->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
-        key_3->setText(QApplication::translate("MainWindow", "3", Q_NULLPTR));
-        key_4->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
-        key_5->setText(QApplication::translate("MainWindow", "5", Q_NULLPTR));
-        key_6->setText(QApplication::translate("MainWindow", "6", Q_NULLPTR));
-        key_7->setText(QApplication::translate("MainWindow", "7", Q_NULLPTR));
-        key_8->setText(QApplication::translate("MainWindow", "8", Q_NULLPTR));
-        key_9->setText(QApplication::translate("MainWindow", "9", Q_NULLPTR));
-        hash_key->setText(QApplication::translate("MainWindow", "#", Q_NULLPTR));
-        key_0->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
-        del_key->setText(QApplication::translate("MainWindow", "Del", Q_NULLPTR));
-        rec_button->setText(QApplication::translate("MainWindow", "REC", Q_NULLPTR));
-        take_photo_button->setText(QApplication::translate("MainWindow", "Photo", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MainWindow", "Settings", Q_NULLPTR));
-        date_label->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
-        time_label->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
+        arm_alarm_label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        alarm_code_lineedit->setInputMask(QApplication::translate("MainWindow", "99999", 0));
+        key_1->setText(QApplication::translate("MainWindow", "1", 0));
+        key_2->setText(QApplication::translate("MainWindow", "2", 0));
+        key_3->setText(QApplication::translate("MainWindow", "3", 0));
+        key_4->setText(QApplication::translate("MainWindow", "4", 0));
+        key_5->setText(QApplication::translate("MainWindow", "5", 0));
+        key_6->setText(QApplication::translate("MainWindow", "6", 0));
+        key_7->setText(QApplication::translate("MainWindow", "7", 0));
+        key_8->setText(QApplication::translate("MainWindow", "8", 0));
+        key_9->setText(QApplication::translate("MainWindow", "9", 0));
+        hash_key->setText(QApplication::translate("MainWindow", "#", 0));
+        key_0->setText(QApplication::translate("MainWindow", "0", 0));
+        del_key->setText(QApplication::translate("MainWindow", "Del", 0));
+        rec_button->setText(QApplication::translate("MainWindow", "REC", 0));
+        take_photo_button->setText(QApplication::translate("MainWindow", "Photo", 0));
+        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
+        date_label->setText(QApplication::translate("MainWindow", "N/A", 0));
+        time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
     } // retranslateUi
 
 };

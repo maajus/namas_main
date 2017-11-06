@@ -41,7 +41,7 @@ void info_widget::set_room_status(Room_status status){
     if(status.connected == Status::CONNECTED){
         widget.temp_label->setText(status.temp);
         widget.humidity_label->setText(status.humi);
-        widget.status_label->setText("connected");
+        //widget.status_label->setText("connected");
     }
     if(status.connected == Status::CONNECTING)
         widget.status_label->setText("connecting");

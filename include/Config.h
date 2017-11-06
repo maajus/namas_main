@@ -7,6 +7,10 @@
 #define GPIO_PIR 2
 #define GPIO_SIREN 1
 #define GPIO_REED 7
+#define GPIO_LCD_BL 11
+
+#define STATUS_REFRESH 1500
+#define ROOM_INFO_UPDATE_FREQ 5000
 
 
 //ip adress

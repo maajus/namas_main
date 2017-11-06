@@ -30,9 +30,14 @@ GPIO::GPIO(){
 
 #ifndef PC
 
+    blank = new Blank_widget;
     this->init_pins();
     helper = new IntHelper();
     QObject::connect(helper, SIGNAL(interrupt(int)),this,SLOT(interrupt(int)));
+    off_timeout = 60000;
+    idle_timer = 0;
+
+    this->enable_backlight(true);
 
     //pcf8574Setup (100, 0x38) ;
 
@@ -46,7 +51,6 @@ void GPIO::interrupt(int intnr){
 
 }
 
-
 void GPIO::init_pins(){
 
     //init wiringPI lib
@@ -54,13 +58,14 @@ void GPIO::init_pins(){
         qDebug()<<"Failed to init GPIO driver";
     }
 
-    pinMode(GPIO_SIREN, PWM_OUTPUT);
-    pwmSetMode (PWM_MODE_MS);
+    //pinMode(GPIO_SIREN, PWM_OUTPUT);
+    //pwmSetMode (PWM_MODE_MS);
     //pwmWrite(GPIO_SIREN, 0);
     //pwmSetClock(32);
 
 
-    //pullUpDnControl(GPIO_SIREN,PUD_DOWN);
+    pinMode(GPIO_LCD_BL, OUTPUT);
+
     //pull down on door reed switch
     pullUpDnControl(GPIO_REED,PUD_UP);
 
@@ -82,8 +87,45 @@ void GPIO::init_pins(){
 
 void GPIO::siren_beep(){
 
-    pwmWrite(GPIO_SIREN, 12);
-    delay(40);
-    pwmWrite(GPIO_SIREN, 0);
+}
+
+
+void GPIO::idle_timer_increment() {
+
+    //return if both timeouts are disabled
+    //if ((off_timeout == 0) && (dim_timeout == 0)) return;
+
+    //count only if screen is on and not in dim mode
+    if (backlight_state) idle_timer++;
+
+
+    //turn off screen if timeout is reached and screen is not off already (off_timeout==0 always on)
+    if ((off_timeout > 0) && (idle_timer * STATUS_REFRESH >= off_timeout) && (backlight_state)) {
+        idle_timer = 0;
+        this->enable_backlight(false);
+
+    }
 
 }
+
+
+void GPIO::reset_idle_timer() {
+
+    //reset counter
+    idle_timer = 0;
+    if(!backlight_state)
+        this->enable_backlight(true);
+
+}
+
+void GPIO::enable_backlight(bool enable){
+
+    if(!enable)
+        blank->show();
+    else
+        blank->hide();
+    digitalWrite(GPIO_LCD_BL, !enable);
+    backlight_state = enable;
+
+}
+

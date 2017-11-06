@@ -42,9 +42,6 @@ void TCP::connect2room(){
         qDebug()<<"[TCP] Connected to "<<ip;
         emit connected(Status::CONNECTED);
     }
-    //else{
-        //qDebug()<<"[TCP] Timeout, failed to connect "<<ip;
-    //}
 }
 
 void TCP::readTcpData()
@@ -59,7 +56,7 @@ void TCP::sendData(QByteArray data){
     if(socket->state()==QTcpSocket::ConnectedState){
         socket->write( data );
         //socket->waitForReadyRead();
-        socket->waitForBytesWritten();
+        //socket->waitForBytesWritten();
     }
 
     else{

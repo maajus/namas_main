@@ -25,6 +25,7 @@ HEADERS += include/build_number.h \
            include/Room.h \
            include/Alarm.h \
            include/GPIO.h \
+           include/Blank_widget.h \
            include/Logger.h \
 
 FORMS += ui/info_widget.ui \
@@ -33,6 +34,7 @@ FORMS += ui/info_widget.ui \
             ui/Bed_Room_win.ui \
             ui/Living_Room_win.ui \
             ui/Corridor_win.ui \
+            ui/Blank_widget.ui \
             ui/Work_Room_win.ui
 
 SOURCES += src/info_widget.cpp \
@@ -48,6 +50,7 @@ SOURCES += src/info_widget.cpp \
            src/Alarm.cpp \
            src/GPIO.cpp \
            src/Logger.cpp \
+           src/Blank_widget.cpp \
            src/Camera.cpp
 
 RESOURCES += resources/res.qrc

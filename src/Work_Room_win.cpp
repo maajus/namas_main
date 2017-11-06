@@ -47,7 +47,7 @@ void Work_Room_win::on_back_button_clicked(){
 
 void Work_Room_win::on_lights0_button_clicked(){
 
-    this->send_tcp_cmd("L0");
+    this->send_tcp_cmd("L1");
     status.L[0] = !status.L[0];
     this->update_room_info();
 

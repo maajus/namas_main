@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'info_widget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -83,11 +83,11 @@ public:
 
     void retranslateUi(QWidget *info_widget)
     {
-        info_widget->setWindowTitle(QApplication::translate("info_widget", "info_widget", Q_NULLPTR));
-        name_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
+        info_widget->setWindowTitle(QApplication::translate("info_widget", "info_widget", 0));
+        name_label->setText(QApplication::translate("info_widget", "N/A", 0));
         status_label->setText(QString());
-        temp_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
-        humidity_label->setText(QApplication::translate("info_widget", "N/A", Q_NULLPTR));
+        temp_label->setText(QApplication::translate("info_widget", "N/A", 0));
+        humidity_label->setText(QApplication::translate("info_widget", "N/A", 0));
         label->setText(QString());
         label_2->setText(QString());
     } // retranslateUi

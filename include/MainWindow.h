@@ -43,6 +43,8 @@ class MainWindow : public QMainWindow {
 public:        
     MainWindow();
     virtual ~MainWindow();
+
+    bool eventFilter(QObject *obj, QEvent *event);
 private:
     Ui::MainWindow widget;
     TCP *server;
@@ -60,7 +62,7 @@ private:
     Alarm *alarm;
     
 private slots:
-    void on_leave_button_clicked();
+    //void on_leave_button_clicked();
     void on_take_photo_button_clicked();
     void on_rec_button_clicked();
     void on_alarm_button_clicked();

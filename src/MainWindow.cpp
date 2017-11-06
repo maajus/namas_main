@@ -18,6 +18,7 @@
 #include <QObject>
 #include <QFontDatabase>
 #include "Logger.h"
+#include "Config.h"
 
 MainWindow::MainWindow() {
 
@@ -32,8 +33,8 @@ MainWindow::MainWindow() {
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
 
-    status_timer.start(1500);
-    info_timer.start(2000);
+    status_timer.start(STATUS_REFRESH);
+    info_timer.start(ROOM_INFO_UPDATE_FREQ);
 
     widget.bedroom_info->set_name("Miegamasis");
     widget.workroom_info->set_name("Darbo Kambarys");
@@ -56,7 +57,7 @@ MainWindow::MainWindow() {
     livingroom = new Living_Room_win(widget.livingroom_info);
     connect(widget.livingroom_info,SIGNAL(clicked()), livingroom, SLOT(show()));
 
-
+    qApp->installEventFilter(this); //install event filter to catch mouse events
 
     widget.arm_alarm_label->setText("Arm alarm");
     widget.alarm_button->setIconSize(QSize(120,120));
@@ -130,10 +131,10 @@ void MainWindow::on_rec_button_clicked(){
 
 }
 
-void MainWindow::on_leave_button_clicked(){
+//void MainWindow::on_leave_button_clicked(){
 
-    exit(0);
-}
+    //exit(0);
+//}
 
 
 
@@ -141,6 +142,7 @@ void MainWindow::update_status(){
 
     widget.date_label->setText(QDateTime::currentDateTime().toString("yyyy.MM.dd"));
     widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm"));
+    gpio->idle_timer_increment();
 
 }
 
@@ -151,7 +153,6 @@ void MainWindow::update_info(){
     corridor->update_info();
     bedroom->update_info();
     livingroom->update_info();
-    this->repaint();
 }
 
 void MainWindow::menu_selected(int menu){
@@ -239,3 +240,23 @@ void MainWindow::on_alarm_button_clicked(){
     widget.alarm_code_lineedit->setText("");
 
 }
+
+
+//catch mouse events, to turn on backlight on touch
+bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
+
+    Q_UNUSED(obj);
+
+    if ((event->type() == QEvent::MouseMove) || (event->type() == QEvent::MouseButtonDblClick) \
+            || (event->type() == QEvent::MouseButtonPress) || (event->type() == QEvent::MouseMove)\
+            || (event->type() == QEvent::MouseButtonRelease)) {
+
+        //qDebug()<<event;
+        //reset idle counter
+        gpio->reset_idle_timer();
+    }
+
+    return false;
+
+}
+
