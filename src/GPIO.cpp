@@ -20,8 +20,13 @@ void Interrupt_REED(void) {
 
 void Interrupt_PIR(void) {
 
-    if(digitalRead(GPIO_REED)){
+    if(digitalRead(GPIO_PIR)){
         emit helper->interrupt(INTERRUPT::INT_PIR_ON);
+        qDebug()<<"pir on";
+    }
+    else{
+        emit helper->interrupt(INTERRUPT::INT_PIR_OFF);
+        qDebug()<<"pir off";
     }
 }
 
@@ -65,12 +70,19 @@ void GPIO::init_pins(){
 
 
     pinMode(GPIO_LCD_BL, OUTPUT);
+    pinMode(GPIO_SIREN, OUTPUT);
+    digitalWrite(GPIO_SIREN, LOW);
 
-    //pull down on door reed switch
+    //pull up on door reed switch
     pullUpDnControl(GPIO_REED,PUD_UP);
 
     //pull down on pir pin (active high);
     pullUpDnControl(GPIO_PIR,PUD_DOWN);
+
+    //pull down on siren pin (active high);
+    pullUpDnControl(GPIO_SIREN,PUD_DOWN);
+
+
 
     //register reed door switch irq
     if ( wiringPiISR (GPIO_REED, INT_EDGE_BOTH, &Interrupt_REED) < 0 ) {
@@ -78,7 +90,7 @@ void GPIO::init_pins(){
     }
 
     //register pir switch irq
-    if ( wiringPiISR (GPIO_PIR, INT_EDGE_RISING, &Interrupt_PIR) < 0 ) {
+    if ( wiringPiISR (GPIO_PIR, INT_EDGE_BOTH, &Interrupt_PIR) < 0 ) {
         qDebug()<<"Failed to init int";
     }
 
@@ -86,6 +98,10 @@ void GPIO::init_pins(){
 }
 
 void GPIO::siren_beep(){
+
+    digitalWrite(GPIO_SIREN, HIGH);
+    QThread::msleep(1);
+    digitalWrite(GPIO_SIREN, LOW);
 
 }
 

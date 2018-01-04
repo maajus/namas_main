@@ -1172,6 +1172,8 @@ moc/moc_MainWindow.cpp: ../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gn
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qcameraimagecapture.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qmediaencodersettings.h \
 		include/GPIO.h \
+		include/Blank_widget.h \
+		ui/ui_Blank_widget.h \
 		include/Alarm.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QJsonValue \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qjsonvalue.h \
@@ -3021,15 +3023,128 @@ moc/moc_GPIO.cpp: ../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvarlengtharray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontainerfwd.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
+		include/Blank_widget.h \
+		ui/ui_Blank_widget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QVariant \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmap.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdebug.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qtextstream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlocale.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/stdio.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/libio.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/_G_config.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/wchar.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/wchar.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/wctype.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/wchar2.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/wchar-ldbl.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/gconv.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio-lock.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/libc-lock.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/pthread.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/sched.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/sched.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/setjmp.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/errno.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/errno.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/linux/errno.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/asm/errno.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/asm-generic/errno.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/asm-generic/errno-base.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/gnu/option-groups.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/libio-ldbl.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/sys_errlist.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/getopt.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/ctype.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio2.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio-ldbl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvector.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qpoint.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qset.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontiguouscache.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QAction \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qaction.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurlquery.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfile.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfiledevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvector2d.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qicon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qactiongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QApplication \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qeventloop.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qguiapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qinputmethod.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QButtonGroup \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QHeaderView \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qheaderview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qframe.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyleoption.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvalidator.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyle.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabbar.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qrubberband.h \
 		include/GPIO.h \
 		../../../pi_sdk/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
 	@echo moc include/GPIO.h && /home/justas/pi_sdk/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main/src -I/home/justas/work/namas/namas_main/include -I/home/justas/work/namas/namas_main/ui -I/home/justas/work/namas/namas_main/lib -I/home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5 -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/GPIO.h -o moc/moc_GPIO.cpp
 
 moc/moc_Blank_widget.cpp: ui/ui_Blank_widget.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QObject \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnamespace.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QVariant \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobal.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qconfig.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfeatures.h \
@@ -3042,21 +3157,18 @@ moc/moc_Blank_widget.cpp: ui/ui_Blank_widget.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsysinfo.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlogging.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qflags.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobalstatic.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmutex.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnumeric.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qversiontagging.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qbasicatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_bootstrap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qgenericatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_cxx11.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_msvc.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobalstatic.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmutex.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnumeric.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qversiontagging.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstring.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qchar.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qbytearray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrefcount.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnamespace.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qarraydata.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/string.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/features.h \
@@ -3093,6 +3205,8 @@ moc/moc_Blank_widget.cpp: ui/ui_Blank_widget.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdlib.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdlib-ldbl.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/string3.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstring.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qchar.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringbuilder.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlist.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qalgorithms.h \
@@ -3110,55 +3224,22 @@ moc/moc_Blank_widget.cpp: ui/ui_Blank_widget.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringlist.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregexp.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringmatcher.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreevent.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qscopedpointer.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmetatype.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvarlengtharray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontainerfwd.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qpoint.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvector.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs_impl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdebug.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qtextstream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreevent.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qscopedpointer.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlocale.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/stdio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/libio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/_G_config.h \
@@ -3188,14 +3269,81 @@ moc/moc_Blank_widget.cpp: ui/ui_Blank_widget.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio2.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio-ldbl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvector.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qpoint.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qset.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontiguouscache.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QAction \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qaction.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurlquery.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfile.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfiledevice.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvector2d.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qicon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qactiongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QApplication \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qeventloop.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qguiapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qinputmethod.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QButtonGroup \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QHeaderView \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qheaderview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qframe.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyleoption.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvalidator.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyle.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabbar.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qrubberband.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QObject \
 		include/Blank_widget.h \
 		../../../pi_sdk/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
 	@echo moc include/Blank_widget.h && /home/justas/pi_sdk/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main -I/home/justas/work/namas/namas_main/src -I/home/justas/work/namas/namas_main/include -I/home/justas/work/namas/namas_main/ui -I/home/justas/work/namas/namas_main/lib -I/home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5 -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimediaWidgets -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtNetwork -I/home/justas/pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/Blank_widget.h -o moc/moc_Blank_widget.cpp
@@ -3986,6 +4134,8 @@ obj/main.o: src/main.cpp ../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-g
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qcameraimagecapture.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qmediaencodersettings.h \
 		include/GPIO.h \
+		include/Blank_widget.h \
+		ui/ui_Blank_widget.h \
 		include/Alarm.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QJsonValue \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qjsonvalue.h \
@@ -4287,6 +4437,8 @@ obj/MainWindow.o: src/MainWindow.cpp include/MainWindow.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qcameraimagecapture.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtMultimedia/qmediaencodersettings.h \
 		include/GPIO.h \
+		include/Blank_widget.h \
+		ui/ui_Blank_widget.h \
 		include/Alarm.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QJsonValue \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qjsonvalue.h \
@@ -6170,16 +6322,16 @@ obj/GPIO.o: src/GPIO.cpp include/GPIO.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvarlengtharray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontainerfwd.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
-		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/wiringPi.h \
-		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/pcf8574.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QDebug \
+		include/Blank_widget.h \
+		ui/ui_Blank_widget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QVariant \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdebug.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qtextstream.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlocale.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/stdio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/libio.h \
@@ -6216,6 +6368,77 @@ obj/GPIO.o: src/GPIO.cpp include/GPIO.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontiguouscache.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QAction \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qaction.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurlquery.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfile.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfiledevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvector2d.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qicon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qactiongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QApplication \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qeventloop.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qguiapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qinputmethod.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QButtonGroup \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QHeaderView \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qheaderview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qframe.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyleoption.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvalidator.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyle.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabbar.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qrubberband.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/wiringPi.h \
+		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/pcf8574.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QDebug \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QThread \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qthread.h \
 		include/Config.h
@@ -6366,10 +6589,9 @@ obj/Logger.o: src/Logger.cpp include/Logger.h \
 
 obj/Blank_widget.o: src/Blank_widget.cpp include/Blank_widget.h \
 		ui/ui_Blank_widget.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QObject \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnamespace.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QVariant \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobal.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qconfig.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfeatures.h \
@@ -6382,21 +6604,18 @@ obj/Blank_widget.o: src/Blank_widget.cpp include/Blank_widget.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsysinfo.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlogging.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qflags.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobalstatic.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmutex.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnumeric.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qversiontagging.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qbasicatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_bootstrap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qgenericatomic.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_cxx11.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qatomic_msvc.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qglobalstatic.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmutex.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnumeric.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qversiontagging.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstring.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qchar.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qbytearray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrefcount.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qnamespace.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qarraydata.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/string.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/features.h \
@@ -6433,6 +6652,8 @@ obj/Blank_widget.o: src/Blank_widget.cpp include/Blank_widget.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdlib.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdlib-ldbl.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/string3.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstring.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qchar.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringbuilder.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlist.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qalgorithms.h \
@@ -6450,55 +6671,22 @@ obj/Blank_widget.o: src/Blank_widget.cpp include/Blank_widget.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringlist.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregexp.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qstringmatcher.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreevent.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qscopedpointer.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmetatype.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvarlengtharray.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontainerfwd.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qpoint.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvector.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvariant.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobjectdefs_impl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmap.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdebug.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qhash.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qtextstream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qiodevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreevent.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qscopedpointer.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qobject_impl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qlocale.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qshareddata.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/stdio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/libio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/_G_config.h \
@@ -6528,14 +6716,81 @@ obj/Blank_widget.o: src/Blank_widget.cpp include/Blank_widget.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio2.h \
 		../../../sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/bits/stdio-ldbl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qvector.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qpoint.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qset.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcontiguouscache.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QAction \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qaction.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qkeysequence.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qmargins.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpaintdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qrect.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qsize.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpalette.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcolor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgb.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qrgba64.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qbrush.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qmatrix.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpolygon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qregion.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qdatastream.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qline.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtransform.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpainterpath.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qimage.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixelformat.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qpixmap.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfont.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontmetrics.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qfontinfo.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qcursor.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qevent.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurl.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qurlquery.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfile.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qfiledevice.h \
 		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvector2d.h \
-		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtouchdevice.h
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qtouchdevice.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qicon.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qactiongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QApplication \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qeventloop.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qguiapplication.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qinputmethod.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QButtonGroup \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QDialog \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qdialog.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/QHeaderView \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qheaderview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qframe.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyleoption.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtGui/qvalidator.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qabstractslider.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qstyle.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabbar.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qtabwidget.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtWidgets/qrubberband.h \
+		../../../pi_sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include/qt5/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Blank_widget.o src/Blank_widget.cpp
 
 obj/Camera.o: src/Camera.cpp include/Camera.h \

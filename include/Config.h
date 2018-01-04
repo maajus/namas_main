@@ -4,9 +4,9 @@
 #define DATE_TIME_FORMAT "yyyy_MM_dd_hh:mm:ss"
 
 //GPIO
-#define GPIO_PIR 2
-#define GPIO_SIREN 1
-#define GPIO_REED 7
+#define GPIO_PIR 4 //geltonas laidas RPI
+#define GPIO_SIREN 1 //baltas laidas RPI
+#define GPIO_REED 7 //melynas laidas RPI
 #define GPIO_LCD_BL 11
 
 #define STATUS_REFRESH 1500

@@ -26,6 +26,12 @@ struct Room_status {
     QString temp;
     QString humi;
     int connected;
+    Room_status(){
+        temp = "N/A";
+        humi = "N/A";
+        connected = 0;
+        memset(L,0,sizeof(L));
+    }
 };
 
 

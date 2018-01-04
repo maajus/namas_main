@@ -57,7 +57,7 @@ bool Alarm::isArmed(){
 
 int Alarm::readUsers(QList<User> *users){
 
-    QFile jsonFile("./user.json");
+    QFile jsonFile("/home/pi/samba/users.json");
     if(!jsonFile.open(QIODevice::ReadOnly)){
         qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
         return 1;
@@ -104,7 +104,7 @@ int Alarm::writeKeys(){
 
     QJsonDocument doc(users_array);
 
-    QFile jsonFile("./user.json");
+    QFile jsonFile("/home/pi/samba/users.json");
     if(!jsonFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
         qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
     jsonFile.write(doc.toJson());

@@ -29,6 +29,7 @@ info_widget::info_widget(QWidget *parent) :
     this->setGraphicsEffect(bodyShadow);
     this->setStyleSheet("background-color: #435F70");
     widget.status_label->setStyleSheet("color:#4c4c4c");
+    widget.bulb_label->setVisible(false);
 
 }
 
@@ -47,6 +48,17 @@ void info_widget::set_room_status(Room_status status){
         widget.status_label->setText("connecting");
     if(status.connected == Status::FAILED)
         widget.status_label->setText("connection failed");
+
+    int i = 0;
+    for(i = 0; i < 8; i++){
+        if(status.L[i]){
+            widget.bulb_label->setVisible(true);
+            break;
+        }
+    }
+    if(i == 8)
+        widget.bulb_label->setVisible(false);
+
 
 }
 

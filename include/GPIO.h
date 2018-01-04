@@ -9,6 +9,7 @@ enum INTERRUPT {
     INT_DOOR_OPEN,
     INT_DOOR_CLOSE,
     INT_PIR_ON,
+    INT_PIR_OFF,
 };
 
 class IntHelper : public QObject {

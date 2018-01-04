@@ -17,6 +17,7 @@
 #include <QFile>
 #include <QObject>
 #include <QFontDatabase>
+#include <QProcess>
 #include "Logger.h"
 #include "Config.h"
 
@@ -142,7 +143,10 @@ void MainWindow::update_status(){
 
     widget.date_label->setText(QDateTime::currentDateTime().toString("yyyy.MM.dd"));
     widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm"));
+
+#ifndef PC
     gpio->idle_timer_increment();
+#endif
 
 }
 
@@ -171,7 +175,20 @@ void MainWindow::gpio_interrupt(int intnr){
 
     switch(intnr){
         case INT_DOOR_OPEN:
-            Logger::log(LOG_TRIGGERS, "Door opened");
+            {
+                Logger::log(LOG_TRIGGERS, "Door opened");
+                corridor->send_tcp_cmd("L2");
+                gpio->siren_beep();
+                if(alarm->isArmed()){
+                    QProcess proc;
+                    proc.startDetached("/home/pi/scripts/sendEmail \"Durys atsidare!\"");
+                    //system("/home/pi/scripts/sendEmail \"Durys atsidare!\"");
+                }
+                break;
+            }
+
+        case INT_PIR_ON:
+            //corridor->send_tcp_cmd("L2");
             break;
 
     }
@@ -182,29 +199,26 @@ void MainWindow::key_clicked(){
     QString obname = QObject::sender()->objectName();
     QString text = widget.alarm_code_lineedit->text();
 
-
-    if(obname == "del_key"){
-
+    //backspace
+    if(obname == "del_key")
         text.chop(1);
 
-    }
-
+    //already enough symbols
     if(text.size() >= 5) return;
 
+    //append pressed number
     if(obname.mid(0,3) == "key"){
-
         text.append(obname.mid(4));
+
+        widget.alarm_code_lineedit->setText(text);
+
+        if(alarm->isArmed()){
+            if(text.size() == 5)
+                widget.alarm_button->setEnabled(true);
+            else
+                widget.alarm_button->setEnabled(false);
+        }
     }
-
-    widget.alarm_code_lineedit->setText(text);
-
-    if(alarm->isArmed()){
-        if(text.size() == 5)
-            widget.alarm_button->setEnabled(true);
-        else
-            widget.alarm_button->setEnabled(false);
-    }
-
 }
 
 void MainWindow::on_alarm_button_clicked(){
@@ -214,23 +228,20 @@ void MainWindow::on_alarm_button_clicked(){
         QString key = widget.alarm_code_lineedit->text();
         widget.keypad_widget->setEnabled(true);
         QString user = alarm->disarm_system(key);
-        if(!user.isEmpty()){//code ok
 
+        if(!user.isEmpty()){//code ok
             qDebug()<<"[MainWindow] Alarm disabled by: "<<user;
             widget.keypad_widget->setEnabled(false);
             widget.alarm_button->setEnabled(true);
-
         }
         else{//wrong code
 
             qDebug()<<"[MainWindow] Wrong alarm code entered: "<<key;
             widget.alarm_code_lineedit->setText("");
             widget.alarm_button->setEnabled(false);
-
         }
     }
     else{
-
         qDebug()<<"[MainWindow] Alarm is armed";
         alarm->arm_system();
         widget.keypad_widget->setEnabled(true);
@@ -238,7 +249,6 @@ void MainWindow::on_alarm_button_clicked(){
     }
 
     widget.alarm_code_lineedit->setText("");
-
 }
 
 
@@ -253,10 +263,11 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
 
         //qDebug()<<event;
         //reset idle counter
+#ifndef PC
         gpio->reset_idle_timer();
+#endif
     }
 
     return false;
 
 }
-
