@@ -177,8 +177,16 @@ void MainWindow::gpio_interrupt(int intnr){
         case INT_DOOR_OPEN:
             {
                 Logger::log(LOG_TRIGGERS, "Door opened");
-                corridor->send_tcp_cmd("L2");
-                gpio->siren_beep();
+                //if pir = 0 door should be opened from outside
+                if(gpio->read(GPIO_PIR) == 0){
+                    corridor->send_tcp_cmd("L2");
+                    gpio->siren_beep();
+                }
+                else{ //door opened from inside
+                    if(corridor->GetStatus().L[2] == 1) //if corridor lights if on turn them off
+                        corridor->send_tcp_cmd("L2");
+                }
+                
                 if(alarm->isArmed()){
                     QProcess proc;
                     proc.startDetached("/home/pi/scripts/sendEmail \"Durys atsidare!\"");

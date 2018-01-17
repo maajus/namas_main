@@ -1,6 +1,7 @@
 
 #include "Room.h"
 #include "Config.h"
+#include <QTimer>
 
 
 Room::Room(ROOM_ID id): room_id(id) {
@@ -10,6 +11,10 @@ Room::Room(ROOM_ID id): room_id(id) {
     connect(tcp, SIGNAL(connected(int)), SLOT(set_connection_status(int)));
     //connection_status = Status::DISCONNECTED;
     this->ip = this->read_ip();
+    this->connect2module();
+    reconnect_timer = new QTimer();
+    reconnect_timer->setSingleShot(true);
+    connect(reconnect_timer, SIGNAL(timeout()), this, SLOT(connect2module()));
 
 }
 
@@ -18,7 +23,6 @@ void Room::connect2module(){
 
     tcp->set_ip(ip);
     tcp->connect2room();
-
 
 }
 
@@ -106,6 +110,8 @@ void Room::set_connection_status(int Status){
     connection_status = Status;
     status.connected = connection_status;
     emit room_status_received(status);
+    if(status.connected == Status::FAILED)
+        reconnect_timer->start(RECONNECT_TIMEOUT);
 
 }
 
@@ -126,3 +132,5 @@ void Room::switch_all_lights(bool enable){
     tcp->sendData(cmd);
 
 }
+
+

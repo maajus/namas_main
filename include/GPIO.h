@@ -44,6 +44,7 @@ class GPIO : public QObject {
         void idle_timer_increment();
         void reset_idle_timer();
         void enable_backlight(bool);
+        int read(int pin);
 
         public slots:
             void interrupt(int);

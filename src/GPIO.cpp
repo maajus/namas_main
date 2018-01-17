@@ -30,7 +30,6 @@ void Interrupt_PIR(void) {
     }
 }
 
-
 GPIO::GPIO(){
 
 #ifndef PC
@@ -143,5 +142,9 @@ void GPIO::enable_backlight(bool enable){
     digitalWrite(GPIO_LCD_BL, !enable);
     backlight_state = enable;
 
+}
+
+int GPIO::read(int pin){
+    return digitalRead(pin);
 }
 

@@ -18,7 +18,6 @@ Work_Room_win::Work_Room_win(info_widget * w):info_w(w)  {
     widget.setupUi(this);
     //this->setAttribute(Qt::WA_DeleteOnClose);
     room  = new Room(ROOM_ID::WORKROOM);
-    room->connect2module();
     //tcp_thread = new QThread();
     //tcp->connect_thread(tcp_thread);
     //tcp->moveToThread(tcp_thread);

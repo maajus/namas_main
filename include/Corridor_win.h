@@ -31,6 +31,7 @@ public:
     void update_room_info();
     void send_tcp_cmd(QString);
     Room* get_room();
+    Room_status GetStatus();
     
 private:
     Ui::Corridor_win widget;
