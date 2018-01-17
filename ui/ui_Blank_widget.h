@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Blank_widget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -36,7 +36,7 @@ public:
 
     void retranslateUi(QDialog *Blank_widget)
     {
-        Blank_widget->setWindowTitle(QApplication::translate("Blank_widget", "Dialog", Q_NULLPTR));
+        Blank_widget->setWindowTitle(QApplication::translate("Blank_widget", "Dialog", 0));
     } // retranslateUi
 
 };

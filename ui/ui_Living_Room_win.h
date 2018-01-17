@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Living_Room_win.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -157,12 +157,12 @@ public:
 
     void retranslateUi(QDialog *Living_Room_win)
     {
-        Living_Room_win->setWindowTitle(QApplication::translate("Living_Room_win", "Living_Room_win", Q_NULLPTR));
-        back_button->setText(QApplication::translate("Living_Room_win", "Back", Q_NULLPTR));
+        Living_Room_win->setWindowTitle(QApplication::translate("Living_Room_win", "Living_Room_win", 0));
+        back_button->setText(QApplication::translate("Living_Room_win", "Back", 0));
         temp_icon_label->setText(QString());
-        temp_label->setText(QApplication::translate("Living_Room_win", "N/A", Q_NULLPTR));
+        temp_label->setText(QApplication::translate("Living_Room_win", "N/A", 0));
         humi_icon_label->setText(QString());
-        humi_label->setText(QApplication::translate("Living_Room_win", "N/A", Q_NULLPTR));
+        humi_label->setText(QApplication::translate("Living_Room_win", "N/A", 0));
         lights0_button->setText(QString());
         lights1_button->setText(QString());
         lights2_button->setText(QString());

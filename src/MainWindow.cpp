@@ -251,7 +251,6 @@ void MainWindow::on_alarm_button_clicked(){
     widget.alarm_code_lineedit->setText("");
 }
 
-
 //catch mouse events, to turn on backlight on touch
 bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
 

@@ -8,6 +8,10 @@ TEMPLATE = app
 TARGET = build/namas_main
 INCLUDEPATH += . src/ include/ ui/ 
 
+#for(var, $$list($$enumerate_vars())) {
+#    message($$var)
+#    message($$eval($$var))
+#}
 
 
 # Input
