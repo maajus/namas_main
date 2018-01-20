@@ -89,6 +89,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *date_label;
     QLabel *time_label;
+    QLabel *pir1_label;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -409,6 +410,11 @@ public:
 
         horizontalLayout_3->addWidget(time_label);
 
+        pir1_label = new QLabel(centralwidget);
+        pir1_label->setObjectName(QStringLiteral("pir1_label"));
+        pir1_label->setGeometry(QRect(10, 10, 21, 21));
+        pir1_label->setPixmap(QPixmap(QString::fromUtf8(":/icons/green-circle.png")));
+        pir1_label->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -454,6 +460,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
         date_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
+        pir1_label->setText(QString());
     } // retranslateUi
 
 };

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include "TCP.h"
-#include "info_widget.h"
+#include "DataLogger.h"
 
 class Room : public QObject
 {
@@ -24,6 +24,7 @@ class Room : public QObject
         int connection_status;
         QTimer *reconnect_timer;
         ROOM_ID room_id;
+        DataLogger *logger;
 
         private slots:
             void tcp_data(QByteArray data);

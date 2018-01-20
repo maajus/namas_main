@@ -4,9 +4,11 @@
 #include <QTimer>
 
 
-Room::Room(ROOM_ID id): room_id(id) {
+Room::Room(ROOM_ID id){
 
+    room_id = id;
     tcp = new TCP();
+    logger = new DataLogger(room_id);
     connect(tcp, SIGNAL(dataReceived(QByteArray)), SLOT(tcp_data(QByteArray)));
     connect(tcp, SIGNAL(connected(int)), SLOT(set_connection_status(int)));
     //connection_status = Status::DISCONNECTED;
@@ -46,7 +48,7 @@ QString Room::read_ip(){
         break;
     }
     return "";
-            
+
 }
 
 void Room::sendData(QByteArray data){
@@ -66,13 +68,16 @@ void Room::tcp_data(QByteArray data){
         {
                 QStringList info = QString(data.mid(1,data.length())).split("_");
                 if(info.size()<=1) return;
-                status.temp = (info[0] + "°C"); 
-                status.humi = (info[1] + "%");
+                if((info[0].toInt() > 0) && (info[0].toInt() < 100))
+                    status.temp = (info[0] + "°C"); 
+                if((info[1].toInt() > 0) && (info[1].toInt() < 100))
+                    status.humi = (info[1] + "%");
                 status.L[0] = info[2].toInt();
                 status.L[1] = info[3].toInt();
                 status.L[2] = info[4].toInt();
                 status.L[3] = info[5].toInt();
                 status.connected = connection_status;
+                logger->data(status);
 
                 emit room_status_received(status);
                 break;
@@ -105,13 +110,15 @@ void Room::tcp_data(QByteArray data){
     }
 }
 
-void Room::set_connection_status(int Status){
+void Room::set_connection_status(int newStatus){
 
-    connection_status = Status;
+    connection_status = newStatus;
     status.connected = connection_status;
     emit room_status_received(status);
-    if(status.connected == Status::FAILED)
+    if(status.connected == Status::FAILED){
+        qDebug()<<"[ROOM] Will try to reconnect to"<<ip<<"after"<<RECONNECT_TIMEOUT/1000<<"secs";
         reconnect_timer->start(RECONNECT_TIMEOUT);
+    }
 
 }
 

@@ -47,6 +47,8 @@ private slots:
     void on_lights1_button_clicked();
     void on_lights2_button_clicked();
     void on_lights3_button_clicked();
+    void on_lights4_button_clicked();
+    void on_lights5_button_clicked();
 
     void on_back_button_clicked();
 //    void checkBox_stateChanged(int);

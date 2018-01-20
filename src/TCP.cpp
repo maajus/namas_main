@@ -74,7 +74,8 @@ void TCP::sendData(QByteArray data){
 }
 
 void TCP::set_ip(QString ipaddr){
-    
+
+    retry_count = 0;
     ip = ipaddr;
 }
 

@@ -11,6 +11,8 @@
 
 #define STATUS_REFRESH 1500
 #define ROOM_INFO_UPDATE_FREQ 5000
+#define RECONNECT_TIMEOUT 120000 //try to reconnect to room wifi module after
+#define DATALOG_PERIOD 10 //write temps to file every x min
 
 
 //ip adress
@@ -19,7 +21,9 @@
 #define IP_KORIDORIUS "192.168.1.237"
 #define IP_MIEGAMASIS "192.168.1.200"
 #define IP_VAIKUKAMBARYS "192.168.1.150"
+#define TCP_SERVER_PORT 65111
 
+#define LOG_DIR "./logs/"
 #define DATE_TIME_FORMAT "yyyy_MM_dd_hh:mm:ss"
 #define TRIGGERS_LOGFILE "./triggers.log"
 #define LIVINGROOM_LOGFILE "./livingroom.log"

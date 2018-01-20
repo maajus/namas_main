@@ -26,15 +26,17 @@ Living_Room_win::Living_Room_win(info_widget * w):info_w(w)  {
     
     connection_status = Status::DISCONNECTED;
 
-    widget.lights0_button->setStyleSheet("background-color: #282828; border-width: 0px");
-    widget.lights1_button->setStyleSheet("background-color: #282828; border-width: 0px");
-    widget.lights2_button->setStyleSheet("background-color: #282828; border-width: 0px");
-    widget.lights3_button->setStyleSheet("background-color: #282828; border-width: 0px");
+    widget.lights0_button->setStyleSheet("QPushButton{background-color: #282828; border-width: 0px}");
+    //widget.lights1_button->setStyleSheet("background-color: #282828; border-width: 0px");
+    //widget.lights2_button->setStyleSheet("background-color: #282828; border-width: 0px");
+    //widget.lights3_button->setStyleSheet("background-color: #282828; border-width: 0px");
 
     widget.lights0_button->setIconSize(QSize(128,128));
     widget.lights1_button->setIconSize(QSize(128,128));
     widget.lights2_button->setIconSize(QSize(128,128));
     widget.lights3_button->setIconSize(QSize(128,128));
+    widget.lights4_button->setIconSize(QSize(128,128));
+    widget.lights5_button->setIconSize(QSize(128,128));
 
 }
 
@@ -50,35 +52,36 @@ void Living_Room_win::on_back_button_clicked(){
 
 
 void Living_Room_win::on_lights0_button_clicked(){
-
     this->send_tcp_cmd("L0");
     status.L[0] = !status.L[0];
     this->update_room_info();
-
 }
 void Living_Room_win::on_lights1_button_clicked(){
-
     this->send_tcp_cmd("L1");
     status.L[1] = !status.L[1];
     this->update_room_info();
-
 }
 void Living_Room_win::on_lights2_button_clicked(){
-
     this->send_tcp_cmd("L2");
     status.L[2] = !status.L[2];
     this->update_room_info();
-
 }
-
-
 void Living_Room_win::on_lights3_button_clicked(){
-
     this->send_tcp_cmd("L3");
     status.L[3] = !status.L[3];
     this->update_room_info();
-
 }
+void Living_Room_win::on_lights4_button_clicked(){
+    this->send_tcp_cmd("L4");
+    status.L[4] = !status.L[4];
+    this->update_room_info();
+}
+void Living_Room_win::on_lights5_button_clicked(){
+    this->send_tcp_cmd("L5");
+    status.L[5] = !status.L[5];
+    this->update_room_info();
+}
+
 
 void Living_Room_win::update_info(){
 
@@ -94,11 +97,9 @@ void Living_Room_win::send_tcp_cmd(QString cmd){
 
 void Living_Room_win::room_status_received(Room_status room_status){
 
-
     status = room_status;
     info_w->set_room_status(status);
     this->update_room_info();
-
 
 }
 

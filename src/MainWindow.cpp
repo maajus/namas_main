@@ -27,9 +27,12 @@ MainWindow::MainWindow() {
     gpio = new GPIO();
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
 #endif
+    server = new Server();
 
     widget.setupUi(this);
 
+  connect(server, SIGNAL(dataReceived(Tcp_packet *, int)), this, SLOT(TCP_dataReceived(Tcp_packet *, int)));
+    //connect(server, SIGNAL(connection_status(int)), this, SLOT(Remote_connected(int)));
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
@@ -101,7 +104,7 @@ MainWindow::MainWindow() {
     //cam->start();
     //}
 
-
+    widget.pir1_label->setVisible(gpio->read(GPIO_PIR));
     alarm = new Alarm();
     QList<User> users;
 
@@ -196,9 +199,13 @@ void MainWindow::gpio_interrupt(int intnr){
             }
 
         case INT_PIR_ON:
-            //corridor->send_tcp_cmd("L2");
+            gpio->reset_idle_timer();
+            widget.pir1_label->setVisible(true);
             break;
 
+        case INT_PIR_OFF:
+            widget.pir1_label->setVisible(false);
+            break;
     }
 }
 
@@ -278,3 +285,187 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
     return false;
 
 }
+
+
+
+
+//tcp packet received
+void MainWindow::TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id) {
+
+    //qDebug() << "Received command: " << tcp_Packet->command << "Object: " << tcp_Packet->object;
+
+    if (tcp_Packet->command == "Get") {
+        this->TCP_response_to_get(tcp_Packet, socket_id);
+        return;
+    }
+    if (tcp_Packet->command == "Set") {
+        this->TCP_response_to_set(tcp_Packet, socket_id);
+        return;
+    }
+
+    qDebug() << "[MainWindow] Unknown command from remote: " << tcp_Packet->command;
+    server->format_and_send_packet("Rx", "ResponseTo" + tcp_Packet->command, tcp_Packet->object, "Error", "Unknown Command", socket_id);
+
+}
+
+
+//send requested data over tcp
+void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
+
+    Tcp_packet * tcp_packet = new Tcp_packet;
+    tcp_packet->command = "ResponseToGet";
+    tcp_packet->object = tcp_Packet->object;
+    tcp_packet->sender = "Rx";
+
+    QDomElement element, root;
+
+    if (tcp_Packet->object == "RxStatus") {
+
+        root = tcp_packet->dataE.createElement("Status");
+
+        //element = tcp_packet->dataE.createElement("BatteryPercentage");
+        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.BatteryPercentage)));
+        //root.appendChild(element);
+
+        //element = tcp_packet->dataE.createElement("FreeMemory");
+        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.FreeMemory)));
+        //root.appendChild(element);
+
+        //element = tcp_packet->dataE.createElement("TotalMemory");
+        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.TotalMemory)));
+        //root.appendChild(element);
+
+
+        tcp_packet->dataE.appendChild(root);
+        tcp_packet->status = "Ok";
+        server->process_data(tcp_packet,socket_id);
+
+        //qDebug()<<tcp_packet->dataE.toString();
+        delete tcp_packet;
+        return;
+    }
+
+    if (tcp_Packet->object == "Log") {
+
+        //tcp_packet->status = "Ok";
+        //if(!obj_created.LOG_window){
+            //obj_created.LOG_window = true;
+            //logwindow = new LOG_window();
+        //}
+        //logwindow->get_log_xml(tcp_packet, tcp_Packet);
+
+        server->process_data(tcp_packet,socket_id);
+        delete tcp_packet;
+        return;
+    }
+
+
+    //if (tcp_Packet->object == "Login") {
+
+        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
+        
+        //tcp_packet->status = "Ok";
+        //struct User user;
+        //QDomElement root_element = tcp_Packet->dataE.firstChildElement();
+        //user.username = root_element.firstChildElement("username").text();
+        //user.pass = root_element.firstChildElement("pass").text();
+        //user.token = root_element.firstChildElement("token").text();
+
+        //if(user.username == "-1" && user.pass == "-1"){
+            //com_thread->set_webGui("");
+        //}
+        //else{
+
+            //UserManager manager;
+            //int status = manager.login(&user);
+
+            //QDomElement root, root1;
+            //root = tcp_packet->dataE.createElement("Login");
+            //root1 = tcp_packet->dataE.createElement("status");
+            //root1.appendChild(tcp_packet->dataE.createTextNode(QString::number(status)));
+            //if(!status){
+                //com_thread->log(Strings::webuser_login(user.username));
+                //com_thread->set_webGui(user.username);
+            //}
+            //root.appendChild(root1);
+            //root1 = tcp_packet->dataE.createElement("username");
+            //root1.appendChild(tcp_packet->dataE.createTextNode(user.username));
+            //root.appendChild(root1);
+
+            //tcp_packet->dataE.appendChild(root);
+            //server->process_data(tcp_packet,socket_id);
+        //}
+
+
+        ////qDebug().noquote()<<tcp_packet->dataE.toString();
+        ////tcp_packet->error = "";
+        //delete tcp_packet;
+        //return;
+
+    //}
+
+
+
+    qDebug() << "Unknown object" << tcp_Packet->object;
+    server->writeData("Unknown Object", socket_id);
+    //delete tcp_Packet;
+    delete tcp_packet;
+    return;
+
+
+}
+
+
+
+//receive data from tcp transfer
+void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
+
+    QString status, error;
+
+    //qDebug() << "Set Object: " << tcp_Packet->object;
+
+    //if (tcp_Packet->object == "CommandToRx") {
+
+        //QDomElement root = tcp_Packet->dataE.firstChildElement("CommandToRx");
+        ////turn on online recording to rx
+        ////format internal storage
+        //if(root.firstChildElement("FormatSD").text().toInt() == 1){
+            //QProcess proc;
+            //proc.start("/scripts/format_sd");
+            //proc.waitForFinished();
+            //power_control->restart_rx();
+        //}
+
+        //server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
+        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
+        //return;
+    //}
+
+
+    //if (tcp_Packet->object == "WebUsers") {
+
+        ////qDebug()<<tcp_Packet->dataE.toString();
+        //QDomElement root = tcp_Packet->dataE.firstChildElement("WebUsers");
+        ////turn on online recording to rx
+        ////power off rx
+        //webIP = root.firstChildElement("ip").text();
+        //bool connected = root.firstChildElement("connected").text().toInt();
+
+        //if(connected) {
+            ////com_thread->set_webGui(ip);
+        //}
+        //else{
+            //com_thread->set_webGui("");
+            //com_thread->log(Strings::webuser_disconnect());
+            //webIP = "";
+        //}
+
+        //qDebug().noquote()<<"[MainWindow] Web gui user "<<webIP+(connected ? " connected":" disconnected");
+        //server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
+        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
+        //return;
+    //}
+
+
+}
+

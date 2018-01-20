@@ -22,11 +22,11 @@ void Interrupt_PIR(void) {
 
     if(digitalRead(GPIO_PIR)){
         emit helper->interrupt(INTERRUPT::INT_PIR_ON);
-        qDebug()<<"pir on";
+        //qDebug()<<"pir on";
     }
     else{
         emit helper->interrupt(INTERRUPT::INT_PIR_OFF);
-        qDebug()<<"pir off";
+        //qDebug()<<"pir off";
     }
 }
 

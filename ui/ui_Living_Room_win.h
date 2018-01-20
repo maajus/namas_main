@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -36,14 +37,14 @@ public:
     QLabel *humi_icon_label;
     QLabel *humi_label;
     QFrame *room_buttons_frame;
-    QWidget *layoutWidget2;
-    QHBoxLayout *horizontalLayout;
+    QWidget *widget;
+    QGridLayout *gridLayout;
     QPushButton *lights0_button;
     QPushButton *lights1_button;
-    QWidget *layoutWidget_2;
-    QHBoxLayout *horizontalLayout_4;
     QPushButton *lights2_button;
     QPushButton *lights3_button;
+    QPushButton *lights4_button;
+    QPushButton *lights5_button;
 
     void setupUi(QDialog *Living_Room_win)
     {
@@ -99,16 +100,16 @@ public:
 
         room_buttons_frame = new QFrame(Living_Room_win);
         room_buttons_frame->setObjectName(QStringLiteral("room_buttons_frame"));
-        room_buttons_frame->setGeometry(QRect(430, 50, 351, 351));
+        room_buttons_frame->setGeometry(QRect(430, 30, 351, 421));
         room_buttons_frame->setFrameShape(QFrame::StyledPanel);
         room_buttons_frame->setFrameShadow(QFrame::Raised);
-        layoutWidget2 = new QWidget(room_buttons_frame);
-        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(20, 20, 311, 141));
-        horizontalLayout = new QHBoxLayout(layoutWidget2);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lights0_button = new QPushButton(layoutWidget2);
+        widget = new QWidget(room_buttons_frame);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(21, 21, 311, 381));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        lights0_button = new QPushButton(widget);
         lights0_button->setObjectName(QStringLiteral("lights0_button"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -117,37 +118,47 @@ public:
         lights0_button->setSizePolicy(sizePolicy);
         lights0_button->setIconSize(QSize(64, 64));
 
-        horizontalLayout->addWidget(lights0_button);
+        gridLayout->addWidget(lights0_button, 0, 0, 1, 1);
 
-        lights1_button = new QPushButton(layoutWidget2);
+        lights1_button = new QPushButton(widget);
         lights1_button->setObjectName(QStringLiteral("lights1_button"));
         sizePolicy.setHeightForWidth(lights1_button->sizePolicy().hasHeightForWidth());
         lights1_button->setSizePolicy(sizePolicy);
         lights1_button->setIconSize(QSize(64, 64));
 
-        horizontalLayout->addWidget(lights1_button);
+        gridLayout->addWidget(lights1_button, 0, 1, 1, 1);
 
-        layoutWidget_2 = new QWidget(room_buttons_frame);
-        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(20, 180, 311, 141));
-        horizontalLayout_4 = new QHBoxLayout(layoutWidget_2);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        lights2_button = new QPushButton(layoutWidget_2);
+        lights2_button = new QPushButton(widget);
         lights2_button->setObjectName(QStringLiteral("lights2_button"));
         sizePolicy.setHeightForWidth(lights2_button->sizePolicy().hasHeightForWidth());
         lights2_button->setSizePolicy(sizePolicy);
         lights2_button->setIconSize(QSize(64, 64));
 
-        horizontalLayout_4->addWidget(lights2_button);
+        gridLayout->addWidget(lights2_button, 1, 0, 1, 1);
 
-        lights3_button = new QPushButton(layoutWidget_2);
+        lights3_button = new QPushButton(widget);
         lights3_button->setObjectName(QStringLiteral("lights3_button"));
         sizePolicy.setHeightForWidth(lights3_button->sizePolicy().hasHeightForWidth());
         lights3_button->setSizePolicy(sizePolicy);
         lights3_button->setIconSize(QSize(64, 64));
 
-        horizontalLayout_4->addWidget(lights3_button);
+        gridLayout->addWidget(lights3_button, 1, 1, 1, 1);
+
+        lights4_button = new QPushButton(widget);
+        lights4_button->setObjectName(QStringLiteral("lights4_button"));
+        sizePolicy.setHeightForWidth(lights4_button->sizePolicy().hasHeightForWidth());
+        lights4_button->setSizePolicy(sizePolicy);
+        lights4_button->setIconSize(QSize(64, 64));
+
+        gridLayout->addWidget(lights4_button, 2, 0, 1, 1);
+
+        lights5_button = new QPushButton(widget);
+        lights5_button->setObjectName(QStringLiteral("lights5_button"));
+        sizePolicy.setHeightForWidth(lights5_button->sizePolicy().hasHeightForWidth());
+        lights5_button->setSizePolicy(sizePolicy);
+        lights5_button->setIconSize(QSize(64, 64));
+
+        gridLayout->addWidget(lights5_button, 2, 1, 1, 1);
 
 
         retranslateUi(Living_Room_win);
@@ -167,6 +178,8 @@ public:
         lights1_button->setText(QString());
         lights2_button->setText(QString());
         lights3_button->setText(QString());
+        lights4_button->setText(QString());
+        lights5_button->setText(QString());
     } // retranslateUi
 
 };

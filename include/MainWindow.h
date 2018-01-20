@@ -26,6 +26,7 @@
 #include "Camera.h"
 #include "GPIO.h"
 #include "Alarm.h"
+#include "tcp_server.h"
 
 enum Menus{
 
@@ -45,9 +46,13 @@ public:
     virtual ~MainWindow();
 
     bool eventFilter(QObject *obj, QEvent *event);
+
+
 private:
+    void TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id);
+    void TCP_response_to_set(Tcp_packet *tcp_Packet, int socket_id);
+
     Ui::MainWindow widget;
-    TCP *server;
     QTimer status_timer;
     QTimer info_timer;
     Bath_Room_win *bathroom;
@@ -55,6 +60,8 @@ private:
     Bed_Room_win *bedroom;
     Work_Room_win *workroom;
     Corridor_win *corridor;
+    Server *server;
+
 #ifndef PC
     GPIO *gpio;
 #endif
@@ -62,6 +69,8 @@ private:
     Alarm *alarm;
     
 private slots:
+
+    void TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id);
     //void on_leave_button_clicked();
     void on_take_photo_button_clicked();
     void on_rec_button_clicked();
