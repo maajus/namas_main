@@ -27,6 +27,7 @@
 #include "GPIO.h"
 #include "Alarm.h"
 #include "tcp_server.h"
+#include "Settings.h"
 
 enum Menus{
 
@@ -51,6 +52,7 @@ public:
 private:
     void TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id);
     void TCP_response_to_set(Tcp_packet *tcp_Packet, int socket_id);
+    void LoadSettings();
 
     Ui::MainWindow widget;
     QTimer status_timer;
@@ -61,10 +63,9 @@ private:
     Work_Room_win *workroom;
     Corridor_win *corridor;
     Server *server;
+    Settings *settings;
 
-#ifndef PC
     GPIO *gpio;
-#endif
     Camera *cam;
     Alarm *alarm;
     

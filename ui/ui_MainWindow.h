@@ -13,6 +13,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -83,7 +85,16 @@ public:
     QFrame *frame;
     QVideoWidget *video_widget;
     QWidget *page_5;
-    QLabel *label_2;
+    QPushButton *settings_save_button;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QCheckBox *settings_door_siren_checkbox;
+    QCheckBox *settings_door_lights_checkbox;
+    QCheckBox *settings_pir_lcd_checkbox;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label;
+    QComboBox *settings_lcd_timeout_comboBox;
     QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
@@ -367,9 +378,48 @@ public:
         stack_widget->addWidget(page_4);
         page_5 = new QWidget();
         page_5->setObjectName(QStringLiteral("page_5"));
-        label_2 = new QLabel(page_5);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(60, 50, 151, 51));
+        settings_save_button = new QPushButton(page_5);
+        settings_save_button->setObjectName(QStringLiteral("settings_save_button"));
+        settings_save_button->setGeometry(QRect(710, 340, 129, 113));
+        sizePolicy.setHeightForWidth(settings_save_button->sizePolicy().hasHeightForWidth());
+        settings_save_button->setSizePolicy(sizePolicy);
+        widget = new QWidget(page_5);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(40, 20, 281, 171));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        settings_door_siren_checkbox = new QCheckBox(widget);
+        settings_door_siren_checkbox->setObjectName(QStringLiteral("settings_door_siren_checkbox"));
+
+        verticalLayout_2->addWidget(settings_door_siren_checkbox);
+
+        settings_door_lights_checkbox = new QCheckBox(widget);
+        settings_door_lights_checkbox->setObjectName(QStringLiteral("settings_door_lights_checkbox"));
+
+        verticalLayout_2->addWidget(settings_door_lights_checkbox);
+
+        settings_pir_lcd_checkbox = new QCheckBox(widget);
+        settings_pir_lcd_checkbox->setObjectName(QStringLiteral("settings_pir_lcd_checkbox"));
+
+        verticalLayout_2->addWidget(settings_pir_lcd_checkbox);
+
+        widget1 = new QWidget(page_5);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(40, 210, 281, 25));
+        horizontalLayout_4 = new QHBoxLayout(widget1);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget1);
+        label->setObjectName(QStringLiteral("label"));
+
+        horizontalLayout_4->addWidget(label);
+
+        settings_lcd_timeout_comboBox = new QComboBox(widget1);
+        settings_lcd_timeout_comboBox->setObjectName(QStringLiteral("settings_lcd_timeout_comboBox"));
+
+        horizontalLayout_4->addWidget(settings_lcd_timeout_comboBox);
+
         stack_widget->addWidget(page_5);
 
         horizontalLayout->addWidget(stack_widget);
@@ -419,7 +469,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stack_widget->setCurrentIndex(0);
+        stack_widget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -457,7 +507,18 @@ public:
         del_key->setText(QApplication::translate("MainWindow", "Del", 0));
         rec_button->setText(QApplication::translate("MainWindow", "REC", 0));
         take_photo_button->setText(QApplication::translate("MainWindow", "Photo", 0));
-        label_2->setText(QApplication::translate("MainWindow", "Settings", 0));
+        settings_save_button->setText(QApplication::translate("MainWindow", "I\305\241saugoti", 0));
+        settings_door_siren_checkbox->setText(QApplication::translate("MainWindow", "Atidarom\305\263 dur\305\263 signalas", 0));
+        settings_door_lights_checkbox->setText(QApplication::translate("MainWindow", "\304\256jungti \305\241viesas \304\257\304\227jus \304\257 but\304\205", 0));
+        settings_pir_lcd_checkbox->setText(QApplication::translate("MainWindow", "\304\256jungti LCD pri\304\227jus", 0));
+        label->setText(QApplication::translate("MainWindow", "LCD timeout sek.", 0));
+        settings_lcd_timeout_comboBox->clear();
+        settings_lcd_timeout_comboBox->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "10", 0)
+         << QApplication::translate("MainWindow", "30", 0)
+         << QApplication::translate("MainWindow", "60", 0)
+         << QApplication::translate("MainWindow", "120", 0)
+        );
         date_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         pir1_label->setText(QString());

@@ -13,7 +13,7 @@
 #define ROOM_INFO_UPDATE_FREQ 5000
 #define RECONNECT_TIMEOUT 120000 //try to reconnect to room wifi module after
 #define DATALOG_PERIOD 10 //write temps to file every x min
-
+#define HARD_KEY "aesisbasedonadesignprincipleknow"
 
 //ip adress
 #define IP_VONIA "192.168.1.236"
@@ -24,6 +24,8 @@
 #define TCP_SERVER_PORT 65111
 
 #define LOG_DIR "./logs/"
+#define CONFIG_DIR "./config/"
+#define SCRIPT_DIR "./scripts/"
 #define DATE_TIME_FORMAT "yyyy_MM_dd_hh:mm:ss"
 #define TRIGGERS_LOGFILE "./triggers.log"
 #define LIVINGROOM_LOGFILE "./livingroom.log"
@@ -31,7 +33,7 @@
 #define CORRIDOR_LOGFILE "./corridor.log"
 #define WORKROOM_LOGFILE "./workroom.log"
 #define WC_LOGFILE "./wc.log"
-#define USERS_FILE "./user.json"
+//#define USERS_FILE "./user.json"
 
 
 

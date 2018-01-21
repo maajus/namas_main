@@ -107,7 +107,7 @@
      <item>
       <widget class="QStackedWidget" name="stack_widget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="page_3">
         <widget class="info_widget" name="bedroom_info" native="true">
@@ -590,18 +590,100 @@
         </widget>
        </widget>
        <widget class="QWidget" name="page_5">
-        <widget class="QLabel" name="label_2">
+        <widget class="QPushButton" name="settings_save_button">
          <property name="geometry">
           <rect>
-           <x>60</x>
-           <y>50</y>
-           <width>151</width>
-           <height>51</height>
+           <x>710</x>
+           <y>340</y>
+           <width>129</width>
+           <height>113</height>
           </rect>
          </property>
-         <property name="text">
-          <string>Settings</string>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
+         <property name="text">
+          <string>Išsaugoti</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>20</y>
+           <width>281</width>
+           <height>171</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="settings_door_siren_checkbox">
+            <property name="text">
+             <string>Atidaromų durų signalas</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="settings_door_lights_checkbox">
+            <property name="text">
+             <string>Įjungti šviesas įėjus į butą</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="settings_pir_lcd_checkbox">
+            <property name="text">
+             <string>Įjungti LCD priėjus</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>210</y>
+           <width>281</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>LCD timeout sek.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="settings_lcd_timeout_comboBox">
+            <item>
+             <property name="text">
+              <string>10</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>60</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>120</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>

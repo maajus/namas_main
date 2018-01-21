@@ -1,11 +1,12 @@
 #include "Alarm.h"
-#include <QStringList>
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QJsonDocument>
+//#include <QStringList>
+//#include <QJsonArray>
+//#include <QJsonObject>
+//#include <QJsonDocument>
 #include <QDebug>
 #include <QFile>
 #include "Config.h"
+#include "UserManager.h"
 
 
 Alarm::Alarm(){
@@ -24,30 +25,45 @@ int Alarm::arm_system(){
 QString Alarm::disarm_system(QString code){
 
     if(!armed) return "";
-    QString user = this->check_key(code);
-    if(!user.isEmpty()){
+
+    User user;
+    user.username = "ALARM";
+    user.pass = code;
+
+    UserManager manager;
+    QString username;
+    int ret = manager.login(&user, &username);
+    if(!ret){
         armed = false;
-        return user;
+        return username;
     }
-    else {
-         return "";
-    }
+    else
+        return "";
+
+    //QString user = this->check_key(code);
+    //if(!user.isEmpty()){
+        //armed = false;
+        //return user;
+    //}
+    //else {
+         //return "";
+    //}
 
 
 }
 
-QString Alarm::check_key(QString code){
+//QString Alarm::check_key(QString code){
 
-    QList<User> users;
-    this->readUsers(&users);
+    //QList<User> users;
+    //this->readUsers(&users);
 
-    for(int i = 0; i < users.size(); i++){
-        if(users.at(i).key == code)
-            return users.at(i).name;
-    }
+    //for(int i = 0; i < users.size(); i++){
+        //if(users.at(i).key == code)
+            //return users.at(i).name;
+    //}
 
-    return "";
-}
+    //return "";
+//}
 
 bool Alarm::isArmed(){
 
@@ -55,64 +71,64 @@ bool Alarm::isArmed(){
 
 }
 
-int Alarm::readUsers(QList<User> *users){
+//int Alarm::readUsers(QList<User> *users){
 
-    QFile jsonFile("/home/pi/samba/users.json");
-    if(!jsonFile.open(QIODevice::ReadOnly)){
-        qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
-        return 1;
-    }
+    //QFile jsonFile("/home/pi/samba/users.json");
+    //if(!jsonFile.open(QIODevice::ReadOnly)){
+        //qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
+        //return 1;
+    //}
 
-    QString val = jsonFile.readAll();
-    QJsonDocument doc = QJsonDocument().fromJson(val.toUtf8());
-    if(doc.isNull()){
-        qDebug()<<"[Alarm] Failed to read users json";
-        return 1;
-    }
-    QJsonArray array = doc.array();
+    //QString val = jsonFile.readAll();
+    //QJsonDocument doc = QJsonDocument().fromJson(val.toUtf8());
+    //if(doc.isNull()){
+        //qDebug()<<"[Alarm] Failed to read users json";
+        //return 1;
+    //}
+    //QJsonArray array = doc.array();
 
-    for(int i = 0; i < array.size(); i++)
-    {
+    //for(int i = 0; i < array.size(); i++)
+    //{
 
-        User user;
-        user.name = array.at(i).toObject()["name"].toString();
-        user.key = array.at(i).toObject()["key"].toString();
-        users->append(user);
+        //User user;
+        //user.name = array.at(i).toObject()["name"].toString();
+        //user.key = array.at(i).toObject()["key"].toString();
+        //users->append(user);
 
-    }
+    //}
 
-    jsonFile.close();
-    return 0;
+    //jsonFile.close();
+    //return 0;
 
-}
+//}
 
-int Alarm::writeKeys(){
+//int Alarm::writeKeys(){
 
 
-    QList<User> users{{"Justas", "00000"}, {"Sima", "12345"}};
-    users.push_back({"antanas","99999"});
+    //QList<User> users{{"Justas", "00000"}, {"Sima", "12345"}};
+    //users.push_back({"antanas","99999"});
 
-    //QJsonObject Users;
-    QJsonArray users_array;
-    for(int i = 0; i < users.size(); i++){
+    ////QJsonObject Users;
+    //QJsonArray users_array;
+    //for(int i = 0; i < users.size(); i++){
 
-        users_array.push_back(users[i].toJson());
+        //users_array.push_back(users[i].toJson());
 
-    }
+    //}
 
-    //Users.insert("Users",users_array);
+    ////Users.insert("Users",users_array);
 
-    QJsonDocument doc(users_array);
+    //QJsonDocument doc(users_array);
 
-    QFile jsonFile("/home/pi/samba/users.json");
-    if(!jsonFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
-        qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
-    jsonFile.write(doc.toJson());
-    jsonFile.close();
+    //QFile jsonFile("/home/pi/samba/users.json");
+    //if(!jsonFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        //qDebug()<<"[Alarm] Failed to open ";//<<USERS_FILE;
+    //jsonFile.write(doc.toJson());
+    //jsonFile.close();
 
-    return 0;
+    //return 0;
 
-}
+//}
 
 
 

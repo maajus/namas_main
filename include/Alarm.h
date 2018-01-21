@@ -6,17 +6,17 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-class User {
+//class User {
 
-    public:
-        QString name;
-        QString key;
+    //public:
+        //QString name;
+        //QString key;
 
-        QJsonObject toJson() const {
-          return {{"name", name}, {"key", key}};
-        }
+        //QJsonObject toJson() const {
+          //return {{"name", name}, {"key", key}};
+        //}
 
-};
+//};
 
 class Alarm
 {
@@ -26,14 +26,9 @@ class Alarm
         int arm_system();
         QString disarm_system(QString code);
         bool isArmed();
-        QString check_key(QString);
-        int readUsers(QList<User> *users);
-        int writeKeys();
-
-
-
-
-
+        //QString check_key(QString);
+        //int readUsers(QList<User> *users);
+        //int writeKeys();
 
     private:
         bool armed;

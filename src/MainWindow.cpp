@@ -23,11 +23,10 @@
 
 MainWindow::MainWindow() {
 
-#ifndef PC
     gpio = new GPIO();
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
-#endif
     server = new Server();
+    settings = new Settings();
 
     widget.setupUi(this);
 
@@ -106,7 +105,6 @@ MainWindow::MainWindow() {
 
     widget.pir1_label->setVisible(gpio->read(GPIO_PIR));
     alarm = new Alarm();
-    QList<User> users;
 
 
 
@@ -147,9 +145,7 @@ void MainWindow::update_status(){
     widget.date_label->setText(QDateTime::currentDateTime().toString("yyyy.MM.dd"));
     widget.time_label->setText(QDateTime::currentDateTime().toString("hh:mm"));
 
-#ifndef PC
     gpio->idle_timer_increment();
-#endif
 
 }
 
@@ -182,14 +178,16 @@ void MainWindow::gpio_interrupt(int intnr){
                 Logger::log(LOG_TRIGGERS, "Door opened");
                 //if pir = 0 door should be opened from outside
                 if(gpio->read(GPIO_PIR) == 0){
-                    corridor->send_tcp_cmd("L2");
-                    gpio->siren_beep();
+                    if(settings->DoorLight()) corridor->send_tcp_cmd("L2");
+                    if(settings->DoorSiren())  gpio->siren_beep();
                 }
                 else{ //door opened from inside
-                    if(corridor->GetStatus().L[2] == 1) //if corridor lights if on turn them off
-                        corridor->send_tcp_cmd("L2");
+                    if(settings->DoorLight()){
+                        if(corridor->GetStatus().L[2] == 1) //if corridor lights if on turn them off
+                            corridor->send_tcp_cmd("L2");
+                    }
                 }
-                
+
                 if(alarm->isArmed()){
                     QProcess proc;
                     proc.startDetached("/home/pi/scripts/sendEmail \"Durys atsidare!\"");
@@ -199,7 +197,7 @@ void MainWindow::gpio_interrupt(int intnr){
             }
 
         case INT_PIR_ON:
-            gpio->reset_idle_timer();
+            if(settings->PirLcd()) gpio->reset_idle_timer();
             widget.pir1_label->setVisible(true);
             break;
 
@@ -277,9 +275,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
 
         //qDebug()<<event;
         //reset idle counter
-#ifndef PC
         gpio->reset_idle_timer();
-#endif
     }
 
     return false;
@@ -469,3 +465,16 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
 
 }
 
+
+void MainWindow::LoadSettings(){
+
+    widget.settings_door_lights_checkbox->setChecked(settings->DoorLight());
+    widget.settings_door_siren_checkbox->setChecked(settings->DoorSiren());
+    widget.settings_pir_lcd_checkbox->setChecked(settings->PirLcd());
+
+    int index = widget.settings_lcd_timeout_comboBox->findText(QString::number(settings->LcdTimeout()));
+    if(index > 0)
+        widget.settings_lcd_timeout_comboBox->setCurrentIndex(index);
+
+
+}

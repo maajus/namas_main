@@ -135,12 +135,14 @@ void GPIO::reset_idle_timer() {
 
 void GPIO::enable_backlight(bool enable){
 
+#ifndef PC
     if(!enable)
         blank->show();
     else
         blank->hide();
     digitalWrite(GPIO_LCD_BL, !enable);
     backlight_state = enable;
+#endif
 
 }
 

@@ -39,14 +39,14 @@ info_widget::~info_widget() {
 
 void info_widget::set_room_status(Room_status status){
 
-    if(status.connected == Status::CONNECTED){
+    if(status.connected == CONNECTED){
         widget.temp_label->setText(status.temp);
         widget.humidity_label->setText(status.humi);
         //widget.status_label->setText("connected");
     }
-    if(status.connected == Status::CONNECTING)
+    if(status.connected == CONNECTING)
         widget.status_label->setText("connecting");
-    if(status.connected == Status::FAILED)
+    if(status.connected == FAILED)
         widget.status_label->setText("connection failed");
 
     int i = 0;

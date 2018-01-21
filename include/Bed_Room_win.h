@@ -20,6 +20,7 @@
 #include "definitions.h"
 #include "info_widget.h"
 #include "Room.h"
+#include "TCP.h"
 #include <QThread>
 
 class Bed_Room_win : public QDialog {

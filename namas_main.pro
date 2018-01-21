@@ -32,6 +32,10 @@ HEADERS += include/build_number.h \
            include/Blank_widget.h \
            include/DataLogger.h \
            include/tcp_server.h \
+           include/Settings.h \
+           include/UserManager.h \
+           include/Utils.h \
+           include/miniaes.h \
            include/Logger.h \
 
 FORMS += ui/info_widget.ui \
@@ -59,6 +63,10 @@ SOURCES += src/info_widget.cpp \
            src/Blank_widget.cpp \
            src/DataLogger.cpp \
            src/tcp_server.cpp \
+           src/Settings.cpp \
+           src/UserManager.cpp \
+           src/Utils.cpp \
+           src/miniaes.cpp \
            src/Camera.cpp
 
 RESOURCES += resources/res.qrc
@@ -74,19 +82,19 @@ RCC_DIR=rcc
 UI_HEADERS_DIR=ui
 
 
+INCLUDEPATH += /home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include
 
 
 contains( CONFIG, PC ) {
     message( "Configuring for PC build..." )
     INCLUDEPATH += /usr/local/include
     DEFINES += PC
-    SOURCES -= src/GPIO.cpp
-    HEADERS -= include/GPIO.h
-
+#    SOURCES -= src/GPIO.cpp
+#    HEADERS -= include/GPIO.h
+    QMAKE_CXXFLAGS += -std=c++0x
 
 }else{
     message( "Configuring for RPI build..." )
-    INCLUDEPATH += /home/justas/sdk/sysroots/arm1176jzfshf-vfp-poky-linux-gnueabi/usr/include
     QMAKE_POST_LINK += ./cp.sh
     # To link the wiringPi library when making the executable
     LIBS += -L./lib -lwiringPi
