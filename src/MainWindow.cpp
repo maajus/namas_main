@@ -355,6 +355,20 @@ void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
         return;
     }
 
+    if (tcp_Packet->object == "Settings") {
+
+        //qDebug() << "[Remote] Sending rx settings to remote";
+        tcp_packet->status = "Ok";
+        if(settings->get_config(tcp_packet)){
+            tcp_packet->status = "Error";
+            tcp_packet->error = "failed to read rx settings";
+        }
+
+        //qDebug()<<tcp_packet->dataE.toString();
+        server->process_data(tcp_packet,socket_id);
+        delete tcp_packet;
+        return;
+    }
 
     //if (tcp_Packet->object == "Login") {
 
@@ -437,6 +451,22 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
         //return;
     //}
 
+    if (tcp_Packet->object == "Settings") {
+
+        qDebug() << "[MainWindow] Receiving settings from web";
+        status = "Ok";
+        error = "";
+        if(settings->set_config(tcp_Packet)){
+            status = "error";
+            error = "failed to save rx settings";
+        }
+        //respond to request
+        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, status, error, socket_id);
+
+        //qDebug().noquote()<<tcp_Packet->dataE.toString();
+        return;
+
+    }
 
     //if (tcp_Packet->object == "WebUsers") {
 
@@ -476,5 +506,17 @@ void MainWindow::LoadSettings(){
     if(index > 0)
         widget.settings_lcd_timeout_comboBox->setCurrentIndex(index);
 
+
+}
+
+void MainWindow::on_settings_save_button_clicked(){
+
+    settings->SetDoorLight(widget.settings_door_lights_checkbox->isChecked());
+    settings->SetDoorSiren(widget.settings_door_siren_checkbox->isChecked());
+    settings->SetPirLcd(widget.settings_pir_lcd_checkbox->isChecked());
+
+    settings->SetLcdTimeout(widget.settings_lcd_timeout_comboBox->currentText().toInt());
+
+    settings->save_config();
 
 }

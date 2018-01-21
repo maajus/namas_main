@@ -74,6 +74,7 @@ private slots:
     void TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id);
     //void on_leave_button_clicked();
     void on_take_photo_button_clicked();
+    void on_settings_save_button_clicked();
     void on_rec_button_clicked();
     void on_alarm_button_clicked();
     void update_status();

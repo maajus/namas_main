@@ -265,6 +265,7 @@ public:
         font3.setBold(true);
         font3.setWeight(75);
         alarm_code_lineedit->setFont(font3);
+        alarm_code_lineedit->setCursor(QCursor(Qt::BlankCursor));
         layoutWidget3 = new QWidget(keypad_widget);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
         layoutWidget3->setGeometry(QRect(51, 67, 471, 391));
@@ -469,7 +470,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stack_widget->setCurrentIndex(4);
+        stack_widget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
