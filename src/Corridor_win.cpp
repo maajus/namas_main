@@ -132,6 +132,12 @@ Room_status Corridor_win::GetStatus(){
 
 }
 
+void Corridor_win::status_xml(QDomDocument *domdoc){
+
+    room->status2xml(domdoc);
+
+}
+
 //void Corridor_win::checkBox_stateChanged(int){
 
     //QCheckBox *box = (QCheckBox*) sender();

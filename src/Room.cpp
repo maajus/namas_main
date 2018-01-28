@@ -4,6 +4,7 @@
 #include <QTimer>
 
 
+
 Room::Room(ROOM_ID id){
 
     room_id = id;
@@ -68,10 +69,14 @@ void Room::tcp_data(QByteArray data){
         {
                 QStringList info = QString(data.mid(1,data.length())).split("_");
                 if(info.size()<=1) return;
-                if((info[0].toInt() > 0) && (info[0].toInt() < 100))
+                status.T = info[0].toInt();
+                if((status.T > 0) && (status.T < 100))
                     status.temp = (info[0] + "°C"); 
-                if((info[1].toInt() > 0) && (info[1].toInt() < 100))
+
+                status.H = info[1].toInt();
+                if((status.H > 0) && (status.H < 100))
                     status.humi = (info[1] + "%");
+
                 status.L[0] = info[2].toInt();
                 status.L[1] = info[3].toInt();
                 status.L[2] = info[4].toInt();
@@ -138,6 +143,52 @@ void Room::switch_all_lights(bool enable){
 
     tcp->sendData(cmd);
 
+}
+
+void Room::status2xml(QDomDocument *domdoc){
+
+    QDomElement element,  root;
+
+    switch (room_id){
+    case BATHROOM:
+        root = domdoc->createElement("Bathroom");
+        break;
+    case CORRIDOR:
+        root = domdoc->createElement("Corridor");
+        break;
+    case BEDROOM:
+        root = domdoc->createElement("Bedroom");
+        break;
+    case WORKROOM:
+        root = domdoc->createElement("Workroom");
+        break;
+    case LIVING_ROOM:
+        root = domdoc->createElement("Livingroom");
+        break;
+    }
+
+
+
+    for(int i = 0; i < 8; i++){
+
+        element = domdoc->createElement("L"+QString::number(i));
+        element.appendChild(domdoc->createTextNode(QString::number(status.L[i])));
+        root.appendChild(element);
+
+    }
+
+    element = domdoc->createElement("H");
+    element.appendChild(domdoc->createTextNode(QString::number(status.H)));
+    root.appendChild(element);
+
+    element = domdoc->createElement("T");
+    element.appendChild(domdoc->createTextNode(QString::number(status.T)));
+    root.appendChild(element);
+
+    QDomElement root1 = domdoc->firstChildElement("Status");
+
+    root1.appendChild(root);
+    domdoc->appendChild(root1);
 }
 
 

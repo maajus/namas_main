@@ -20,6 +20,7 @@
 #include <QProcess>
 #include "Logger.h"
 #include "Config.h"
+#include "UserManager.h"
 
 MainWindow::MainWindow() {
 
@@ -27,7 +28,6 @@ MainWindow::MainWindow() {
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
     server = new Server();
     settings = new Settings();
-
     widget.setupUi(this);
 
   connect(server, SIGNAL(dataReceived(Tcp_packet *, int)), this, SLOT(TCP_dataReceived(Tcp_packet *, int)));
@@ -62,16 +62,16 @@ MainWindow::MainWindow() {
 
     qApp->installEventFilter(this); //install event filter to catch mouse events
 
-    widget.arm_alarm_label->setText("Arm alarm");
     widget.alarm_button->setIconSize(QSize(120,120));
+    widget.arm_alarm_label->setText("Įjungti signalizaciją");
     widget.alarm_button->setIcon(QIcon(":/icons/locked.png"));
-
+    widget.alarm_status_label->setPixmap(QPixmap(":/icons/unlocked.png"));
 
     QFontDatabase::addApplicationFont(":/fonts/digital.ttf");
     QFont font = QFont("Digital-7", 42, 1);
     widget.time_label->setFont(font);
     widget.date_label->setFont(font);
-    widget.date_label->setStyleSheet("color:#4c4c4c");
+    widget.date_label->setStyleSheet("color:#282828");
 
     //QFontDatabase db;
     //qDebug()<<db.families();
@@ -109,12 +109,23 @@ MainWindow::MainWindow() {
 
 
     widget.keypad_widget->setEnabled(false);
-
+    this->LoadSettings();
 
 
     //alarm->readUsers(&users);
     //alarm->writeKeys();
     //qDebug()<<alarm->check_key("99999");
+    
+    //User user1, user2;
+    //user1.username = "Justas";
+    //user1.pass = "22334";
+    //user2.username = "Sima";
+    //user2.pass = "11234";
+    //UserManager manager;
+    //manager.addUser(user1);
+    //manager.addUser(user2);
+    //manager.writeUsers();
+
 
 }
 
@@ -132,12 +143,6 @@ void MainWindow::on_rec_button_clicked(){
     cam->capture_photo();
 
 }
-
-//void MainWindow::on_leave_button_clicked(){
-
-    //exit(0);
-//}
-
 
 
 void MainWindow::update_status(){
@@ -213,8 +218,11 @@ void MainWindow::key_clicked(){
     QString text = widget.alarm_code_lineedit->text();
 
     //backspace
-    if(obname == "del_key")
+    if(obname == "del_key"){
         text.chop(1);
+        widget.alarm_code_lineedit->setText(text);
+        return;
+    }
 
     //already enough symbols
     if(text.size() >= 5) return;
@@ -233,6 +241,17 @@ void MainWindow::key_clicked(){
         }
     }
 }
+void MainWindow::on_all_lights_on_button_clicked(){
+
+    this->SwitchAllLights(true);
+
+}
+
+void MainWindow::on_all_lights_off_button_clicked(){
+
+    this->SwitchAllLights(false);
+
+}
 
 void MainWindow::on_alarm_button_clicked(){
 
@@ -246,6 +265,10 @@ void MainWindow::on_alarm_button_clicked(){
             qDebug()<<"[MainWindow] Alarm disabled by: "<<user;
             widget.keypad_widget->setEnabled(false);
             widget.alarm_button->setEnabled(true);
+            widget.arm_alarm_label->setText("Įjungti signalizaciją");
+            widget.alarm_button->setIcon(QIcon(":/icons/locked.png"));
+            widget.alarm_status_label->setPixmap(QPixmap(":/icons/unlocked.png"));
+
         }
         else{//wrong code
 
@@ -259,6 +282,13 @@ void MainWindow::on_alarm_button_clicked(){
         alarm->arm_system();
         widget.keypad_widget->setEnabled(true);
         widget.alarm_button->setEnabled(false);
+        widget.arm_alarm_label->setText("Išjungti signalizaciją");
+        widget.alarm_button->setIcon(QIcon(":/icons/unlocked.png"));
+        widget.alarm_status_label->setPixmap(QPixmap(":/icons/locked.png"));
+        this->SwitchAllLights(false);
+
+
+
     }
 
     widget.alarm_code_lineedit->setText("");
@@ -315,13 +345,16 @@ void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
 
     QDomElement element, root;
 
-    if (tcp_Packet->object == "RxStatus") {
+    if (tcp_Packet->object == "Status") {
 
         root = tcp_packet->dataE.createElement("Status");
+        tcp_packet->dataE.appendChild(root);
 
-        //element = tcp_packet->dataE.createElement("BatteryPercentage");
-        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.BatteryPercentage)));
-        //root.appendChild(element);
+        corridor->status_xml(&tcp_packet->dataE);
+        livingroom->status_xml(&tcp_packet->dataE);
+        bedroom->status_xml(&tcp_packet->dataE);
+        bathroom->status_xml(&tcp_packet->dataE);
+        workroom->status_xml(&tcp_packet->dataE);
 
         //element = tcp_packet->dataE.createElement("FreeMemory");
         //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.FreeMemory)));
@@ -332,11 +365,10 @@ void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
         //root.appendChild(element);
 
 
-        tcp_packet->dataE.appendChild(root);
         tcp_packet->status = "Ok";
         server->process_data(tcp_packet,socket_id);
 
-        //qDebug()<<tcp_packet->dataE.toString();
+        //qDebug().noquote()<<tcp_packet->dataE.toString();
         delete tcp_packet;
         return;
     }
@@ -370,49 +402,48 @@ void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
         return;
     }
 
-    //if (tcp_Packet->object == "Login") {
+  if (tcp_Packet->object == "Login") {
 
-        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
-        
-        //tcp_packet->status = "Ok";
-        //struct User user;
-        //QDomElement root_element = tcp_Packet->dataE.firstChildElement();
-        //user.username = root_element.firstChildElement("username").text();
-        //user.pass = root_element.firstChildElement("pass").text();
-        //user.token = root_element.firstChildElement("token").text();
+        //qDebug().noquote()<<tcp_Packet->dataE.toString();
+        tcp_packet->status = "Ok";
+        struct User user;
+        QDomElement root_element = tcp_Packet->dataE.firstChildElement();
+        user.username = root_element.firstChildElement("username").text();
+        user.pass = root_element.firstChildElement("pass").text();
 
-        //if(user.username == "-1" && user.pass == "-1"){
-            //com_thread->set_webGui("");
-        //}
-        //else{
+        if(user.username == "-1" && user.pass == "-1"){
+            qDebug()<<"[MainWindow] Bad login";
+        }
+        else{
 
-            //UserManager manager;
-            //int status = manager.login(&user);
+            UserManager manager;
+            QString username;
+            int status = manager.login(&user,&username);
 
-            //QDomElement root, root1;
-            //root = tcp_packet->dataE.createElement("Login");
-            //root1 = tcp_packet->dataE.createElement("status");
-            //root1.appendChild(tcp_packet->dataE.createTextNode(QString::number(status)));
-            //if(!status){
+            QDomElement root, root1;
+            root = tcp_packet->dataE.createElement("Login");
+            root1 = tcp_packet->dataE.createElement("status");
+            root1.appendChild(tcp_packet->dataE.createTextNode(QString::number(status)));
+/*            if(!status){*/
                 //com_thread->log(Strings::webuser_login(user.username));
                 //com_thread->set_webGui(user.username);
-            //}
-            //root.appendChild(root1);
-            //root1 = tcp_packet->dataE.createElement("username");
-            //root1.appendChild(tcp_packet->dataE.createTextNode(user.username));
-            //root.appendChild(root1);
+            /*}*/
+            root.appendChild(root1);
+            root1 = tcp_packet->dataE.createElement("username");
+            root1.appendChild(tcp_packet->dataE.createTextNode(user.username));
+            root.appendChild(root1);
 
-            //tcp_packet->dataE.appendChild(root);
-            //server->process_data(tcp_packet,socket_id);
-        //}
+            tcp_packet->dataE.appendChild(root);
+            server->process_data(tcp_packet,socket_id);
+        }
 
 
-        ////qDebug().noquote()<<tcp_packet->dataE.toString();
-        ////tcp_packet->error = "";
-        //delete tcp_packet;
-        //return;
+        //qDebug().noquote()<<tcp_packet->dataE.toString();
+        //tcp_packet->error = "";
+        delete tcp_packet;
+        return;
 
-    //}
+    }
 
 
 
@@ -434,22 +465,24 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
 
     //qDebug() << "Set Object: " << tcp_Packet->object;
 
-    //if (tcp_Packet->object == "CommandToRx") {
+    if (tcp_Packet->object == "Command") {
 
-        //QDomElement root = tcp_Packet->dataE.firstChildElement("CommandToRx");
-        ////turn on online recording to rx
-        ////format internal storage
-        //if(root.firstChildElement("FormatSD").text().toInt() == 1){
-            //QProcess proc;
-            //proc.start("/scripts/format_sd");
-            //proc.waitForFinished();
-            //power_control->restart_rx();
+        QDomElement root = tcp_Packet->dataE.firstChildElement("Command");
+        //turn on online recording to rx
+        //format internal storage
+        //if(root.firstChildElement("SwitchAllLights").text().toInt() == 1){
+
         //}
+        //
+        if(!root.firstChildElement("SwitchAllLights").isNull()){
+            this->SwitchAllLights(root.firstChildElement("SwitchAllLights").text().toInt());
+        }
 
-        //server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
-        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
-        //return;
-    //}
+        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
+        //qDebug().noquote()<<tcp_Packet->dataE.toString();
+        return;
+    }
+
 
     if (tcp_Packet->object == "Settings") {
 
@@ -468,31 +501,26 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
 
     }
 
-    //if (tcp_Packet->object == "WebUsers") {
-
-        ////qDebug()<<tcp_Packet->dataE.toString();
-        //QDomElement root = tcp_Packet->dataE.firstChildElement("WebUsers");
-        ////turn on online recording to rx
-        ////power off rx
-        //webIP = root.firstChildElement("ip").text();
-        //bool connected = root.firstChildElement("connected").text().toInt();
-
-        //if(connected) {
-            ////com_thread->set_webGui(ip);
-        //}
-        //else{
-            //com_thread->set_webGui("");
-            //com_thread->log(Strings::webuser_disconnect());
-            //webIP = "";
-        //}
-
-        //qDebug().noquote()<<"[MainWindow] Web gui user "<<webIP+(connected ? " connected":" disconnected");
-        //server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
-        ////qDebug().noquote()<<tcp_Packet->dataE.toString();
-        //return;
-    //}
 
 
+    if (tcp_Packet->object == "WebUsers") {
+
+        //qDebug()<<tcp_Packet->dataE.toString();
+        QDomElement root = tcp_Packet->dataE.firstChildElement("WebUsers");
+        //turn on online recording to rx
+        //power off rx
+        QString webIP = root.firstChildElement("ip").text();
+        bool connected = root.firstChildElement("connected").text().toInt();
+
+
+        qDebug().noquote()<<"[MainWindow] Web gui user "<<webIP+(connected ? " connected":" disconnected");
+        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
+        //qDebug().noquote()<<tcp_Packet->dataE.toString();
+        return;
+    }
+
+
+  
 }
 
 
@@ -506,6 +534,7 @@ void MainWindow::LoadSettings(){
     if(index > 0)
         widget.settings_lcd_timeout_comboBox->setCurrentIndex(index);
 
+    gpio->SetPirLcd(settings->PirLcd());
 
 }
 
@@ -518,5 +547,18 @@ void MainWindow::on_settings_save_button_clicked(){
     settings->SetLcdTimeout(widget.settings_lcd_timeout_comboBox->currentText().toInt());
 
     settings->save_config();
+    this->LoadSettings();
+
+}
+
+void MainWindow::SwitchAllLights(bool enable){
+
+    QString on = enable ? "1":"0";
+
+    corridor->send_tcp_cmd("J"+on);
+    livingroom->send_tcp_cmd("J"+on);
+    bedroom->send_tcp_cmd("J"+on);
+    bathroom->send_tcp_cmd("J"+on);
+    workroom->send_tcp_cmd("J"+on);
 
 }

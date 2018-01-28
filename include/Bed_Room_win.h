@@ -32,6 +32,7 @@ public:
     void update_room_info();
     void send_tcp_cmd(QString);
     Room* get_room();
+    void status_xml(QDomDocument *);
     
 private:
     Ui::Bed_Room_win widget;

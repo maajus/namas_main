@@ -1,9 +1,19 @@
 #include "GPIO.h"
+#ifndef PC
 #include <wiringPi.h>
 #include <pcf8574.h>
+#endif
 #include <QDebug>
 #include <QThread>
 #include <Config.h>
+
+#ifdef PC
+#define HIGH 1
+#define LOW 0
+int digitalRead(int){return false;}
+int digitalWrite(int,int){return false;}
+int delay(int){return 0;}
+#endif
 
 IntHelper *helper;
 
@@ -40,6 +50,7 @@ GPIO::GPIO(){
     QObject::connect(helper, SIGNAL(interrupt(int)),this,SLOT(interrupt(int)));
     off_timeout = 60000;
     idle_timer = 0;
+    pir_lcd = false;
 
     this->enable_backlight(true);
 
@@ -57,6 +68,7 @@ void GPIO::interrupt(int intnr){
 
 void GPIO::init_pins(){
 
+#ifndef PC
     //init wiringPI lib
     if (wiringPiSetup () < 0) {
         qDebug()<<"Failed to init GPIO driver";
@@ -93,6 +105,7 @@ void GPIO::init_pins(){
         qDebug()<<"Failed to init int";
     }
 
+#endif
 
 }
 
@@ -117,12 +130,15 @@ void GPIO::idle_timer_increment() {
     //turn off screen if timeout is reached and screen is not off already (off_timeout==0 always on)
     if ((off_timeout > 0) && (idle_timer * STATUS_REFRESH >= off_timeout) && (backlight_state)) {
         idle_timer = 0;
+
+        if(pir_lcd && digitalRead(GPIO_PIR))
+            return;
+
         this->enable_backlight(false);
 
     }
 
 }
-
 
 void GPIO::reset_idle_timer() {
 
@@ -140,6 +156,7 @@ void GPIO::enable_backlight(bool enable){
         blank->show();
     else
         blank->hide();
+
     digitalWrite(GPIO_LCD_BL, !enable);
     backlight_state = enable;
 #endif
@@ -150,3 +167,7 @@ int GPIO::read(int pin){
     return digitalRead(pin);
 }
 
+void GPIO::SetPirLcd(bool enable){
+
+    pir_lcd = enable;
+}

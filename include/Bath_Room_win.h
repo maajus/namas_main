@@ -31,6 +31,7 @@ public:
     void update_room_info();
     void send_tcp_cmd(QString);
     Room* get_room();
+    void status_xml(QDomDocument *);
     
 private:
     Ui::Bath_Room_win widget;
@@ -46,6 +47,7 @@ private slots:
     void on_lights0_button_clicked();
     void on_lights1_button_clicked();
     void on_lights2_button_clicked();
+    void on_lights3_button_clicked();
 
     void on_back_button_clicked();
 //    void checkBox_stateChanged(int);

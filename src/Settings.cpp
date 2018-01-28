@@ -18,6 +18,7 @@ Settings::Settings(){
     door_light = false;
     pir_lcd = false;
     this->read_config();
+
 }
 
 
@@ -37,7 +38,7 @@ int Settings::xml_to_file(QDomDocument *domdoc) {
     QFile file;
 
     mutex.lock();
-    file.setFileName(CONFIG_DIR"settings.xml");
+    file.setFileName(CONFIG_DIR "settings.xml");
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
         qDebug() << "[Settings] Failed to open settings.xml";
         mutex.unlock();
@@ -67,7 +68,7 @@ int Settings::read_config() {
     QFile file;
 
     mutex.lock();
-    file.setFileName(CONFIG_DIR"settings.xml");
+    file.setFileName(CONFIG_DIR "settings.xml");
     if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
         qDebug() << "[Settings] Failed to open settings.xml";
         mutex.unlock();
@@ -205,7 +206,7 @@ void Settings::SetDoorSiren(bool enable){
 
 
 void Settings::SetPirLcd(bool enable){
-    door_siren = enable;
+    pir_lcd = enable;
 }
 
 

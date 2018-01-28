@@ -32,7 +32,8 @@ public:
     void send_tcp_cmd(QString);
     Room* get_room();
     Room_status GetStatus();
-    
+    void status_xml(QDomDocument *domdoc);
+
 private:
     Ui::Corridor_win widget;
     info_widget *info_w;

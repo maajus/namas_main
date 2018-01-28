@@ -45,6 +45,7 @@ class GPIO : public QObject {
         void reset_idle_timer();
         void enable_backlight(bool);
         int read(int pin);
+        void SetPirLcd(bool);
 
         public slots:
             void interrupt(int);
@@ -56,6 +57,7 @@ class GPIO : public QObject {
         int off_timeout;
         int idle_timer;
         Blank_widget *blank;
+        bool pir_lcd;
 
 
 signals:

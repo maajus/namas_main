@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>switch_off.png</file>
+    <file>switch_on.png</file>
     <file>fan_on.png</file>
     <file>mirror_on.png</file>
     <file>mirror.png</file>

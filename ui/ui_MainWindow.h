@@ -86,21 +86,25 @@ public:
     QVideoWidget *video_widget;
     QWidget *page_5;
     QPushButton *settings_save_button;
-    QWidget *widget;
+    QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout_2;
     QCheckBox *settings_door_siren_checkbox;
     QCheckBox *settings_door_lights_checkbox;
     QCheckBox *settings_pir_lcd_checkbox;
-    QWidget *widget1;
+    QWidget *layoutWidget5;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label;
     QComboBox *settings_lcd_timeout_comboBox;
-    QWidget *layoutWidget4;
+    QPushButton *all_lights_on_button;
+    QPushButton *all_lights_off_button;
+    QFrame *top_frame;
+    QWidget *layoutWidget6;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
     QLabel *date_label;
     QLabel *time_label;
     QLabel *pir1_label;
+    QLabel *alarm_status_label;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -113,7 +117,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 90, 991, 481));
+        layoutWidget->setGeometry(QRect(10, 70, 991, 511));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -265,7 +269,11 @@ public:
         font3.setBold(true);
         font3.setWeight(75);
         alarm_code_lineedit->setFont(font3);
-        alarm_code_lineedit->setCursor(QCursor(Qt::BlankCursor));
+        alarm_code_lineedit->setCursor(QCursor(Qt::IBeamCursor));
+        alarm_code_lineedit->setMouseTracking(false);
+        alarm_code_lineedit->setFocusPolicy(Qt::NoFocus);
+        alarm_code_lineedit->setAcceptDrops(false);
+        alarm_code_lineedit->setReadOnly(false);
         layoutWidget3 = new QWidget(keypad_widget);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
         layoutWidget3->setGeometry(QRect(51, 67, 471, 391));
@@ -384,58 +392,69 @@ public:
         settings_save_button->setGeometry(QRect(710, 340, 129, 113));
         sizePolicy.setHeightForWidth(settings_save_button->sizePolicy().hasHeightForWidth());
         settings_save_button->setSizePolicy(sizePolicy);
-        widget = new QWidget(page_5);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 20, 281, 171));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget4 = new QWidget(page_5);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(40, 20, 281, 171));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget4);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        settings_door_siren_checkbox = new QCheckBox(widget);
+        settings_door_siren_checkbox = new QCheckBox(layoutWidget4);
         settings_door_siren_checkbox->setObjectName(QStringLiteral("settings_door_siren_checkbox"));
 
         verticalLayout_2->addWidget(settings_door_siren_checkbox);
 
-        settings_door_lights_checkbox = new QCheckBox(widget);
+        settings_door_lights_checkbox = new QCheckBox(layoutWidget4);
         settings_door_lights_checkbox->setObjectName(QStringLiteral("settings_door_lights_checkbox"));
 
         verticalLayout_2->addWidget(settings_door_lights_checkbox);
 
-        settings_pir_lcd_checkbox = new QCheckBox(widget);
+        settings_pir_lcd_checkbox = new QCheckBox(layoutWidget4);
         settings_pir_lcd_checkbox->setObjectName(QStringLiteral("settings_pir_lcd_checkbox"));
 
         verticalLayout_2->addWidget(settings_pir_lcd_checkbox);
 
-        widget1 = new QWidget(page_5);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(40, 210, 281, 25));
-        horizontalLayout_4 = new QHBoxLayout(widget1);
+        layoutWidget5 = new QWidget(page_5);
+        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(40, 210, 281, 27));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget5);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget5);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout_4->addWidget(label);
 
-        settings_lcd_timeout_comboBox = new QComboBox(widget1);
+        settings_lcd_timeout_comboBox = new QComboBox(layoutWidget5);
         settings_lcd_timeout_comboBox->setObjectName(QStringLiteral("settings_lcd_timeout_comboBox"));
 
         horizontalLayout_4->addWidget(settings_lcd_timeout_comboBox);
 
+        all_lights_on_button = new QPushButton(page_5);
+        all_lights_on_button->setObjectName(QStringLiteral("all_lights_on_button"));
+        all_lights_on_button->setGeometry(QRect(672, 30, 151, 51));
+        all_lights_off_button = new QPushButton(page_5);
+        all_lights_off_button->setObjectName(QStringLiteral("all_lights_off_button"));
+        all_lights_off_button->setGeometry(QRect(672, 90, 151, 51));
         stack_widget->addWidget(page_5);
 
         horizontalLayout->addWidget(stack_widget);
 
-        layoutWidget4 = new QWidget(centralwidget);
-        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(538, 0, 441, 98));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
+        top_frame = new QFrame(centralwidget);
+        top_frame->setObjectName(QStringLiteral("top_frame"));
+        top_frame->setGeometry(QRect(-3, 0, 1030, 60));
+        top_frame->setFrameShape(QFrame::StyledPanel);
+        top_frame->setFrameShadow(QFrame::Raised);
+        layoutWidget6 = new QWidget(top_frame);
+        layoutWidget6->setObjectName(QStringLiteral("layoutWidget6"));
+        layoutWidget6->setGeometry(QRect(540, -21, 441, 98));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
-        date_label = new QLabel(layoutWidget4);
+        date_label = new QLabel(layoutWidget6);
         date_label->setObjectName(QStringLiteral("date_label"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -452,7 +471,7 @@ public:
 
         horizontalLayout_3->addWidget(date_label);
 
-        time_label = new QLabel(layoutWidget4);
+        time_label = new QLabel(layoutWidget6);
         time_label->setObjectName(QStringLiteral("time_label"));
         sizePolicy1.setHeightForWidth(time_label->sizePolicy().hasHeightForWidth());
         time_label->setSizePolicy(sizePolicy1);
@@ -461,16 +480,20 @@ public:
 
         horizontalLayout_3->addWidget(time_label);
 
-        pir1_label = new QLabel(centralwidget);
+        pir1_label = new QLabel(top_frame);
         pir1_label->setObjectName(QStringLiteral("pir1_label"));
-        pir1_label->setGeometry(QRect(10, 10, 21, 21));
+        pir1_label->setGeometry(QRect(40, 10, 21, 21));
         pir1_label->setPixmap(QPixmap(QString::fromUtf8(":/icons/green-circle.png")));
         pir1_label->setScaledContents(true);
+        alarm_status_label = new QLabel(top_frame);
+        alarm_status_label->setObjectName(QStringLiteral("alarm_status_label"));
+        alarm_status_label->setGeometry(QRect(10, 10, 19, 21));
+        alarm_status_label->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
 
-        stack_widget->setCurrentIndex(2);
+        stack_widget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -520,9 +543,14 @@ public:
          << QApplication::translate("MainWindow", "60", 0)
          << QApplication::translate("MainWindow", "120", 0)
         );
+        all_lights_on_button->setText(QApplication::translate("MainWindow", "\304\256jungti visas\n"
+"\305\241viesas", 0));
+        all_lights_off_button->setText(QApplication::translate("MainWindow", "I\305\241ungti visas\n"
+"\305\241viesas", 0));
         date_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         time_label->setText(QApplication::translate("MainWindow", "N/A", 0));
         pir1_label->setText(QString());
+        alarm_status_label->setText(QString());
     } // retranslateUi
 
 };

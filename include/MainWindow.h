@@ -53,6 +53,7 @@ private:
     void TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id);
     void TCP_response_to_set(Tcp_packet *tcp_Packet, int socket_id);
     void LoadSettings();
+    void SwitchAllLights(bool);
 
     Ui::MainWindow widget;
     QTimer status_timer;
@@ -77,6 +78,8 @@ private slots:
     void on_settings_save_button_clicked();
     void on_rec_button_clicked();
     void on_alarm_button_clicked();
+    void on_all_lights_on_button_clicked();
+    void on_all_lights_off_button_clicked();
     void update_status();
     void update_info();
     void menu_selected(int);

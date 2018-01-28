@@ -4,6 +4,7 @@
 #include <QObject>
 #include "TCP.h"
 #include "DataLogger.h"
+#include <QDomDocument>
 
 class Room : public QObject
 {
@@ -16,6 +17,7 @@ class Room : public QObject
         void sendData(QByteArray);
         void switch_all_lights(bool);
         void toggle_all_lights();
+        void status2xml(QDomDocument *root);
 
     private:
         QString ip;

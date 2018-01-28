@@ -33,12 +33,12 @@ class UserManager
     int login(User *user, QString *username);
     User get_user(int);
     void clear_users();
+    int writeUsers();
     
 
 
     private:
     int readUsers();
-    int writeUsers();
     void xml_to_users(QDomDocument *domdoc, QList<User> *userlist);
     void user_to_xml(QDomDocument * domdoc, QList<User> *userlist);
     QList<User> userlist;

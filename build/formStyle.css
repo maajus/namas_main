@@ -23,7 +23,7 @@ QLineEdit{
     selection-color:  black;
     selection-background-color:  #F9F9F9;
     margin-left: 10px;
-    border:1px solid #0ABCC7;
+    border:1px solid #4c4c4c;
     border-radius: 2px;
 }
 
@@ -129,7 +129,7 @@ QComboBox QAbstractItemView {
 
 QPushButton
 {
-    background-color:#435F70;
+    background-color:#4c4c4c;
     border-radius: 5px;
     border: 0px solid #FFFFFF;
     color:#ffffff;
@@ -140,7 +140,7 @@ QPushButton
 
 QPushButton:pressed
 {
-    border:2px solid #0ABCC7;
+    border:2px solid white;
 }
 
 QPushButton:!enabled
@@ -456,12 +456,17 @@ QProgressBar::chunk {
 
 QProgressBar[full="true"]::chunk
 {
-    border-radius:             6px;
+    border-radius:6px;
 }
 
-QFrame#room_buttons_frame{
-    background-color:#4c4c4c;
+QFrame#room_buttons_frame,#room_temp_frame{
+    background-color: #4c4c4c;
+    border: 5px solid #4c4c4c;
+
 }
 
+QFrame#top_frame{
+    background-color: #4c4c4c;
+}
 
 

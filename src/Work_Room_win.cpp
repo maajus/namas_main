@@ -101,3 +101,8 @@ Room* Work_Room_win::get_room(){
 
 }
 
+void Work_Room_win::status_xml(QDomDocument *domdoc){
+
+    room->status2xml(domdoc);
+
+}

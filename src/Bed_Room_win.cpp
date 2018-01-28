@@ -136,3 +136,10 @@ Room* Bed_Room_win::get_room(){
     
 //}
 
+void Bed_Room_win::status_xml(QDomDocument *domdoc){
+
+    room->status2xml(domdoc);
+
+}
+
+
