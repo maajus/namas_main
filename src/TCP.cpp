@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   TCP.cpp
  * Author: justas
- * 
+ *
  * Created on August 6, 2016, 7:49 PM
  */
 
@@ -19,12 +19,12 @@
 
 
 TCP::TCP() {
-    
+
     socket = new QTcpSocket( this ); // <-- needs to be a member variable: QTcpSocket * _pSocket;
     connect(socket, SIGNAL(readyRead()),this, SLOT(readTcpData()));
     //this->connect2room();
     retry_count = 0;
-    
+
 }
 
 TCP::~TCP() {
@@ -33,9 +33,9 @@ TCP::~TCP() {
 
 
 void TCP::connect2room(){
-    
+
     socket->connectToHost(ip,5555);
-        
+
     emit connected(Status::CONNECTING);
     //qDebug()<<"Connecting";
     if( socket->waitForConnected(300)) {
@@ -61,13 +61,13 @@ void TCP::sendData(QByteArray data){
 
     else{
         if(retry_count<=3){
-            qDebug()<<"[TCP] Try to reconnect ip: "<<ip;
+            //qDebug()<<"[TCP] Try to reconnect ip: "<<ip;
             this->connect2room();
             retry_count++;
         }
         else {
             emit connected(Status::FAILED);
-            qDebug()<<"[TCP] Timeout, failed to connect "<<ip;
+            //qDebug()<<"[TCP] Timeout, failed to connect "<<ip;
         }
     }
 

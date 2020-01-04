@@ -33,6 +33,9 @@ export OECORE_SDK_VERSION="2.1.1"
 export ARCH=arm
 export CROSS_COMPILE=arm-poky-linux-gnueabi-
 
+export QMAKE_CXX=$CXX
+export QMAKE_CXXFLAGS=$CXXFLAGS
+
 # Append environment subscripts
 if [ -d "$OECORE_TARGET_SYSROOT/environment-setup.d" ]; then
     for envfile in $OECORE_TARGET_SYSROOT/environment-setup.d/*.sh; do

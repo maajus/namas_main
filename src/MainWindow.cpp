@@ -21,16 +21,21 @@
 #include "Logger.h"
 #include "Config.h"
 #include "UserManager.h"
+#include "build_number.h"
 
 MainWindow::MainWindow() {
 
     gpio = new GPIO();
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
     server = new Server();
+    ws_server = new WSserver(5050);
     settings = new Settings();
     widget.setupUi(this);
 
-  connect(server, SIGNAL(dataReceived(Tcp_packet *, int)), this, SLOT(TCP_dataReceived(Tcp_packet *, int)));
+
+    connect(ws_server, SIGNAL(json_received(QWebSocket*, nlohmann::json)), this, SLOT(WS_dataReceived(QWebSocket*, nlohmann::json)));
+
+    connect(server, SIGNAL(dataReceived(Tcp_packet *, int)), this, SLOT(TCP_dataReceived(Tcp_packet *, int)));
     //connect(server, SIGNAL(connection_status(int)), this, SLOT(Remote_connected(int)));
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
@@ -115,7 +120,7 @@ MainWindow::MainWindow() {
     //alarm->readUsers(&users);
     //alarm->writeKeys();
     //qDebug()<<alarm->check_key("99999");
-    
+
     //User user1, user2;
     //user1.username = "Justas";
     //user1.pass = "22334";
@@ -126,6 +131,7 @@ MainWindow::MainWindow() {
     //manager.addUser(user2);
     //manager.writeUsers();
 
+    qDebug()<<"Build nr"<<BUILD;
 
 }
 
@@ -312,6 +318,43 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
 
 }
 
+enum{
+    CMD_NONE = 0,
+    CMD_GET_STATUS = 1,
+};
+
+
+void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
+
+    //nlohmann::json j_out;
+    int cmdID;
+
+    try{
+        cmdID = j["cmdID"];
+        //cmd.args = j["args"].get<std::vector<std::string>>(); //get args array
+    }
+    catch (const std::exception&) {
+        qDebug() << "[MainWindow] Failed to parse json ";
+        return;
+    }
+
+    switch(cmdID){
+        case CMD_GET_STATUS:
+            {
+                nlohmann::json j_out = nlohmann::json::array();
+
+                j_out.push_back(corridor->get_room()->status2json());
+                j_out.push_back(bedroom->get_room()->status2json());
+                j_out.push_back(bathroom->get_room()->status2json());
+                j_out.push_back(workroom->get_room()->status2json());
+                j_out.push_back(livingroom->get_room()->status2json());
+                ws_server->sendJson(pClient, j_out);
+
+                break;
+            }
+    }
+
+}
 
 
 
@@ -464,6 +507,7 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
     QString status, error;
 
     //qDebug() << "Set Object: " << tcp_Packet->object;
+    //qDebug().noquote()<<tcp_Packet->dataE.toString();
 
     if (tcp_Packet->object == "Command") {
 
@@ -472,7 +516,7 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
         //format internal storage
         //if(root.firstChildElement("SwitchAllLights").text().toInt() == 1){
 
-        //}
+        //}//
         //
         if(!root.firstChildElement("SwitchAllLights").isNull()){
             this->SwitchAllLights(root.firstChildElement("SwitchAllLights").text().toInt());
@@ -503,6 +547,44 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
 
 
 
+    if (tcp_Packet->object == "Light") {
+
+        //qDebug().noquote()<<tcp_Packet->dataE.toString();
+        QDomElement root = tcp_Packet->dataE.firstChildElement();
+
+        if(!root.firstChildElement("Livingroom").isNull()){
+            int L = root.firstChildElement("Livingroom").text().toInt();
+            livingroom->get_room()->toggle_light(L);
+        }
+
+        if(!root.firstChildElement("Bedroom").isNull()){
+            int L = root.firstChildElement("Bedroom").text().toInt();
+            bedroom->get_room()->toggle_light(L);
+        }
+
+        if(!root.firstChildElement("Corridor").isNull()){
+            int L = root.firstChildElement("Corridor").text().toInt();
+            corridor->get_room()->toggle_light(L);
+        }
+
+        if(!root.firstChildElement("Bathroom").isNull()){
+            int L = root.firstChildElement("Bathroom").text().toInt();
+            bathroom->get_room()->toggle_light(L);
+        }
+
+        if(!root.firstChildElement("Workroom").isNull()){
+            int L = root.firstChildElement("Workroom").text().toInt();
+            workroom->get_room()->toggle_light(L);
+        }
+
+        //respond to request
+        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
+
+        return;
+
+    }
+
+
     if (tcp_Packet->object == "WebUsers") {
 
         //qDebug()<<tcp_Packet->dataE.toString();
@@ -520,7 +602,10 @@ void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
     }
 
 
-  
+     qDebug() << "Unknown object" << tcp_Packet->object;
+
+
+
 }
 
 

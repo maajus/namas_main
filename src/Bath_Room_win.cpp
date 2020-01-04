@@ -50,14 +50,14 @@ void Bath_Room_win::on_back_button_clicked(){
 
 void Bath_Room_win::on_lights0_button_clicked(){
 
-    this->send_tcp_cmd("L1");
+    this->send_tcp_cmd("L0");
     status.L[0] = !status.L[0];
     this->update_room_info();
 
 }
 void Bath_Room_win::on_lights1_button_clicked(){
 
-    this->send_tcp_cmd("L0");
+    this->send_tcp_cmd("L1");
     status.L[1] = !status.L[1];
     this->update_room_info();
 
@@ -98,9 +98,8 @@ void Bath_Room_win::room_status_received(Room_status room_status){
     this->update_room_info();
 
     //turn on mirror if it is off, lights are on and humi is high
-    if(!status.L[3] && status.L[0] && (status.H > 85))
+    if(!status.L[3] && status.L[0] && (status.H > 98))
         this->send_tcp_cmd("L3");
-
 
 }
 

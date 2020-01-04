@@ -15,6 +15,8 @@
 #include <QPainter>
 #include <QThread>
 #include <QGraphicsDropShadowEffect>
+#include <QStyle>
+#include <QStyleOption>
 
 info_widget::info_widget(QWidget *parent) :
     QWidget(parent)
@@ -39,10 +41,12 @@ info_widget::~info_widget() {
 
 void info_widget::set_room_status(Room_status status){
 
+        widget.status_label->setVisible(true);
+
     if(status.connected == CONNECTED){
         widget.temp_label->setText(status.temp);
         widget.humidity_label->setText(status.humi);
-        //widget.status_label->setText("connected");
+        widget.status_label->setVisible(false);
     }
     if(status.connected == CONNECTING)
         widget.status_label->setText("connecting");

@@ -3,7 +3,7 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_VERSION	5.8	//
 ALLCONFS	nbproject/Makefile-impl.mk	/^ALLCONFS=Debug Release $/;"	m
 AR	Makefile	/^AR            = $(OE_QMAKE_AR) cqs$/;"	m
 AR	nbproject/qt-Debug.mk	/^AR            = $(OE_QMAKE_AR) cqs$/;"	m
@@ -12,12 +12,15 @@ AS	nbproject/Makefile-Release.mk	/^AS=as$/;"	m
 ASFLAGS	nbproject/Makefile-Debug.mk	/^ASFLAGS=$/;"	m
 ASFLAGS	nbproject/Makefile-Release.mk	/^ASFLAGS=$/;"	m
 AUDIO	include/MainWindow.h	/^    AUDIO,$/;"	e	enum:Menus
+AddPadding	src/miniaes.cpp	/^QByteArray MiniAES::AddPadding(QByteArray input)$/;"	f	class:MiniAES
 Alarm	include/Alarm.h	/^class Alarm$/;"	c
 Alarm	src/Alarm.cpp	/^Alarm::Alarm(){$/;"	f	class:Alarm
+ArrayToInt	src/tcp_server.cpp	/^qint32 ArrayToInt(QByteArray source) {$/;"	f
 BATHROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
 BEDROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
-BEDROOM_LOGFILE	headers/Config.h	7;"	d
+BEDROOM_LOGFILE	include/Config.h	32;"	d
 BED_ROOM_WIN_H	include/Bed_Room_win.h	15;"	d
+BPOLY	include/miniaes.h	16;"	d
 BUILD	include/build_number.h	1;"	d
 BUILD_SUBPROJECTS	nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS=${BUILD_SUBPROJECTS_${SUBPROJECTS}}$/;"	m
 BUILD_SUBPROJECTS_	nbproject/Makefile-impl.mk	/^BUILD_SUBPROJECTS_=.build-subprojects$/;"	m
@@ -83,7 +86,7 @@ CND_PLATFORM_Release	nbproject/Makefile-variables.mk	/^CND_PLATFORM_Release=GNU-
 COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
 COMPRESS	nbproject/qt-Debug.mk	/^COMPRESS      = gzip -9f$/;"	m
 CONF	nbproject/Makefile-impl.mk	/^CONF=${DEFAULTCONF}$/;"	m
-CONFIG_H	headers/Config.h	2;"	d
+CONFIG_DIR	include/Config.h	27;"	d
 CONFIG_H	include/Config.h	2;"	d
 CONNECTED	include/TCP.h	/^    CONNECTED,$/;"	e	enum:Status
 CONNECTING	include/TCP.h	/^    CONNECTING,$/;"	e	enum:Status
@@ -94,7 +97,7 @@ COPY_DIR	nbproject/qt-Debug.mk	/^COPY_DIR      = cp -f -R$/;"	m
 COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
 COPY_FILE	nbproject/qt-Debug.mk	/^COPY_FILE     = cp -f$/;"	m
 CORRIDOR	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
-CORRIDOR_LOGFILE	headers/Config.h	8;"	d
+CORRIDOR_LOGFILE	include/Config.h	33;"	d
 CP	nbproject/Makefile-Debug.mk	/^CP=cp$/;"	m
 CP	nbproject/Makefile-Release.mk	/^CP=cp$/;"	m
 CXX	Makefile	/^CXX           = @echo compiling $< && $(OE_QMAKE_CXX)$/;"	m
@@ -110,10 +113,12 @@ Camera	src/Camera.cpp	/^Camera::Camera(){$/;"	f	class:Camera
 Corridor_win	include/Corridor_win.h	/^class Corridor_win : public QDialog {$/;"	c
 Corridor_win	src/Corridor_win.cpp	/^Corridor_win::Corridor_win(info_widget * w):info_w(w)  {$/;"	f	class:Corridor_win
 Corridor_win	ui/ui_Corridor_win.h	/^    class Corridor_win: public Ui_Corridor_win {};$/;"	c	namespace:Ui
-DATE_TIME_FORMAT	headers/Config.h	4;"	d
+DATALOG_PERIOD	include/Config.h	15;"	d
+DATA_LOGGER_	include/DataLogger.h	2;"	d
+DATE_TIME_FORMAT	include/Config.h	29;"	d
 DATE_TIME_FORMAT	include/Config.h	4;"	d
 DEFAULTCONF	nbproject/Makefile-impl.mk	/^DEFAULTCONF=Debug$/;"	m
-DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB$/;"	m
+DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB$/;"	m
 DEFINES	nbproject/qt-Debug.mk	/^DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB$/;"	m
 DEFINITIONS_H	include/definitions.h	2;"	d
 DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
@@ -129,7 +134,16 @@ DISTDIR	Makefile	/^DISTDIR = \/home\/justas\/work\/namas\/namas_main\/obj\/namas
 DISTDIR	nbproject/qt-Debug.mk	/^DISTDIR = \/home\/justas\/work\/namas\/namas_main\/build\/Debug\/rpi-Linux\/namas1.0.0$/;"	m
 DISTNAME	Makefile	/^DISTNAME      = namas_main1.0.0$/;"	m
 DISTNAME	nbproject/qt-Debug.mk	/^DISTNAME      = namas1.0.0$/;"	m
+DPOLY	include/miniaes.h	17;"	d
+DataLogger	include/DataLogger.h	/^class DataLogger : QObject {$/;"	c
+DataLogger	src/DataLogger.cpp	/^DataLogger::DataLogger(ROOM_ID id) {$/;"	f	class:DataLogger
+Decrypt	src/miniaes.cpp	/^QByteArray MiniAES::Decrypt(QByteArray p_input, QByteArray p_key)$/;"	f	class:MiniAES
+Decrypt	src/miniaes.cpp	/^QByteArray MiniAES::Decrypt(QByteArray p_input, QByteArray p_key, QByteArray p_iv)$/;"	f	class:MiniAES
 DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+DoorLight	src/Settings.cpp	/^bool Settings::DoorLight(){$/;"	f	class:Settings
+DoorSiren	src/Settings.cpp	/^bool Settings::DoorSiren(){$/;"	f	class:Settings
+Encrypt	src/miniaes.cpp	/^QByteArray MiniAES::Encrypt(QByteArray p_input, QByteArray p_key)$/;"	f	class:MiniAES
+Encrypt	src/miniaes.cpp	/^QByteArray MiniAES::Encrypt(QByteArray p_input, QByteArray p_key, QByteArray p_iv)$/;"	f	class:MiniAES
 FAILED	include/TCP.h	/^    FAILED,$/;"	e	enum:Status
 FC	nbproject/Makefile-Debug.mk	/^FC=gfortran$/;"	m
 FC	nbproject/Makefile-Release.mk	/^FC=gfortran$/;"	m
@@ -163,10 +177,15 @@ GPIO_REED	include/Config.h	9;"	d
 GPIO_SIREN	include/Config.h	8;"	d
 GREP	nbproject/Makefile-Debug.mk	/^GREP=grep$/;"	m
 GREP	nbproject/Makefile-Release.mk	/^GREP=grep$/;"	m
+GetStatus	src/Corridor_win.cpp	/^Room_status Corridor_win::GetStatus(){$/;"	f	class:Corridor_win
+H	include/info_widget.h	/^    int H;$/;"	m	struct:Room_status
+HARD_KEY	include/Config.h	16;"	d
 HIGH	include/mmapGpio.h	/^	static const unsigned int HIGH = 1;$/;"	m	class:mmapGpio
+HIGH	src/GPIO.cpp	11;"	d	file:
 HIGH	src/mmapGpio.cpp	/^const unsigned int mmapGpio::HIGH;$/;"	m	class:mmapGpio	file:
 HOME	include/MainWindow.h	/^    HOME,$/;"	e	enum:Menus
-INCPATH	Makefile	/^INCPATH       = -I. -I. -Isrc -Iinclude -Iui -Ilib -I\/home\/justas\/sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5 -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimediaWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimedia -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtGui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtNetwork -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtCore -Imoc -Iui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/linux-oe-g++$/;"	m
+HexStringToByte	src/miniaes.cpp	/^QByteArray MiniAES::HexStringToByte(QString key)$/;"	f	class:MiniAES
+INCPATH	Makefile	/^INCPATH       = -I. -I. -Isrc -Iinclude -Iui -Ilib -I\/home\/justas\/sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5 -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimediaWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtWidgets -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtMultimedia -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtGui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtNetwork -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtXml -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtCore -Imoc -Iui -I..\/..\/..\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/linux-oe-g++$/;"	m
 INCPATH	nbproject/qt-Debug.mk	/^INCPATH       = -Inbproject -I. -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/c++\/4.9.2 -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/c++\/4.9.2\/arm-poky-linux-gnueabi -Iheaders -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5 -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtWidgets -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtGui -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtNetwork -isystem \/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/include\/qt5\/QtCore -Imoc -Iui -I\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib\/qt5\/mkspecs\/linux-oe-g++$/;"	m
 INPUT	include/mmapGpio.h	/^    static const unsigned int INPUT = 0;$/;"	m	class:mmapGpio
 INPUT	src/mmapGpio.cpp	/^const unsigned int mmapGpio::INPUT;$/;"	m	class:mmapGpio	file:
@@ -181,33 +200,39 @@ INT_DOOR_CLOSE	include/GPIO.h	/^    INT_DOOR_CLOSE,$/;"	e	enum:INTERRUPT
 INT_DOOR_OPEN	include/GPIO.h	/^    INT_DOOR_OPEN,$/;"	e	enum:INTERRUPT
 INT_PIR_OFF	include/GPIO.h	/^    INT_PIR_OFF,$/;"	e	enum:INTERRUPT
 INT_PIR_ON	include/GPIO.h	/^    INT_PIR_ON,$/;"	e	enum:INTERRUPT
-IP_KORIDORIUS	include/Config.h	19;"	d
-IP_MIEGAMASIS	include/Config.h	20;"	d
-IP_SVETAINE	include/Config.h	18;"	d
-IP_VAIKUKAMBARYS	include/Config.h	21;"	d
-IP_VONIA	include/Config.h	17;"	d
+IP_KORIDORIUS	include/Config.h	21;"	d
+IP_MIEGAMASIS	include/Config.h	22;"	d
+IP_SVETAINE	include/Config.h	20;"	d
+IP_VAIKUKAMBARYS	include/Config.h	23;"	d
+IP_VONIA	include/Config.h	19;"	d
 IntHelper	include/GPIO.h	/^        IntHelper(){}$/;"	f	class:IntHelper
 IntHelper	include/GPIO.h	/^class IntHelper : public QObject {$/;"	c
+IntToArray	src/tcp_server.cpp	/^QByteArray IntToArray(qint32 source) \/\/Use qint32 to ensure that the number have 4 bytes$/;"	f
 Interrupt_PIR	src/GPIO.cpp	/^void Interrupt_PIR(void) {$/;"	f
 Interrupt_REED	src/GPIO.cpp	/^void Interrupt_REED(void) {$/;"	f
+KEEP_ALIVE_TIMEOUT	src/tcp_server.cpp	10;"	d	file:
 L	include/info_widget.h	/^    int L[8]; \/\/lights state$/;"	m	struct:Room_status
 LDLIBSOPTIONS	nbproject/Makefile-Debug.mk	/^LDLIBSOPTIONS=-Wl,-rpath,'\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib' -lwiringPi$/;"	m
 LDLIBSOPTIONS	nbproject/Makefile-Release.mk	/^LDLIBSOPTIONS=$/;"	m
 LFLAGS	Makefile	/^LFLAGS        = $(OE_QMAKE_LDFLAGS) -Wl,-O1 -Wl,-rpath-link,\/home\/justas\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib$/;"	m
 LFLAGS	nbproject/qt-Debug.mk	/^LFLAGS        = -march=armv6 -mfloat-abi=hard -mtune=arm1176jzf-s -mfpu=vfp --sysroot=\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi$/;"	m
-LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L.\/lib -lwiringPi -L\/home\/justas\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib -lQt5MultimediaWidgets -L\/home\/justas\/rpi\/build\/tmp\/sysroots\/raspberrypi\/usr\/lib -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Network -lQt5Core -lGLESv2 -lpthread $/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L.\/lib -lwiringPi -L\/home\/justas\/pi_sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib -lQt5MultimediaWidgets -L\/home\/justas\/rpi\/build\/tmp\/sysroots\/raspberrypi\/usr\/lib -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Network -lQt5Xml -lQt5Core -lGLESv2 -lpthread $/;"	m
 LIBS	nbproject/qt-Debug.mk	/^LIBS          = $(SUBLIBS) -lwiringPi -Wl,-rpath,\/mnt\/data\/work\/namas-sdk\/sysroots\/arm1176jzfshf-vfp-poky-linux-gnueabi\/usr\/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGLESv2 -lpthread $/;"	m
 LINK	Makefile	/^LINK          = @echo linking $@ && $(OE_QMAKE_LINK)$/;"	m
 LINK	nbproject/qt-Debug.mk	/^LINK          = arm-poky-linux-gnueabi-g++$/;"	m
-LIVINGROOM_LOGFILE	headers/Config.h	6;"	d
+LIVINGROOM_LOGFILE	include/Config.h	31;"	d
 LIVING_ROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
+LOG_DIR	include/Config.h	26;"	d
 LOG_TRIGGERS	include/Logger.h	/^    LOG_TRIGGERS,$/;"	e	enum:LOG_TYPE
 LOG_TYPE	include/Logger.h	/^enum LOG_TYPE {$/;"	g
 LOW	include/mmapGpio.h	/^    static const unsigned int LOW = 0;$/;"	m	class:mmapGpio
+LOW	src/GPIO.cpp	12;"	d	file:
 LOW	src/mmapGpio.cpp	/^const unsigned int mmapGpio::LOW;$/;"	m	class:mmapGpio	file:
+LcdTimeout	src/Settings.cpp	/^int Settings::LcdTimeout(){$/;"	f	class:Settings
 Living_Room_win	include/Living_Room_win.h	/^class Living_Room_win : public QDialog {$/;"	c
 Living_Room_win	src/Living_Room_win.cpp	/^Living_Room_win::Living_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Living_Room_win
 Living_Room_win	ui/ui_Living_Room_win.h	/^    class Living_Room_win: public Ui_Living_Room_win {};$/;"	c	namespace:Ui
+LoadSettings	src/MainWindow.cpp	/^void MainWindow::LoadSettings(){$/;"	f	class:MainWindow
 Logger	include/Logger.h	/^class Logger {$/;"	c
 MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
 MAKEFILE	nbproject/qt-Debug.mk	/^MAKEFILE      = qttmp-Debug.mk$/;"	m
@@ -223,8 +248,15 @@ MainWindow	src/MainWindow.cpp	/^MainWindow::MainWindow() {$/;"	f	class:MainWindo
 MainWindow	ui/ui_MainWindow.h	/^    class MainWindow: public Ui_MainWindow {};$/;"	c	namespace:Ui
 MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
 Menus	include/MainWindow.h	/^enum Menus{$/;"	g
+MiniAES	include/miniaes.h	/^class MiniAES$/;"	c
+MiniAES	src/miniaes.cpp	/^MiniAES::MiniAES()$/;"	f	class:MiniAES
+MyTcpServer	include/tcp_server.h	/^class MyTcpServer : public QTcpServer$/;"	c
 NM	nbproject/Makefile-Debug.mk	/^NM=nm$/;"	m
 NM	nbproject/Makefile-Release.mk	/^NM=nm$/;"	m
+N_BLOCK	include/miniaes.h	12;"	d
+N_COL	include/miniaes.h	11;"	d
+N_MAX_ROUNDS	include/miniaes.h	13;"	d
+N_ROW	include/miniaes.h	10;"	d
 OBJECTDIR	nbproject/Makefile-Debug.mk	/^OBJECTDIR=${CND_BUILDDIR}\/${CND_CONF}\/${CND_PLATFORM}$/;"	m
 OBJECTDIR	nbproject/Makefile-Release.mk	/^OBJECTDIR=${CND_BUILDDIR}\/${CND_CONF}\/${CND_PLATFORM}$/;"	m
 OBJECTFILES	nbproject/Makefile-Debug.mk	/^OBJECTFILES=$/;"	m
@@ -239,6 +271,9 @@ PINCTRL_H	include/Pinctrl.h	15;"	d
 PROJECTNAME	nbproject/Makefile-impl.mk	/^PROJECTNAME=namas_main$/;"	m
 Pinctrl	include/Pinctrl.h	/^class Pinctrl {$/;"	c
 Pinctrl	src/Pinctrl.cpp	/^Pinctrl::Pinctrl() {$/;"	f	class:Pinctrl
+PirLcd	src/Settings.cpp	/^bool Settings::PirLcd(){$/;"	f	class:Settings
+PrepareClangFlags	.ycm_extra_conf.py	/^from clang_helpers import PrepareClangFlags$/;"	i
+QByteArrayToUCharArray	src/miniaes.cpp	/^void MiniAES::QByteArrayToUCharArray(QByteArray src, unsigned char *dest)$/;"	f	class:MiniAES
 QMAKE	Makefile	/^QMAKE         = \/home\/justas\/pi_sdk\/sysroots\/x86_64-pokysdk-linux\/usr\/bin\/qt5\/qmake$/;"	m
 QMAKE	nbproject/Makefile-Debug.mk	/^QMAKE=qmake$/;"	m
 QMAKE	nbproject/Makefile-Release.mk	/^QMAKE=qmake$/;"	m
@@ -246,7 +281,7 @@ QMAKE	nbproject/qt-Debug.mk	/^QMAKE         = \/mnt\/data\/work\/namas-sdk\/sysr
 QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = namas_main$/;"	m
 QMAKE_TARGET	nbproject/qt-Debug.mk	/^QMAKE_TARGET  = namas$/;"	m
 QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	25;"	d	file:
-QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	50;"	d	file:
+QT_MOC_LITERAL	moc/moc_Bath_Room_win.cpp	52;"	d	file:
 QT_MOC_LITERAL	moc/moc_Bed_Room_win.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_Bed_Room_win.cpp	50;"	d	file:
 QT_MOC_LITERAL	moc/moc_Blank_widget.cpp	25;"	d	file:
@@ -255,45 +290,55 @@ QT_MOC_LITERAL	moc/moc_Camera.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_Camera.cpp	40;"	d	file:
 QT_MOC_LITERAL	moc/moc_Corridor_win.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_Corridor_win.cpp	50;"	d	file:
+QT_MOC_LITERAL	moc/moc_DataLogger.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_DataLogger.cpp	39;"	d	file:
 QT_MOC_LITERAL	moc/moc_GPIO.cpp	131;"	d	file:
 QT_MOC_LITERAL	moc/moc_GPIO.cpp	147;"	d	file:
 QT_MOC_LITERAL	moc/moc_GPIO.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_GPIO.cpp	39;"	d	file:
 QT_MOC_LITERAL	moc/moc_Living_Room_win.cpp	25;"	d	file:
-QT_MOC_LITERAL	moc/moc_Living_Room_win.cpp	52;"	d	file:
+QT_MOC_LITERAL	moc/moc_Living_Room_win.cpp	56;"	d	file:
 QT_MOC_LITERAL	moc/moc_MainWindow.cpp	25;"	d	file:
-QT_MOC_LITERAL	moc/moc_MainWindow.cpp	49;"	d	file:
+QT_MOC_LITERAL	moc/moc_MainWindow.cpp	60;"	d	file:
 QT_MOC_LITERAL	moc/moc_Room.cpp	25;"	d	file:
-QT_MOC_LITERAL	moc/moc_Room.cpp	44;"	d	file:
+QT_MOC_LITERAL	moc/moc_Room.cpp	46;"	d	file:
 QT_MOC_LITERAL	moc/moc_TCP.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_TCP.cpp	45;"	d	file:
 QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_Work_Room_win.cpp	46;"	d	file:
 QT_MOC_LITERAL	moc/moc_info_widget.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc/moc_info_widget.cpp	39;"	d	file:
+QT_MOC_LITERAL	moc/moc_tcp_server.cpp	115;"	d	file:
+QT_MOC_LITERAL	moc/moc_tcp_server.cpp	138;"	d	file:
+QT_MOC_LITERAL	moc/moc_tcp_server.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc/moc_tcp_server.cpp	39;"	d	file:
 QT_NAMESPACE	rcc/qrc_res.cpp	/^namespace QT_NAMESPACE {$/;"	n	file:
-QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	20651;"	d	file:
-QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	20655;"	d	file:
-QT_RCC_MANGLE_NAMESPACE0	rcc/qrc_res.cpp	20648;"	d	file:
-QT_RCC_MANGLE_NAMESPACE1	rcc/qrc_res.cpp	20649;"	d	file:
-QT_RCC_MANGLE_NAMESPACE2	rcc/qrc_res.cpp	20650;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	20647;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	20654;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	24139;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	rcc/qrc_res.cpp	24143;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	rcc/qrc_res.cpp	24136;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	rcc/qrc_res.cpp	24137;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	rcc/qrc_res.cpp	24138;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	24135;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	rcc/qrc_res.cpp	24142;"	d	file:
 RANLIB	Makefile	/^RANLIB        = $/;"	m
 RANLIB	nbproject/Makefile-Debug.mk	/^RANLIB=ranlib$/;"	m
 RANLIB	nbproject/Makefile-Release.mk	/^RANLIB=ranlib$/;"	m
 RANLIB	nbproject/qt-Debug.mk	/^RANLIB        = $/;"	m
 RASPBERRYPI2	include/mmapGpio.h	14;"	d
+RECONNECT_TIMEOUT	include/Config.h	14;"	d
 ROOM_H	include/Room.h	2;"	d
 ROOM_ID	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	g
 ROOM_INFO_UPDATE_FREQ	include/Config.h	13;"	d
+RemovePadding	src/miniaes.cpp	/^QByteArray MiniAES::RemovePadding(QByteArray input)$/;"	f	class:MiniAES
 Room	include/Room.h	/^class Room : public QObject$/;"	c
-Room	src/Room.cpp	/^Room::Room(ROOM_ID id): room_id(id) {$/;"	f	class:Room
+Room	src/Room.cpp	/^Room::Room(ROOM_ID id){$/;"	f	class:Room
 Room_status	include/info_widget.h	/^    Room_status(){$/;"	f	struct:Room_status
 Room_status	include/info_widget.h	/^struct Room_status {$/;"	s
+SCRIPT_DIR	include/Config.h	28;"	d
 SECURITY	include/MainWindow.h	/^    SECURITY,$/;"	e	enum:Menus
 SED	Makefile	/^SED           = sed$/;"	m
 SED	nbproject/qt-Debug.mk	/^SED           = sed$/;"	m
+SERVER_H	include/tcp_server.h	2;"	d
 SETTINGS	include/MainWindow.h	/^    SETTINGS,$/;"	e	enum:Menus
 SOURCES	Makefile	/^SOURCES       = src\/info_widget.cpp \\$/;"	m
 SOURCES	nbproject/qt-Debug.mk	/^SOURCES       = src\/MainWindow.cpp \\$/;"	m
@@ -304,7 +349,18 @@ SUBPROJECTS	nbproject/Makefile-impl.mk	/^SUBPROJECTS=${SUB_${SUB}}$/;"	m
 SUB_no	nbproject/Makefile-impl.mk	/^SUB_no=NO$/;"	m
 SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
 SYMLINK	nbproject/qt-Debug.mk	/^SYMLINK       = ln -f -s$/;"	m
+Server	include/tcp_server.h	/^class Server : public QObject$/;"	c
+Server	src/tcp_server.cpp	/^Server::Server() {$/;"	f	class:Server
+SetDoorLight	src/Settings.cpp	/^void Settings::SetDoorLight(bool enable){$/;"	f	class:Settings
+SetDoorSiren	src/Settings.cpp	/^void Settings::SetDoorSiren(bool enable){$/;"	f	class:Settings
+SetLcdTimeout	src/Settings.cpp	/^void Settings::SetLcdTimeout(int timeout){$/;"	f	class:Settings
+SetPirLcd	src/GPIO.cpp	/^void GPIO::SetPirLcd(bool enable){$/;"	f	class:GPIO
+SetPirLcd	src/Settings.cpp	/^void Settings::SetPirLcd(bool enable){$/;"	f	class:Settings
+Settings	include/Settings.h	/^class Settings{$/;"	c
+Settings	src/Settings.cpp	/^Settings::Settings(){$/;"	f	class:Settings
 Status	include/TCP.h	/^enum Status{$/;"	g
+SwitchAllLights	src/MainWindow.cpp	/^void MainWindow::SwitchAllLights(bool enable){$/;"	f	class:MainWindow
+T	include/info_widget.h	/^    int T;$/;"	m	struct:Room_status
 TAR	Makefile	/^TAR           = tar -cf$/;"	m
 TAR	nbproject/qt-Debug.mk	/^TAR           = tar -cf$/;"	m
 TARGET	Makefile	/^TARGET        = build\/namas_main$/;"	m
@@ -312,7 +368,14 @@ TARGET	nbproject/qt-Debug.mk	/^TARGET        = .\/namas$/;"	m
 TCP	include/TCP.h	/^class TCP : public QObject$/;"	c
 TCP	src/TCP.cpp	/^TCP::TCP() {$/;"	f	class:TCP
 TCP_H	include/TCP.h	15;"	d
-TRIGGERS_LOGFILE	headers/Config.h	5;"	d
+TCP_SERVER_PORT	include/Config.h	24;"	d
+TCP_dataReceived	src/MainWindow.cpp	/^void MainWindow::TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id) {$/;"	f	class:MainWindow
+TCP_response_to_get	src/MainWindow.cpp	/^void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {$/;"	f	class:MainWindow
+TCP_response_to_set	src/MainWindow.cpp	/^void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {$/;"	f	class:MainWindow
+TINYAES_H	include/miniaes.h	4;"	d
+TRIGGERS_LOGFILE	include/Config.h	30;"	d
+Tcp_packet	include/tcp_server.h	/^struct Tcp_packet{$/;"	s
+UCharArrayToQByteArray	src/miniaes.cpp	/^QByteArray MiniAES::UCharArrayToQByteArray(unsigned char *src, int p_size)$/;"	f	class:MiniAES
 UI_BATH_ROOM_WIN_H	ui/ui_Bath_Room_win.h	10;"	d
 UI_BED_ROOM_WIN_H	ui/ui_Bed_Room_win.h	10;"	d
 UI_BLANK_WIDGET_H	ui/ui_Blank_widget.h	10;"	d
@@ -321,7 +384,8 @@ UI_INFO_WIDGET_H	ui/ui_info_widget.h	10;"	d
 UI_LIVING_ROOM_WIN_H	ui/ui_Living_Room_win.h	10;"	d
 UI_MAINWINDOW_H	ui/ui_MainWindow.h	10;"	d
 UI_WORK_ROOM_WIN_H	ui/ui_Work_Room_win.h	10;"	d
-USERS_FILE	headers/Config.h	11;"	d
+USERMANAGER_H	include/UserManager.h	2;"	d
+UTILS_H	include/Utils.h	15;"	d
 Ui	ui/ui_Bath_Room_win.h	/^namespace Ui {$/;"	n
 Ui	ui/ui_Bed_Room_win.h	/^namespace Ui {$/;"	n
 Ui	ui/ui_Blank_widget.h	/^namespace Ui {$/;"	n
@@ -338,14 +402,19 @@ Ui_Living_Room_win	ui/ui_Living_Room_win.h	/^class Ui_Living_Room_win$/;"	c
 Ui_MainWindow	ui/ui_MainWindow.h	/^class Ui_MainWindow$/;"	c
 Ui_Work_Room_win	ui/ui_Work_Room_win.h	/^class Ui_Work_Room_win$/;"	c
 Ui_info_widget	ui/ui_info_widget.h	/^class Ui_info_widget$/;"	c
-User	include/Alarm.h	/^class User {$/;"	c
-WC_LOGFILE	headers/Config.h	10;"	d
+User	include/UserManager.h	/^struct User {$/;"	s
+UserManager	include/UserManager.h	/^class UserManager$/;"	c
+UserManager	src/UserManager.cpp	/^UserManager::UserManager(){$/;"	f	class:UserManager
+Utils	include/Utils.h	/^class Utils{$/;"	c
+WC_LOGFILE	include/Config.h	35;"	d
 WORKROOM	include/definitions.h	/^enum ROOM_ID{CORRIDOR,LIVING_ROOM,BEDROOM,WORKROOM,BATHROOM};$/;"	e	enum:ROOM_ID
-WORKROOM_LOGFILE	headers/Config.h	9;"	d
+WORKROOM_LOGFILE	include/Config.h	34;"	d
 WORK_ROOM_WIN_H	include/Work_Room_win.h	15;"	d
+WPOLY	include/miniaes.h	15;"	d
 Work_Room_win	include/Work_Room_win.h	/^class Work_Room_win : public QDialog {$/;"	c
 Work_Room_win	src/Work_Room_win.cpp	/^Work_Room_win::Work_Room_win(info_widget * w):info_w(w)  {$/;"	f	class:Work_Room_win
 Work_Room_win	ui/ui_Work_Room_win.h	/^    class Work_Room_win: public Ui_Work_Room_win {};$/;"	c	namespace:Ui
+WriteData	src/DataLogger.cpp	/^void DataLogger::WriteData(){$/;"	f	class:DataLogger
 _ALARM_H	include/Alarm.h	3;"	d
 _BLANK_WIDGET_H	include/Blank_widget.h	3;"	d
 _CORRIDOR_WIN_H	include/Corridor_win.h	15;"	d
@@ -355,9 +424,22 @@ _LIVING_ROOM_WIN_H	include/Living_Room_win.h	15;"	d
 _LOGGER_H	include/Logger.h	3;"	d
 _MAINWINDOW_H	include/MainWindow.h	15;"	d
 _ROOM_WIN_H	include/Bath_Room_win.h	15;"	d
+_SETTINGS_H	include/Settings.h	2;"	d
+addUser	src/UserManager.cpp	/^void UserManager::addUser(User user){$/;"	f	class:UserManager
+add_round_key	src/miniaes.cpp	/^void MiniAES::add_round_key( uint_8t d[N_BLOCK], const uint_8t k[N_BLOCK] )$/;"	f	class:MiniAES
+aes_cbc_decrypt	src/miniaes.cpp	/^aes_result MiniAES::aes_cbc_decrypt( const unsigned char *in, unsigned char *out, unsigned long size, unsigned char iv[N_BLOCK], const aes_context ctx[1] )$/;"	f	class:MiniAES
+aes_cbc_encrypt	src/miniaes.cpp	/^aes_result MiniAES::aes_cbc_encrypt(const unsigned char *in, unsigned char *out, unsigned long size, unsigned char iv[N_BLOCK], const aes_context ctx[1] )$/;"	f	class:MiniAES
+aes_context	include/miniaes.h	/^        } aes_context;$/;"	t	class:MiniAES	typeref:struct:MiniAES::__anon2
+aes_decrypt	src/miniaes.cpp	/^aes_result MiniAES::aes_decrypt( const unsigned char in[N_BLOCK], unsigned char out[N_BLOCK], const aes_context ctx[1] )$/;"	f	class:MiniAES
+aes_encrypt	src/miniaes.cpp	/^aes_result MiniAES::aes_encrypt( const unsigned char in[N_BLOCK], unsigned char out[N_BLOCK], const aes_context ctx[1] )$/;"	f	class:MiniAES
+aes_result	include/miniaes.h	/^typedef uint_8t aes_result;$/;"	t
+aes_set_key	src/miniaes.cpp	/^aes_result MiniAES::aes_set_key( const unsigned char key[], int keylen, aes_context ctx[1] )$/;"	f	class:MiniAES
 alarm	include/MainWindow.h	/^    Alarm *alarm;$/;"	m	class:MainWindow
 alarm_button	ui/ui_MainWindow.h	/^    QPushButton *alarm_button;$/;"	m	class:Ui_MainWindow
 alarm_code_lineedit	ui/ui_MainWindow.h	/^    QLineEdit *alarm_code_lineedit;$/;"	m	class:Ui_MainWindow
+alarm_status_label	ui/ui_MainWindow.h	/^    QLabel *alarm_status_label;$/;"	m	class:Ui_MainWindow
+all_lights_off_button	ui/ui_MainWindow.h	/^    QPushButton *all_lights_off_button;$/;"	m	class:Ui_MainWindow
+all_lights_on_button	ui/ui_MainWindow.h	/^    QPushButton *all_lights_on_button;$/;"	m	class:Ui_MainWindow
 arm_alarm_label	ui/ui_MainWindow.h	/^    QLabel *arm_alarm_label;$/;"	m	class:Ui_MainWindow
 arm_system	src/Alarm.cpp	/^int Alarm::arm_system(){$/;"	f	class:Alarm
 armed	include/Alarm.h	/^        bool armed;$/;"	m	class:Alarm
@@ -372,17 +454,25 @@ bathroom	include/MainWindow.h	/^    Bath_Room_win *bathroom;$/;"	m	class:MainWin
 bedroom	include/MainWindow.h	/^    Bed_Room_win *bedroom;$/;"	m	class:MainWindow
 bedroom_info	ui/ui_MainWindow.h	/^    info_widget *bedroom_info;$/;"	m	class:Ui_MainWindow
 bg_color	include/info_widget.h	/^    QString bg_color;$/;"	m	class:info_widget
+binary	include/tcp_server.h	/^    QByteArray binary;$/;"	m	struct:Tcp_packet
 blank	include/GPIO.h	/^        Blank_widget *blank;$/;"	m	class:GPIO
+block_copy	include/miniaes.h	42;"	d
+block_copy_nn	include/miniaes.h	41;"	d
+buffers	include/tcp_server.h	/^    QHash<QTcpSocket*, QByteArray*> buffers; \/\/We need a buffer to store data until block has completely received$/;"	m	class:Server
 bulb_label	ui/ui_info_widget.h	/^    QLabel *bulb_label;$/;"	m	class:Ui_info_widget
 cam	include/MainWindow.h	/^    Camera *cam;$/;"	m	class:MainWindow
 camera	include/Camera.h	/^        QCamera* camera;$/;"	m	class:Camera
 capture_photo	src/Camera.cpp	/^void Camera::capture_photo(){$/;"	f	class:Camera
 centralwidget	ui/ui_MainWindow.h	/^    QWidget *centralwidget;$/;"	m	class:Ui_MainWindow
+char_to_number	src/Utils.cpp	/^void Utils::char_to_number(unsigned char *data){$/;"	f	class:Utils
 checkReturnCode	nbproject/Package-Debug.bash	/^function checkReturnCode$/;"	f
 checkReturnCode	nbproject/Package-Release.bash	/^function checkReturnCode$/;"	f
-check_key	src/Alarm.cpp	/^QString Alarm::check_key(QString code){$/;"	f	class:Alarm
+clear_users	src/UserManager.cpp	/^void UserManager::clear_users(){$/;"	f	class:UserManager
 clicked	moc/moc_info_widget.cpp	/^void info_widget::clicked()$/;"	f	class:info_widget
+clientList	include/tcp_server.h	/^    QList<QTcpSocket*> clientList;$/;"	m	class:Server
+command	include/tcp_server.h	/^    QString command;$/;"	m	struct:Tcp_packet
 compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+config_to_xml	src/Settings.cpp	/^void Settings::config_to_xml(QDomDocument *domdoc) {$/;"	f	class:Settings
 connect2module	src/Room.cpp	/^void Room::connect2module(){$/;"	f	class:Room
 connect2room	src/TCP.cpp	/^void TCP::connect2room(){$/;"	f	class:TCP
 connected	include/info_widget.h	/^    int connected;$/;"	m	struct:Room_status
@@ -392,51 +482,96 @@ connection_status	include/Bath_Room_win.h	/^    int connection_status;$/;"	m	cla
 connection_status	include/Bed_Room_win.h	/^    int connection_status;$/;"	m	class:Bed_Room_win
 connection_status	include/Corridor_win.h	/^    int connection_status;$/;"	m	class:Corridor_win
 connection_status	include/Living_Room_win.h	/^    int connection_status;$/;"	m	class:Living_Room_win
-connection_status	include/Room.h	/^    int connection_status;$/;"	m	class:Room
+connection_status	include/Room.h	/^        int connection_status;$/;"	m	class:Room
 connection_status	include/Work_Room_win.h	/^    int connection_status;$/;"	m	class:Work_Room_win
+connection_status	moc/moc_tcp_server.cpp	/^void Server::connection_status(int _t1)$/;"	f	class:Server
 copyFileToTmpDir	nbproject/Package-Debug.bash	/^function copyFileToTmpDir$/;"	f
 copyFileToTmpDir	nbproject/Package-Release.bash	/^function copyFileToTmpDir$/;"	f
+copy_and_key	src/miniaes.cpp	/^void MiniAES::copy_and_key( void *d, const void *s, const void *k )$/;"	f	class:MiniAES
 corridor	include/MainWindow.h	/^    Corridor_win *corridor;$/;"	m	class:MainWindow
 corridor_info	ui/ui_MainWindow.h	/^    info_widget *corridor_info;$/;"	m	class:Ui_MainWindow
-data	moc/moc_Bath_Room_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+d2	include/miniaes.h	24;"	d
+data	moc/moc_Bath_Room_win.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
 data	moc/moc_Bed_Room_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Bed_Room_win_t	file:
 data	moc/moc_Blank_widget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_Blank_widget_t	file:
 data	moc/moc_Camera.cpp	/^    QByteArrayData data[4];$/;"	m	struct:qt_meta_stringdata_Camera_t	file:
 data	moc/moc_Corridor_win.cpp	/^    QByteArrayData data[9];$/;"	m	struct:qt_meta_stringdata_Corridor_win_t	file:
+data	moc/moc_DataLogger.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_DataLogger_t	file:
 data	moc/moc_GPIO.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_IntHelper_t	file:
 data	moc/moc_GPIO.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_GPIO_t	file:
-data	moc/moc_Living_Room_win.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_Living_Room_win_t	file:
-data	moc/moc_MainWindow.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
-data	moc/moc_Room.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
+data	moc/moc_Living_Room_win.cpp	/^    QByteArrayData data[12];$/;"	m	struct:qt_meta_stringdata_Living_Room_win_t	file:
+data	moc/moc_MainWindow.cpp	/^    QByteArrayData data[17];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
+data	moc/moc_Room.cpp	/^    QByteArrayData data[8];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
 data	moc/moc_TCP.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_TCP_t	file:
 data	moc/moc_Work_Room_win.cpp	/^    QByteArrayData data[7];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
 data	moc/moc_info_widget.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_info_widget_t	file:
+data	moc/moc_tcp_server.cpp	/^    QByteArrayData data[10];$/;"	m	struct:qt_meta_stringdata_Server_t	file:
+data	moc/moc_tcp_server.cpp	/^    QByteArrayData data[3];$/;"	m	struct:qt_meta_stringdata_MyTcpServer_t	file:
+data	src/DataLogger.cpp	/^void DataLogger::data(Room_status Status){$/;"	f	class:DataLogger
+dataE	include/tcp_server.h	/^    QDomDocument dataE;$/;"	m	struct:Tcp_packet
 dataReceived	moc/moc_TCP.cpp	/^void TCP::dataReceived(QByteArray _t1)$/;"	f	class:TCP
+dataReceived	moc/moc_tcp_server.cpp	/^void Server::dataReceived(Tcp_packet * _t1, int _t2)$/;"	f	class:Server
 database	.ycm_extra_conf.py	/^  database = None$/;"	v
 database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
 date_label	ui/ui_MainWindow.h	/^    QLabel *date_label;$/;"	m	class:Ui_MainWindow
+decodeString	src/Utils.cpp	/^QByteArray Utils::decodeString(QByteArray data){$/;"	f	class:Utils
 del_key	ui/ui_MainWindow.h	/^    QPushButton *del_key;$/;"	m	class:Ui_MainWindow
+delay	src/GPIO.cpp	/^int delay(int){return 0;}$/;"	f
+digitalRead	src/GPIO.cpp	/^int digitalRead(int){return false;}$/;"	f
+digitalWrite	src/GPIO.cpp	/^int digitalWrite(int,int){return false;}$/;"	f
 disarm_system	src/Alarm.cpp	/^QString Alarm::disarm_system(QString code){$/;"	f	class:Alarm
+disconnected	src/tcp_server.cpp	/^void Server::disconnected() {$/;"	f	class:Server
+door_light	include/Settings.h	/^        bool door_light;$/;"	m	class:Settings
+door_siren	include/Settings.h	/^        bool door_siren;$/;"	m	class:Settings
 dummy	rcc/qrc_res.cpp	/^   } dummy;$/;"	m	namespace:__anon1	typeref:struct:__anon1::initializer	file:
 enable_backlight	src/GPIO.cpp	/^void GPIO::enable_backlight(bool enable){$/;"	f	class:GPIO
+encodeString	src/Utils.cpp	/^QByteArray Utils::encodeString(QByteArray data){$/;"	f	class:Utils
+error	include/tcp_server.h	/^    QString error;$/;"	m	struct:Tcp_packet
 eventFilter	src/MainWindow.cpp	/^bool MainWindow::eventFilter(QObject *obj, QEvent *event) {$/;"	f	class:MainWindow
+f1	include/miniaes.h	19;"	d
+f2	include/miniaes.h	20;"	d
+f3	include/miniaes.h	26;"	d
+f4	include/miniaes.h	21;"	d
+f8	include/miniaes.h	22;"	d
+f9	include/miniaes.h	27;"	d
+fb	include/miniaes.h	28;"	d
+fd	include/miniaes.h	29;"	d
+fe	include/miniaes.h	30;"	d
+fileExists	src/Utils.cpp	/^bool Utils::fileExists(QString path) {$/;"	f	class:Utils
+first_data	include/DataLogger.h	/^        bool first_data;$/;"	m	class:DataLogger
 flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+format_and_send_packet	src/tcp_server.cpp	/^void Server::format_and_send_packet(QString sender, QString command, QString object, QString status, QString error, int socket_id) {$/;"	f	class:Server
 frame	ui/ui_MainWindow.h	/^    QFrame *frame;$/;"	m	class:Ui_MainWindow
+get_config	src/Settings.cpp	/^int Settings::get_config(Tcp_packet * packet) {$/;"	f	class:Settings
+get_ip	src/Utils.cpp	/^QHostAddress Utils::get_ip(QString interface){$/;"	f	class:Utils
 get_room	src/Bath_Room_win.cpp	/^Room* Bath_Room_win::get_room(){$/;"	f	class:Bath_Room_win
 get_room	src/Bed_Room_win.cpp	/^Room* Bed_Room_win::get_room(){$/;"	f	class:Bed_Room_win
 get_room	src/Corridor_win.cpp	/^Room* Corridor_win::get_room(){$/;"	f	class:Corridor_win
 get_room	src/Living_Room_win.cpp	/^Room* Living_Room_win::get_room(){$/;"	f	class:Living_Room_win
 get_room	src/Work_Room_win.cpp	/^Room* Work_Room_win::get_room(){$/;"	f	class:Work_Room_win
+get_user	src/UserManager.cpp	/^User UserManager::get_user(int id){$/;"	f	class:UserManager
+gfm2_sb	include/miniaes.h	34;"	d
+gfm2_sbox	include/miniaes.h	/^static const uint_8t gfm2_sbox[256] = sb_data(f2);$/;"	v
+gfm3_sb	include/miniaes.h	35;"	d
+gfm3_sbox	include/miniaes.h	/^static const uint_8t gfm3_sbox[256] = sb_data(f3);$/;"	v
+gfm_9	include/miniaes.h	36;"	d
+gfm_b	include/miniaes.h	37;"	d
+gfm_d	include/miniaes.h	38;"	d
+gfm_e	include/miniaes.h	39;"	d
+gfmul_9	include/miniaes.h	/^static const uint_8t gfmul_9[256] = mm_data(f9);$/;"	v
+gfmul_b	include/miniaes.h	/^static const uint_8t gfmul_b[256] = mm_data(fb);$/;"	v
+gfmul_d	include/miniaes.h	/^static const uint_8t gfmul_d[256] = mm_data(fd);$/;"	v
+gfmul_e	include/miniaes.h	/^static const uint_8t gfmul_e[256] = mm_data(fe);$/;"	v
 gpio	include/MainWindow.h	/^    GPIO *gpio;$/;"	m	class:MainWindow
 gpio	include/mmapGpio.h	/^	volatile unsigned int *gpio; $/;"	m	class:mmapGpio
 gpio_interrupt	moc/moc_GPIO.cpp	/^void GPIO::gpio_interrupt(int _t1)$/;"	f	class:GPIO
 gpio_interrupt	src/MainWindow.cpp	/^void MainWindow::gpio_interrupt(int intnr){$/;"	f	class:MainWindow
+gridLayout	ui/ui_Living_Room_win.h	/^    QGridLayout *gridLayout;$/;"	m	class:Ui_Living_Room_win
 hash_key	ui/ui_MainWindow.h	/^    QPushButton *hash_key;$/;"	m	class:Ui_MainWindow
 helper	src/GPIO.cpp	/^IntHelper *helper;$/;"	v
 horizontalLayout	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Bath_Room_win
 horizontalLayout	ui/ui_Bed_Room_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Bed_Room_win
 horizontalLayout	ui/ui_Corridor_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Corridor_win
-horizontalLayout	ui/ui_Living_Room_win.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_Living_Room_win
 horizontalLayout	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout;$/;"	m	class:Ui_MainWindow
 horizontalLayout_2	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Bath_Room_win
 horizontalLayout_2	ui/ui_Bed_Room_win.h	/^    QHBoxLayout *horizontalLayout_2;$/;"	m	class:Ui_Bed_Room_win
@@ -450,7 +585,10 @@ horizontalLayout_3	ui/ui_Corridor_win.h	/^    QHBoxLayout *horizontalLayout_3;$/
 horizontalLayout_3	ui/ui_Living_Room_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Living_Room_win
 horizontalLayout_3	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_MainWindow
 horizontalLayout_3	ui/ui_Work_Room_win.h	/^    QHBoxLayout *horizontalLayout_3;$/;"	m	class:Ui_Work_Room_win
-horizontalLayout_4	ui/ui_Living_Room_win.h	/^    QHBoxLayout *horizontalLayout_4;$/;"	m	class:Ui_Living_Room_win
+horizontalLayout_4	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_4;$/;"	m	class:Ui_Bath_Room_win
+horizontalLayout_4	ui/ui_MainWindow.h	/^    QHBoxLayout *horizontalLayout_4;$/;"	m	class:Ui_MainWindow
+horizontalLayout_5	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_5;$/;"	m	class:Ui_Bath_Room_win
+horizontalLayout_6	ui/ui_Bath_Room_win.h	/^    QHBoxLayout *horizontalLayout_6;$/;"	m	class:Ui_Bath_Room_win
 horizontalSpacer	ui/ui_MainWindow.h	/^    QSpacerItem *horizontalSpacer;$/;"	m	class:Ui_MainWindow
 humi	include/info_widget.h	/^    QString humi;$/;"	m	struct:Room_status
 humi_icon_label	ui/ui_Bath_Room_win.h	/^    QLabel *humi_icon_label;$/;"	m	class:Ui_Bath_Room_win
@@ -469,6 +607,7 @@ idle_timer	include/GPIO.h	/^        int idle_timer;$/;"	m	class:GPIO
 idle_timer_increment	src/GPIO.cpp	/^void GPIO::idle_timer_increment() {$/;"	f	class:GPIO
 imageCapture	include/Camera.h	/^        QCameraImageCapture *imageCapture;$/;"	m	class:Camera
 imageSaved	src/Camera.cpp	/^void Camera::imageSaved(int id, const QString &fileName)$/;"	f	class:Camera
+incomingConnection	src/tcp_server.cpp	/^void MyTcpServer::incomingConnection(int socketDescriptor) {$/;"	f	class:MyTcpServer
 info_timer	include/MainWindow.h	/^    QTimer info_timer;$/;"	m	class:MainWindow
 info_w	include/Bath_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Bath_Room_win
 info_w	include/Bed_Room_win.h	/^    info_widget *info_w;$/;"	m	class:Bed_Room_win
@@ -484,11 +623,18 @@ initializer	rcc/qrc_res.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qIn
 initializer	rcc/qrc_res.cpp	/^   struct initializer {$/;"	s	namespace:__anon1	file:
 interrupt	moc/moc_GPIO.cpp	/^void IntHelper::interrupt(int _t1)$/;"	f	class:IntHelper
 interrupt	src/GPIO.cpp	/^void GPIO::interrupt(int intnr){$/;"	f	class:GPIO
-ip	include/Room.h	/^    QString ip;$/;"	m	class:Room
+inv_mix_sub_columns	src/miniaes.cpp	/^void MiniAES::inv_mix_sub_columns( uint_8t dt[N_BLOCK] )$/;"	f	class:MiniAES
+inv_shift_sub_rows	src/miniaes.cpp	/^void MiniAES::inv_shift_sub_rows( uint_8t st[N_BLOCK] )$/;"	f	class:MiniAES
+ip	include/Room.h	/^        QString ip;$/;"	m	class:Room
 ip	include/TCP.h	/^    QString ip;$/;"	m	class:TCP
 isArmed	src/Alarm.cpp	/^bool Alarm::isArmed(){$/;"	f	class:Alarm
 isCapturingImage	include/Camera.h	/^        bool isCapturingImage;$/;"	m	class:Camera
-key	include/Alarm.h	/^        QString key;$/;"	m	class:User
+isProcessRunning	src/Utils.cpp	/^bool Utils::isProcessRunning(QString name){$/;"	f	class:Utils
+isVolumeMounted	src/Utils.cpp	/^bool Utils::isVolumeMounted(QString name){$/;"	f	class:Utils
+is_box	include/miniaes.h	33;"	d
+isb_data	include/miniaes.h	78;"	d
+isbox	include/miniaes.h	/^static const uint_8t isbox[256] = isb_data(f1);$/;"	v
+keep_alive_timer	include/tcp_server.h	/^    QTimer keep_alive_timer;$/;"	m	class:Server
 key_0	ui/ui_MainWindow.h	/^    QPushButton *key_0;$/;"	m	class:Ui_MainWindow
 key_1	ui/ui_MainWindow.h	/^    QPushButton *key_1;$/;"	m	class:Ui_MainWindow
 key_2	ui/ui_MainWindow.h	/^    QPushButton *key_2;$/;"	m	class:Ui_MainWindow
@@ -502,9 +648,14 @@ key_9	ui/ui_MainWindow.h	/^    QPushButton *key_9;$/;"	m	class:Ui_MainWindow
 key_clicked	src/MainWindow.cpp	/^void MainWindow::key_clicked(){$/;"	f	class:MainWindow
 keypad_layout	ui/ui_MainWindow.h	/^    QGridLayout *keypad_layout;$/;"	m	class:Ui_MainWindow
 keypad_widget	ui/ui_MainWindow.h	/^    QWidget *keypad_widget;$/;"	m	class:Ui_MainWindow
+ksch	include/miniaes.h	/^            uint_8t ksch[(N_MAX_ROUNDS + 1) * N_BLOCK];$/;"	m	struct:MiniAES::__anon2
+label	ui/ui_Bath_Room_win.h	/^    QLabel *label;$/;"	m	class:Ui_Bath_Room_win
+label	ui/ui_MainWindow.h	/^    QLabel *label;$/;"	m	class:Ui_MainWindow
 label	ui/ui_info_widget.h	/^    QLabel *label;$/;"	m	class:Ui_info_widget
-label_2	ui/ui_MainWindow.h	/^    QLabel *label_2;$/;"	m	class:Ui_MainWindow
+label_2	ui/ui_Bath_Room_win.h	/^    QLabel *label_2;$/;"	m	class:Ui_Bath_Room_win
 label_2	ui/ui_info_widget.h	/^    QLabel *label_2;$/;"	m	class:Ui_info_widget
+label_3	ui/ui_Bath_Room_win.h	/^    QLabel *label_3;$/;"	m	class:Ui_Bath_Room_win
+label_4	ui/ui_Bath_Room_win.h	/^    QLabel *label_4;$/;"	m	class:Ui_Bath_Room_win
 layoutWidget	ui/ui_Bath_Room_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Bath_Room_win
 layoutWidget	ui/ui_Bed_Room_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Bed_Room_win
 layoutWidget	ui/ui_Corridor_win.h	/^    QWidget *layoutWidget;$/;"	m	class:Ui_Corridor_win
@@ -518,11 +669,12 @@ layoutWidget1	ui/ui_Living_Room_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:
 layoutWidget1	ui/ui_MainWindow.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_MainWindow
 layoutWidget1	ui/ui_Work_Room_win.h	/^    QWidget *layoutWidget1;$/;"	m	class:Ui_Work_Room_win
 layoutWidget2	ui/ui_Corridor_win.h	/^    QWidget *layoutWidget2;$/;"	m	class:Ui_Corridor_win
-layoutWidget2	ui/ui_Living_Room_win.h	/^    QWidget *layoutWidget2;$/;"	m	class:Ui_Living_Room_win
 layoutWidget2	ui/ui_MainWindow.h	/^    QWidget *layoutWidget2;$/;"	m	class:Ui_MainWindow
 layoutWidget3	ui/ui_MainWindow.h	/^    QWidget *layoutWidget3;$/;"	m	class:Ui_MainWindow
 layoutWidget4	ui/ui_MainWindow.h	/^    QWidget *layoutWidget4;$/;"	m	class:Ui_MainWindow
-layoutWidget_2	ui/ui_Living_Room_win.h	/^    QWidget *layoutWidget_2;$/;"	m	class:Ui_Living_Room_win
+layoutWidget5	ui/ui_MainWindow.h	/^    QWidget *layoutWidget5;$/;"	m	class:Ui_MainWindow
+layoutWidget6	ui/ui_MainWindow.h	/^    QWidget *layoutWidget6;$/;"	m	class:Ui_MainWindow
+lcd_timeout	include/Settings.h	/^        int lcd_timeout;$/;"	m	class:Settings
 lights0_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Bath_Room_win
 lights0_button	ui/ui_Bed_Room_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Bed_Room_win
 lights0_button	ui/ui_Corridor_win.h	/^    QPushButton *lights0_button;$/;"	m	class:Ui_Corridor_win
@@ -536,11 +688,19 @@ lights2_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	cl
 lights2_button	ui/ui_Bed_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Bed_Room_win
 lights2_button	ui/ui_Corridor_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Corridor_win
 lights2_button	ui/ui_Living_Room_win.h	/^    QPushButton *lights2_button;$/;"	m	class:Ui_Living_Room_win
+lights3_button	ui/ui_Bath_Room_win.h	/^    QPushButton *lights3_button;$/;"	m	class:Ui_Bath_Room_win
 lights3_button	ui/ui_Living_Room_win.h	/^    QPushButton *lights3_button;$/;"	m	class:Ui_Living_Room_win
+lights4_button	ui/ui_Living_Room_win.h	/^    QPushButton *lights4_button;$/;"	m	class:Ui_Living_Room_win
+lights5_button	ui/ui_Living_Room_win.h	/^    QPushButton *lights5_button;$/;"	m	class:Ui_Living_Room_win
 listWidget	ui/ui_MainWindow.h	/^    QListWidget *listWidget;$/;"	m	class:Ui_MainWindow
+listen	src/tcp_server.cpp	/^void Server::listen(bool start){$/;"	f	class:Server
+listen_address	src/tcp_server.cpp	/^QString Server::listen_address(){$/;"	f	class:Server
 livingroom	include/MainWindow.h	/^    Living_Room_win *livingroom;$/;"	m	class:MainWindow
 livingroom_info	ui/ui_MainWindow.h	/^    info_widget *livingroom_info;$/;"	m	class:Ui_MainWindow
+load_settings	src/Settings.cpp	/^void Settings::load_settings(){$/;"	f	class:Settings
 log	src/Logger.cpp	/^void Logger::log(int type, QString text){$/;"	f	class:Logger
+logger	include/Room.h	/^        DataLogger *logger;$/;"	m	class:Room
+login	src/UserManager.cpp	/^int UserManager::login(User *user, QString *username){$/;"	f	class:UserManager
 main	src/main.cpp	/^int main(int argc, char *argv[]) {$/;"	f
 makeDirectory	nbproject/Package-Debug.bash	/^function makeDirectory$/;"	f
 makeDirectory	nbproject/Package-Release.bash	/^function makeDirectory$/;"	f
@@ -551,6 +711,7 @@ metaObject	moc/moc_Bed_Room_win.cpp	/^const QMetaObject *Bed_Room_win::metaObjec
 metaObject	moc/moc_Blank_widget.cpp	/^const QMetaObject *Blank_widget::metaObject() const$/;"	f	class:Blank_widget
 metaObject	moc/moc_Camera.cpp	/^const QMetaObject *Camera::metaObject() const$/;"	f	class:Camera
 metaObject	moc/moc_Corridor_win.cpp	/^const QMetaObject *Corridor_win::metaObject() const$/;"	f	class:Corridor_win
+metaObject	moc/moc_DataLogger.cpp	/^const QMetaObject *DataLogger::metaObject() const$/;"	f	class:DataLogger
 metaObject	moc/moc_GPIO.cpp	/^const QMetaObject *GPIO::metaObject() const$/;"	f	class:GPIO
 metaObject	moc/moc_GPIO.cpp	/^const QMetaObject *IntHelper::metaObject() const$/;"	f	class:IntHelper
 metaObject	moc/moc_Living_Room_win.cpp	/^const QMetaObject *Living_Room_win::metaObject() const$/;"	f	class:Living_Room_win
@@ -559,14 +720,22 @@ metaObject	moc/moc_Room.cpp	/^const QMetaObject *Room::metaObject() const$/;"	f	
 metaObject	moc/moc_TCP.cpp	/^const QMetaObject *TCP::metaObject() const$/;"	f	class:TCP
 metaObject	moc/moc_Work_Room_win.cpp	/^const QMetaObject *Work_Room_win::metaObject() const$/;"	f	class:Work_Room_win
 metaObject	moc/moc_info_widget.cpp	/^const QMetaObject *info_widget::metaObject() const$/;"	f	class:info_widget
+metaObject	moc/moc_tcp_server.cpp	/^const QMetaObject *MyTcpServer::metaObject() const$/;"	f	class:MyTcpServer
+metaObject	moc/moc_tcp_server.cpp	/^const QMetaObject *Server::metaObject() const$/;"	f	class:Server
+mix_sub_columns	src/miniaes.cpp	/^void MiniAES::mix_sub_columns( uint_8t dt[N_BLOCK] )$/;"	f	class:MiniAES
+mm_data	include/miniaes.h	112;"	d
 mmapGpio	include/mmapGpio.h	/^class mmapGpio{$/;"	c
 mmapGpio	src/mmapGpio.cpp	/^mmapGpio::mmapGpio(){$/;"	f	class:mmapGpio
 mousePressEvent	src/info_widget.cpp	/^void info_widget::mousePressEvent(QMouseEvent *event)$/;"	f	class:info_widget
+mutex	src/Settings.cpp	/^QMutex mutex;$/;"	v
 myInterrupt	src/Pinctrl.cpp	/^void myInterrupt(void) {$/;"	f
-name	include/Alarm.h	/^        QString name;$/;"	m	class:User
 name_label	ui/ui_info_widget.h	/^    QLabel *name_label;$/;"	m	class:Ui_info_widget
+newConnection	src/tcp_server.cpp	/^void Server::newConnection() {$/;"	f	class:Server
+object	include/tcp_server.h	/^    QString object;$/;"	m	struct:Tcp_packet
 off_timeout	include/GPIO.h	/^        int off_timeout;$/;"	m	class:GPIO
 on_alarm_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_alarm_button_clicked(){$/;"	f	class:MainWindow
+on_all_lights_off_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_all_lights_off_button_clicked(){$/;"	f	class:MainWindow
+on_all_lights_on_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_all_lights_on_button_clicked(){$/;"	f	class:MainWindow
 on_back_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_back_button_clicked(){$/;"	f	class:Bath_Room_win
 on_back_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_back_button_clicked(){$/;"	f	class:Bed_Room_win
 on_back_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_back_button_clicked(){$/;"	f	class:Corridor_win
@@ -585,15 +754,27 @@ on_lights2_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_lights2
 on_lights2_button_clicked	src/Bed_Room_win.cpp	/^void Bed_Room_win::on_lights2_button_clicked(){$/;"	f	class:Bed_Room_win
 on_lights2_button_clicked	src/Corridor_win.cpp	/^void Corridor_win::on_lights2_button_clicked(){$/;"	f	class:Corridor_win
 on_lights2_button_clicked	src/Living_Room_win.cpp	/^void Living_Room_win::on_lights2_button_clicked(){$/;"	f	class:Living_Room_win
+on_lights3_button_clicked	src/Bath_Room_win.cpp	/^void Bath_Room_win::on_lights3_button_clicked(){$/;"	f	class:Bath_Room_win
 on_lights3_button_clicked	src/Living_Room_win.cpp	/^void Living_Room_win::on_lights3_button_clicked(){$/;"	f	class:Living_Room_win
+on_lights4_button_clicked	src/Living_Room_win.cpp	/^void Living_Room_win::on_lights4_button_clicked(){$/;"	f	class:Living_Room_win
+on_lights5_button_clicked	src/Living_Room_win.cpp	/^void Living_Room_win::on_lights5_button_clicked(){$/;"	f	class:Living_Room_win
 on_rec_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_rec_button_clicked(){$/;"	f	class:MainWindow
+on_settings_save_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_settings_save_button_clicked(){$/;"	f	class:MainWindow
 on_take_photo_button_clicked	src/MainWindow.cpp	/^void MainWindow::on_take_photo_button_clicked(){$/;"	f	class:MainWindow
+operator ==	include/UserManager.h	/^    bool operator==(const User& user)$/;"	f	struct:User
+os	.ycm_extra_conf.py	/^import os$/;"	i
 page	ui/ui_MainWindow.h	/^    QWidget *page;$/;"	m	class:Ui_MainWindow
 page_2	ui/ui_MainWindow.h	/^    QWidget *page_2;$/;"	m	class:Ui_MainWindow
 page_3	ui/ui_MainWindow.h	/^    QWidget *page_3;$/;"	m	class:Ui_MainWindow
 page_4	ui/ui_MainWindow.h	/^    QWidget *page_4;$/;"	m	class:Ui_MainWindow
 page_5	ui/ui_MainWindow.h	/^    QWidget *page_5;$/;"	m	class:Ui_MainWindow
 paintEvent	src/info_widget.cpp	/^void info_widget::paintEvent(QPaintEvent *)$/;"	f	class:info_widget
+pass	include/UserManager.h	/^    QString pass;$/;"	m	struct:User
+pir1_label	ui/ui_MainWindow.h	/^    QLabel *pir1_label;$/;"	m	class:Ui_MainWindow
+pir_lcd	include/GPIO.h	/^        bool pir_lcd;$/;"	m	class:GPIO
+pir_lcd	include/Settings.h	/^        bool pir_lcd;$/;"	m	class:Settings
+process_data	src/tcp_server.cpp	/^int Server::process_data(Tcp_packet *tcp_Packet, int socket_id) {$/;"	f	class:Server
+process_received_data	src/tcp_server.cpp	/^int Server::process_received_data(QByteArray *data, Tcp_packet &tcp_Packet, int socket_id) {$/;"	f	class:Server
 pushButton	ui/ui_MainWindow.h	/^    QPushButton *pushButton;$/;"	m	class:Ui_MainWindow
 pushButton_2	ui/ui_MainWindow.h	/^    QPushButton *pushButton_2;$/;"	m	class:Ui_MainWindow
 pushButton_3	ui/ui_MainWindow.h	/^    QPushButton *pushButton_3;$/;"	m	class:Ui_MainWindow
@@ -608,11 +789,14 @@ qt_meta_data_Bed_Room_win	moc/moc_Bed_Room_win.cpp	/^static const uint qt_meta_d
 qt_meta_data_Blank_widget	moc/moc_Blank_widget.cpp	/^static const uint qt_meta_data_Blank_widget[] = {$/;"	v	file:
 qt_meta_data_Camera	moc/moc_Camera.cpp	/^static const uint qt_meta_data_Camera[] = {$/;"	v	file:
 qt_meta_data_Corridor_win	moc/moc_Corridor_win.cpp	/^static const uint qt_meta_data_Corridor_win[] = {$/;"	v	file:
+qt_meta_data_DataLogger	moc/moc_DataLogger.cpp	/^static const uint qt_meta_data_DataLogger[] = {$/;"	v	file:
 qt_meta_data_GPIO	moc/moc_GPIO.cpp	/^static const uint qt_meta_data_GPIO[] = {$/;"	v	file:
 qt_meta_data_IntHelper	moc/moc_GPIO.cpp	/^static const uint qt_meta_data_IntHelper[] = {$/;"	v	file:
 qt_meta_data_Living_Room_win	moc/moc_Living_Room_win.cpp	/^static const uint qt_meta_data_Living_Room_win[] = {$/;"	v	file:
 qt_meta_data_MainWindow	moc/moc_MainWindow.cpp	/^static const uint qt_meta_data_MainWindow[] = {$/;"	v	file:
+qt_meta_data_MyTcpServer	moc/moc_tcp_server.cpp	/^static const uint qt_meta_data_MyTcpServer[] = {$/;"	v	file:
 qt_meta_data_Room	moc/moc_Room.cpp	/^static const uint qt_meta_data_Room[] = {$/;"	v	file:
+qt_meta_data_Server	moc/moc_tcp_server.cpp	/^static const uint qt_meta_data_Server[] = {$/;"	v	file:
 qt_meta_data_TCP	moc/moc_TCP.cpp	/^static const uint qt_meta_data_TCP[] = {$/;"	v	file:
 qt_meta_data_Work_Room_win	moc/moc_Work_Room_win.cpp	/^static const uint qt_meta_data_Work_Room_win[] = {$/;"	v	file:
 qt_meta_data_info_widget	moc/moc_info_widget.cpp	/^static const uint qt_meta_data_info_widget[] = {$/;"	v	file:
@@ -626,6 +810,8 @@ qt_meta_stringdata_Camera	moc/moc_Camera.cpp	/^static const qt_meta_stringdata_C
 qt_meta_stringdata_Camera_t	moc/moc_Camera.cpp	/^struct qt_meta_stringdata_Camera_t {$/;"	s	file:
 qt_meta_stringdata_Corridor_win	moc/moc_Corridor_win.cpp	/^static const qt_meta_stringdata_Corridor_win_t qt_meta_stringdata_Corridor_win = {$/;"	v	file:
 qt_meta_stringdata_Corridor_win_t	moc/moc_Corridor_win.cpp	/^struct qt_meta_stringdata_Corridor_win_t {$/;"	s	file:
+qt_meta_stringdata_DataLogger	moc/moc_DataLogger.cpp	/^static const qt_meta_stringdata_DataLogger_t qt_meta_stringdata_DataLogger = {$/;"	v	file:
+qt_meta_stringdata_DataLogger_t	moc/moc_DataLogger.cpp	/^struct qt_meta_stringdata_DataLogger_t {$/;"	s	file:
 qt_meta_stringdata_GPIO	moc/moc_GPIO.cpp	/^static const qt_meta_stringdata_GPIO_t qt_meta_stringdata_GPIO = {$/;"	v	file:
 qt_meta_stringdata_GPIO_t	moc/moc_GPIO.cpp	/^struct qt_meta_stringdata_GPIO_t {$/;"	s	file:
 qt_meta_stringdata_IntHelper	moc/moc_GPIO.cpp	/^static const qt_meta_stringdata_IntHelper_t qt_meta_stringdata_IntHelper = {$/;"	v	file:
@@ -634,8 +820,12 @@ qt_meta_stringdata_Living_Room_win	moc/moc_Living_Room_win.cpp	/^static const qt
 qt_meta_stringdata_Living_Room_win_t	moc/moc_Living_Room_win.cpp	/^struct qt_meta_stringdata_Living_Room_win_t {$/;"	s	file:
 qt_meta_stringdata_MainWindow	moc/moc_MainWindow.cpp	/^static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {$/;"	v	file:
 qt_meta_stringdata_MainWindow_t	moc/moc_MainWindow.cpp	/^struct qt_meta_stringdata_MainWindow_t {$/;"	s	file:
+qt_meta_stringdata_MyTcpServer	moc/moc_tcp_server.cpp	/^static const qt_meta_stringdata_MyTcpServer_t qt_meta_stringdata_MyTcpServer = {$/;"	v	file:
+qt_meta_stringdata_MyTcpServer_t	moc/moc_tcp_server.cpp	/^struct qt_meta_stringdata_MyTcpServer_t {$/;"	s	file:
 qt_meta_stringdata_Room	moc/moc_Room.cpp	/^static const qt_meta_stringdata_Room_t qt_meta_stringdata_Room = {$/;"	v	file:
 qt_meta_stringdata_Room_t	moc/moc_Room.cpp	/^struct qt_meta_stringdata_Room_t {$/;"	s	file:
+qt_meta_stringdata_Server	moc/moc_tcp_server.cpp	/^static const qt_meta_stringdata_Server_t qt_meta_stringdata_Server = {$/;"	v	file:
+qt_meta_stringdata_Server_t	moc/moc_tcp_server.cpp	/^struct qt_meta_stringdata_Server_t {$/;"	s	file:
 qt_meta_stringdata_TCP	moc/moc_TCP.cpp	/^static const qt_meta_stringdata_TCP_t qt_meta_stringdata_TCP = {$/;"	v	file:
 qt_meta_stringdata_TCP_t	moc/moc_TCP.cpp	/^struct qt_meta_stringdata_TCP_t {$/;"	s	file:
 qt_meta_stringdata_Work_Room_win	moc/moc_Work_Room_win.cpp	/^static const qt_meta_stringdata_Work_Room_win_t qt_meta_stringdata_Work_Room_win = {$/;"	v	file:
@@ -647,6 +837,7 @@ qt_metacall	moc/moc_Bed_Room_win.cpp	/^int Bed_Room_win::qt_metacall(QMetaObject
 qt_metacall	moc/moc_Blank_widget.cpp	/^int Blank_widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Blank_widget
 qt_metacall	moc/moc_Camera.cpp	/^int Camera::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Camera
 qt_metacall	moc/moc_Corridor_win.cpp	/^int Corridor_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Corridor_win
+qt_metacall	moc/moc_DataLogger.cpp	/^int DataLogger::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:DataLogger
 qt_metacall	moc/moc_GPIO.cpp	/^int GPIO::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GPIO
 qt_metacall	moc/moc_GPIO.cpp	/^int IntHelper::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:IntHelper
 qt_metacall	moc/moc_Living_Room_win.cpp	/^int Living_Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Living_Room_win
@@ -655,11 +846,14 @@ qt_metacall	moc/moc_Room.cpp	/^int Room::qt_metacall(QMetaObject::Call _c, int _
 qt_metacall	moc/moc_TCP.cpp	/^int TCP::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:TCP
 qt_metacall	moc/moc_Work_Room_win.cpp	/^int Work_Room_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Work_Room_win
 qt_metacall	moc/moc_info_widget.cpp	/^int info_widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:info_widget
+qt_metacall	moc/moc_tcp_server.cpp	/^int MyTcpServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MyTcpServer
+qt_metacall	moc/moc_tcp_server.cpp	/^int Server::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Server
 qt_metacast	moc/moc_Bath_Room_win.cpp	/^void *Bath_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Bath_Room_win
 qt_metacast	moc/moc_Bed_Room_win.cpp	/^void *Bed_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Bed_Room_win
 qt_metacast	moc/moc_Blank_widget.cpp	/^void *Blank_widget::qt_metacast(const char *_clname)$/;"	f	class:Blank_widget
 qt_metacast	moc/moc_Camera.cpp	/^void *Camera::qt_metacast(const char *_clname)$/;"	f	class:Camera
 qt_metacast	moc/moc_Corridor_win.cpp	/^void *Corridor_win::qt_metacast(const char *_clname)$/;"	f	class:Corridor_win
+qt_metacast	moc/moc_DataLogger.cpp	/^void *DataLogger::qt_metacast(const char *_clname)$/;"	f	class:DataLogger
 qt_metacast	moc/moc_GPIO.cpp	/^void *GPIO::qt_metacast(const char *_clname)$/;"	f	class:GPIO
 qt_metacast	moc/moc_GPIO.cpp	/^void *IntHelper::qt_metacast(const char *_clname)$/;"	f	class:IntHelper
 qt_metacast	moc/moc_Living_Room_win.cpp	/^void *Living_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Living_Room_win
@@ -668,6 +862,8 @@ qt_metacast	moc/moc_Room.cpp	/^void *Room::qt_metacast(const char *_clname)$/;"	
 qt_metacast	moc/moc_TCP.cpp	/^void *TCP::qt_metacast(const char *_clname)$/;"	f	class:TCP
 qt_metacast	moc/moc_Work_Room_win.cpp	/^void *Work_Room_win::qt_metacast(const char *_clname)$/;"	f	class:Work_Room_win
 qt_metacast	moc/moc_info_widget.cpp	/^void *info_widget::qt_metacast(const char *_clname)$/;"	f	class:info_widget
+qt_metacast	moc/moc_tcp_server.cpp	/^void *MyTcpServer::qt_metacast(const char *_clname)$/;"	f	class:MyTcpServer
+qt_metacast	moc/moc_tcp_server.cpp	/^void *Server::qt_metacast(const char *_clname)$/;"	f	class:Server
 qt_resource_data	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_data[] = {$/;"	v	file:
 qt_resource_name	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_name[] = {$/;"	v	file:
 qt_resource_struct	rcc/qrc_res.cpp	/^static const unsigned char qt_resource_struct[] = {$/;"	v	file:
@@ -676,6 +872,7 @@ qt_static_metacall	moc/moc_Bed_Room_win.cpp	/^void Bed_Room_win::qt_static_metac
 qt_static_metacall	moc/moc_Blank_widget.cpp	/^void Blank_widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Blank_widget
 qt_static_metacall	moc/moc_Camera.cpp	/^void Camera::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Camera
 qt_static_metacall	moc/moc_Corridor_win.cpp	/^void Corridor_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Corridor_win
+qt_static_metacall	moc/moc_DataLogger.cpp	/^void DataLogger::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:DataLogger
 qt_static_metacall	moc/moc_GPIO.cpp	/^void GPIO::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GPIO
 qt_static_metacall	moc/moc_GPIO.cpp	/^void IntHelper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:IntHelper
 qt_static_metacall	moc/moc_Living_Room_win.cpp	/^void Living_Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Living_Room_win
@@ -684,13 +881,22 @@ qt_static_metacall	moc/moc_Room.cpp	/^void Room::qt_static_metacall(QObject *_o,
 qt_static_metacall	moc/moc_TCP.cpp	/^void TCP::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:TCP
 qt_static_metacall	moc/moc_Work_Room_win.cpp	/^void Work_Room_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Work_Room_win
 qt_static_metacall	moc/moc_info_widget.cpp	/^void info_widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:info_widget
+qt_static_metacall	moc/moc_tcp_server.cpp	/^void MyTcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MyTcpServer
+qt_static_metacall	moc/moc_tcp_server.cpp	/^void Server::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Server
+read	src/GPIO.cpp	/^int GPIO::read(int pin){$/;"	f	class:GPIO
 readGPIOReg	src/mmapGpio.cpp	/^void mmapGpio::readGPIOReg(unsigned int reg, unsigned int &val){$/;"	f	class:mmapGpio
 readPin	src/mmapGpio.cpp	/^unsigned int mmapGpio::readPin(unsigned int pinnum){$/;"	f	class:mmapGpio
 readTcpData	src/TCP.cpp	/^void TCP::readTcpData()$/;"	f	class:TCP
-readUsers	src/Alarm.cpp	/^int Alarm::readUsers(QList<User> *users){$/;"	f	class:Alarm
+readUsers	src/UserManager.cpp	/^int UserManager::readUsers() {$/;"	f	class:UserManager
+read_config	src/Settings.cpp	/^int Settings::read_config() {$/;"	f	class:Settings
 read_ip	src/Room.cpp	/^QString Room::read_ip(){$/;"	f	class:Room
+ready	src/tcp_server.cpp	/^void MyTcpServer::ready()$/;"	f	class:MyTcpServer
+readyRead	src/tcp_server.cpp	/^void Server::readyRead() {$/;"	f	class:Server
 rec_button	ui/ui_MainWindow.h	/^    QPushButton *rec_button;$/;"	m	class:Ui_MainWindow
+reconnect_timer	include/Room.h	/^        QTimer *reconnect_timer;$/;"	m	class:Room
+removeUser	src/UserManager.cpp	/^void UserManager::removeUser(User user){$/;"	f	class:UserManager
 reset_idle_timer	src/GPIO.cpp	/^void GPIO::reset_idle_timer() {$/;"	f	class:GPIO
+restart_server	src/tcp_server.cpp	/^void Server::restart_server(){$/;"	f	class:Server
 retranslateUi	ui/ui_Bath_Room_win.h	/^    void retranslateUi(QDialog *Bath_Room_win)$/;"	f	class:Ui_Bath_Room_win
 retranslateUi	ui/ui_Bed_Room_win.h	/^    void retranslateUi(QDialog *Bed_Room_win)$/;"	f	class:Ui_Bed_Room_win
 retranslateUi	ui/ui_Blank_widget.h	/^    void retranslateUi(QDialog *Blank_widget)$/;"	f	class:Ui_Blank_widget
@@ -700,6 +906,7 @@ retranslateUi	ui/ui_MainWindow.h	/^    void retranslateUi(QMainWindow *MainWindo
 retranslateUi	ui/ui_Work_Room_win.h	/^    void retranslateUi(QDialog *Work_Room_win)$/;"	f	class:Ui_Work_Room_win
 retranslateUi	ui/ui_info_widget.h	/^    void retranslateUi(QWidget *info_widget)$/;"	f	class:Ui_info_widget
 retry_count	include/TCP.h	/^  int retry_count;$/;"	m	class:TCP
+rnd	include/miniaes.h	/^            uint_8t rnd;$/;"	m	struct:MiniAES::__anon2
 room	include/Bath_Room_win.h	/^    Room *room;$/;"	m	class:Bath_Room_win
 room	include/Bed_Room_win.h	/^    Room *room;$/;"	m	class:Bed_Room_win
 room	include/Corridor_win.h	/^    Room *room;$/;"	m	class:Corridor_win
@@ -709,13 +916,19 @@ room_buttons_frame	ui/ui_Bath_Room_win.h	/^    QFrame *room_buttons_frame;$/;"	m
 room_buttons_frame	ui/ui_Bed_Room_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Bed_Room_win
 room_buttons_frame	ui/ui_Corridor_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Corridor_win
 room_buttons_frame	ui/ui_Living_Room_win.h	/^    QFrame *room_buttons_frame;$/;"	m	class:Ui_Living_Room_win
-room_id	include/Room.h	/^   ROOM_ID room_id;$/;"	m	class:Room
+room_id	include/DataLogger.h	/^        ROOM_ID room_id;$/;"	m	class:DataLogger
+room_id	include/Room.h	/^        ROOM_ID room_id;$/;"	m	class:Room
 room_status_received	moc/moc_Room.cpp	/^void Room::room_status_received(Room_status _t1)$/;"	f	class:Room
 room_status_received	src/Bath_Room_win.cpp	/^void Bath_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Bath_Room_win
 room_status_received	src/Bed_Room_win.cpp	/^void Bed_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Bed_Room_win
 room_status_received	src/Corridor_win.cpp	/^void Corridor_win::room_status_received(Room_status room_status){$/;"	f	class:Corridor_win
 room_status_received	src/Living_Room_win.cpp	/^void Living_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Living_Room_win
 room_status_received	src/Work_Room_win.cpp	/^void Work_Room_win::room_status_received(Room_status room_status){$/;"	f	class:Work_Room_win
+room_temp_frame	ui/ui_Bath_Room_win.h	/^    QFrame *room_temp_frame;$/;"	m	class:Ui_Bath_Room_win
+s_box	include/miniaes.h	32;"	d
+save_config	src/Settings.cpp	/^int Settings::save_config() {$/;"	f	class:Settings
+sb_data	include/miniaes.h	44;"	d
+sbox	include/miniaes.h	/^static const uint_8t sbox[256]  =  sb_data(f1);$/;"	v
 sendData	src/Room.cpp	/^void Room::sendData(QByteArray data){$/;"	f	class:Room
 sendData	src/TCP.cpp	/^void TCP::sendData(QByteArray data){$/;"	f	class:TCP
 send_tcp_cmd	src/Bath_Room_win.cpp	/^void Bath_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Bath_Room_win
@@ -723,19 +936,28 @@ send_tcp_cmd	src/Bed_Room_win.cpp	/^void Bed_Room_win::send_tcp_cmd(QString cmd)
 send_tcp_cmd	src/Corridor_win.cpp	/^void Corridor_win::send_tcp_cmd(QString cmd){$/;"	f	class:Corridor_win
 send_tcp_cmd	src/Living_Room_win.cpp	/^void Living_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Living_Room_win
 send_tcp_cmd	src/Work_Room_win.cpp	/^void Work_Room_win::send_tcp_cmd(QString cmd){$/;"	f	class:Work_Room_win
-server	include/MainWindow.h	/^    TCP *server;$/;"	m	class:MainWindow
+sender	include/tcp_server.h	/^    QString sender;$/;"	m	struct:Tcp_packet
+server	include/MainWindow.h	/^    Server *server;$/;"	m	class:MainWindow
+server	include/tcp_server.h	/^    MyTcpServer *server;$/;"	m	class:Server
 setPinDir	src/mmapGpio.cpp	/^void mmapGpio::setPinDir(unsigned int pinnum, const unsigned int &dir){$/;"	f	class:mmapGpio
 set_color	src/info_widget.cpp	/^void info_widget::set_color(QString color){$/;"	f	class:info_widget
+set_config	src/Settings.cpp	/^int Settings::set_config(Tcp_packet * packet) {$/;"	f	class:Settings
 set_connection_status	src/Bath_Room_win.cpp	/^void Bath_Room_win::set_connection_status(int status){$/;"	f	class:Bath_Room_win
 set_connection_status	src/Bed_Room_win.cpp	/^void Bed_Room_win::set_connection_status(int status){$/;"	f	class:Bed_Room_win
 set_connection_status	src/Corridor_win.cpp	/^void Corridor_win::set_connection_status(int status){$/;"	f	class:Corridor_win
 set_connection_status	src/Living_Room_win.cpp	/^void Living_Room_win::set_connection_status(int status){$/;"	f	class:Living_Room_win
-set_connection_status	src/Room.cpp	/^void Room::set_connection_status(int Status){$/;"	f	class:Room
+set_connection_status	src/Room.cpp	/^void Room::set_connection_status(int newStatus){$/;"	f	class:Room
 set_connection_status	src/Work_Room_win.cpp	/^void Work_Room_win::set_connection_status(int status){$/;"	f	class:Work_Room_win
 set_ip	src/TCP.cpp	/^void TCP::set_ip(QString ipaddr){$/;"	f	class:TCP
 set_name	src/info_widget.cpp	/^void info_widget::set_name(QString name){$/;"	f	class:info_widget
 set_room_status	src/info_widget.cpp	/^void info_widget::set_room_status(Room_status status){$/;"	f	class:info_widget
 set_widget	src/Camera.cpp	/^void Camera::set_widget(QVideoWidget *widget){$/;"	f	class:Camera
+settings	include/MainWindow.h	/^    Settings *settings;$/;"	m	class:MainWindow
+settings_door_lights_checkbox	ui/ui_MainWindow.h	/^    QCheckBox *settings_door_lights_checkbox;$/;"	m	class:Ui_MainWindow
+settings_door_siren_checkbox	ui/ui_MainWindow.h	/^    QCheckBox *settings_door_siren_checkbox;$/;"	m	class:Ui_MainWindow
+settings_lcd_timeout_comboBox	ui/ui_MainWindow.h	/^    QComboBox *settings_lcd_timeout_comboBox;$/;"	m	class:Ui_MainWindow
+settings_pir_lcd_checkbox	ui/ui_MainWindow.h	/^    QCheckBox *settings_pir_lcd_checkbox;$/;"	m	class:Ui_MainWindow
+settings_save_button	ui/ui_MainWindow.h	/^    QPushButton *settings_save_button;$/;"	m	class:Ui_MainWindow
 setupUi	ui/ui_Bath_Room_win.h	/^    void setupUi(QDialog *Bath_Room_win)$/;"	f	class:Ui_Bath_Room_win
 setupUi	ui/ui_Bed_Room_win.h	/^    void setupUi(QDialog *Bed_Room_win)$/;"	f	class:Ui_Bed_Room_win
 setupUi	ui/ui_Blank_widget.h	/^    void setupUi(QDialog *Blank_widget)$/;"	f	class:Ui_Blank_widget
@@ -745,10 +967,13 @@ setupUi	ui/ui_MainWindow.h	/^    void setupUi(QMainWindow *MainWindow)$/;"	f	cla
 setupUi	ui/ui_Work_Room_win.h	/^    void setupUi(QDialog *Work_Room_win)$/;"	f	class:Ui_Work_Room_win
 setupUi	ui/ui_info_widget.h	/^    void setupUi(QWidget *info_widget)$/;"	f	class:Ui_info_widget
 sh	nbproject/Makefile-variables.mk	/^ROOT:sh = test -f nbproject\/private\/Makefile-variables.mk || \\$/;"	m
+shift_sub_rows	src/miniaes.cpp	/^void MiniAES::shift_sub_rows( uint_8t st[N_BLOCK] )$/;"	f	class:MiniAES
 shot_timer	include/Camera.h	/^        QTimer shot_timer;$/;"	m	class:Camera
 side_menu	ui/ui_MainWindow.h	/^    QListWidget *side_menu;$/;"	m	class:Ui_MainWindow
 siren_beep	src/GPIO.cpp	/^void GPIO::siren_beep(){$/;"	f	class:GPIO
+sizes	include/tcp_server.h	/^    QHash<QTcpSocket*, qint32*> sizes; \/\/We need to store the size to verify if a block has received completely$/;"	m	class:Server
 socket	include/TCP.h	/^  QTcpSocket* socket;$/;"	m	class:TCP
+socket_alive	include/tcp_server.h	/^    QList<int> socket_alive;$/;"	m	class:Server
 stack_widget	ui/ui_MainWindow.h	/^    QStackedWidget *stack_widget;$/;"	m	class:Ui_MainWindow
 start	src/Camera.cpp	/^void Camera::start(){$/;"	f	class:Camera
 staticMetaObject	moc/moc_Bath_Room_win.cpp	/^const QMetaObject Bath_Room_win::staticMetaObject = {$/;"	m	class:Bath_Room_win	file:
@@ -756,6 +981,7 @@ staticMetaObject	moc/moc_Bed_Room_win.cpp	/^const QMetaObject Bed_Room_win::stat
 staticMetaObject	moc/moc_Blank_widget.cpp	/^const QMetaObject Blank_widget::staticMetaObject = {$/;"	m	class:Blank_widget	file:
 staticMetaObject	moc/moc_Camera.cpp	/^const QMetaObject Camera::staticMetaObject = {$/;"	m	class:Camera	file:
 staticMetaObject	moc/moc_Corridor_win.cpp	/^const QMetaObject Corridor_win::staticMetaObject = {$/;"	m	class:Corridor_win	file:
+staticMetaObject	moc/moc_DataLogger.cpp	/^const QMetaObject DataLogger::staticMetaObject = {$/;"	m	class:DataLogger	file:
 staticMetaObject	moc/moc_GPIO.cpp	/^const QMetaObject GPIO::staticMetaObject = {$/;"	m	class:GPIO	file:
 staticMetaObject	moc/moc_GPIO.cpp	/^const QMetaObject IntHelper::staticMetaObject = {$/;"	m	class:IntHelper	file:
 staticMetaObject	moc/moc_Living_Room_win.cpp	/^const QMetaObject Living_Room_win::staticMetaObject = {$/;"	m	class:Living_Room_win	file:
@@ -764,35 +990,49 @@ staticMetaObject	moc/moc_Room.cpp	/^const QMetaObject Room::staticMetaObject = {
 staticMetaObject	moc/moc_TCP.cpp	/^const QMetaObject TCP::staticMetaObject = {$/;"	m	class:TCP	file:
 staticMetaObject	moc/moc_Work_Room_win.cpp	/^const QMetaObject Work_Room_win::staticMetaObject = {$/;"	m	class:Work_Room_win	file:
 staticMetaObject	moc/moc_info_widget.cpp	/^const QMetaObject info_widget::staticMetaObject = {$/;"	m	class:info_widget	file:
+staticMetaObject	moc/moc_tcp_server.cpp	/^const QMetaObject MyTcpServer::staticMetaObject = {$/;"	m	class:MyTcpServer	file:
+staticMetaObject	moc/moc_tcp_server.cpp	/^const QMetaObject Server::staticMetaObject = {$/;"	m	class:Server	file:
 status	include/Bath_Room_win.h	/^    Room_status status;$/;"	m	class:Bath_Room_win
 status	include/Bed_Room_win.h	/^    Room_status status;$/;"	m	class:Bed_Room_win
 status	include/Corridor_win.h	/^    Room_status status;$/;"	m	class:Corridor_win
+status	include/DataLogger.h	/^        Room_status status;$/;"	m	class:DataLogger
 status	include/Living_Room_win.h	/^    Room_status status;$/;"	m	class:Living_Room_win
-status	include/Room.h	/^     Room_status status;$/;"	m	class:Room
+status	include/Room.h	/^        Room_status status;$/;"	m	class:Room
 status	include/Work_Room_win.h	/^    Room_status status;$/;"	m	class:Work_Room_win
+status	include/tcp_server.h	/^    QString status;$/;"	m	struct:Tcp_packet
+status2xml	src/Room.cpp	/^void Room::status2xml(QDomDocument *domdoc){$/;"	f	class:Room
 status_label	ui/ui_info_widget.h	/^    QLabel *status_label;$/;"	m	class:Ui_info_widget
 status_timer	include/MainWindow.h	/^    QTimer status_timer;$/;"	m	class:MainWindow
+status_xml	src/Bath_Room_win.cpp	/^void Bath_Room_win::status_xml(QDomDocument *domdoc){$/;"	f	class:Bath_Room_win
+status_xml	src/Bed_Room_win.cpp	/^void Bed_Room_win::status_xml(QDomDocument *domdoc){$/;"	f	class:Bed_Room_win
+status_xml	src/Corridor_win.cpp	/^void Corridor_win::status_xml(QDomDocument *domdoc){$/;"	f	class:Corridor_win
+status_xml	src/Living_Room_win.cpp	/^void Living_Room_win::status_xml(QDomDocument *domdoc){$/;"	f	class:Living_Room_win
+status_xml	src/Work_Room_win.cpp	/^void Work_Room_win::status_xml(QDomDocument *domdoc){$/;"	f	class:Work_Room_win
 stop	src/Camera.cpp	/^void Camera::stop(){$/;"	f	class:Camera
-stringdata0	moc/moc_Bath_Room_win.cpp	/^    char stringdata0[171];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
+stringdata0	moc/moc_Bath_Room_win.cpp	/^    char stringdata0[197];$/;"	m	struct:qt_meta_stringdata_Bath_Room_win_t	file:
 stringdata0	moc/moc_Bed_Room_win.cpp	/^    char stringdata0[170];$/;"	m	struct:qt_meta_stringdata_Bed_Room_win_t	file:
 stringdata0	moc/moc_Blank_widget.cpp	/^    char stringdata0[13];$/;"	m	struct:qt_meta_stringdata_Blank_widget_t	file:
 stringdata0	moc/moc_Camera.cpp	/^    char stringdata0[35];$/;"	m	struct:qt_meta_stringdata_Camera_t	file:
 stringdata0	moc/moc_Corridor_win.cpp	/^    char stringdata0[170];$/;"	m	struct:qt_meta_stringdata_Corridor_win_t	file:
+stringdata0	moc/moc_DataLogger.cpp	/^    char stringdata0[22];$/;"	m	struct:qt_meta_stringdata_DataLogger_t	file:
 stringdata0	moc/moc_GPIO.cpp	/^    char stringdata0[21];$/;"	m	struct:qt_meta_stringdata_IntHelper_t	file:
 stringdata0	moc/moc_GPIO.cpp	/^    char stringdata0[37];$/;"	m	struct:qt_meta_stringdata_GPIO_t	file:
-stringdata0	moc/moc_Living_Room_win.cpp	/^    char stringdata0[199];$/;"	m	struct:qt_meta_stringdata_Living_Room_win_t	file:
-stringdata0	moc/moc_MainWindow.cpp	/^    char stringdata0[154];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
-stringdata0	moc/moc_Room.cpp	/^    char stringdata0[75];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
+stringdata0	moc/moc_Living_Room_win.cpp	/^    char stringdata0[251];$/;"	m	struct:qt_meta_stringdata_Living_Room_win_t	file:
+stringdata0	moc/moc_MainWindow.cpp	/^    char stringdata0[301];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:
+stringdata0	moc/moc_Room.cpp	/^    char stringdata0[90];$/;"	m	struct:qt_meta_stringdata_Room_t	file:
 stringdata0	moc/moc_TCP.cpp	/^    char stringdata0[87];$/;"	m	struct:qt_meta_stringdata_TCP_t	file:
 stringdata0	moc/moc_Work_Room_win.cpp	/^    char stringdata0[119];$/;"	m	struct:qt_meta_stringdata_Work_Room_win_t	file:
 stringdata0	moc/moc_info_widget.cpp	/^    char stringdata0[21];$/;"	m	struct:qt_meta_stringdata_info_widget_t	file:
+stringdata0	moc/moc_tcp_server.cpp	/^    char stringdata0[109];$/;"	m	struct:qt_meta_stringdata_Server_t	file:
+stringdata0	moc/moc_tcp_server.cpp	/^    char stringdata0[19];$/;"	m	struct:qt_meta_stringdata_MyTcpServer_t	file:
 switch_all_lights	src/Room.cpp	/^void Room::switch_all_lights(bool enable){$/;"	f	class:Room
 take_photo	src/Camera.cpp	/^void Camera::take_photo(){$/;"	f	class:Camera
 take_photo_auto	src/Camera.cpp	/^void Camera::take_photo_auto(){$/;"	f	class:Camera
 take_photo_button	ui/ui_MainWindow.h	/^    QPushButton *take_photo_button;$/;"	m	class:Ui_MainWindow
-tcp	include/Room.h	/^    TCP *tcp;$/;"	m	class:Room
+tcp	include/Room.h	/^        TCP *tcp;$/;"	m	class:Room
 tcp	include/info_widget.h	/^    TCP *tcp;$/;"	m	class:info_widget
 tcp_data	src/Room.cpp	/^void Room::tcp_data(QByteArray data){$/;"	f	class:Room
+tcp_packet	include/tcp_server.h	/^    Tcp_packet tcp_packet;$/;"	m	class:Server
 tcp_thread	include/Bath_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Bath_Room_win
 tcp_thread	include/Bed_Room_win.h	/^    QThread *tcp_thread;$/;"	m	class:Bed_Room_win
 tcp_thread	include/Corridor_win.h	/^    QThread *tcp_thread;$/;"	m	class:Corridor_win
@@ -812,8 +1052,12 @@ temp_label	ui/ui_Living_Room_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Livi
 temp_label	ui/ui_Work_Room_win.h	/^    QLabel *temp_label;$/;"	m	class:Ui_Work_Room_win
 temp_label	ui/ui_info_widget.h	/^    QLabel *temp_label;$/;"	m	class:Ui_info_widget
 time_label	ui/ui_MainWindow.h	/^    QLabel *time_label;$/;"	m	class:Ui_MainWindow
-toJson	include/Alarm.h	/^        QJsonObject toJson() const {$/;"	f	class:User
+timer	include/DataLogger.h	/^        QTimer timer;$/;"	m	class:DataLogger
 toggle_all_lights	src/Room.cpp	/^void Room::toggle_all_lights(){$/;"	f	class:Room
+toggle_light	src/Room.cpp	/^void Room::toggle_light(int nr){$/;"	f	class:Room
+top_frame	ui/ui_MainWindow.h	/^    QFrame *top_frame;$/;"	m	class:Ui_MainWindow
+uint_32t	include/miniaes.h	/^typedef unsigned long uint_32t;$/;"	t
+uint_8t	include/miniaes.h	/^typedef unsigned char uint_8t;$/;"	t
 update_info	src/Bath_Room_win.cpp	/^void Bath_Room_win::update_info(){$/;"	f	class:Bath_Room_win
 update_info	src/Bed_Room_win.cpp	/^void Bed_Room_win::update_info(){$/;"	f	class:Bed_Room_win
 update_info	src/Corridor_win.cpp	/^void Corridor_win::update_info(){$/;"	f	class:Corridor_win
@@ -826,10 +1070,16 @@ update_room_info	src/Corridor_win.cpp	/^void Corridor_win::update_room_info(){$/
 update_room_info	src/Living_Room_win.cpp	/^void Living_Room_win::update_room_info(){$/;"	f	class:Living_Room_win
 update_room_info	src/Work_Room_win.cpp	/^void Work_Room_win::update_room_info(){$/;"	f	class:Work_Room_win
 update_status	src/MainWindow.cpp	/^void MainWindow::update_status(){$/;"	f	class:MainWindow
+user_to_xml	src/UserManager.cpp	/^void UserManager::user_to_xml(QDomDocument * domdoc, QList<User> *userlist) {$/;"	f	class:UserManager
+userlist	include/UserManager.h	/^    QList<User> userlist;$/;"	m	class:UserManager
+username	include/UserManager.h	/^    QString username;$/;"	m	struct:User
+verticalLayout	ui/ui_Bath_Room_win.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_Bath_Room_win
 verticalLayout	ui/ui_MainWindow.h	/^    QVBoxLayout *verticalLayout;$/;"	m	class:Ui_MainWindow
+verticalLayout_2	ui/ui_MainWindow.h	/^    QVBoxLayout *verticalLayout_2;$/;"	m	class:Ui_MainWindow
 video_widget	ui/ui_MainWindow.h	/^    QVideoWidget *video_widget;$/;"	m	class:Ui_MainWindow
 viewFinder	include/Camera.h	/^        QVideoWidget *viewFinder;$/;"	m	class:Camera
 wc_info	ui/ui_MainWindow.h	/^    info_widget *wc_info;$/;"	m	class:Ui_MainWindow
+web_gui_socket_id	include/tcp_server.h	/^    int web_gui_socket_id;$/;"	m	class:Server
 widget	include/Bath_Room_win.h	/^    Ui::Bath_Room_win widget;$/;"	m	class:Bath_Room_win
 widget	include/Bed_Room_win.h	/^    Ui::Bed_Room_win widget;$/;"	m	class:Bed_Room_win
 widget	include/Blank_widget.h	/^Ui_Blank_widget widget;$/;"	m	class:Blank_widget
@@ -840,14 +1090,21 @@ widget	include/Work_Room_win.h	/^    Ui::Work_Room_win widget;$/;"	m	class:Work_
 widget	include/info_widget.h	/^    Ui::info_widget widget;$/;"	m	class:info_widget
 widget	ui/ui_Bath_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Bath_Room_win
 widget	ui/ui_Bed_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Bed_Room_win
+widget	ui/ui_Living_Room_win.h	/^    QWidget *widget;$/;"	m	class:Ui_Living_Room_win
 workroom	include/MainWindow.h	/^    Work_Room_win *workroom;$/;"	m	class:MainWindow
 workroom_info	ui/ui_MainWindow.h	/^    info_widget *workroom_info;$/;"	m	class:Ui_MainWindow
+writeData	src/tcp_server.cpp	/^bool Server::writeData(QByteArray data, int socket_id, int xml_size) {$/;"	f	class:Server
 writeGPIOReg	src/mmapGpio.cpp	/^void mmapGpio::writeGPIOReg(unsigned int reg, unsigned int val){$/;"	f	class:mmapGpio
-writeKeys	src/Alarm.cpp	/^int Alarm::writeKeys(){$/;"	f	class:Alarm
 writePinHigh	include/mmapGpio.h	/^	void inline writePinHigh(unsigned int pinnum){*(this->gpio + GPFSET0) = (1 << pinnum);}$/;"	f	class:mmapGpio
 writePinLow	include/mmapGpio.h	/^	void inline writePinLow(unsigned int pinnum){*(this->gpio + GPFCLR0) = (1 << pinnum);}$/;"	f	class:mmapGpio
 writePinState	src/mmapGpio.cpp	/^void mmapGpio::writePinState(unsigned int pinnum, const unsigned int &pinstate){$/;"	f	class:mmapGpio
+writeUsers	src/UserManager.cpp	/^int UserManager::writeUsers(){$/;"	f	class:UserManager
 write_pin	src/Pinctrl.cpp	/^void Pinctrl::write_pin(int pin, int state){$/;"	f	class:Pinctrl
+xml_to_config	src/Settings.cpp	/^int Settings::xml_to_config(QDomDocument *domdoc) {$/;"	f	class:Settings
+xml_to_file	src/Settings.cpp	/^int Settings::xml_to_file(QDomDocument *domdoc) {$/;"	f	class:Settings
+xml_to_users	src/UserManager.cpp	/^void UserManager::xml_to_users(QDomDocument *domdoc, QList<User> *userlist) {$/;"	f	class:UserManager
+xor_block	src/miniaes.cpp	/^void MiniAES::xor_block( void *d, const void *s )$/;"	f	class:MiniAES
+ycm_core	.ycm_extra_conf.py	/^import ycm_core$/;"	i
 ~Bath_Room_win	src/Bath_Room_win.cpp	/^Bath_Room_win::~Bath_Room_win() {$/;"	f	class:Bath_Room_win
 ~Bed_Room_win	src/Bed_Room_win.cpp	/^Bed_Room_win::~Bed_Room_win() {$/;"	f	class:Bed_Room_win
 ~Corridor_win	src/Corridor_win.cpp	/^Corridor_win::~Corridor_win() {$/;"	f	class:Corridor_win

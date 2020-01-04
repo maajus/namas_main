@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   MainWindow.h
  * Author: justas
  *
@@ -27,7 +27,9 @@
 #include "GPIO.h"
 #include "Alarm.h"
 #include "tcp_server.h"
+#include "ws_server.h"
 #include "Settings.h"
+#include "json.hpp"
 
 enum Menus{
 
@@ -42,7 +44,7 @@ enum Menus{
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public:        
+public:
     MainWindow();
     virtual ~MainWindow();
 
@@ -64,15 +66,17 @@ private:
     Work_Room_win *workroom;
     Corridor_win *corridor;
     Server *server;
+    WSserver *ws_server;
     Settings *settings;
 
     GPIO *gpio;
     Camera *cam;
     Alarm *alarm;
-    
+
 private slots:
 
     void TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id);
+    void WS_dataReceived(QWebSocket *pClient, nlohmann::json j);
     //void on_leave_button_clicked();
     void on_take_photo_button_clicked();
     void on_settings_save_button_clicked();

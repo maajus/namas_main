@@ -88,6 +88,7 @@ void Living_Room_win::update_info(){
     this->send_tcp_cmd("A\n");
 }
 
+
 void Living_Room_win::send_tcp_cmd(QString cmd){
 
     if(connection_status != Status::FAILED)

@@ -226,7 +226,7 @@ int Server::process_received_data(QByteArray *data, Tcp_packet &tcp_Packet, int 
 
 
     if (!document.setContent(*data, false, &errorStr, &errorLine, &errorColumn)) {
-        qDebug() << QString("Process received packet XML parsing error in  L:" 
+        qDebug() << QString("Process received packet XML parsing error in  L:"
                 + QString::number(errorLine) + " C:" + QString::number(errorColumn) + "\n");
         //create error packet
         this->format_and_send_packet("Rx", QString("Response"), "", "Error",
@@ -234,6 +234,7 @@ int Server::process_received_data(QByteArray *data, Tcp_packet &tcp_Packet, int 
                     " C:" + QString::number(errorColumn)), socket_id);
         return 1;
     }
+    //qDebug()<<document.toString();
 
     //parse xml to tcp_packet structure
     QDomElement root = document.firstChildElement();
@@ -253,7 +254,7 @@ int Server::process_received_data(QByteArray *data, Tcp_packet &tcp_Packet, int 
             data1.save(data_stream, QDomNode::CDATASectionNode /* = 4 */);
 
             if (!tcp_Packet.dataE.setContent(str, false, &errorStr, &errorLine, &errorColumn)) {
-                qDebug() << QString("Process received data XML parsing error in  L:" 
+                qDebug() << QString("Process received data XML parsing error in  L:"
                         + QString::number(errorLine) + " C:" + QString::number(errorColumn) + "\n");
             }
         }

@@ -62,20 +62,22 @@ void Room::sendData(QByteArray data){
 
 void Room::tcp_data(QByteArray data){
 
-    //if(room_id==LIVING_ROOM) 
+    //if(room_id==LIVING_ROOM)
         //qDebug()<<QString(data);
     switch(data.at(0)){
         case 'A':
         {
                 QStringList info = QString(data.mid(1,data.length())).split("_");
                 if(info.size()<=1) return;
-                status.T = info[0].toInt();
-                if((status.T > 0) && (status.T < 100))
-                    status.temp = (info[0] + "°C"); 
+                status.T = (int)info[0].toFloat();
+                //if((status.T > 0) && (status.T < 100))
+                    status.temp = (info[0] + "°C");
 
-                status.H = info[1].toInt();
-                if((status.H > 0) && (status.H < 100))
+                status.H = (int)info[1].toFloat();
+                //if((status.H > 0) && (status.H < 100))
                     status.humi = (info[1] + "%");
+
+                //qDebug()<<status.T<<status.H;
 
                 status.L[0] = info[2].toInt();
                 status.L[1] = info[3].toInt();
@@ -91,7 +93,7 @@ void Room::tcp_data(QByteArray data){
         {
                 QStringList info = QString(data.mid(1,data.length())).split("_");
                 if(info.size()<=1) return;
-                status.temp = (info[0] + "°C"); 
+                status.temp = (info[0] + "°C");
                 status.humi = (info[1] + "%");
                 status.L[0] = info[2].toInt()&0x01;
                 status.L[1] = (info[2].toInt()>>1)&0x01;
@@ -109,7 +111,7 @@ void Room::tcp_data(QByteArray data){
 
 
         case 'L':
-            //status.L[data.at(1)-48] = data.at(2)-48; 
+            //status.L[data.at(1)-48] = data.at(2)-48;
             //emit room_status_received(status);
            break;
     }
@@ -127,6 +129,15 @@ void Room::set_connection_status(int newStatus){
 
 }
 
+
+void Room::toggle_light(int nr){
+
+    tcp->sendData(("L"+QString::number(nr)).toLocal8Bit());
+    status.L[nr] = !status.L[nr];
+    tcp->sendData("A");
+
+}
+
 void Room::toggle_all_lights(){
 
     tcp->sendData("K");
@@ -136,12 +147,73 @@ void Room::toggle_all_lights(){
 void Room::switch_all_lights(bool enable){
 
     QByteArray cmd = "J";
-    if(enable) 
+    if(enable)
         cmd.append("1");
     else
         cmd.append("0");
 
     tcp->sendData(cmd);
+
+}
+
+nlohmann::json Room::status2json(){
+
+    std::string name;
+    nlohmann::json j;
+    nlohmann::json lights = nlohmann::json::array();
+
+
+    switch (room_id){
+    case BATHROOM:
+        j["name"] = "Vonia";
+        lights = nlohmann::json::array({
+                {{"idx",0},{"name","Lubos"},{"value",status.L[0]}},
+                {{"idx",1},{"name","LED"},{"value",status.L[1]}},
+                {{"idx",2},{"name","Veidrodis"},{"value",status.L[2]}}
+                });
+        break;
+    case CORRIDOR:
+        j["name"] = "koridorius";
+        lights = nlohmann::json::array({
+                {{"idx",0},{"name","Prie dūrų"},{"value",status.L[0]}},
+                {{"idx",1},{"name","Koridorius"},{"value",status.L[1]}},
+                {{"idx",2},{"name","Sandeliukas"},{"value",status.L[2]}}
+                });
+        break;
+    case BEDROOM:
+        j["name"] = "Miegamasis";
+        lights = nlohmann::json::array({
+                {{"idx",0},{"name","Simos pusė"},{"value",status.L[0]}},
+                {{"idx",1},{"name","Lubos"},{"value",status.L[1]}},
+                {{"idx",2},{"name","Justo pusė"},{"value",status.L[2]}}
+                });
+        break;
+    case WORKROOM:
+        j["name"] = "Vaikų kambarys";
+        lights = nlohmann::json::array({
+                {{"idx",0},{"name","Lubos"},{"value",status.L[0]}},
+                });
+        break;
+    case LIVING_ROOM:
+        j["name"] = "Svetainė";
+        lights = nlohmann::json::array({
+                {{"idx",0},{"name","LED Virtuvė"},{"value",status.L[0]}},
+                {{"idx",1},{"name","Lubos Virtuvė"},{"value",status.L[1]}},
+                {{"idx",2},{"name","Stalas"},{"value",status.L[2]}},
+                {{"idx",3},{"name","Ventiliacija"},{"value",status.L[3]}},
+                {{"idx",4},{"name","LED Lubos"},{"value",status.L[4]}},
+                {{"idx",5},{"name","Lubos"},{"value",status.L[5]}},
+                {{"idx",6},{"name","Karnyzas"},{"value",status.L[6]}}
+                });
+        break;
+    }
+
+
+    j["temp"] = status.T;
+    j["humi"] = status.H;
+    j["lights"] = lights;
+
+    return j;
 
 }
 
@@ -151,23 +223,21 @@ void Room::status2xml(QDomDocument *domdoc){
 
     switch (room_id){
     case BATHROOM:
-        root = domdoc->createElement("Bathroom");
+        root = domdoc->createElement("bathroom");
         break;
     case CORRIDOR:
-        root = domdoc->createElement("Corridor");
+        root = domdoc->createElement("corridor");
         break;
     case BEDROOM:
-        root = domdoc->createElement("Bedroom");
+        root = domdoc->createElement("bedroom");
         break;
     case WORKROOM:
-        root = domdoc->createElement("Workroom");
+        root = domdoc->createElement("workroom");
         break;
     case LIVING_ROOM:
-        root = domdoc->createElement("Livingroom");
+        root = domdoc->createElement("livingroom");
         break;
     }
-
-
 
     for(int i = 0; i < 8; i++){
 

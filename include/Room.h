@@ -5,6 +5,7 @@
 #include "TCP.h"
 #include "DataLogger.h"
 #include <QDomDocument>
+#include "json.hpp"
 
 class Room : public QObject
 {
@@ -15,9 +16,11 @@ class Room : public QObject
         Room (ROOM_ID);
         QString read_ip();
         void sendData(QByteArray);
+        void toggle_light(int nr);
         void switch_all_lights(bool);
         void toggle_all_lights();
         void status2xml(QDomDocument *root);
+        nlohmann::json status2json();
 
     private:
         QString ip;
