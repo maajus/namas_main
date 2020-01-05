@@ -92,7 +92,7 @@ void WSserver::sendJson(QWebSocket *pClient, nlohmann::json j){
 
     std::string message = j.dump();
         pClient->sendTextMessage(QString::fromStdString(message));
-        qDebug()<<QString::fromStdString(message);
+        //qDebug()<<QString::fromStdString(message);
 }
 
 

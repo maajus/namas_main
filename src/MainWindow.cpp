@@ -321,6 +321,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
 enum{
     CMD_NONE = 0,
     CMD_GET_STATUS = 1,
+    CMD_SET_OUTPUT = 2,
 };
 
 
@@ -343,13 +344,42 @@ void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
             {
                 nlohmann::json j_out = nlohmann::json::array();
 
-                j_out.push_back(corridor->get_room()->status2json());
                 j_out.push_back(bedroom->get_room()->status2json());
-                j_out.push_back(bathroom->get_room()->status2json());
-                j_out.push_back(workroom->get_room()->status2json());
                 j_out.push_back(livingroom->get_room()->status2json());
+                j_out.push_back(bathroom->get_room()->status2json());
+                j_out.push_back(corridor->get_room()->status2json());
+                j_out.push_back(workroom->get_room()->status2json());
                 ws_server->sendJson(pClient, j_out);
 
+                break;
+            }
+        case CMD_SET_OUTPUT:
+            {
+                int room_id = j["room_id"];
+                int light_id = j["idx"];
+
+                switch(room_id){
+                    case LIVING_ROOM:
+                    livingroom->get_room()->toggle_light(light_id);
+                    break;
+
+                    case BEDROOM:
+                    bedroom->get_room()->toggle_light(light_id);
+                    break;
+
+                    case WORKROOM:
+                    workroom->get_room()->toggle_light(light_id);
+                    break;
+
+                    case CORRIDOR:
+                    corridor->get_room()->toggle_light(light_id);
+                    break;
+
+                    case BATHROOM:
+                    bathroom->get_room()->toggle_light(light_id);
+                    break;
+
+                }
                 break;
             }
     }
