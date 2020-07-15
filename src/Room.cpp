@@ -71,11 +71,11 @@ void Room::tcp_data(QByteArray data){
                 if(info.size()<=1) return;
                 status.T = (int)info[0].toFloat();
                 //if((status.T > 0) && (status.T < 100))
-                    status.temp = (info[0] + "°C");
+                    status.temp = (info[0]/* + "°C"*/);
 
                 status.H = (int)info[1].toFloat();
                 //if((status.H > 0) && (status.H < 100))
-                    status.humi = (info[1] + "%");
+                    status.humi = (info[1]/* + "%"*/);
 
                 //qDebug()<<status.T<<status.H;
 
@@ -93,8 +93,10 @@ void Room::tcp_data(QByteArray data){
         {
                 QStringList info = QString(data.mid(1,data.length())).split("_");
                 if(info.size()<=1) return;
-                status.temp = (info[0] + "°C");
-                status.humi = (info[1] + "%");
+                status.T = (int)info[0].toFloat();
+                status.H = (int)info[1].toFloat();
+                status.temp = (info[0]/* + "°C"*/);
+                status.humi = (info[1]/* + "%"*/);
                 status.L[0] = info[2].toInt()&0x01;
                 status.L[1] = (info[2].toInt()>>1)&0x01;
                 status.L[2] = (info[2].toInt()>>2)&0x01;
@@ -169,15 +171,16 @@ nlohmann::json Room::status2json(){
         lights = nlohmann::json::array({
                 {{"idx",0},{"name","Lubos"},{"value",status.L[0]},{"light", true}},
                 {{"idx",1},{"name","LED"},{"value",status.L[1]},{"light", true}},
-                {{"idx",2},{"name","Veidrodis"},{"value",status.L[2]},{"light", false}}
+                {{"idx",2},{"name","Ventiliacija"},{"value",status.L[2]},{"light", false}},
+                {{"idx",3},{"name","Veidrodis"},{"value",status.L[3]},{"light", false}}
                 });
         break;
     case CORRIDOR:
         j["name"] = "Koridorius";
         lights = nlohmann::json::array({
-                {{"idx",0},{"name","Prie dūrų"},{"value",status.L[0]},{"light", true}},
+                {{"idx",0},{"name","Sandeliukas"},{"value",status.L[0]},{"light", true}},
                 {{"idx",1},{"name","Koridorius"},{"value",status.L[1]},{"light", true}},
-                {{"idx",2},{"name","Sandeliukas"},{"value",status.L[2]},{"light", true}}
+                {{"idx",2},{"name","Prie dūrų"},{"value",status.L[2]},{"light", true}}
                 });
         break;
     case BEDROOM:
@@ -191,7 +194,7 @@ nlohmann::json Room::status2json(){
     case WORKROOM:
         j["name"] = "Vaikų kambarys";
         lights = nlohmann::json::array({
-                {{"idx",0},{"name","Lubos"},{"value",status.L[0]},{"light", true}},
+                {{"idx",1},{"name","Lubos"},{"value",status.L[1]},{"light", true}},
                 });
         break;
     case LIVING_ROOM:
@@ -199,19 +202,19 @@ nlohmann::json Room::status2json(){
         lights = nlohmann::json::array({
                 {{"idx",0},{"name","LED Virtuvė"},{"value",status.L[0]},{"light", true}},
                 {{"idx",1},{"name","Lubos Virtuvė"},{"value",status.L[1]},{"light", true}},
-                {{"idx",2},{"name","Stalas"},{"value",status.L[2]},{"light", true}},
+                {{"idx",2},{"name","Lubos"},{"value",status.L[2]},{"light", true}},
                 {{"idx",3},{"name","Ventiliacija"},{"value",status.L[3]},{"light", false}},
-                {{"idx",4},{"name","LED Lubos"},{"value",status.L[4]},{"light", true}},
-                {{"idx",5},{"name","Lubos"},{"value",status.L[5]},{"light", true}},
-                {{"idx",6},{"name","Karnyzas"},{"value",status.L[6]},{"light", true}}
+                {{"idx",4},{"name","Stalas"},{"value",status.L[4]},{"light", true}},
+                {{"idx",5},{"name","Karnyzas"},{"value",status.L[5]},{"light", true}},
+                {{"idx",7},{"name","LED Lubos"},{"value",status.L[7]},{"light", true}}
                 });
         break;
     }
 
-
+    j["connected"] = status.connected;
     j["room_id"] = room_id;
-    j["temp"] = status.T;
-    j["humi"] = status.H;
+    j["temp"] = status.temp.toStdString();
+    j["humi"] = status.humi.toStdString();
     j["lights"] = lights;
 
     return j;

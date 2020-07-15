@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Work_Room_win.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.1
+** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,9 +10,12 @@
 #define UI_WORK_ROOM_WIN_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -36,19 +39,19 @@ public:
     void setupUi(QDialog *Work_Room_win)
     {
         if (Work_Room_win->objectName().isEmpty())
-            Work_Room_win->setObjectName(QString::fromUtf8("Work_Room_win"));
+            Work_Room_win->setObjectName(QStringLiteral("Work_Room_win"));
         Work_Room_win->resize(1024, 600);
         back_button = new QPushButton(Work_Room_win);
-        back_button->setObjectName(QString::fromUtf8("back_button"));
+        back_button->setObjectName(QStringLiteral("back_button"));
         back_button->setGeometry(QRect(859, 10, 151, 101));
         layoutWidget = new QWidget(Work_Room_win);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(20, 170, 351, 141));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         temp_icon_label = new QLabel(layoutWidget);
-        temp_icon_label->setObjectName(QString::fromUtf8("temp_icon_label"));
+        temp_icon_label->setObjectName(QStringLiteral("temp_icon_label"));
         temp_icon_label->setMaximumSize(QSize(119, 109));
         temp_icon_label->setPixmap(QPixmap(QString::fromUtf8(":/icons/temp.png")));
         temp_icon_label->setScaledContents(true);
@@ -56,22 +59,22 @@ public:
         horizontalLayout_2->addWidget(temp_icon_label);
 
         temp_label = new QLabel(layoutWidget);
-        temp_label->setObjectName(QString::fromUtf8("temp_label"));
+        temp_label->setObjectName(QStringLiteral("temp_label"));
         QFont font;
-        font.setFamily(QString::fromUtf8("digitalk"));
+        font.setFamily(QStringLiteral("digitalk"));
         font.setPointSize(48);
         temp_label->setFont(font);
 
         horizontalLayout_2->addWidget(temp_label);
 
         layoutWidget1 = new QWidget(Work_Room_win);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(20, 50, 351, 121));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         humi_icon_label = new QLabel(layoutWidget1);
-        humi_icon_label->setObjectName(QString::fromUtf8("humi_icon_label"));
+        humi_icon_label->setObjectName(QStringLiteral("humi_icon_label"));
         humi_icon_label->setMaximumSize(QSize(109, 119));
         humi_icon_label->setPixmap(QPixmap(QString::fromUtf8(":/icons/humidity.png")));
         humi_icon_label->setScaledContents(true);
@@ -80,13 +83,13 @@ public:
         horizontalLayout_3->addWidget(humi_icon_label);
 
         humi_label = new QLabel(layoutWidget1);
-        humi_label->setObjectName(QString::fromUtf8("humi_label"));
+        humi_label->setObjectName(QStringLiteral("humi_label"));
         humi_label->setFont(font);
 
         horizontalLayout_3->addWidget(humi_label);
 
         lights0_button = new QPushButton(Work_Room_win);
-        lights0_button->setObjectName(QString::fromUtf8("lights0_button"));
+        lights0_button->setObjectName(QStringLiteral("lights0_button"));
         lights0_button->setGeometry(QRect(500, 50, 191, 241));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -102,12 +105,12 @@ public:
 
     void retranslateUi(QDialog *Work_Room_win)
     {
-        Work_Room_win->setWindowTitle(QCoreApplication::translate("Work_Room_win", "Work_Room_win", nullptr));
-        back_button->setText(QCoreApplication::translate("Work_Room_win", "Back", nullptr));
+        Work_Room_win->setWindowTitle(QApplication::translate("Work_Room_win", "Work_Room_win", 0));
+        back_button->setText(QApplication::translate("Work_Room_win", "Back", 0));
         temp_icon_label->setText(QString());
-        temp_label->setText(QCoreApplication::translate("Work_Room_win", "N/A", nullptr));
+        temp_label->setText(QApplication::translate("Work_Room_win", "N/A", 0));
         humi_icon_label->setText(QString());
-        humi_label->setText(QCoreApplication::translate("Work_Room_win", "N/A", nullptr));
+        humi_label->setText(QApplication::translate("Work_Room_win", "N/A", 0));
         lights0_button->setText(QString());
     } // retranslateUi
 

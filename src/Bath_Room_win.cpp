@@ -26,7 +26,6 @@ Bath_Room_win::Bath_Room_win(info_widget * w):info_w(w)  {
     //tcp->moveToThread(tcp_thread);
     //tcp_thread->start();
     connect(room, SIGNAL(room_status_received(Room_status)), this, SLOT(room_status_received(Room_status)));
-    
     connection_status = Status::DISCONNECTED;
     QString button_style = "QPushButton{background-color:#4c4c4c;border-width:0px;};";
 
@@ -98,7 +97,7 @@ void Bath_Room_win::room_status_received(Room_status room_status){
     this->update_room_info();
 
     //turn on mirror if it is off, lights are on and humi is high
-    if(!status.L[3] && status.L[0] && (status.H > 98))
+    if(!status.L[3] && status.L[0] && (status.H > 80))
         this->send_tcp_cmd("L3");
 
 }
@@ -121,7 +120,7 @@ void Bath_Room_win::update_room_info(){
 
     widget.temp_label->setText(status.temp);
     widget.humi_label->setText(status.humi);
-    
+
 }
 
 void Bath_Room_win::set_connection_status(int status){
@@ -149,7 +148,7 @@ Room* Bath_Room_win::get_room(){
         //qDebug()<<"AAA";
         //break;
     //}
-    
+
 //}
 
 void Bath_Room_win::status_xml(QDomDocument *domdoc){

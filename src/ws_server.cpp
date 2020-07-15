@@ -45,8 +45,7 @@ void WSserver::processTextMessage(QString message)
 {
     QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
     nlohmann::json j;
-    if (m_debug)
-        qDebug() << "[WS] Message received:" << message;
+        //qDebug() << "[WS] Message received:" << message;
 
     try{
         j = nlohmann::json::parse(message.toStdString()); //parse json from received string

@@ -340,19 +340,6 @@ void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
     }
 
     switch(cmdID){
-        case CMD_GET_STATUS:
-            {
-                nlohmann::json j_out = nlohmann::json::array();
-
-                j_out.push_back(bedroom->get_room()->status2json());
-                j_out.push_back(livingroom->get_room()->status2json());
-                j_out.push_back(bathroom->get_room()->status2json());
-                j_out.push_back(corridor->get_room()->status2json());
-                j_out.push_back(workroom->get_room()->status2json());
-                ws_server->sendJson(pClient, j_out);
-
-                break;
-            }
         case CMD_SET_OUTPUT:
             {
                 int room_id = j["room_id"];
@@ -380,6 +367,24 @@ void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
                     break;
 
                 }
+                break;
+            }
+
+        case CMD_GET_STATUS:
+            {
+                nlohmann::json j;
+                nlohmann::json j_out = nlohmann::json::array();
+
+                j_out.push_back(bedroom->get_room()->status2json());
+                j_out.push_back(livingroom->get_room()->status2json());
+                j_out.push_back(bathroom->get_room()->status2json());
+                j_out.push_back(corridor->get_room()->status2json());
+                j_out.push_back(workroom->get_room()->status2json());
+                j["door_pir"] = gpio->read(GPIO_PIR);
+                j["rooms"] = j_out;
+                ws_server->sendJson(pClient, j);
+
+
                 break;
             }
     }
