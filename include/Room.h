@@ -15,12 +15,16 @@ class Room : public QObject
     public:
         Room (ROOM_ID);
         QString read_ip();
-        void sendData(QByteArray);
+        //void sendData(QByteArray);
+
+        void sendData(QString data);
         void toggle_light(int nr);
         void switch_all_lights(bool);
         void toggle_all_lights();
         void status2xml(QDomDocument *root);
         nlohmann::json status2json();
+        void update_info();
+        Room_status get_status();
 
     private:
         QString ip;

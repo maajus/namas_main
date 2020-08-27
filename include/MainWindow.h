@@ -26,7 +26,6 @@
 #include "Camera.h"
 #include "GPIO.h"
 #include "Alarm.h"
-#include "tcp_server.h"
 #include "ws_server.h"
 #include "Settings.h"
 #include "json.hpp"
@@ -52,20 +51,17 @@ public:
 
 
 private:
-    void TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id);
-    void TCP_response_to_set(Tcp_packet *tcp_Packet, int socket_id);
     void LoadSettings();
     void SwitchAllLights(bool);
 
     Ui::MainWindow widget;
     QTimer status_timer;
     QTimer info_timer;
-    Bath_Room_win *bathroom;
-    Living_Room_win *livingroom;
-    Bed_Room_win *bedroom;
-    Work_Room_win *workroom;
-    Corridor_win *corridor;
-    Server *server;
+    Room *bathroom;
+    Room *livingroom;
+    Room *bedroom;
+    Room *workroom;
+    Room *corridor;
     WSserver *ws_server;
     Settings *settings;
 
@@ -75,7 +71,6 @@ private:
 
 private slots:
 
-    void TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id);
     void WS_dataReceived(QWebSocket *pClient, nlohmann::json j);
     //void on_leave_button_clicked();
     void on_take_photo_button_clicked();

@@ -52,13 +52,24 @@ QString Room::read_ip(){
 
 }
 
-void Room::sendData(QByteArray data){
+
+
+void Room::sendData(QString data){
 
     if(connection_status != Status::FAILED)
-    tcp->sendData(data);
-
+    tcp->sendData(data.toLocal8Bit());
 }
 
+//void Room::sendData(QByteArray data){
+
+    //if(connection_status != Status::FAILED)
+    //tcp->sendData(data);
+
+/*}*/
+
+void Room::update_info(){
+    this->sendData("A");
+}
 
 void Room::tcp_data(QByteArray data){
 
@@ -123,12 +134,16 @@ void Room::set_connection_status(int newStatus){
 
     connection_status = newStatus;
     status.connected = connection_status;
-    emit room_status_received(status);
+    //emit room_status_received(status);
     if(status.connected == Status::FAILED){
         qDebug()<<"[ROOM] Will try to reconnect to"<<ip<<"after"<<RECONNECT_TIMEOUT/1000<<"secs";
         reconnect_timer->start(RECONNECT_TIMEOUT);
     }
 
+}
+
+Room_status Room::get_status(){
+    return status;
 }
 
 

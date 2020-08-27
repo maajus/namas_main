@@ -23,34 +23,23 @@
 #include "TCP.h"
 #include <QThread>
 
-class Bed_Room_win : public QDialog {
+class Bed_Room_win : QObject {
     Q_OBJECT
 public:
-    Bed_Room_win(info_widget*);
+    Bed_Room_win();
     virtual ~Bed_Room_win();
     void update_info();
-    void update_room_info();
     void send_tcp_cmd(QString);
     Room* get_room();
-    void status_xml(QDomDocument *);
-    
+
 private:
-    Ui::Bed_Room_win widget;
-    info_widget *info_w;
     Room *room;
-    QThread *tcp_thread;
     Room_status status;
     int connection_status;
 
 private slots:
     void room_status_received(Room_status);
     void set_connection_status(int);
-    void on_lights0_button_clicked();
-    void on_lights1_button_clicked();
-    void on_lights2_button_clicked();
-
-    void on_back_button_clicked();
-//    void checkBox_stateChanged(int);
 };
 
 #endif /* _ROOM_WIN_H */

@@ -27,7 +27,6 @@ MainWindow::MainWindow() {
 
     gpio = new GPIO();
     connect(gpio, &GPIO::gpio_interrupt, this, &MainWindow::gpio_interrupt);
-    server = new Server();
     ws_server = new WSserver(5050);
     settings = new Settings();
     widget.setupUi(this);
@@ -35,8 +34,6 @@ MainWindow::MainWindow() {
 
     connect(ws_server, SIGNAL(json_received(QWebSocket*, nlohmann::json)), this, SLOT(WS_dataReceived(QWebSocket*, nlohmann::json)));
 
-    connect(server, SIGNAL(dataReceived(Tcp_packet *, int)), this, SLOT(TCP_dataReceived(Tcp_packet *, int)));
-    //connect(server, SIGNAL(connection_status(int)), this, SLOT(Remote_connected(int)));
     connect(&status_timer, SIGNAL(timeout()), this, SLOT(update_status()));
     connect(&info_timer, SIGNAL(timeout()), this, SLOT(update_info()));
     connect(widget.side_menu,SIGNAL(currentRowChanged(int)),SLOT(menu_selected(int)));
@@ -44,41 +41,15 @@ MainWindow::MainWindow() {
     status_timer.start(STATUS_REFRESH);
     info_timer.start(ROOM_INFO_UPDATE_FREQ);
 
-    widget.bedroom_info->set_name("Miegamasis");
-    widget.workroom_info->set_name("Darbo Kambarys");
-    widget.corridor_info->set_name("Koridorius");
-    widget.livingroom_info->set_name("Salionas");
-    widget.wc_info->set_name("Vonia");
-
-    bathroom = new Bath_Room_win(widget.wc_info);
-    connect(widget.wc_info,SIGNAL(clicked()), bathroom, SLOT(show()));
-
-    bedroom = new Bed_Room_win(widget.bedroom_info);
-    connect(widget.bedroom_info,SIGNAL(clicked()), bedroom, SLOT(show()));
-
-    workroom = new Work_Room_win(widget.workroom_info);
-    connect(widget.workroom_info,SIGNAL(clicked()), workroom, SLOT(show()));
-
-    corridor = new Corridor_win(widget.corridor_info);
-    connect(widget.corridor_info,SIGNAL(clicked()), corridor, SLOT(show()));
-
-    livingroom = new Living_Room_win(widget.livingroom_info);
-    connect(widget.livingroom_info,SIGNAL(clicked()), livingroom, SLOT(show()));
+    bathroom = new Room(ROOM_ID::BATHROOM);
+    bedroom = new Room(ROOM_ID::BEDROOM);
+    workroom = new Room(ROOM_ID::WORKROOM);
+    corridor = new Room(ROOM_ID::CORRIDOR);
+    livingroom = new Room(ROOM_ID::LIVING_ROOM);
 
     qApp->installEventFilter(this); //install event filter to catch mouse events
 
-    widget.alarm_button->setIconSize(QSize(120,120));
-    widget.arm_alarm_label->setText("Įjungti signalizaciją");
-    widget.alarm_button->setIcon(QIcon(":/icons/locked.png"));
-    widget.alarm_status_label->setPixmap(QPixmap(":/icons/unlocked.png"));
-
-    QFontDatabase::addApplicationFont(":/fonts/digital.ttf");
-    QFont font = QFont("Digital-7", 42, 1);
-    widget.time_label->setFont(font);
-    widget.date_label->setFont(font);
-    widget.date_label->setStyleSheet("color:#282828");
-
-    //QFontDatabase db;
+   //QFontDatabase db;
     //qDebug()<<db.families();
 
     //Load and apply stylesheet
@@ -172,12 +143,6 @@ void MainWindow::update_info(){
 void MainWindow::menu_selected(int menu){
 
     widget.stack_widget->setCurrentIndex(menu);
-    //if(menu == Menus::CAMERA){
-    //if(cam->available())  cam->start();
-    //}
-    //else
-    //if(cam->available()) cam->stop();
-
 }
 
 
@@ -189,13 +154,13 @@ void MainWindow::gpio_interrupt(int intnr){
                 Logger::log(LOG_TRIGGERS, "Door opened");
                 //if pir = 0 door should be opened from outside
                 if(gpio->read(GPIO_PIR) == 0){
-                    if(settings->DoorLight()) corridor->send_tcp_cmd("L2");
+                    if(settings->DoorLight()) corridor->sendData("L2");
                     if(settings->DoorSiren())  gpio->siren_beep();
                 }
                 else{ //door opened from inside
                     if(settings->DoorLight()){
-                        if(corridor->GetStatus().L[2] == 1) //if corridor lights if on turn them off
-                            corridor->send_tcp_cmd("L2");
+                        if(corridor->get_status().L[2] == 1) //if corridor lights if on turn them off
+                            corridor->sendData("L2");
                     }
                 }
 
@@ -347,23 +312,23 @@ void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
 
                 switch(room_id){
                     case LIVING_ROOM:
-                    livingroom->get_room()->toggle_light(light_id);
+                    livingroom->toggle_light(light_id);
                     break;
 
                     case BEDROOM:
-                    bedroom->get_room()->toggle_light(light_id);
+                    bedroom->toggle_light(light_id);
                     break;
 
                     case WORKROOM:
-                    workroom->get_room()->toggle_light(light_id);
+                    workroom->toggle_light(light_id);
                     break;
 
                     case CORRIDOR:
-                    corridor->get_room()->toggle_light(light_id);
+                    corridor->toggle_light(light_id);
                     break;
 
                     case BATHROOM:
-                    bathroom->get_room()->toggle_light(light_id);
+                    bathroom->toggle_light(light_id);
                     break;
 
                 }
@@ -375,271 +340,18 @@ void MainWindow::WS_dataReceived(QWebSocket *pClient, nlohmann::json j){
                 nlohmann::json j;
                 nlohmann::json j_out = nlohmann::json::array();
 
-                j_out.push_back(bedroom->get_room()->status2json());
-                j_out.push_back(livingroom->get_room()->status2json());
-                j_out.push_back(bathroom->get_room()->status2json());
-                j_out.push_back(corridor->get_room()->status2json());
-                j_out.push_back(workroom->get_room()->status2json());
+                j_out.push_back(bedroom->status2json());
+                j_out.push_back(livingroom->status2json());
+                j_out.push_back(bathroom->status2json());
+                j_out.push_back(corridor->status2json());
+                j_out.push_back(workroom->status2json());
                 j["door_pir"] = gpio->read(GPIO_PIR);
                 j["rooms"] = j_out;
                 ws_server->sendJson(pClient, j);
 
-
                 break;
             }
     }
-
-}
-
-
-
-//tcp packet received
-void MainWindow::TCP_dataReceived(Tcp_packet *tcp_Packet,int socket_id) {
-
-    //qDebug() << "Received command: " << tcp_Packet->command << "Object: " << tcp_Packet->object;
-
-    if (tcp_Packet->command == "Get") {
-        this->TCP_response_to_get(tcp_Packet, socket_id);
-        return;
-    }
-    if (tcp_Packet->command == "Set") {
-        this->TCP_response_to_set(tcp_Packet, socket_id);
-        return;
-    }
-
-    qDebug() << "[MainWindow] Unknown command from remote: " << tcp_Packet->command;
-    server->format_and_send_packet("Rx", "ResponseTo" + tcp_Packet->command, tcp_Packet->object, "Error", "Unknown Command", socket_id);
-
-}
-
-
-//send requested data over tcp
-void MainWindow::TCP_response_to_get(Tcp_packet *tcp_Packet, int socket_id) {
-
-    Tcp_packet * tcp_packet = new Tcp_packet;
-    tcp_packet->command = "ResponseToGet";
-    tcp_packet->object = tcp_Packet->object;
-    tcp_packet->sender = "Rx";
-
-    QDomElement element, root;
-
-    if (tcp_Packet->object == "Status") {
-
-        root = tcp_packet->dataE.createElement("Status");
-        tcp_packet->dataE.appendChild(root);
-
-        corridor->status_xml(&tcp_packet->dataE);
-        livingroom->status_xml(&tcp_packet->dataE);
-        bedroom->status_xml(&tcp_packet->dataE);
-        bathroom->status_xml(&tcp_packet->dataE);
-        workroom->status_xml(&tcp_packet->dataE);
-
-        //element = tcp_packet->dataE.createElement("FreeMemory");
-        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.FreeMemory)));
-        //root.appendChild(element);
-
-        //element = tcp_packet->dataE.createElement("TotalMemory");
-        //element.appendChild(tcp_packet->dataE.createTextNode(QString::number(rxstatus.TotalMemory)));
-        //root.appendChild(element);
-
-
-        tcp_packet->status = "Ok";
-        server->process_data(tcp_packet,socket_id);
-
-        //qDebug().noquote()<<tcp_packet->dataE.toString();
-        delete tcp_packet;
-        return;
-    }
-
-    if (tcp_Packet->object == "Log") {
-
-        //tcp_packet->status = "Ok";
-        //if(!obj_created.LOG_window){
-            //obj_created.LOG_window = true;
-            //logwindow = new LOG_window();
-        //}
-        //logwindow->get_log_xml(tcp_packet, tcp_Packet);
-
-        server->process_data(tcp_packet,socket_id);
-        delete tcp_packet;
-        return;
-    }
-
-    if (tcp_Packet->object == "Settings") {
-
-        //qDebug() << "[Remote] Sending rx settings to remote";
-        tcp_packet->status = "Ok";
-        if(settings->get_config(tcp_packet)){
-            tcp_packet->status = "Error";
-            tcp_packet->error = "failed to read rx settings";
-        }
-
-        //qDebug()<<tcp_packet->dataE.toString();
-        server->process_data(tcp_packet,socket_id);
-        delete tcp_packet;
-        return;
-    }
-
-  if (tcp_Packet->object == "Login") {
-
-        //qDebug().noquote()<<tcp_Packet->dataE.toString();
-        tcp_packet->status = "Ok";
-        struct User user;
-        QDomElement root_element = tcp_Packet->dataE.firstChildElement();
-        user.username = root_element.firstChildElement("username").text();
-        user.pass = root_element.firstChildElement("pass").text();
-
-        if(user.username == "-1" && user.pass == "-1"){
-            qDebug()<<"[MainWindow] Bad login";
-        }
-        else{
-
-            UserManager manager;
-            QString username;
-            int status = manager.login(&user,&username);
-
-            QDomElement root, root1;
-            root = tcp_packet->dataE.createElement("Login");
-            root1 = tcp_packet->dataE.createElement("status");
-            root1.appendChild(tcp_packet->dataE.createTextNode(QString::number(status)));
-/*            if(!status){*/
-                //com_thread->log(Strings::webuser_login(user.username));
-                //com_thread->set_webGui(user.username);
-            /*}*/
-            root.appendChild(root1);
-            root1 = tcp_packet->dataE.createElement("username");
-            root1.appendChild(tcp_packet->dataE.createTextNode(user.username));
-            root.appendChild(root1);
-
-            tcp_packet->dataE.appendChild(root);
-            server->process_data(tcp_packet,socket_id);
-        }
-
-
-        //qDebug().noquote()<<tcp_packet->dataE.toString();
-        //tcp_packet->error = "";
-        delete tcp_packet;
-        return;
-
-    }
-
-
-
-    qDebug() << "Unknown object" << tcp_Packet->object;
-    server->writeData("Unknown Object", socket_id);
-    //delete tcp_Packet;
-    delete tcp_packet;
-    return;
-
-
-}
-
-
-
-//receive data from tcp transfer
-void MainWindow::TCP_response_to_set(Tcp_packet *tcp_Packet,int socket_id) {
-
-    QString status, error;
-
-    //qDebug() << "Set Object: " << tcp_Packet->object;
-    //qDebug().noquote()<<tcp_Packet->dataE.toString();
-
-    if (tcp_Packet->object == "Command") {
-
-        QDomElement root = tcp_Packet->dataE.firstChildElement("Command");
-        //turn on online recording to rx
-        //format internal storage
-        //if(root.firstChildElement("SwitchAllLights").text().toInt() == 1){
-
-        //}//
-        //
-        if(!root.firstChildElement("SwitchAllLights").isNull()){
-            this->SwitchAllLights(root.firstChildElement("SwitchAllLights").text().toInt());
-        }
-
-        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
-        //qDebug().noquote()<<tcp_Packet->dataE.toString();
-        return;
-    }
-
-
-    if (tcp_Packet->object == "Settings") {
-
-        qDebug() << "[MainWindow] Receiving settings from web";
-        status = "Ok";
-        error = "";
-        if(settings->set_config(tcp_Packet)){
-            status = "error";
-            error = "failed to save rx settings";
-        }
-        //respond to request
-        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, status, error, socket_id);
-
-        //qDebug().noquote()<<tcp_Packet->dataE.toString();
-        return;
-
-    }
-
-
-
-    if (tcp_Packet->object == "Light") {
-
-        //qDebug().noquote()<<tcp_Packet->dataE.toString();
-        QDomElement root = tcp_Packet->dataE.firstChildElement();
-
-        if(!root.firstChildElement("Livingroom").isNull()){
-            int L = root.firstChildElement("Livingroom").text().toInt();
-            livingroom->get_room()->toggle_light(L);
-        }
-
-        if(!root.firstChildElement("Bedroom").isNull()){
-            int L = root.firstChildElement("Bedroom").text().toInt();
-            bedroom->get_room()->toggle_light(L);
-        }
-
-        if(!root.firstChildElement("Corridor").isNull()){
-            int L = root.firstChildElement("Corridor").text().toInt();
-            corridor->get_room()->toggle_light(L);
-        }
-
-        if(!root.firstChildElement("Bathroom").isNull()){
-            int L = root.firstChildElement("Bathroom").text().toInt();
-            bathroom->get_room()->toggle_light(L);
-        }
-
-        if(!root.firstChildElement("Workroom").isNull()){
-            int L = root.firstChildElement("Workroom").text().toInt();
-            workroom->get_room()->toggle_light(L);
-        }
-
-        //respond to request
-        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
-
-        return;
-
-    }
-
-
-    if (tcp_Packet->object == "WebUsers") {
-
-        //qDebug()<<tcp_Packet->dataE.toString();
-        QDomElement root = tcp_Packet->dataE.firstChildElement("WebUsers");
-        //turn on online recording to rx
-        //power off rx
-        QString webIP = root.firstChildElement("ip").text();
-        bool connected = root.firstChildElement("connected").text().toInt();
-
-
-        qDebug().noquote()<<"[MainWindow] Web gui user "<<webIP+(connected ? " connected":" disconnected");
-        server->format_and_send_packet("Rx", "ResponseToSet", tcp_Packet->object, "Ok", "", socket_id);
-        //qDebug().noquote()<<tcp_Packet->dataE.toString();
-        return;
-    }
-
-
-     qDebug() << "Unknown object" << tcp_Packet->object;
-
-
 
 }
 
@@ -675,10 +387,10 @@ void MainWindow::SwitchAllLights(bool enable){
 
     QString on = enable ? "1":"0";
 
-    corridor->send_tcp_cmd("J"+on);
-    livingroom->send_tcp_cmd("J"+on);
-    bedroom->send_tcp_cmd("J"+on);
-    bathroom->send_tcp_cmd("J"+on);
-    workroom->send_tcp_cmd("J"+on);
+    corridor->sendData("J"+on);
+    livingroom->sendData("J"+on);
+    bedroom->sendData("J"+on);
+    bathroom->sendData("J"+on);
+    workroom->sendData("J"+on);
 
 }
